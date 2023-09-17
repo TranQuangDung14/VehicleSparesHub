@@ -27,11 +27,11 @@
           <span class="hide-menu">Sản phẩm</span>
         </li>
         <li class="sidebar-item">
-          <a class="sidebar-link" href="#" aria-expanded="false">
+          <a class="sidebar-link" href="{{route('categoryIndex')}}" aria-expanded="false">
             <span>
               <i class="ti ti-article"></i>
             </span>
-            <span class="hide-menu">Buttons</span>
+            <span class="hide-menu">Danh mục sản phẩm</span>
           </a>
         </li>
         <li class="sidebar-item">
