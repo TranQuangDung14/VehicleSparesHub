@@ -17,6 +17,7 @@ class CreateVsProductTable extends Migration
             $table->id();
             $table->integer("category_id")->unsigned()->nullable(); // danh mục
             $table->string("name",1000)->nullable();// tên sản phẩm
+            $table->string("image",225)->nullable();// ảnh
             $table->integer("price")->nullable()->unsigned();// giá 
             $table->text("short_description")->nullable();//mô tả ngắn
             $table->text("description")->nullable();//mô tả

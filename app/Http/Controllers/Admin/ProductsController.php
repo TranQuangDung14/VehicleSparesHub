@@ -33,7 +33,7 @@ class ProductsController extends Controller
             'name' => 'required',
         );
         $messages = array(
-            'name.required'                     => '- Tên danh mục không được để trống!',
+            'name.required'      => '- Tên danh mục không được để trống!',
         );
         $validator = Validator::make($input, $rules, $messages);
 

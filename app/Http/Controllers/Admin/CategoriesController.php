@@ -7,13 +7,20 @@ use App\Models\Categories;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
-
+use Brian2694\Toastr\Facades\Toastr;
 class CategoriesController extends Controller
 {
     //
     public function index()
     {
-        return view('Admin.pages.categories.categories_list');
+        try {
+            $category = Categories::get();
+            return view('Admin.pages.categories.categories_list',compact('category'));
+        } catch (\Exception $e) {
+            dd($e);
+            return redirect()->back();
+        }
+
     }
 
     public function create()
@@ -35,7 +42,7 @@ class CategoriesController extends Controller
             'name' => 'required',
         );
         $messages = array(
-            'name.required'                     => '- Tên danh mục không được để trống!',
+            'name.required'                     => '--Tên danh mục không được để trống!--',
         );
         $validator = Validator::make($input, $rules, $messages);
 
@@ -51,18 +58,20 @@ class CategoriesController extends Controller
             $category->description = $request->description ?? null;
             $category->save();
             DB::commit();
+            Toastr::success('Thêm thành công', 'Success');
             return redirect()->route('categoryIndex');
         } catch (\Exception $e) {
             DB::rollback();
-            dd($e);
+            Toastr::error('Thêm lỗi', 'Failed');
+            // dd($e);
             return redirect()->back();
         }
     }
     public function edit($id)
     {
         try {
-            $category = Categories::find($id);
-            return view('Admin.pages.categories.cate_add_edit',compact('category'));
+            $editData = Categories::find($id);
+            return view('Admin.pages.categories.cate_add_edit',compact('editData'));
         } catch (\Exception $e) {
             dd($e);
             return redirect()->back();
