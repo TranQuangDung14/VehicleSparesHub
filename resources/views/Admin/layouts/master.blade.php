@@ -9,6 +9,10 @@
 
     {{-- <link rel="stylesheet" href="{{asset('public/backEnd/')}}/vendors/css/jquery-ui.css" /> --}}
     <link rel="stylesheet" href="{{ asset('Admin/') }}/css/styles.min.css" />
+    <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
+
+    {{-- ckeditor 5 --}}
+    {{-- <script src="https://cdn.ckeditor.com/ckeditor5/39.0.2/classic/ckeditor.js"></script> --}}
 </head>
 
 <body>
@@ -24,7 +28,7 @@ data-sidebar-position="fixed" data-header-position="fixed">
         @include('Admin.partial.header')
     </header>
 
-   
+
     {{-- content --}}
     {{-- <main> --}}
         @yield('content')
@@ -42,6 +46,8 @@ data-sidebar-position="fixed" data-header-position="fixed">
     <script src="{{ asset('Admin/') }}/libs/apexcharts/dist/apexcharts.min.js"></script>
     <script src="{{ asset('Admin/') }}/libs/simplebar/dist/simplebar.js"></script>
     <script src="{{ asset('Admin/') }}/js/dashboard.js"></script>
+
+    @stack('script')
 </body>
 
 </html>

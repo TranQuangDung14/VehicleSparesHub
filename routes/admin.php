@@ -16,10 +16,12 @@ Route::prefix('admin')->group(function () {
     Route::prefix('dashboard')->group(function () {
         Route::get('', [DashboardController::class, 'index'])->name('dashboardIndex');
     });
-    Route::prefix('CategoriesController')->group(function () {
+    Route::prefix('Categories')->group(function () {
         Route::get('', [CategoriesController::class, 'index'])->name('categoryIndex');
+        Route::get('add', [CategoriesController::class, 'create'])->name('categoryCreate');
+        Route::post('add', [CategoriesController::class, 'store'])->name('categoryStore');
     });
-    Route::prefix('ProductsController')->group(function () {
+    Route::prefix('Products')->group(function () {
         Route::get('', [ProductsController::class, 'index'])->name('productIndex');
     });
 });

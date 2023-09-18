@@ -35,11 +35,11 @@
           </a>
         </li>
         <li class="sidebar-item">
-          <a class="sidebar-link" href="#" aria-expanded="false">
+          <a class="sidebar-link" href="{{route('productIndex')}}" aria-expanded="false">
             <span>
               <i class="ti ti-alert-circle"></i>
             </span>
-            <span class="hide-menu">Alerts</span>
+            <span class="hide-menu">Quản lý Sản phẩm</span>
           </a>
         </li>
         <li class="sidebar-item">
