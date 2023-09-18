@@ -3,63 +3,17 @@
 @section('title', 'Bảng điều khiển')
 
 @section('content')
-<div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
-data-sidebar-position="fixed" data-header-position="fixed">
+{{-- <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+data-sidebar-position="fixed" data-header-position="fixed"> --}}
 
 
-<aside class="left-sidebar">
+{{-- <aside class="left-sidebar">
   @include('Admin.partial.sidebar')
-  </aside>
+  </aside> --}}
 
 <!--  Main wrapper -->
-<div class="body-wrapper">
+{{-- <div class="body-wrapper"> --}}
   <!--  Header Start -->
-  <header class="app-header">
-    <nav class="navbar navbar-expand-lg navbar-light">
-      <ul class="navbar-nav">
-        <li class="nav-item d-block d-xl-none">
-          <a class="nav-link sidebartoggler nav-icon-hover" id="headerCollapse" href="#">
-            <i class="ti ti-menu-2"></i>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link nav-icon-hover" href="#">
-            <i class="ti ti-bell-ringing"></i>
-            <div class="notification bg-primary rounded-circle"></div>
-          </a>
-        </li>
-      </ul>
-      <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
-        <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
-          <a href="#" target="_blank" class="btn btn-primary">Tài khoản</a>
-          <li class="nav-item dropdown">
-            <a class="nav-link nav-icon-hover" href="#" id="drop2" data-bs-toggle="dropdown"
-              aria-expanded="false">
-              <img src="{{ asset('Admin/') }}/images/profile/user-1.jpg" alt="" width="35" height="35" class="rounded-circle">
-            </a>
-            <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
-              <div class="message-body">
-                <a href="#" class="d-flex align-items-center gap-2 dropdown-item">
-                  <i class="ti ti-user fs-6"></i>
-                  <p class="mb-0 fs-3">My Profile</p>
-                </a>
-                <a href="#" class="d-flex align-items-center gap-2 dropdown-item">
-                  <i class="ti ti-mail fs-6"></i>
-                  <p class="mb-0 fs-3">My Account</p>
-                </a>
-                <a href="#" class="d-flex align-items-center gap-2 dropdown-item">
-                  <i class="ti ti-list-check fs-6"></i>
-                  <p class="mb-0 fs-3">My Task</p>
-                </a>
-                <a href="./authentication-login.html" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
-              </div>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </nav>
-  </header>
-
     {{-- <header class="app-header">
     @include('Admin.partial.header')
     </header> --}}
@@ -414,6 +368,6 @@ data-sidebar-position="fixed" data-header-position="fixed">
       <p class="mb-0 fs-4">Design and Developed by <a href="#" target="_blank" class="pe-1 text-primary text-decoration-underline">AdminMart.com</a> Distributed by <a href="#">ThemeWagon</a></p>
     </div>
   </div>
-</div>
-</div>
+{{-- </div> --}}
+{{-- </div> --}}
 @endsection

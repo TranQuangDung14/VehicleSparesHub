@@ -12,20 +12,25 @@
 </head>
 
 <body>
-    {{-- header --}}
-    {{-- <header class="app-header">
-        @include('Admin.partial.header')
-    </header> --}}
-
-    {{--  sidebar --}}
-    {{-- <aside class="left-sidebar">
+    <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+data-sidebar-position="fixed" data-header-position="fixed">
+ {{--  sidebar --}}
+    <aside class="left-sidebar">
         @include('Admin.partial.sidebar')
-    </aside> --}}
-    {{-- content --}}
-    <main>
-        @yield('content')
-    </main>
+    </aside>
+<div class="body-wrapper">
+    {{-- header --}}
+    <header class="app-header">
+        @include('Admin.partial.header')
+    </header>
 
+   
+    {{-- content --}}
+    {{-- <main> --}}
+        @yield('content')
+    {{-- </main> --}}
+{{-- </div> --}}
+</div>
     {{-- footer --}}
     <footer>
         @include('Admin.partial.footer')
