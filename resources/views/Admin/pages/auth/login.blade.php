@@ -46,13 +46,13 @@
                   </div>
 
                   {{-- <button> --}}
-                  <a type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">
+                  <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">
                         Đăng nhập
-                    </a>
+                    </button>
                 {{-- </button> --}}
                   <div class="d-flex align-items-center justify-content-center">
                     <p class="fs-4 mb-0 fw-bold">Bạn chưa có tài khoản?</p>
-                    <a class="text-primary fw-bold ms-2" href="./authentication-register.html">Tạo một tài khoản</a>
+                    <a class="text-primary fw-bold ms-2" href="{{ route('showregister') }}">Tạo một tài khoản</a>
                   </div>
                 </form>
               </div>

@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Categories;
-use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
@@ -12,17 +11,32 @@ use Illuminate\Support\Facades\Validator;
 class CategoriesController extends Controller
 {
     //
-    public function index()
+    public function index(Request $request)
     {
         try {
-            $category = Categories::get();
-            Toastr::success('Thành công!');
+             // Số lượng mục trên mỗi trang
+            $perPage = 10;
+
+            // Truy vấn dữ liệu
+            $category = Categories::where('name','LIKE', '%' . $request->search . '%')->paginate($perPage);
+            
+            // Kiểm tra nếu có dữ liệu
+            if ($category->count() > 0) {
+                 // Trang hiện tại
+                 $currentPage = request()->get('page') ?? 1;
+            
+                   // Tính chỉ mục bắt đầu
+                 $startIndex = ($currentPage - 1) * $perPage;
+            // $data = ModelName::;
+
             return view('Admin.pages.categories.categories_list',compact('category'));
+         } else {
+            return view('Admin.pages.categories.categories_list',compact('category'));
+        }
         } catch (\Exception $e) {
             dd($e);
             return redirect()->back();
         }
-
     }
 
     public function create()
@@ -44,11 +58,12 @@ class CategoriesController extends Controller
             'name' => 'required',
         );
         $messages = array(
-            'name.required'                     => '--Tên danh mục không được để trống!--',
+            'name.required' => '--Tên danh mục không được để trống!--',
         );
         $validator = Validator::make($input, $rules, $messages);
 
         if ($validator->fails()) {
+            session()->flash('error', 'Kiểm tra lại!');
             return redirect()->back()
                 ->withErrors($validator)
                 ->withInput();
@@ -60,12 +75,13 @@ class CategoriesController extends Controller
             $category->description = $request->description ?? null;
             $category->save();
             DB::commit();
+            session()->flash('success', 'Thêm mới thành công.');
             // Toastr::success('Thêm thành công', 'Success');
-            Toastr::success('Thành công!', 'Tiêu đề thông báo');
+            // Toastr::success('Thành công!', 'Tiêu đề thông báo');
             return redirect()->route('categoryIndex');
         } catch (\Exception $e) {
             DB::rollback();
-            Toastr::error('Thêm lỗi', 'Failed');
+            session()->flash('error', 'Có lỗi bất ngờ xảy ra!');
             // dd($e);
             return redirect()->back();
         }
@@ -89,7 +105,7 @@ class CategoriesController extends Controller
             'name' => 'required',
         );
         $messages = array(
-            'name.required'                     => '- Tên danh mục không được để trống!',
+            'name.required'  => '- Tên danh mục không được để trống!',
         );
         $validator = Validator::make($input, $rules, $messages);
 

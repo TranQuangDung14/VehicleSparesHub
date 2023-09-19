@@ -3,10 +3,19 @@
 @section('title', 'Danh mục sản phẩm')
 
 @section('content')
-    <div class="container-fluid">
+{{-- <style>
+    .pagination a {
+    max-width: 50px; /* Độ rộng tối đa */
+    white-space: nowrap; /* Ngăn ngắn văn bản bị tràn dòng */
+    overflow: hidden; /* Ẩn văn bản tràn ra ngoài */
+    text-overflow: ellipsis; /* Hiển thị dấu ba chấm (...) nếu văn bản quá dài */
+} --}}
+
+</style>
+    <div class="container-fluid ">
         {{-- tiêu đề trang --}}
-        <div class="row">
-            <div class="card">
+        <div class="row " >
+            <div class="card border">
                 <div class="card-body">
                     {{-- <h5 class="card-title fw-semibold mb-4">Danh mục sản phẩm</h5> --}}
                     <h5 class="mb-0 card-title fw-semibold ">Danh mục sản phẩm </h5>
@@ -14,28 +23,43 @@
                 </div>
             </div>
         </div>
+
         {{-- lọc --}}
         <div class="row">
-            <div class="card">
+            <div class="card border">
                 <div class="card-body">
                     <div class="row">
 
                         <div class="col-8">
-
-                            <h5 class="card-title fw-semibold mb-4">Danh mục sản phẩm</h5>
+                            <label>Nhập tên danh mục để tìm kiếm</label>
+                            <form action="{{ route('categoryIndex') }}" method="get" enctype="multipart/form-data">
+                                <div class="input-group">
+                                    
+                                    <input  class="form-control" type="text" name="search" value="" placeholder="nhập tên danh mục">
+                                    <button class="btn btn-primary" type="submit"><i class="ti ti-search"></i></button>
+                                </div>
+                            </form>
                         </div>
                         <div class="col-4">
 
                             <a href="{{ route('categoryCreate') }}"> <button type="button"
-                                    class="btn btn-primary m-1 float-end"><i class="ti ti-plus"></i></button></a>
+                                    class="btn btn-primary m-1 float-end" title="Thêm mới danh mục"><i class="ti ti-plus"></i></button></a>
                         </div>
                     </div>
                     {{-- <p class="mb-0">This is a sample page </p> --}}
                 </div>
             </div>
         </div>
+        @if (session('success'))
+            <div class="alert alert-success"  id="success-alert">
+                {{ session('success') }}
+                <span type="button" class="X-close float-end" data-dismiss="alert" aria-label="Close">
+                    {{-- <span aria-hidden="true">&times;</span> --}}<i class="ti ti-x"></i>
+                </span>
+            </div>
+        @endif
         <div class="row d-flex align-items-stretch">
-            <div class="card w-100">
+            <div class="card w-100 border">
                 <div class="card-body p-4">
                     {{-- <h5 class="card-title fw-semibold mb-4">Recent Transactions</h5> --}}
                     <div class="table-responsive">
@@ -75,10 +99,21 @@
                         </table>
                     </div>
                 </div>
+                {{-- <div class="pagination">
+                    @php
+                        $totalPages = ceil($totalItems / $perPage);
+                    @endphp
+                
+                    @for ($i = 1; $i <= $totalPages; $i++)
+                        <a href="?page={{ $i }}" @if ($i == $currentPage) class="active" @endif>{{ $i }}</a>
+                    @endfor
+                </div> --}}
             </div>
+  
+           
         </div>
     </div>
 
-
+    
 
 @endsection
