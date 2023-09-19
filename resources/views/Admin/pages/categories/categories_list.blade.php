@@ -57,14 +57,15 @@
                                 @foreach ($category as $key => $value)
                                     <tr>
                                         <td class="border-bottom-0">
-                                             {{$key+1}}
+                                            {{ $key + 1 }}
                                         </td>
                                         <td class="border-bottom-0">
                                             {{-- <h6 class="fw-semibold mb-1">Sunil Joshi</h6> --}}
-                                            <span class="fw-normal">{{$value->name}}</span>
+                                            <span class="fw-normal">{{ $value->name }}</span>
                                         </td>
                                         <td class="border-bottom-0">
-                                            <a href="{{route('categoryEdit',$value->id)}}" title="Sửa danh mục"><i class="ti ti-edit fs-8"></i></a>
+                                            <a href="{{ route('categoryEdit', $value->id) }}" title="Sửa danh mục"><i
+                                                    class="ti ti-edit fs-8"></i></a>
                                             <a href="" title="Xóa danh mục"><i class="ti ti-trash-x fs-8"></i></a>
                                         </td>
 
