@@ -22,8 +22,7 @@
             <div class="card">
                 <div class="card-body">
                     @if (isset($editData))
-                        <form action="{{ route('categoryUpdate', @$editData->id) }}" method="PUT"
-                            enctype="multipart/form-data">
+                        <form action="{{ route('categoryUpdate', @$editData->id) }}" method="PUT" enctype="multipart/form-data">
                         @else
                             <form action="{{ route('categoryStore') }}" method="POST" enctype="multipart/form-data">
                     @endif

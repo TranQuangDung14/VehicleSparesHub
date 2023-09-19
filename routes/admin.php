@@ -30,7 +30,7 @@ Route::prefix('admin')->group(function () {
         Route::get('add', [CategoriesController::class, 'create'])->name('categoryCreate');
         Route::post('add', [CategoriesController::class, 'store'])->name('categoryStore');
         Route::get('edit/{id}', [CategoriesController::class, 'edit'])->name('categoryEdit');
-        Route::put('update/{id}', [CategoriesController::class, 'update'])->name('categoryUpdate');
+        Route::get('update/{id}', [CategoriesController::class, 'update'])->name('categoryUpdate');
     });
     Route::prefix('Products')->group(function () {
         Route::get('', [ProductsController::class, 'index'])->name('productIndex');

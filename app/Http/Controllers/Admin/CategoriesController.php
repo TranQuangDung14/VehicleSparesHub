@@ -4,10 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Categories;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
-use Brian2694\Toastr\Facades\Toastr;
+// use Toastr;
 class CategoriesController extends Controller
 {
     //
@@ -15,6 +16,7 @@ class CategoriesController extends Controller
     {
         try {
             $category = Categories::get();
+            Toastr::success('Thành công!');
             return view('Admin.pages.categories.categories_list',compact('category'));
         } catch (\Exception $e) {
             dd($e);
@@ -58,7 +60,8 @@ class CategoriesController extends Controller
             $category->description = $request->description ?? null;
             $category->save();
             DB::commit();
-            Toastr::success('Thêm thành công', 'Success');
+            // Toastr::success('Thêm thành công', 'Success');
+            Toastr::success('Thành công!', 'Tiêu đề thông báo');
             return redirect()->route('categoryIndex');
         } catch (\Exception $e) {
             DB::rollback();
@@ -102,7 +105,7 @@ class CategoriesController extends Controller
             $category->description = $request->description ?? null;
             $category->update();
             DB::commit();
-            return view('Admin.pages.categories.cate_add_edit');
+            return redirect()->route('categoryIndex');
         } catch (\Exception $e) {
             DB::rollback();
             dd($e);
