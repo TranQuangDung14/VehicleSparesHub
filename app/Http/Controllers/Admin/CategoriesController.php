@@ -14,25 +14,11 @@ class CategoriesController extends Controller
     public function index(Request $request)
     {
         try {
-             // Số lượng mục trên mỗi trang
-            $perPage = 10;
 
-            // Truy vấn dữ liệu
-            $category = Categories::where('name','LIKE', '%' . $request->search . '%')->paginate($perPage);
-            
-            // Kiểm tra nếu có dữ liệu
-            if ($category->count() > 0) {
-                 // Trang hiện tại
-                 $currentPage = request()->get('page') ?? 1;
-            
-                   // Tính chỉ mục bắt đầu
-                 $startIndex = ($currentPage - 1) * $perPage;
-            // $data = ModelName::;
+            $category = Categories::where('name','LIKE', '%' . $request->search . '%')->orderBy('id','desc')->paginate(10);
 
             return view('Admin.pages.categories.categories_list',compact('category'));
-         } else {
-            return view('Admin.pages.categories.categories_list',compact('category'));
-        }
+
         } catch (\Exception $e) {
             dd($e);
             return redirect()->back();
@@ -75,9 +61,9 @@ class CategoriesController extends Controller
             $category->description = $request->description ?? null;
             $category->save();
             DB::commit();
+
             session()->flash('success', 'Thêm mới thành công.');
-            // Toastr::success('Thêm thành công', 'Success');
-            // Toastr::success('Thành công!', 'Tiêu đề thông báo');
+
             return redirect()->route('categoryIndex');
         } catch (\Exception $e) {
             DB::rollback();
@@ -110,6 +96,7 @@ class CategoriesController extends Controller
         $validator = Validator::make($input, $rules, $messages);
 
         if ($validator->fails()) {
+            session()->flash('error', 'Kiểm tra lại!');
             return redirect()->back()
                 ->withErrors($validator)
                 ->withInput();
@@ -121,6 +108,7 @@ class CategoriesController extends Controller
             $category->description = $request->description ?? null;
             $category->update();
             DB::commit();
+            session()->flash('success', 'Cập nhật thành công!');
             return redirect()->route('categoryIndex');
         } catch (\Exception $e) {
             DB::rollback();
@@ -133,10 +121,12 @@ class CategoriesController extends Controller
     {
         try {
             $category = Categories::find($id)->delete();
+            session()->flash('success', 'Xóa thành công.');
             // return view('Admin.pages.categories.cate_add_edit',compact('category'));
             return redirect()->back();
         } catch (\Exception $e) {
-            dd($e);
+            session()->flash('error', 'Xóa không thành công kiểm tra lại!');
+            // dd($e);
             return redirect()->back();
         }
     }

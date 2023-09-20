@@ -23,6 +23,7 @@ class CreateVsProductTable extends Migration
             $table->text("description")->nullable();//mô tả
             $table->text("tech_specs")->nullable();// thông số
             $table->integer("quantity")->nullable()->unsigned();// số lượng
+            $table->integer("selling")->default(0);// sản phẩm bán chạy 1 là kích hoạt 0 là hủy
             $table->timestamps();
         });
     }

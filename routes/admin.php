@@ -35,6 +35,7 @@ Route::prefix('admin')->group(function () {
         Route::post('add', [CategoriesController::class, 'store'])->name('categoryStore');
         Route::get('edit/{id}', [CategoriesController::class, 'edit'])->name('categoryEdit');
         Route::get('update/{id}', [CategoriesController::class, 'update'])->name('categoryUpdate');
+        Route::delete('delete/{id}', [CategoriesController::class, 'delete'])->name('categoryDelete');
     });
     
     // sản phẩm

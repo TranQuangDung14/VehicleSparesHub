@@ -67,7 +67,7 @@
             </div>
         </div>
     </div>
-
+   
 
     <script>
         CKEDITOR.replace('description');
