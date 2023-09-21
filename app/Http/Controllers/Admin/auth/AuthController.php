@@ -28,7 +28,9 @@ class AuthController extends Controller
 
                 return redirect()->route('dashboardIndex');
             }
-        } catch (\Throwable $th) {
+            return redirect()->back();
+        } catch (\Exception $e) {
+            dd($e);
             return redirect()->route('showlogin')->withErrors(['error' => 'Đăng nhập không thành công']);
         }
     }
@@ -40,26 +42,33 @@ class AuthController extends Controller
         return redirect()->route('showlogin');
     }
 
-    public function showRegistrationForm()
+    public function showRegistration()
     {
         return view('Admin.pages.auth.register');
     }
 
     public function register(Request $request)
     {
-        $this->validate($request, [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:8|confirmed',
-        ]);
-
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
-
-        Auth::login($user);
+        // dd('đã vào');
+        // dd($request->all());
+        try {
+            // $this->validate($request, [
+            //     'name' => 'required|string',
+            //     'email' => 'required|string|email|max:255|unique:users',
+            //     'password' => 'required|string|min:5|confirmed',
+            // ]);
+    
+            $user = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+            ]);
+    
+            Auth::login($user);
+        } catch (\Exception $e) {
+            dd($e);
+        }
+       
 
         return redirect()->route('showlogin');
     }

@@ -17,6 +17,14 @@
                 </div>
             </div>
         </div>
+        @if (session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+            <span type="button" class="X-close float-end" data-dismiss="alert" aria-label="Close">
+                <i class="ti ti-x"></i>
+            </span>
+        </div>
+    @endif
 
         <div class="row d-flex align-items-stretch">
             <div class="card">
@@ -59,7 +67,7 @@
             </div>
         </div>
     </div>
-
+   
 
     <script>
         CKEDITOR.replace('description');

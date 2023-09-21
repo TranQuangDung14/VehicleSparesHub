@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Categories;
-use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
@@ -12,17 +11,18 @@ use Illuminate\Support\Facades\Validator;
 class CategoriesController extends Controller
 {
     //
-    public function index()
+    public function index(Request $request)
     {
         try {
-            $category = Categories::get();
-            Toastr::success('Thành công!');
+
+            $category = Categories::where('name','LIKE', '%' . $request->search . '%')->orderBy('id','desc')->paginate(10);
+
             return view('Admin.pages.categories.categories_list',compact('category'));
+
         } catch (\Exception $e) {
             dd($e);
             return redirect()->back();
         }
-
     }
 
     public function create()
@@ -44,11 +44,12 @@ class CategoriesController extends Controller
             'name' => 'required',
         );
         $messages = array(
-            'name.required'                     => '--Tên danh mục không được để trống!--',
+            'name.required' => '--Tên danh mục không được để trống!--',
         );
         $validator = Validator::make($input, $rules, $messages);
 
         if ($validator->fails()) {
+            session()->flash('error', 'Kiểm tra lại!');
             return redirect()->back()
                 ->withErrors($validator)
                 ->withInput();
@@ -60,12 +61,13 @@ class CategoriesController extends Controller
             $category->description = $request->description ?? null;
             $category->save();
             DB::commit();
-            // Toastr::success('Thêm thành công', 'Success');
-            Toastr::success('Thành công!', 'Tiêu đề thông báo');
+
+            session()->flash('success', 'Thêm mới thành công.');
+
             return redirect()->route('categoryIndex');
         } catch (\Exception $e) {
             DB::rollback();
-            Toastr::error('Thêm lỗi', 'Failed');
+            session()->flash('error', 'Có lỗi bất ngờ xảy ra!');
             // dd($e);
             return redirect()->back();
         }
@@ -89,11 +91,12 @@ class CategoriesController extends Controller
             'name' => 'required',
         );
         $messages = array(
-            'name.required'                     => '- Tên danh mục không được để trống!',
+            'name.required'  => '- Tên danh mục không được để trống!',
         );
         $validator = Validator::make($input, $rules, $messages);
 
         if ($validator->fails()) {
+            session()->flash('error', 'Kiểm tra lại!');
             return redirect()->back()
                 ->withErrors($validator)
                 ->withInput();
@@ -105,6 +108,7 @@ class CategoriesController extends Controller
             $category->description = $request->description ?? null;
             $category->update();
             DB::commit();
+            session()->flash('success', 'Cập nhật thành công!');
             return redirect()->route('categoryIndex');
         } catch (\Exception $e) {
             DB::rollback();
@@ -117,10 +121,12 @@ class CategoriesController extends Controller
     {
         try {
             $category = Categories::find($id)->delete();
+            session()->flash('success', 'Xóa thành công.');
             // return view('Admin.pages.categories.cate_add_edit',compact('category'));
             return redirect()->back();
         } catch (\Exception $e) {
-            dd($e);
+            session()->flash('error', 'Xóa không thành công kiểm tra lại!');
+            // dd($e);
             return redirect()->back();
         }
     }
