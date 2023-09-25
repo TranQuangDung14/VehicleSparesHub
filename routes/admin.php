@@ -17,7 +17,7 @@ Route::prefix('admin')->group(function () {
     // Route::prefix('dashboard')->group(function () {
         Route::get('login', [AuthController::class, 'showLogin'])->name('showlogin');
         Route::post('login', [AuthController::class, 'login'])->name('login');
-        
+
         Route::get('register', [AuthController::class, 'showRegistration'])->name('showregister');
         Route::post('register', [AuthController::class, 'register'])->name('register');
 
@@ -37,10 +37,15 @@ Route::prefix('admin')->group(function () {
         Route::get('update/{id}', [CategoriesController::class, 'update'])->name('categoryUpdate');
         Route::delete('delete/{id}', [CategoriesController::class, 'delete'])->name('categoryDelete');
     });
-    
+
     // sản phẩm
-    Route::prefix('Products')->group(function () {
+    Route::prefix('Products')->middleware('auth')->group(function () {
         Route::get('', [ProductsController::class, 'index'])->name('productIndex');
+        Route::get('add', [ProductsController::class, 'create'])->name('productCreate');
+        Route::post('add', [ProductsController::class, 'store'])->name('productStore');
+        Route::get('edit/{id}', [ProductsController::class, 'edit'])->name('productEdit');
+        Route::get('update/{id}', [ProductsController::class, 'update'])->name('productUpdate');
+        Route::delete('delete/{id}', [ProductsController::class, 'delete'])->name('productDelete');
     });
 });
 

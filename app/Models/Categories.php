@@ -9,4 +9,9 @@ class Categories extends Model
 {
     use HasFactory;
     protected $table = 'vs_category';
+
+    public function products()
+    {
+        return $this->hasMany(Products::class,'category_id');
+    }
 }
