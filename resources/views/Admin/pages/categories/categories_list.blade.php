@@ -58,7 +58,7 @@
                     <i class="ti ti-x"></i>
                 </span>
             </div>
-            
+
         @endif
         <div class="row d-flex align-items-stretch">
             <div class="card w-100 border">

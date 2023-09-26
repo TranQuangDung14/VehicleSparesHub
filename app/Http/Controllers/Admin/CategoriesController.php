@@ -14,7 +14,7 @@ class CategoriesController extends Controller
     public function index(Request $request)
     {
         try {
-
+            // dd('test');
             $category = Categories::where('name','LIKE', '%' . $request->search . '%')->orderBy('id','desc')->paginate(10);
 
             return view('Admin.pages.categories.categories_list',compact('category'));
