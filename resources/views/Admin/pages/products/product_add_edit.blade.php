@@ -37,15 +37,14 @@
             <div class="card border">
                 <div class="card-body">
                     @if (isset($editData))
-                        <form action="{{ route('productUpdate', @$editData->id) }}"
-                            method="PUT"enctype="multipart/form-data">
-
-
+                        <form action="{{ route('productUpdate', @$editData->id) }}" method="POST"
+                            enctype="multipart/form-data">
+                            @csrf
+                            @method('PUT')
                         @else
                             <form action="{{ route('productStore') }}" method="POST" enctype="multipart/form-data">
-
+                                @csrf
                     @endif
-                    @csrf
 
                     {{-- danh mục --}}
                     <div class="row">
@@ -130,7 +129,7 @@
                         <div id="image-preview">
                             @if (isset($editData->images) && $editData->images->count() > 0)
                                 @foreach ($editData->images as $image)
-                                        <img src="{{ asset('storage/image/product/' . $image->image) }}" alt="Ảnh">
+                                    <img src="{{ asset('storage/image/product/' . $image->image) }}" alt="Ảnh">
                                 @endforeach
                             @endif
                         </div>

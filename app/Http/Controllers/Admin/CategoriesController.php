@@ -85,6 +85,7 @@ class CategoriesController extends Controller
 
     public function update(Request $request,$id)
     {
+        // dd($request->all());
         $input = $request->all();
 
         $rules = array(
