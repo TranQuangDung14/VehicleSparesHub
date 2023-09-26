@@ -14,4 +14,9 @@ class Categories extends Model
     {
         return $this->hasMany(Products::class,'category_id');
     }
+
+    protected $fillable = [
+        'name',
+        'description',
+    ];
 }

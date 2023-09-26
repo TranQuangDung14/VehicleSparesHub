@@ -49,22 +49,22 @@
                         <table class="table text-nowrap mb-0 align-middle">
                             <thead class="text-dark fs-4">
                                 <tr>
-                                    <th class="border-bottom-0">
+                                    <th class="border-bottom-0 col-1">
                                         <h6 class="fw-semibold mb-0">STT</h6>
                                     </th>
-                                    <th class="border-bottom-0">
+                                    <th class="border-bottom-0  col-4">
                                         <h6 class="fw-semibold mb-0">Thông tin sản phẩm</h6>
                                     </th>
-                                    <th class="border-bottom-0">
+                                    <th class="border-bottom-0 col-2">
                                         <h6 class="fw-semibold mb-0">Ảnh</h6>
                                     </th>
-                                    <th class="border-bottom-0">
+                                    <th class="border-bottom-0 col-2">
                                         <h6 class="fw-semibold mb-0">Giá tiền</h6>
                                     </th>
-                                    <th class="border-bottom-0">
+                                    <th class="border-bottom-0 col-1">
                                         <h6 class="fw-semibold mb-0">Số lượng</h6>
                                     </th>
-                                    <th class="border-bottom-0">
+                                    <th class="border-bottom-0 col-2">
                                         <h6 class="fw-semibold mb-0">Hành động</h6>
                                     </th>
                                 </tr>
@@ -72,7 +72,7 @@
                             <tbody>
                                 @foreach ($product as $key => $value)
                                     <tr>
-                                        <td class="border-bottom-0">
+                                        <td class="border-bottom-0 ">
                                             <h6 class="fw-semibold mb-0">{{ $key + 1 }}</h6>
                                         </td>
                                         <td class="border-bottom-0">
@@ -82,16 +82,10 @@
                                                 </span>{{ $value->category->name }}</span>
                                         </td>
                                         <td class="border-bottom-0">
-                                            {{-- <p class="mb-0 fw-normal">{{$value->}}</p> --}}
-                                            {{-- @foreach ($value->images as $img)
 
-                                                <img class="mb-0 " src="{{ $img->image }}" alt="chưa có ảnh">
-                                            @endforeach --}}
                                               @if ($value->images->count() > 0)
-                                              <?php
-                                              dd($value->images[0]->image)
-                                      ?>
-                                              <img src="{{ asset($item->images[0]->image) }}" alt="Ảnh sản phẩm">
+
+                                              <img src="{{ asset('storage/image/product/'.$value->images[0]->image) }}" alt="Ảnh sản phẩm"  style="width: 80%; height: auto;">
                                               @endif
                                         </td>
                                         <td class="border-bottom-0 ">
@@ -99,11 +93,11 @@
                                             <span class="fw-normal">{{ $value->price }}</span>
                                             {{-- </div> --}}
                                         </td>
-                                        <td class="border-bottom-0">
+                                        <td class="border-bottom-0 ">
                                             <h6 class="fw-semibold mb-0 fs-4">{{$value->quantity}}</h6>
                                         </td>
-                                        <td class="border-bottom-0">
-                                            <a href="{{ route('categoryEdit', $value->id) }}" title="Sửa danh mục"><i
+                                        <td class="border-bottom-0 ">
+                                            <a href="{{ route('productEdit', $value->id) }}" title="Sửa danh mục"><i
                                                     class="ti ti-edit fs-8"></i></a>
                                             <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal"
                                                 title="Xóa danh mục"><i class="ti ti-trash-x fs-8"></i></a>
@@ -126,7 +120,7 @@
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary"
                                                         data-bs-dismiss="modal">Hủy</button>
-                                                    <form action="{{ route('categoryDelete', $value->id) }}" method="POST"
+                                                    <form action="{{ route('productDelete', $value->id) }}" method="POST"
                                                         enctype="multipart/form-data">
                                                         @csrf
                                                         @method('DELETE')
@@ -141,6 +135,7 @@
 
                         </table>
                     </div>
+                    {{ $product->links() }}
                 </div>
             </div>
         </div>

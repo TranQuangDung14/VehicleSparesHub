@@ -3,6 +3,13 @@
 @section('title', 'Quản lý sản phẩm')
 
 @section('content')
+    <style>
+        #image-preview img {
+            width: 100px;
+            height: 100px;
+            margin-right: 5px;
+        }
+    </style>
     <div class="container-fluid">
         {{-- tiêu đề trang --}}
         <div class="row">
@@ -32,15 +39,19 @@
                     @if (isset($editData))
                         <form action="{{ route('productUpdate', @$editData->id) }}"
                             method="PUT"enctype="multipart/form-data">
+
+
                         @else
                             <form action="{{ route('productStore') }}" method="POST" enctype="multipart/form-data">
+
                     @endif
                     @csrf
 
                     {{-- danh mục --}}
                     <div class="row">
                         <div class="mb-3 col-6">
-                            <label for="exampleInputEmail1" class="form-label">Danh mục sản phẩm<span style="color: red">*</span></label>
+                            <label for="exampleInputEmail1" class="form-label">Danh mục sản phẩm<span
+                                    style="color: red">*</span></label>
                             {{-- <input type="text" class="form-control" name="name" id="name"
                                 value="{{ isset($editData) ? $editData->name : old('name') }}"> --}}
                             <select name="category_id" id="category_id" class="col-lg-12 border rounded-pill">
@@ -59,12 +70,13 @@
                         {{-- Tên --}}
 
                         <div class="mb-3 col-6">
-                            <label for="exampleInputEmail1" class="form-label">Tên sản phẩm <span style="color: red">*</span></label>
+                            <label for="exampleInputEmail1" class="form-label">Tên sản phẩm <span
+                                    style="color: red">*</span></label>
                             <input type="text" class="form-control" name="name" id="name"
                                 value="{{ isset($editData) ? $editData->name : old('name') }}">
-                                @if ($errors->has('name'))
-                                    <span class="text-danger" role="alert">{{ $errors->first('name') }}</span>
-                                @endif
+                            @if ($errors->has('name'))
+                                <span class="text-danger" role="alert">{{ $errors->first('name') }}</span>
+                            @endif
                         </div>
                     </div>
                     <div class="row">
@@ -77,12 +89,13 @@
                         {{-- Giá --}}
 
                         <div class="mb-3 col-6">
-                            <label for="exampleInputEmail1" class="form-label">Giá tiền<span style="color: red">*</span></label>
+                            <label for="exampleInputEmail1" class="form-label">Giá tiền<span
+                                    style="color: red">*</span></label>
                             <input type="number" class="form-control" name="price" id="price"
                                 value="{{ isset($editData) ? $editData->price : old('price') }}">
-                                @if ($errors->has('price'))
-                                    <span class="text-danger" role="alert">{{ $errors->first('price') }}</span>
-                                @endif
+                            @if ($errors->has('price'))
+                                <span class="text-danger" role="alert">{{ $errors->first('price') }}</span>
+                            @endif
                         </div>
                     </div>
 
@@ -114,7 +127,13 @@
                     <div class="row mt-3">
                         <label for="Ảnh" class="form-label">Ảnh</label>
                         <input type="file" name="image[]" multiple>
-
+                        <div id="image-preview">
+                            @if (isset($editData->images) && $editData->images->count() > 0)
+                                @foreach ($editData->images as $image)
+                                        <img src="{{ asset('storage/image/product/' . $image->image) }}" alt="Ảnh">
+                                @endforeach
+                            @endif
+                        </div>
                     </div>
                     <div class="text-center mt-5">
                         <a class="btn btn-outline-primary mr-20 btn-back" href="{{ route('productIndex') }}">Quay lại</a>
@@ -136,5 +155,28 @@
         CKEDITOR.replace('short_description');
         CKEDITOR.replace('tech_specs');
         CKEDITOR.replace('description');
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Lắng nghe sự kiện khi người dùng chọn tệp ảnh
+            $('input[type="file"]').change(function() {
+                // Xóa bất kỳ ảnh trước đó trong phần hiển thị
+                $('#image-preview').empty();
+
+                // Lặp qua từng tệp ảnh đã chọn và hiển thị chúng
+                for (var i = 0; i < this.files.length; i++) {
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        // Tạo một thẻ <img> để hiển thị tệp ảnh
+                        var image = $('<img>').attr('src', e.target.result);
+                        // Thêm tệp ảnh vào phần hiển thị
+                        $('#image-preview').append(image);
+                    };
+                    // Đọc tệp ảnh
+                    reader.readAsDataURL(this.files[i]);
+                }
+            });
+        });
     </script>
 @endsection
