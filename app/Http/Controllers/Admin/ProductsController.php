@@ -117,14 +117,18 @@ class ProductsController extends Controller
 
     public function update(Request $request, $id)
     {
-        // dd($request->image);
+        // dd($request->all());
         $input = $request->all();
 
         $rules = array(
             'name' => 'required',
+            'category_id' => 'required',
+            'price' => 'required',
         );
         $messages = array(
-            'name.required'                     => '- Tên sản phẩm không được để trống!',
+            'name.required'             => '--Tên sản phẩm không được để trống!--',
+            'category_id.required'      => '--Chưa chọn danh mục!--',
+            'price.required'            => '--Giá tiền không được để trống!--',
         );
         $validator = Validator::make($input, $rules, $messages);
 
@@ -136,10 +140,10 @@ class ProductsController extends Controller
         // dd($request->all());
         DB::beginTransaction();
         try {
-
-            $product = Products::find($id);
+            // dd($request->all());
+            $product = Products::findOrFail($id);
             $product->category_id = $request->category_id;
-            $product->name = $request->name;
+            $product->name1 = $request->name;
             $product->price = $request->price;
             $product->short_description = $request->short_description ?? null;
             $product->description = $request->description ?? null;
