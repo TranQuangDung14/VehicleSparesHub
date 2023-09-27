@@ -41,6 +41,22 @@
                 </div>
             </div>
         </div>
+        @if (session('success'))
+            <div class="alert alert-success" id="success-alert">
+                {{ session('success') }}
+                <span type="button" class="X-close float-end" data-dismiss="alert" aria-label="Close">
+                  <i class="ti ti-x"></i>
+                </span>
+            </div>
+        @elseif (session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+                <span type="button" class="X-close float-end" data-dismiss="alert" aria-label="Close">
+                    <i class="ti ti-x"></i>
+                </span>
+            </div>
+        @endif
+        {{-- content --}}
         <div class="row d-flex align-items-stretch">
             <div class="card border w-100">
                 <div class="card-body p-4">
@@ -83,10 +99,13 @@
                                         </td>
                                         <td class="border-bottom-0">
 
-                                              @if ($value->images->count() > 0)
-
-                                              <img src="{{ asset('storage/image/product/'.$value->images[0]->image) }}" alt="Ảnh sản phẩm"  style="width: 80%; height: auto;">
-                                              @endif
+                                            @if ($value->images->count() > 0)
+                                                <img src="{{ asset('storage/image/product/' . $value->images[0]->image) }}"
+                                                    alt="Ảnh sản phẩm" style="width: 80%; height: auto;">
+                                            @else
+                                                <img src="{{ asset('Admin/') }}/images/profile/no_image.jpg" alt=""
+                                                    width="120" height="100">
+                                            @endif
                                         </td>
                                         <td class="border-bottom-0 ">
                                             {{-- <div class="d-flex align-items-center gap-2"> --}}
@@ -94,18 +113,20 @@
                                             {{-- </div> --}}
                                         </td>
                                         <td class="border-bottom-0 ">
-                                            <h6 class="fw-semibold mb-0 fs-4">{{$value->quantity}}</h6>
+                                            <h6 class="fw-semibold mb-0 fs-4">{{ $value->quantity ?? '-' }}</h6>
                                         </td>
                                         <td class="border-bottom-0 ">
                                             <a href="{{ route('productEdit', $value->id) }}" title="Sửa danh mục"><i
                                                     class="ti ti-edit fs-8"></i></a>
-                                            <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                                                title="Xóa danh mục"><i class="ti ti-trash-x fs-8"></i></a>
+                                            <a href="" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal_{{ $value->id }}" title="Xóa danh mục"><i
+                                                    class="ti ti-trash-x fs-8"></i></a>
                                         </td>
 
                                     </tr>
+
                                     <!-- Modal -->
-                                    <div class="modal fade" id="exampleModal" tabindex="-1"
+                                    <div class="modal fade" id="exampleModal_{{ $value->id }}" tabindex="-1"
                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
@@ -120,8 +141,8 @@
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary"
                                                         data-bs-dismiss="modal">Hủy</button>
-                                                    <form action="{{ route('productDelete', $value->id) }}" method="POST"
-                                                        enctype="multipart/form-data">
+                                                    <form action="{{ route('productDelete', $value->id) }}"
+                                                        method="POST" enctype="multipart/form-data">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-primary">Xóa</button>

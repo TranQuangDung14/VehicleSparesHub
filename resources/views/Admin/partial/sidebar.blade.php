@@ -42,12 +42,16 @@
             <span class="hide-menu">Quản lý Sản phẩm</span>
           </a>
         </li>
+        <li class="nav-small-cap">
+            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+            <span class="hide-menu">Sản phẩm</span>
+          </li>
         <li class="sidebar-item">
           <a class="sidebar-link" href="#" aria-expanded="false">
             <span>
               <i class="ti ti-cards"></i>
             </span>
-            <span class="hide-menu">Card</span>
+            <span class="hide-menu">Quản lý đơn hàng</span>
           </a>
         </li>
         <li class="sidebar-item">
@@ -55,18 +59,26 @@
             <span>
               <i class="ti ti-file-description"></i>
             </span>
-            <span class="hide-menu">Forms</span>
+            <span class="hide-menu">Thống kê</span>
           </a>
         </li>
-        <li class="sidebar-item">
+         <li class="sidebar-item">
           <a class="sidebar-link" href="#" aria-expanded="false">
             <span>
               <i class="ti ti-typography"></i>
             </span>
-            <span class="hide-menu">Typography</span>
+            <span class="hide-menu">Quản lý khách hàng</span>
           </a>
         </li>
-        <li class="nav-small-cap">
+         <li class="sidebar-item">
+          <a class="sidebar-link" href="#" aria-expanded="false">
+            <span>
+              <i class="ti ti-typography"></i>
+            </span>
+            <span class="hide-menu">Quản lý Tài khoản</span>
+          </a>
+        </li>
+       {{-- <li class="nav-small-cap">
           <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
           <span class="hide-menu">AUTH</span>
         </li>
@@ -105,9 +117,9 @@
             </span>
             <span class="hide-menu">Sample Page</span>
           </a>
-        </li>
+        </li> --}}
       </ul>
-      <div class="unlimited-access hide-menu bg-light-primary position-relative mb-7 mt-5 rounded">
+      {{-- <div class="unlimited-access hide-menu bg-light-primary position-relative mb-7 mt-5 rounded">
         <div class="d-flex">
           <div class="unlimited-access-title me-3">
             <h6 class="fw-semibold fs-4 mb-6 text-dark w-85">Upgrade to pro</h6>
@@ -117,7 +129,7 @@
             <img src="{{ asset('Admin/') }}/images/backgrounds/rocket.png" alt="" class="img-fluid">
           </div>
         </div>
-      </div>
+      </div> --}}
     </nav>
     <!-- End Sidebar navigation -->
   </div>

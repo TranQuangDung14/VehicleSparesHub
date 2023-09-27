@@ -51,14 +51,13 @@
                     {{-- <span aria-hidden="true">&times;</span> --}}<i class="ti ti-x"></i>
                 </span>
             </div>
-            @elseif (session('error'))
+        @elseif (session('error'))
             <div class="alert alert-danger">
                 {{ session('error') }}
                 <span type="button" class="X-close float-end" data-dismiss="alert" aria-label="Close">
                     <i class="ti ti-x"></i>
                 </span>
             </div>
-
         @endif
         <div class="row d-flex align-items-stretch">
             <div class="card w-100 border">
@@ -86,43 +85,46 @@
                                             {{ $key + 1 }}
                                         </td>
                                         <td class="border-bottom-0">
-                                            {{-- <h6 class="fw-semibold mb-1">Sunil Joshi</h6> --}}
                                             <span class="fw-normal">{{ $value->name }}</span>
                                         </td>
                                         <td class="border-bottom-0">
                                             <a href="{{ route('categoryEdit', $value->id) }}" title="Sửa danh mục"><i
                                                     class="ti ti-edit fs-8"></i></a>
-                                            <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                            <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal_{{ $value->id }}"
                                                 title="Xóa danh mục"><i class="ti ti-trash-x fs-8"></i></a>
+
+                                                <!-- Modal -->
+                                            <div class="modal fade" id="exampleModal_{{ $value->id }}" tabindex="-1"
+                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Xóa</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                                aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            Bạn có chắc muốn xóa danh mục này không ?
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-bs-dismiss="modal">Hủy</button>
+                                                            <form action="{{ route('categoryDelete', $value->id) }}"
+                                                                method="POST" enctype="multipart/form-data">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button type="submit" class="btn btn-primary">Xóa</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </td>
 
                                     </tr>
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="exampleModal" tabindex="-1"
-                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Xóa</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    Bạn có chắc muốn xóa danh mục này không ?
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary"
-                                                        data-bs-dismiss="modal">Hủy</button>
-                                                    <form action="{{ route('categoryDelete', $value->id) }}" method="POST" enctype="multipart/form-data">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit"  class="btn btn-primary">Xóa</button>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                 @endforeach
+
+
                             </tbody>
                         </table>
                     </div>

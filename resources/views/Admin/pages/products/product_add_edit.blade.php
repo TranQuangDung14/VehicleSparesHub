@@ -37,15 +37,13 @@
             <div class="card border">
                 <div class="card-body">
                     @if (isset($editData))
-                        <form action="{{ route('productUpdate', @$editData->id) }}" method="POST"
-                            enctype="multipart/form-data">
+                        <form action="{{ route('productUpdate', @$editData->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                         @else
                             <form action="{{ route('productStore') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                     @endif
-
                     {{-- danh mục --}}
                     <div class="row">
                         <div class="mb-3 col-6">
