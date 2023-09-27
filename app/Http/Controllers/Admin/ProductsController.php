@@ -18,7 +18,7 @@ class ProductsController extends Controller
     {
         try {
             // $product = Products::with(['category', 'images'])->get();
-            $product = Products::with(['category', 'images'])->where('name', 'LIKE', '%' . $request->search . '%')->orderBy('id', 'desc')->paginate(10);
+            $product = Products::with(['category', 'images'])->where('name', 'LIKE', '%' . $request->search . '%')->orderBy('id', 'desc')->paginate(5);
 
             // dd($product);
             return view('Admin.pages.products.product_list', compact('product'));
@@ -92,13 +92,14 @@ class ProductsController extends Controller
                     }
                 }
             }
-
             DB::commit();
+            session()->flash('success', 'Thêm mới thành công.');
             // return view('Admin.pages.products.product_add_edit');
             return redirect()->route('productIndex');
         } catch (\Exception $e) {
             DB::rollback();
-            dd('lõi', $e);
+            session()->flash('error', 'Có lỗi bất ngờ xảy ra!');
+            // dd('lõi', $e);
             return redirect()->back();
         }
     }
@@ -143,13 +144,14 @@ class ProductsController extends Controller
             // dd($request->all());
             $product = Products::findOrFail($id);
             $product->category_id = $request->category_id;
-            $product->name1 = $request->name;
+            $product->name = $request->name;
             $product->price = $request->price;
             $product->short_description = $request->short_description ?? null;
             $product->description = $request->description ?? null;
             $product->tech_specs = $request->tech_specs ?? null;
             $product->quantity = $request->quantity ?? null;
 
+            $product->update();
             if ($request->hasFile('image')) {
                 // dd($images);
                 $images = $request->file('image');
@@ -181,11 +183,12 @@ class ProductsController extends Controller
             }
 
             DB::commit();
-            // return view('Admin.pages.products.product_add_edit');
+            session()->flash('success', 'Cập nhật thành công.');            // return view('Admin.pages.products.product_add_edit');
             return redirect()->route('productIndex');
         } catch (\Exception $e) {
             DB::rollback();
-            dd($e);
+            session()->flash('error', 'Có lỗi bất ngờ xảy ra!');
+            // dd($e);
             return redirect()->back();
         }
     }
@@ -193,9 +196,8 @@ class ProductsController extends Controller
     public function delete($id)
     {
         try {
-            // dd($id);
-            // $product = Products::find($id)->delete();
-            $product = Products::findOrFail($id);
+
+            $product = Products::find($id);
             // dd($product);
             // Xóa các ảnh sản phẩm
             foreach ($product->images as $image) {
@@ -207,10 +209,12 @@ class ProductsController extends Controller
 
             // Xóa sản phẩm
             $product->delete();
+            session()->flash('success', 'Xóa thành công.');
             // return view('Admin.pages.categories.cate_add_edit',compact('product'));
             return redirect()->back();
         } catch (\Exception $e) {
-            dd($e);
+            // dd($e);
+            session()->flash('error', 'Có lỗi bất ngờ xảy ra!');
             return redirect()->back();
         }
     }

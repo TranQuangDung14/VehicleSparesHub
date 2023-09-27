@@ -121,6 +121,7 @@ class CategoriesController extends Controller
     public function delete($id)
     {
         try {
+            // dd($id);
             $category = Categories::find($id)->delete();
             session()->flash('success', 'Xóa thành công.');
             // return view('Admin.pages.categories.cate_add_edit',compact('category'));
