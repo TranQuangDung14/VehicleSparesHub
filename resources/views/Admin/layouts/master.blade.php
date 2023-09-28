@@ -25,6 +25,9 @@
             color: #fff; /* Màu sắc chữ khi hover */
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 </head>
 
 <body>
@@ -48,10 +51,11 @@ data-sidebar-position="fixed" data-header-position="fixed">
 {{-- </div> --}}
 </div>
     {{-- footer --}}
-    
+
     <footer>
         @include('Admin.partial.footer')
     </footer>
+
     {{-- style js  --}}
     <script src="{{ asset('Admin/') }}/js/main.js"></script>
 
@@ -60,9 +64,9 @@ data-sidebar-position="fixed" data-header-position="fixed">
     <script src="{{ asset('Admin/') }}/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('Admin/') }}/js/sidebarmenu.js"></script>
     <script src="{{ asset('Admin/') }}/js/app.min.js"></script>
-    <script src="{{ asset('Admin/') }}/libs/apexcharts/dist/apexcharts.min.js"></script>
-    <script src="{{ asset('Admin/') }}/libs/simplebar/dist/simplebar.js"></script>
-    <script src="{{ asset('Admin/') }}/js/dashboard.js"></script>
+
+
+
 
     {{-- @stack('script') --}}
 </body>

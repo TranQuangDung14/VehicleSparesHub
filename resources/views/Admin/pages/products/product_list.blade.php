@@ -95,8 +95,15 @@
                                             <h6 class="fw-semibold mb-0">{{ $key + 1 }}</h6>
                                         </td>
                                         <td class="border-bottom-0">
-                                            <h6 class="fw-semibold mb-1"><span style="color: #6699FF">Tên sản phẩm</span>:
-                                                {{ $value->name }}</h6>
+                                            <h6 class="fw-semibold mb-1" title="{{$value->name}}"><span style="color: #6699FF">Tên sản phẩm</span>:
+                                                {{-- {{ $value->name }} --}}
+                                                @if (strlen($value->name) > 20)
+                                                    {{-- Thay 20 bằng giới hạn ký tự mà bạn muốn --}}
+                                                    {{ substr($value->name, 0, 20) }}... {{-- Lấy 20 ký tự đầu tiên --}}
+                                                @else
+                                                    {{ $value->name }}
+                                                @endif
+                                            </h6>
                                             <span class="fw-normal"><span style="color: #6699FF">Danh mục:
                                                 </span>{{ $value->category->name }}</span>
                                         </td>
@@ -121,17 +128,19 @@
                                         <td class="border-bottom-0 ">
                                             {{-- <h6 class="fw-semibold mb-0 fs-4">{{ $value->quantity ?? '-' }}</h6> --}}
 
-                                            <form method="POST" action="{{ route('productUpdateStatus', ['id' => $value->id]) }}">
+                                            {{-- <form method="POST" action="{{ route('productUpdateStatus', ['id' => $value->id]) }}">
                                                 @csrf
-                                                @method('PUT')
-                                                {{-- <input type="checkbox" name="selling" id="selling" value="active"> --}}
-                                                {{-- <div class="form-group"> --}}
-                                                    {{-- <label for="selling">Trạng thái:</label> --}}
-                                                    <input type="checkbox" name="selling" id="selling" value="active" {{ $value->selling == 1 ? 'checked' : '' }}>
-                                                    {{-- <input type="checkbox" name="selling" id="selling" value="active" {{ $product->selling == 1 ? 'checked' : '' }}> --}}
-                                                    <button type="submit" class="btn btn-primary">Cập nhật trạng thái</button>
-                                                {{-- </div> --}}
-                                            </form>
+                                                @method('PUT') --}}
+                                            {{-- <input type="checkbox" name="selling" id="selling" value="active"> --}}
+                                            {{-- <div class="form-group"> --}}
+                                            {{-- <label for="selling">Trạng thái:</label> --}}
+                                            <input type="checkbox" name="selling" id="{{ $value->id }}" value="on"
+                                                class="switch-document" {{ $value->selling == 1 ? 'checked' : '' }}>
+                                            {{-- <input type="checkbox" name="selling" id="selling" value="active" {{ $product->selling == 1 ? 'checked' : '' }}> --}}
+
+                                            {{-- <button type="submit" class="btn btn-primary">Cập nhật trạng thái</button> --}}
+                                            {{-- </div> --}}
+                                            {{-- </form> --}}
                                         </td>
                                         <td class="border-bottom-0 ">
                                             <a href="{{ route('productEdit', $value->id) }}" title="Sửa danh mục"><i
@@ -180,6 +189,54 @@
         </div>
     </div>
 
+    <script>
+        $(document).on("change", ".switch-document", function() {
+            var id = $(this).attr("id");
+            console.log(id);
+            if ($(this).is(":checked")) {
+                var status = "on";
+                var message = "Kích hoạt trạng thái thành công!!";
+            } else {
+                var status = "off";
+                var message = "Ngừng kích hoạt trạng thái thành công!";
+            }
+            var formData = {
+                status: status,
+                id: id
+            };
+            console.log(formData);
+
+            // var url = $("#url").val();
+            // console.log('đya nề',url);
+            $.ajax({
+                type: "GET",
+                data: formData,
+                dataType: "json",
+                url: "Products/update_status",
+                success: function(data) {
+                    console.log('data đây',data);
+                    setTimeout(function() {
+                        toastr.success(
+                            message,
+                            "Thành công", {
+                                iconClass: "customer-info",
+                            }, {
+                                timeOut: 2000,
+                            }
+                        );
+                    }, 500);
+                },
+                error: function(data) {
+                    console.log(data);
+                    setTimeout(function() {
+                        toastr.error("Cập nhật lỗi!", "Error Alert", {
+                            timeOut: 5000,
+                        });
+                    }, 500);
+                },
+            });
+        });
+    </script>
 
 
 @endsection

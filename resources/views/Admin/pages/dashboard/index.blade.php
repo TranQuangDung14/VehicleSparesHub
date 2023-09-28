@@ -370,4 +370,7 @@ data-sidebar-position="fixed" data-header-position="fixed"> --}}
   </div>
 {{-- </div> --}}
 {{-- </div> --}}
+<script src="{{ asset('Admin/') }}/libs/simplebar/dist/simplebar.js"></script>
+<script src="{{ asset('Admin/') }}/libs/apexcharts/dist/apexcharts.min.js"></script>
+<script src="{{ asset('Admin/') }}/js/dashboard.js"></script>
 @endsection

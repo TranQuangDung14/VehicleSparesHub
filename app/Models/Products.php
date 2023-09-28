@@ -18,15 +18,15 @@ class Products extends Model
     {
         return $this->belongsTo(Categories::class,'category_id');
     }
-    // protected $fillable = [
-    //     'category_id',
-    //     'name',
-    //     'price',
-    //     // 'price',
-    //     'short_description',
-    //     'description',
-    //     'tech_specs',
-    //     'quantity',
-    //     'selling',
-    // ];
+    protected $fillable = [
+        'category_id',
+        'name',
+        'price',
+        // 'price',
+        'short_description',
+        'description',
+        'tech_specs',
+        'quantity',
+        'selling',
+    ];
 }

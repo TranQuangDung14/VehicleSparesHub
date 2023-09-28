@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\User\IndexController;
 use Illuminate\Support\Facades\Route;
 include __DIR__.'/admin.php';
 /*
@@ -12,7 +13,7 @@ include __DIR__.'/admin.php';
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [IndexController::class, 'index']);
+// Route::get('/', function () {
+//     return view('welcome');
+// });

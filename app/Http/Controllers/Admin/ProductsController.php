@@ -17,6 +17,7 @@ class ProductsController extends Controller
     public function index(Request $request)
     {
         try {
+            // toastr.success();
             // $product = Products::with(['category', 'images'])->get();
             $product = Products::with(['category', 'images'])->where('name', 'LIKE', '%' . $request->search . '%')->orderBy('id', 'desc')->paginate(5);
 
@@ -219,31 +220,57 @@ class ProductsController extends Controller
         }
     }
 
-    public function UpdateStatus(Request $request,$id){
-        try {
-            // dd()
-            $product = Products::findOrFail($id);
-            $sellingStatus = $request->selling;
+    // public function UpdateStatus(Request $request,$id){
+    //     try {
+    //         // dd($request->selling);
+    //         $product = Products::findOrFail($id);
+    //         $sellingStatus = $request->selling;
 
-            if ($sellingStatus == 'active') {
-                $product->update([
-                    'selling' => 1 
-                ]);
-                session()->flash('success', 'Kích hoạt bán chạy thành công!');
-                return redirect()->back();
-            } elseif ($sellingStatus == 'inactive') {
-                $product->update([
-                    'selling' => 0 
-                ]);
-                session()->flash('success', 'Ngừng kích hoạt thành công!');
-                return redirect()->back();
+    //         if ($sellingStatus == 'on') {
+    //             $product->update([
+    //                 'selling' => 1
+    //             ]);
+    //             session()->flash('success', 'Kích hoạt bán chạy thành công!');
+    //             return redirect()->back();
+    //         }
+    //         //  elseif ($sellingStatus == 'off') {
+    //         //     $product->update([
+    //         //         'selling' => 0
+    //         //     ]);
+    //         //     session()->flash('success', 'Ngừng kích hoạt thành công!');
+    //         //     return redirect()->back();
+    //         // }
+    //         else {
+    //             $product->update([
+    //                         'selling' => 0
+    //                     ]);
+    //             // session()->flash('error', 'Trạng thái không hợp lệ!');
+    //             session()->flash('success', 'Ngừng kích hoạt thành công!');
+    //             return redirect()->back();
+    //         }
+    //     } catch (\Exception $e) {
+    //         //throw $th;
+    //         dd($e);
+    //         session()->flash('error', 'Có lỗi xảy ra khi cập nhật trạng thái!');
+    //         return redirect()->back();
+    //     }
+    // }
+    public function UpdateStatus(Request $request)
+    {
+        // dd($request->id);
+        try {
+            if ($request->status == 'on') {
+                $status = 1;
             } else {
-                session()->flash('error', 'Trạng thái không hợp lệ!');
-                return redirect()->back();
+                $status = 0;
             }
+            $product = Products::find($request->id);
+            $product->selling = $status;
+            $product->save();
+            return response()->json($product);
         } catch (\Exception $e) {
-            //throw $th;
-            session()->flash('error', 'Có lỗi xảy ra khi cập nhật trạng thái!');
+            dd($e);
+            // Toastr::error('kích hoạt thất bại!', 'Failed');
             return redirect()->back();
         }
     }
