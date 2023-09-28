@@ -218,4 +218,33 @@ class ProductsController extends Controller
             return redirect()->back();
         }
     }
+
+    public function UpdateStatus(Request $request,$id){
+        try {
+            // dd()
+            $product = Products::findOrFail($id);
+            $sellingStatus = $request->selling;
+
+            if ($sellingStatus == 'active') {
+                $product->update([
+                    'selling' => 1 
+                ]);
+                session()->flash('success', 'Kích hoạt bán chạy thành công!');
+                return redirect()->back();
+            } elseif ($sellingStatus == 'inactive') {
+                $product->update([
+                    'selling' => 0 
+                ]);
+                session()->flash('success', 'Ngừng kích hoạt thành công!');
+                return redirect()->back();
+            } else {
+                session()->flash('error', 'Trạng thái không hợp lệ!');
+                return redirect()->back();
+            }
+        } catch (\Exception $e) {
+            //throw $th;
+            session()->flash('error', 'Có lỗi xảy ra khi cập nhật trạng thái!');
+            return redirect()->back();
+        }
+    }
 }

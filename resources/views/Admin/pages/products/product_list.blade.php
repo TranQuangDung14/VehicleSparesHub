@@ -45,7 +45,7 @@
             <div class="alert alert-success" id="success-alert">
                 {{ session('success') }}
                 <span type="button" class="X-close float-end" data-dismiss="alert" aria-label="Close">
-                  <i class="ti ti-x"></i>
+                    <i class="ti ti-x"></i>
                 </span>
             </div>
         @elseif (session('error'))
@@ -68,7 +68,7 @@
                                     <th class="border-bottom-0 col-1">
                                         <h6 class="fw-semibold mb-0">STT</h6>
                                     </th>
-                                    <th class="border-bottom-0  col-4">
+                                    <th class="border-bottom-0  col-2">
                                         <h6 class="fw-semibold mb-0">Thông tin sản phẩm</h6>
                                     </th>
                                     <th class="border-bottom-0 col-2">
@@ -79,6 +79,9 @@
                                     </th>
                                     <th class="border-bottom-0 col-1">
                                         <h6 class="fw-semibold mb-0">Số lượng</h6>
+                                    </th>
+                                    <th class="border-bottom-0 col-1">
+                                        <h6 class="fw-semibold mb-0">Bán chạy</h6>
                                     </th>
                                     <th class="border-bottom-0 col-2">
                                         <h6 class="fw-semibold mb-0">Hành động</h6>
@@ -114,6 +117,21 @@
                                         </td>
                                         <td class="border-bottom-0 ">
                                             <h6 class="fw-semibold mb-0 fs-4">{{ $value->quantity ?? '-' }}</h6>
+                                        </td>
+                                        <td class="border-bottom-0 ">
+                                            {{-- <h6 class="fw-semibold mb-0 fs-4">{{ $value->quantity ?? '-' }}</h6> --}}
+
+                                            <form method="POST" action="{{ route('productUpdateStatus', ['id' => $value->id]) }}">
+                                                @csrf
+                                                @method('PUT')
+                                                {{-- <input type="checkbox" name="selling" id="selling" value="active"> --}}
+                                                {{-- <div class="form-group"> --}}
+                                                    {{-- <label for="selling">Trạng thái:</label> --}}
+                                                    <input type="checkbox" name="selling" id="selling" value="active" {{ $value->selling == 1 ? 'checked' : '' }}>
+                                                    {{-- <input type="checkbox" name="selling" id="selling" value="active" {{ $product->selling == 1 ? 'checked' : '' }}> --}}
+                                                    <button type="submit" class="btn btn-primary">Cập nhật trạng thái</button>
+                                                {{-- </div> --}}
+                                            </form>
                                         </td>
                                         <td class="border-bottom-0 ">
                                             <a href="{{ route('productEdit', $value->id) }}" title="Sửa danh mục"><i
