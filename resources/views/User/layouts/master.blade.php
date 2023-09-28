@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <link rel="profile" href="https://gmpg.org/xfn/11" />
     <link rel="pingback" href="https://agc18.com.vn/xmlrpc.php" />
-
+    <title>@yield('title')</title>
     <script>
         (function(html) {
             html.className = html.className.replace(/\bno-js\b/, 'js')

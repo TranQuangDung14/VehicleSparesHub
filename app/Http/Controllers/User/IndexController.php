@@ -16,11 +16,34 @@ class IndexController extends Controller
      */
     public function index()
     {
-        $data['product_selling'] = Products::where('selling',1)->get();
-        $data['category'] = Categories::get();
-        // dd($data);
+        $data['product_selling'] = Products::with('images')->where('selling',1)->get();
+        $data['category'] = Categories::with([
+            'products'=> function ($query) {
+            $query->with('images')->distinct();
+        }])->get();
+        // dd($data['product_selling'] );
         return view('User.pages.index.index',compact('data'));
         // return view('Admin.pages.products.product_list', compact('product'));
+    }
+
+    
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function detail($id)
+    {
+        //
+        try {
+            $data['product_selling'] = Products::with('images')->where('selling',1)->get();
+            $data['detail']=Products::with('images')->find($id);
+            // dd($data['detail']);
+            return view('User.pages.detail.detail',compact('data'));
+        } catch (\Exception $e) {
+            dd($e);
+        }
     }
 
     /**
@@ -44,16 +67,6 @@ class IndexController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
