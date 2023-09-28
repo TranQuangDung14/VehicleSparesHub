@@ -47,7 +47,7 @@ Route::prefix('admin')->group(function () {
         Route::put('update/{id}', [ProductsController::class, 'update'])->name('productUpdate');
         // Route::get('update/{id}', [ProductsController::class, 'update'])->name('productUpdate');
         Route::delete('delete/{id}', [ProductsController::class, 'delete'])->name('productDelete');
-        Route::put('update/{id}/status', [ProductsController::class, 'UpdateStatus'])->name('productUpdateStatus');
+        Route::get('update_status', [ProductsController::class, 'UpdateStatus'])->name('productUpdateStatus');
     });
 });
 

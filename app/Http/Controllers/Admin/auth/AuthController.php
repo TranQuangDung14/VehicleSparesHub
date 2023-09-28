@@ -13,6 +13,9 @@ class AuthController extends Controller
     //
     public function showLogin()
     {
+        if (auth()->check()) {
+            return redirect()->back();
+        }
         return view('Admin.pages.auth.login');
     }
 
@@ -44,6 +47,9 @@ class AuthController extends Controller
 
     public function showRegistration()
     {
+        if (auth()->check()) {
+            return redirect()->back();
+        }
         return view('Admin.pages.auth.register');
     }
 
