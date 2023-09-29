@@ -9,6 +9,33 @@ use Illuminate\Http\Request;
 
 class IndexController extends Controller
 {
+    // private $category_limit3;
+
+       /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    // public function Pagesmaster($id)
+    // {
+    //     //
+    //     try {
+    //         // $data['product_selling'] = Products::with('images')->where('selling',1)->get();
+    //         // $data['detail']=Products::with('images','category')->find($id);
+    //         // $data['product_related']= Products::with('images')->where('category_id', $data['detail']->category_id)->get();
+
+    //        $data['category'] = Categories::with([
+    //             'products'=> function ($query) {
+    //             $query->with('images')->distinct();
+    //         }])->take(3)->get();
+    //         // dd($data['category']);
+    //         return view('User.layouts.master',compact('data','category_limit3'));
+
+    //     } catch (\Exception $e) {
+    //         dd($e);
+    //     }
+    // }
     /**
      * Display a listing of the resource.
      *
@@ -20,13 +47,16 @@ class IndexController extends Controller
         $data['category'] = Categories::with([
             'products'=> function ($query) {
             $query->with('images')->distinct();
-        }])->get();
-        // dd($data['product_selling'] );
+        }])->take(3)->get();
+
+        // $data['category']=$this->category_limit3;
+        // dd($this->category_limit3);
+        // dd($data['category'] );
         return view('User.pages.index.index',compact('data'));
         // return view('Admin.pages.products.product_list', compact('product'));
     }
 
-    
+
     /**
      * Display the specified resource.
      *
@@ -38,13 +68,50 @@ class IndexController extends Controller
         //
         try {
             $data['product_selling'] = Products::with('images')->where('selling',1)->get();
-            $data['detail']=Products::with('images')->find($id);
+            $data['detail']=Products::with('images','category')->find($id);
+            $data['product_related']= Products::with('images')->where('category_id', $data['detail']->category_id)->get();
+
+            $data['category'] = Categories::with([
+                'products'=> function ($query) {
+                $query->with('images')->distinct();
+            }])->take(3)->get();
+
             // dd($data['detail']);
             return view('User.pages.detail.detail',compact('data'));
         } catch (\Exception $e) {
             dd($e);
         }
     }
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function category_product($id)
+    {
+        //
+        try {
+            // $data['product_selling'] = Products::with('images')->where('selling',1)->get();
+            // $data['detail']=Products::with('images','category')->find($id);
+            // $data['product_related']= Products::with('images')->where('category_id', $data['detail']->category_id)->get();
+            // dd($data['detail']);
+            $data['category_product'] = Categories::with([
+                'products'=> function ($query) {
+                $query->with('images')->distinct();
+            }])->find($id);
+
+            $data['category'] = Categories::with([
+                'products'=> function ($query) {
+                $query->with('images')->distinct();
+            }])->take(3)->get();
+
+            return view('User.pages.category_product.category_product',compact('data'));
+        } catch (\Exception $e) {
+            dd($e);
+        }
+    }
+
 
     /**
      * Show the form for creating a new resource.
