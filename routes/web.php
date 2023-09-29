@@ -13,7 +13,8 @@ include __DIR__.'/admin.php';
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', [IndexController::class, 'index']);
+Route::get('/', [IndexController::class, 'index'])->name('HomeIndex');
+Route::get('chi_tiet_san_pham/{id}', [IndexController::class, 'detail'])->name('DetailProduct');
 // Route::get('/', function () {
 //     return view('welcome');
 // });

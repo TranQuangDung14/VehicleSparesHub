@@ -119,7 +119,7 @@
                                         </td>
                                         <td class="border-bottom-0 ">
                                             {{-- <div class="d-flex align-items-center gap-2"> --}}
-                                            <span class="fw-normal">{{ $value->price }}</span>
+                                            <span class="fw-normal">{{ number_format($value->price, 0,'.') }} <span style="color:red ">vnđ</span></span>
                                             {{-- </div> --}}
                                         </td>
                                         <td class="border-bottom-0 ">
