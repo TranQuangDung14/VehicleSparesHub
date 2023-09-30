@@ -50,7 +50,7 @@
                             <div class="container section-title-container">
                                 <h3 class="section-title section-title-normal"><b></b>
                                     <span class="section-title-main">
-                                        {{ $category->name }}</span><b></b><a href="#" target="">Xem tất cả<i
+                                        {{ $category->name }}</span><b></b><a href="{{ route('CategoryProduct',$category->id)  }}" target="">Xem tất cả<i
                                             class="icon-angle-right"></i></a>
                                 </h3>
                             </div>
@@ -68,9 +68,9 @@
                                                     <div class="image-zoom image-cover" style="padding-top:75%;">
                                                         <a href="{{ route('DetailProduct', $product->id) }}"
                                                             aria-label="Bình xịt khử mùi Ozium Air Sanitizer Spray 0.8 oz (22.6g) Hương Citrus">
-                                                           
+
                                                             @if ($product->images->count() > 0)
-                                                           
+
                                                                 <img width="1276" height="956" src="{{ asset('storage/image/product/' .  $product->images[0]->image) }}" class="attachment-original size-original" alt="Bình xịt khử mùi Ozium 0.8 oz mùi CITRUS" decoding="async" loading="lazy"  sizes="(max-width: 1276px) 100vw, 1276px" />
                                                             @else
                                                                 <img src="{{ asset('Admin/') }}/images/profile/no_image.jpg"
@@ -96,8 +96,9 @@
                                                     </div>
                                                     <div class="price-wrapper">
                                                         <span class="price"><span
-                                                                class="woocommerce-Price-amount amount"><bdi>{{ number_format($product->price, 0,'.')}}<span
-                                                                        class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span></span>
+                                                                class="woocommerce-Price-amount amount"><bdi>
+                                                                    {{ number_format($product->price, 0, '.', ',')}}
+                                                                    <span class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span></span>
                                                     </div>
                                                     <div class="add-to-cart-button"><a href="?add-to-cart=4657"
                                                             data-quantity="1"
@@ -163,7 +164,7 @@
                                                     <a href="{{ route('DetailProduct', $selling->id) }}"
                                                         aria-label="{{$selling->name}}">
                                                             @if ($selling->images->count() > 0)
-                                                           
+
                                                             <img width="1276" height="956" src="{{ asset('storage/image/product/' .  $selling->images[0]->image) }}" class="attachment-original size-original"  decoding="async" loading="lazy"  sizes="(max-width: 1276px) 100vw, 1276px" />
                                                         @else
                                                             <img src="{{ asset('Admin/') }}/images/profile/no_image.jpg" alt="" width="1276" height="956">
@@ -185,7 +186,9 @@
                                                 </div>
                                                 <div class="price-wrapper">
                                                     <span class="price"><span
-                                                            class="woocommerce-Price-amount amount"><bdi>{{ number_format($selling->price, 0,'.')}}<span
+                                                            class="woocommerce-Price-amount amount"><bdi>
+                                                                {{ number_format($selling->price, 0, '.', ',')}}
+                                                                <span
                                                                     class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span></span>
                                                 </div>
                                                 <div class="add-to-cart-button"><a href="?add-to-cart=4251"

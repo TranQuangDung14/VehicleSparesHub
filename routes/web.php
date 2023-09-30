@@ -15,6 +15,7 @@ include __DIR__.'/admin.php';
 */
 Route::get('/', [IndexController::class, 'index'])->name('HomeIndex');
 Route::get('chi_tiet_san_pham/{id}', [IndexController::class, 'detail'])->name('DetailProduct');
+Route::get('danh_muc_san_pham/{id}', [IndexController::class, 'category_product'])->name('CategoryProduct');
 // Route::get('/', function () {
 //     return view('welcome');
 // });

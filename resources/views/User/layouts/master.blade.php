@@ -17,22 +17,22 @@
     {{-- <title>Phụ Kiện Xe Hơi - Trang chủ - Công ty phân phối phụ kiện - phụ tùng oto</title> --}}
     <meta name="description"
         content="Phụ Kiện Xe Hơi -Công ty chuyên phân phối các sản phẩm phụ tùng và phụ kiện oto chất lượng hàng đầu Việt Nam. Khám phá các ưu đãi sản phẩm và đánh giá về" />
-    <link rel="canonical" href="https://agc18.com.vn/" />
+    <link rel="canonical" href="#" />
     <meta property="og:locale" content="vi_VN" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Phụ Kiện Xe Hơi - Trang chủ - Công ty phân phối phụ kiện - phụ tùng oto" />
     <meta property="og:description"
         content="Phụ Kiện Xe Hơi -Công ty chuyên phân phối các sản phẩm phụ tùng và phụ kiện oto chất lượng hàng đầu Việt Nam. Khám phá các ưu đãi sản phẩm và đánh giá về" />
-    <meta property="og:url" content="https://agc18.com.vn/" />
+    <meta property="og:url" content="#" />
     <meta property="og:site_name" content="Công ty phân phối phụ kiện - phụ tùng oto" />
-    <meta property="article:publisher" content="https://www.facebook.com/agcauto/" />
+    <meta property="article:publisher" content="#" />
     <meta property="article:modified_time" content="2021-11-24T08:31:33+00:00" />
-    <meta property="og:image" content="https://agc18.com.vn/wp-content/uploads/2019/06/logo-chuan-ty-le.png" />
+    <meta property="og:image" content="#" />
     <meta property="og:image:width" content="894" />
     <meta property="og:image:height" content="552" />
     <meta property="og:image:type" content="image/png" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@CongAgc18" />
+    <meta name="twitter:site" content="" />
     <script type="application/ld+json"
         class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://agc18.com.vn/","url":"https://agc18.com.vn/","name":"Phụ Kiện Xe Hơi - Trang chủ - Công ty phân phối phụ kiện - phụ tùng oto","isPartOf":{"@id":"https://agc18.com.vn/#website"},"about":{"@id":"https://agc18.com.vn/#organization"},"primaryImageOfPage":{"@id":"https://agc18.com.vn/#primaryimage"},"image":{"@id":"https://agc18.com.vn/#primaryimage"},"thumbnailUrl":"https://agc18.com.vn/wp-content/uploads/2019/06/logo-chuan-ty-le.png","datePublished":"2018-01-30T15:59:56+00:00","dateModified":"2021-11-24T08:31:33+00:00","description":"Phụ Kiện Xe Hơi -Công ty chuyên phân phối các sản phẩm phụ tùng và phụ kiện oto chất lượng hàng đầu Việt Nam. Khám phá các ưu đãi sản phẩm và đánh giá về","breadcrumb":{"@id":"https://agc18.com.vn/#breadcrumb"},"inLanguage":"vi","potentialAction":[{"@type":"ReadAction","target":["https://agc18.com.vn/"]}]},{"@type":"ImageObject","inLanguage":"vi","@id":"https://agc18.com.vn/#primaryimage","url":"https://agc18.com.vn/wp-content/uploads/2019/06/logo-chuan-ty-le.png","contentUrl":"https://agc18.com.vn/wp-content/uploads/2019/06/logo-chuan-ty-le.png","width":894,"height":552,"caption":"CÔNG TY TNHH TM-DV AGC18 Số 11 đường số 4, KDC T30, Xã Bình Hưng, Huyện Bình Chánh, TP.HCM Phụ KIỆN xe hơi"},{"@type":"BreadcrumbList","@id":"https://agc18.com.vn/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Trang chủ"}]},{"@type":"WebSite","@id":"https://agc18.com.vn/#website","url":"https://agc18.com.vn/","name":"CÔNG TY PHÂN PHỐI PHỤ KIỆN - PHỤ TÙNG OTO","description":"agc18","publisher":{"@id":"https://agc18.com.vn/#organization"},"potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://agc18.com.vn/?s={search_term_string}"},"query-input":"required name=search_term_string"}],"inLanguage":"vi"},{"@type":"Organization","@id":"https://agc18.com.vn/#organization","name":"CÔNG TY TNHH TM-DV AGC18","url":"https://agc18.com.vn/","logo":{"@type":"ImageObject","inLanguage":"vi","@id":"https://agc18.com.vn/#/schema/logo/image/","url":"https://agc18.com.vn/wp-content/uploads/2019/06/logo-chuan-ty-le.png","contentUrl":"https://agc18.com.vn/wp-content/uploads/2019/06/logo-chuan-ty-le.png","width":894,"height":552,"caption":"CÔNG TY TNHH TM-DV AGC18"},"image":{"@id":"https://agc18.com.vn/#/schema/logo/image/"},"sameAs":["https://www.facebook.com/agcauto/","https://twitter.com/CongAgc18","https://www.instagram.com/agc18.auto/","https://www.youtube.com/channel/UCHSGUqYE_9cLk5aFKJKaGjg"]}]}</script>
     <meta name="msvalidate.01" content="EB59714F082D6D2EEF10F0362D1B70E8" />
@@ -1577,199 +1577,24 @@
                                         <i class="icon-menu"></i> DANH MỤC SẢN PHẨM
                                     </div>
                                     <ul id="mega_menu" class="sf-menu sf-vertical">
+                                        @foreach ($data['category'] as $cate)
                                         <li id="menu-item-882"
                                             class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-882">
-                                            <a href="category.html">Phụ kiện xe hơi</a>
+                                            <a href="{{ route('CategoryProduct',$cate->id)  }}">{{$cate->name}}</a>
                                             <ul class="sub-menu">
+                                                @foreach ($cate->products as $product)
+
+
                                                 <li id="menu-item-101"
                                                     class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-101">
-                                                    <a href="category.html"><i class="_mi _before fa fa-play"
-                                                            aria-hidden="true"></i><span>Nước hoa Aroma</span></a>
-                                                    <ul class="sub-menu">
-                                                        <li id="menu-item-3887"
-                                                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3887">
-                                                            <a href="category.html"><i class="_mi _before fa fa-play"
-                                                                    aria-hidden="true"></i><span>Tinh dầu treo
-                                                                    Aroma</span></a>
-                                                        </li>
-                                                        <li id="menu-item-3883"
-                                                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3883">
-                                                            <a href="category.html"><i class="_mi _before fa fa-play"
-                                                                    aria-hidden="true"></i><span>Kẹp cửa gió Aroma
-                                                                    &#8211; Scents</span></a>
-                                                        </li>
-                                                        <li id="menu-item-3886"
-                                                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3886">
-                                                            <a href="category.html"><i class="_mi _before fa fa-play"
-                                                                    aria-hidden="true"></i><span>Sáp thơm Aroma &#8211;
-                                                                    Paradise</span></a>
-                                                        </li>
-                                                        <li id="menu-item-3884"
-                                                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3884">
-                                                            <a href="category.html"><i class="_mi _before fa fa-play"
-                                                                    aria-hidden="true"></i><span>Nước hoa dạng xịt
-                                                                    Aroma</span></a>
-                                                        </li>
-                                                        <li id="menu-item-3882"
-                                                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3882">
-                                                            <a href="category.html"><i class="_mi _before fa fa-play"
-                                                                    aria-hidden="true"></i><span>Aroma Car
-                                                                    Gel</span></a>
-                                                        </li>
-                                                        <li id="menu-item-3885"
-                                                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3885">
-                                                            <a href="category.html"><i class="_mi _before fa fa-play"
-                                                                    aria-hidden="true"></i><span>Lá thơm
-                                                                    Aroma</span></a>
-                                                        </li>
-                                                    </ul>
+                                                    <a href="{{ route('DetailProduct',$product->id)  }}"><i class="_mi _before fa fa-play"
+                                                            aria-hidden="true"></i><span>{{ $product->name}}</span></a>
+
                                                 </li>
-                                                <li id="menu-item-4688"
-                                                    class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-4688">
-                                                    <a href="category.html"><i class="_mi _before fa fa-play"
-                                                            aria-hidden="true"></i><span>Khử mùi Ozium</span></a>
-                                                </li>
-                                                <li id="menu-item-103"
-                                                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-103">
-                                                    <a href="category.html"><i class="_mi _before fa fa-play"
-                                                            aria-hidden="true"></i><span>Tinh dầu Việt Nam</span></a>
-                                                </li>
-                                                <li id="menu-item-111"
-                                                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-111">
-                                                    <a href="category.html"><i class="_mi _before fa fa-play"
-                                                            aria-hidden="true"></i><span>Tượng phong thủy</span></a>
-                                                </li>
-                                                <li id="menu-item-107"
-                                                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-107">
-                                                    <a href="category.html"><i class="_mi _before fa fa-play"
-                                                            aria-hidden="true"></i><span>Bao tay lái</span></a>
-                                                </li>
-                                                <li id="menu-item-109"
-                                                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-109">
-                                                    <a href="category.html"><i class="_mi _before fa fa-play"
-                                                            aria-hidden="true"></i><span>Khăn lau xe</span></a>
-                                                </li>
-                                                <li id="menu-item-113"
-                                                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-113">
-                                                    <a href="category.html"><i class="_mi _before fa fa-play"
-                                                            aria-hidden="true"></i><span>Lót ghế sang chảnh</span></a>
-                                                </li>
-                                                <li id="menu-item-5183"
-                                                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5183">
-                                                    <a href="category.html"><i class="_mi _before fa fa-play"
-                                                            aria-hidden="true"></i><span>Áo ghế 9D</span></a>
-                                                </li>
-                                                <li id="menu-item-105"
-                                                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-105">
-                                                    <a href="category.html"><i class="_mi _before fa fa-play"
-                                                            aria-hidden="true"></i><span>Móc chìa khóa</span></a>
-                                                </li>
+                                                @endforeach
                                             </ul>
                                         </li>
-                                        <li id="menu-item-884"
-                                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-884">
-                                            <a href="category.html">Hoá Chất
-                                                Chuyên Dụng</a>
-                                            <ul class="sub-menu">
-                                                <li id="menu-item-148"
-                                                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-148">
-                                                    <a href="category.html"><i class="_mi _before fa fa-play"
-                                                            aria-hidden="true"></i><span>Techgroup</span></a>
-                                                </li>
-                                                <li id="menu-item-827"
-                                                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-827">
-                                                    <a href="category.html"><i class="_mi _before fa fa-play"
-                                                            aria-hidden="true"></i><span>Waxco</span></a>
-                                                </li>
-                                                <li id="menu-item-5926"
-                                                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5926">
-                                                    <a href="category.html"><i class="_mi _before fa fa-play"
-                                                            aria-hidden="true"></i><span>Senfineco</span></a>
-                                                </li>
-                                                <li id="menu-item-5866"
-                                                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5866">
-                                                    <a href="category.html"><i class="_mi _before fa fa-play"
-                                                            aria-hidden="true"></i><span>Chất phụ gia</span></a>
-                                                </li>
-                                                <li id="menu-item-5864"
-                                                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-5864">
-                                                    <a href="category.html"><i class="_mi _before fa fa-play"
-                                                            aria-hidden="true"></i><span>Bảo dưỡng ôtô</span></a>
-                                                    <ul class="sub-menu">
-                                                        <li id="menu-item-5868"
-                                                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5868">
-                                                            <a href="category.html"><i class="_mi _before fa fa-play"
-                                                                    aria-hidden="true"></i><span>Chăm sóc ngoại
-                                                                    thất</span></a>
-                                                        </li>
-                                                        <li id="menu-item-5869"
-                                                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5869">
-                                                            <a href="category.html"><i class="_mi _before fa fa-play"
-                                                                    aria-hidden="true"></i><span>Chăm sóc nội
-                                                                    thất</span></a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li id="menu-item-5865"
-                                                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5865">
-                                                    <a href="category.html"><i class="_mi _before fa fa-play"
-                                                            aria-hidden="true"></i><span>Các sản phẩm sử dụng dịch vụ
-                                                            &#8211; sửa chữa</span></a>
-                                                </li>
-                                                <li id="menu-item-5867"
-                                                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5867">
-                                                    <a href="category.html"><i class="_mi _before fa fa-play"
-                                                            aria-hidden="true"></i><span>Dầu động cơ</span></a>
-                                                </li>
-                                                <li id="menu-item-5863"
-                                                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5863">
-                                                    <a href="category.html"><i class="_mi _before fa fa-play"
-                                                            aria-hidden="true"></i><span>Keo</span></a>
-                                                </li>
-                                                <li id="menu-item-850"
-                                                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-850">
-                                                    <a href="category.html"><i class="_mi _before fa fa-play"
-                                                            aria-hidden="true"></i><span>Khác</span></a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li id="menu-item-883"
-                                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-883">
-                                            <a href="category.html">Phụ Tùng ô tô</a>
-                                            <ul class="sub-menu">
-                                                <li id="menu-item-828"
-                                                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-828">
-                                                    <a href="category.html"><i class="_mi _before fa fa-play"
-                                                            aria-hidden="true"></i><span>Gạt mưa Hàn Quốc UB</span></a>
-                                                </li>
-                                                <li id="menu-item-4111"
-                                                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4111">
-                                                    <a href="category.html"><i class="_mi _before fa fa-play"
-                                                            aria-hidden="true"></i><span>Bóng đèn &#8211; Còi xe
-                                                            Denso</span></a>
-                                                </li>
-                                                <li id="menu-item-5874"
-                                                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5874">
-                                                    <a href="category.html"><i class="_mi _before fa fa-play"
-                                                            aria-hidden="true"></i><span>Bugi Denso</span></a>
-                                                </li>
-                                                <li id="menu-item-4112"
-                                                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4112">
-                                                    <a
-                                                        href="https://agc18.com.vn/danh-muc/san-pham/phu-tung-xe-hoi/loc-dieu-hoa/"><i
-                                                            class="_mi _before fa fa-play"
-                                                            aria-hidden="true"></i><span>Lọc Điều Hòa &#8211; Lọc Động
-                                                            Cơ</span></a>
-                                                </li>
-                                                <li id="menu-item-5232"
-                                                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5232">
-                                                    <a
-                                                        href="https://agc18.com.vn/danh-muc/san-pham/phu-tung-xe-hoi/loc-dau-nhot/"><i
-                                                            class="_mi _before fa fa-play"
-                                                            aria-hidden="true"></i><span>Lọc Dầu/Nhớt</span></a>
-                                                </li>
-                                            </ul>
-                                        </li>
+                                        @endforeach
                                     </ul>
                                 </div>
                             </ul>
@@ -1780,8 +1605,7 @@
                                 class="nav header-nav header-bottom-nav nav-center  nav-divided nav-size-large nav-spacing-xlarge nav-uppercase">
                                 <li id="menu-item-62"
                                     class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-2 current_page_item menu-item-62 active menu-item-design-default">
-                                    <a href="https://agc18.com.vn/" aria-current="page" class="nav-top-link">TRANG
-                                        CHỦ</a>
+                                    <a href="{{ route('HomeIndex') }}" aria-current="page" class="nav-top-link">TRANG CHỦ</a>
                                 </li>
                                 <li id="menu-item-59"
                                     class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-59 menu-item-design-default has-dropdown">
@@ -1793,7 +1617,7 @@
                                             <a href="https://agc18.com.vn/chinh-sach-bao-hanh-san-pham/">Chính sách bảo
                                                 hành sản phẩm</a>
                                         </li>
-                                        <li id="menu-item-922"
+                                        {{-- <li id="menu-item-922"
                                             class="menu-item menu-item-type-post_type menu-item-object-page menu-item-922">
                                             <a href="https://agc18.com.vn/chinh-sach-bao-mat-thong-tin/">Chính sách bảo
                                                 mật thông tin</a>
@@ -1817,108 +1641,44 @@
                                             class="menu-item menu-item-type-post_type menu-item-object-page menu-item-925">
                                             <a href="https://agc18.com.vn/chinh-sach-va-quy-dinh-chung/">Chính sách và
                                                 quy định chung</a>
-                                        </li>
+                                        </li> --}}
                                     </ul>
                                 </li>
                                 <li id="menu-item-3485"
                                     class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-3485 menu-item-design-default has-dropdown">
-                                    <a href="https://agc18.com.vn/cong-ty-agc18/" class="nav-top-link"
+                                    <a href="#" class="nav-top-link"
                                         aria-expanded="false" aria-haspopup="menu">SẢN PHẨM<i
                                             class="icon-angle-down"></i></a>
                                     <ul class="sub-menu nav-dropdown nav-dropdown-simple">
+                                        @foreach ($data['category'] as $cate)
                                         <li id="menu-item-2634"
                                             class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-2634 nav-dropdown-col">
-                                            <a href="https://agc18.com.vn/danh-muc/san-pham/hoa-chat-chuyen-dung/">Hóa
-                                                chất chuyên dụng</a>
+                                            <a href="{{ route('CategoryProduct',$cate->id)  }}">{{$cate->name}}</a>
                                             <ul class="sub-menu nav-column nav-dropdown-simple">
+                                                @foreach ($cate->products as $product)
                                                 <li id="menu-item-2635"
                                                     class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-2635">
                                                     <a
-                                                        href="https://agc18.com.vn/danh-muc/san-pham/hoa-chat-chuyen-dung/agc18/"><i
+                                                        href="{{ route('DetailProduct',$product->id)  }}"><i
                                                             class="_mi _before fa fa-arrow-circle-right"
-                                                            aria-hidden="true"></i><span>Techgroup</span></a>
+                                                            aria-hidden="true"></i><span>
+                                                                {{-- {{$product->name}} --}}
+                                                                @if (strlen($product->name) > 20)
+                                                                {{-- Thay 20 bằng giới hạn ký tự mà bạn muốn --}}
+                                                                {{ substr($product->name, 0, 20) }}... {{-- Lấy 20 ký tự đầu tiên --}}
+                                                            @else
+                                                                {{ $product->name }}
+                                                            @endif
+                                                            </span></a>
                                                 </li>
-                                                <li id="menu-item-2637"
-                                                    class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-2637">
-                                                    <a
-                                                        href="https://agc18.com.vn/danh-muc/san-pham/hoa-chat-chuyen-dung/waxco/"><i
-                                                            class="_mi _before fa fa-arrow-circle-right"
-                                                            aria-hidden="true"></i><span>Waxco</span></a>
-                                                </li>
-                                                <li id="menu-item-5927"
-                                                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5927">
-                                                    <a
-                                                        href="https://agc18.com.vn/danh-muc/san-pham/hoa-chat-chuyen-dung/senfineco/"><i
-                                                            class="_mi _before fa fa-arrow-circle-right"
-                                                            aria-hidden="true"></i><span>Senfineco</span></a>
-                                                </li>
-                                                <li id="menu-item-5860"
-                                                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5860">
-                                                    <a
-                                                        href="https://agc18.com.vn/danh-muc/san-pham/hoa-chat-chuyen-dung/chat-phu-gia/"><i
-                                                            class="_mi _before fa fa-arrow-circle-right"
-                                                            aria-hidden="true"></i><span>Chất phụ gia</span></a>
-                                                </li>
-                                                <li id="menu-item-5859"
-                                                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-5859">
-                                                    <a
-                                                        href="https://agc18.com.vn/danh-muc/san-pham/hoa-chat-chuyen-dung/bao-duong-oto/"><i
-                                                            class="_mi _before fa fa-arrow-circle-right"
-                                                            aria-hidden="true"></i><span>Bảo dưỡng ôtô</span></a>
-                                                    <ul class="sub-menu nav-column nav-dropdown-simple">
-                                                        <li id="menu-item-5870"
-                                                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5870">
-                                                            <a
-                                                                href="https://agc18.com.vn/danh-muc/san-pham/hoa-chat-chuyen-dung/bao-duong-oto/cham-soc-noi-that/"><i
-                                                                    class="_mi _before fa fa-check-square"
-                                                                    aria-hidden="true"></i><span>Chăm sóc nội
-                                                                    thất</span></a>
-                                                        </li>
-                                                        <li id="menu-item-5871"
-                                                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5871">
-                                                            <a
-                                                                href="https://agc18.com.vn/danh-muc/san-pham/hoa-chat-chuyen-dung/bao-duong-oto/cham-soc-ngoai-that/"><i
-                                                                    class="_mi _before fa fa-check-square"
-                                                                    aria-hidden="true"></i><span>Chăm sóc ngoại
-                                                                    thất</span></a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li id="menu-item-5861"
-                                                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5861">
-                                                    <a
-                                                        href="https://agc18.com.vn/danh-muc/san-pham/hoa-chat-chuyen-dung/dau-dong-co/"><i
-                                                            class="_mi _before fa fa-arrow-circle-right"
-                                                            aria-hidden="true"></i><span>Dầu động cơ</span></a>
-                                                </li>
-                                                <li id="menu-item-5858"
-                                                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5858">
-                                                    <a
-                                                        href="https://agc18.com.vn/danh-muc/san-pham/hoa-chat-chuyen-dung/cac-san-pham-su-dung-sua-chua/"><i
-                                                            class="_mi _before fa fa-arrow-circle-right"
-                                                            aria-hidden="true"></i><span>Các sản phẩm sử dụng &#8211;
-                                                            sửa chữa</span></a>
-                                                </li>
-                                                <li id="menu-item-5862"
-                                                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5862">
-                                                    <a
-                                                        href="https://agc18.com.vn/danh-muc/san-pham/hoa-chat-chuyen-dung/keo/"><i
-                                                            class="_mi _before fa fa-arrow-circle-right"
-                                                            aria-hidden="true"></i><span>Keo</span></a>
-                                                </li>
-                                                <li id="menu-item-2636"
-                                                    class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-2636">
-                                                    <a
-                                                        href="https://agc18.com.vn/danh-muc/san-pham/hoa-chat-chuyen-dung/khac/"><i
-                                                            class="_mi _before fa fa-arrow-circle-right"
-                                                            aria-hidden="true"></i><span>Khác</span></a>
-                                                </li>
+                                                @endforeach
                                             </ul>
                                         </li>
-                                        <li id="menu-item-2638"
+                                        @endforeach
+
+                                        {{-- <li id="menu-item-2638"
                                             class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-2638 nav-dropdown-col">
-                                            <a href="https://agc18.com.vn/danh-muc/san-pham/phu-kien-xe-hoi/">Phụ Kiện
-                                                xe Hơi</a>
+                                            <a href="https://agc18.com.vn/danh-muc/san-pham/phu-kien-xe-hoi/">Phụ Kiện xe Hơi</a>
                                             <ul class="sub-menu nav-column nav-dropdown-simple">
                                                 <li id="menu-item-2643"
                                                     class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-2643">
@@ -2076,7 +1836,7 @@
                                                             aria-hidden="true"></i><span>Lọc Dầu/Nhớt</span></a>
                                                 </li>
                                             </ul>
-                                        </li>
+                                        </li> --}}
                                     </ul>
                                 </li>
                                 <li id="menu-item-63"
@@ -2118,7 +1878,7 @@
         <main id="main" class="">
 
 
-               
+
                 @yield('content')
 
 
@@ -2168,7 +1928,7 @@
                 </li>
                 <li
                     class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-2 current_page_item menu-item-62">
-                    <a href="https://agc18.com.vn/" aria-current="page">TRANG CHỦ</a>
+                    <a href="{{ route('HomeIndex') }}" aria-current="page">TRANG CHỦ</a>
                 </li>
                 <li
                     class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-59">
@@ -2966,11 +2726,7 @@
     <script type='text/javascript'
         src='https://agc18.com.vn/wp-content/themes/flatsome/assets/js/woocommerce.js?ver=2114c593f5a803e4039d07c9e6fef8b6'
         id='flatsome-theme-woocommerce-js-js'></script>
-    <!--[if IE]>
-<script type='text/javascript'
-    src='https://cdn.jsdelivr.net/npm/intersection-observer-polyfill@0.1.0/dist/IntersectionObserver.js?ver=0.1.0'
-    id='intersection-observer-polyfill-js'></script>
-<![endif]-->
+
     <script type='text/javascript' id='zxcvbn-async-js-extra'>
         /* <![CDATA[ */
         var _zxcvbnSettings = {
@@ -3037,7 +2793,8 @@
     </script>
     <script type='text/javascript'
         src='https://agc18.com.vn/wp-content/plugins/woocommerce/assets/js/frontend/password-strength-meter.min.js?ver=8.1.1'
-        id='wc-password-strength-meter-js'></script>
+        id='wc-password-strength-meter-js'>
+    </script>
 
 </body>
 
