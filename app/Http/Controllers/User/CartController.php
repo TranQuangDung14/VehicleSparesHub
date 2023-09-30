@@ -1,12 +1,19 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Categories;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
+    protected $indexController;
+
+    public function __construct(IndexController $indexController)
+    {
+        $this->indexController = $indexController;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +21,8 @@ class CartController extends Controller
      */
     public function index()
     {
-        //
+        $data['category'] = $this->indexController->this_cate();
+        return view('User.pages.cart.cart', compact('data'));
     }
 
     /**

@@ -19,23 +19,54 @@ class AuthController extends Controller
         return view('Admin.pages.auth.login');
     }
 
+    // public function login(Request $request)
+    // {
+    //     try {
+    //         // dd($request->all());
+    //         // if(){
+    //         $credentials = $request->only('email', 'password','role');
+
+    //         if ($request->user()->role == 1) {
+    //             // xác thực thông tin
+    //             if (Auth::attempt($credentials)) {
+
+    //                 // return redirect()->intended('/');
+
+    //                 return redirect()->route('dashboardIndex');
+    //             }
+    //         }
+    //         // dd('lỗi');
+
+    //         // }
+
+    //         return redirect()->back();
+    //     } catch (\Exception $e) {
+    //         dd($e);
+    //         return redirect()->route('showlogin')->withErrors(['error' => 'Đăng nhập không thành công']);
+    //     }
+    // }
     public function login(Request $request)
     {
-        try {
-            $credentials = $request->only('email', 'password');
+        $credentials = $request->only('email', 'password');
+        $user = User::where('email', $request->email)->first();
 
-            // xác thực thông tin
-            if (Auth::attempt($credentials)) {
-
-                // return redirect()->intended('/');
-
-                return redirect()->route('dashboardIndex');
-            }
-            return redirect()->back();
-        } catch (\Exception $e) {
-            dd($e);
-            return redirect()->route('showlogin')->withErrors(['error' => 'Đăng nhập không thành công']);
+        if (!$user || !Hash::check($request->password, $user->password)) {
+            // return response()->json(['message' => 'Thông tin tài khoản mật khẩu không chính xác!'], 401);
+            // dd('2');
+            // dd($credentials);
+            session()->flash('error', 'Thông tin tài khoản không chính xác!');
+            return redirect()->route('showlogin');
         }
+        elseif( $user->role !== 1){
+            session()->flash('error', 'Tài khoản này không có quyền đăng nhập vào admin!');
+            return redirect()->route('showlogin');
+        }
+
+        Auth::login($user);
+
+        // Xử lý khi người dùng đăng nhập thành công
+        // return response()->json(['message' => 'Đăng nhập thành công!']);
+        return redirect()->route('dashboardIndex');
     }
 
     public function logout(Request $request)

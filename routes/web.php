@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\User\auth\authController;
+use App\Http\Controllers\User\CartController;
 use App\Http\Controllers\User\IndexController;
 use Illuminate\Support\Facades\Route;
 include __DIR__.'/admin.php';
@@ -13,9 +15,23 @@ include __DIR__.'/admin.php';
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('login', [authController::class, 'showLogin'])->name('showlogin_User');
+
 Route::get('/', [IndexController::class, 'index'])->name('HomeIndex');
+
 Route::get('chi_tiet_san_pham/{id}', [IndexController::class, 'detail'])->name('DetailProduct');
+
 Route::get('danh_muc_san_pham/{id}', [IndexController::class, 'category_product'])->name('CategoryProduct');
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+
+Route::get('gio_hang', [CartController::class, 'index'])->name('Cart');
+
+
+Route::get('gioi_thieu',  [IndexController::class, 'Introduce'])->name('Introduce');
+
+Route::get('Chinh_sach_hop_tac', [IndexController::class, 'Cooperation_policy'])->name('Cooperation_policy');
+
+Route::get('Lien_he',[IndexController::class, 'Contact'])->name('Contact');
+
+Route::get('Tin_tuc',[IndexController::class, 'News'])->name('News');
+
+
