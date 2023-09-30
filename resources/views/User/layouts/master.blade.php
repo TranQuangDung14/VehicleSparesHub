@@ -1272,14 +1272,12 @@
 
                         <div class="flex-col hide-for-medium flex-right">
                             <ul class="nav top-bar-nav nav-right nav-small  nav-divided">
-                                <li class="account-item has-icon
-    ">
+                                <li class="account-item has-icon ">
 
-                                    <a href="https://agc18.com.vn/tai-khoan/"
-                                        class="nav-top-link nav-top-not-logged-in is-small"
-                                        data-open="#login-form-popup">
+                                    <a href="{{route('showlogin_User')}}"
+                                        class="nav-top-link nav-top-not-logged-in is-small">
                                         <span>
-                                            Đăng nhập / Đăng ký </span>
+                                            Đăng nhập  </span>
 
                                     </a>
 
@@ -1288,7 +1286,7 @@
                                 </li>
                                 <li class="cart-item has-icon has-dropdown">
 
-                                    <a href="giohang.html" title="Giỏ hàng" class="header-cart-link is-small">
+                                    <a href="{{route('Cart')}}" title="Giỏ hàng" class="header-cart-link is-small">
 
 
                                         <span class="header-cart-title">
@@ -1609,39 +1607,14 @@
                                 </li>
                                 <li id="menu-item-59"
                                     class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-59 menu-item-design-default has-dropdown">
-                                    <a href="gioithieu.html" class="nav-top-link" aria-expanded="false"
+                                    <a href="{{ route('Introduce') }}" class="nav-top-link" aria-expanded="false"
                                         aria-haspopup="menu">GIỚI THIỆU<i class="icon-angle-down"></i></a>
                                     <ul class="sub-menu nav-dropdown nav-dropdown-simple">
                                         <li id="menu-item-921"
                                             class="menu-item menu-item-type-post_type menu-item-object-page menu-item-921">
-                                            <a href="https://agc18.com.vn/chinh-sach-bao-hanh-san-pham/">Chính sách bảo
+                                            <a href="{{ route('Cooperation_policy') }}">Chính sách bảo
                                                 hành sản phẩm</a>
                                         </li>
-                                        {{-- <li id="menu-item-922"
-                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-922">
-                                            <a href="https://agc18.com.vn/chinh-sach-bao-mat-thong-tin/">Chính sách bảo
-                                                mật thông tin</a>
-                                        </li>
-                                        <li id="menu-item-923"
-                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-923">
-                                            <a href="https://agc18.com.vn/chinh-sach-doi-tra/">Chính sách đổi trả</a>
-                                        </li>
-                                        <li id="menu-item-924"
-                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-924">
-                                            <a href="https://agc18.com.vn/chinh-sach-giao-hang/">Chính sách giao
-                                                hàng</a>
-                                        </li>
-                                        <li id="menu-item-3767"
-                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3767">
-                                            <a href="https://agc18.com.vn/quy-dinh-va-hinh-thuc-thanh-toan/">Quy định
-                                                và
-                                                hình thức thanh toán</a>
-                                        </li>
-                                        <li id="menu-item-925"
-                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-925">
-                                            <a href="https://agc18.com.vn/chinh-sach-va-quy-dinh-chung/">Chính sách và
-                                                quy định chung</a>
-                                        </li> --}}
                                     </ul>
                                 </li>
                                 <li id="menu-item-3485"
@@ -1676,176 +1649,15 @@
                                         </li>
                                         @endforeach
 
-                                        {{-- <li id="menu-item-2638"
-                                            class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-2638 nav-dropdown-col">
-                                            <a href="https://agc18.com.vn/danh-muc/san-pham/phu-kien-xe-hoi/">Phụ Kiện xe Hơi</a>
-                                            <ul class="sub-menu nav-column nav-dropdown-simple">
-                                                <li id="menu-item-2643"
-                                                    class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-2643">
-                                                    <a href="category.html"><i
-                                                            class="_mi _before fa fa-arrow-circle-right"
-                                                            aria-hidden="true"></i><span>Nước hoa Aroma</span></a>
-                                                    <ul class="sub-menu nav-column nav-dropdown-simple">
-                                                        <li id="menu-item-3773"
-                                                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3773">
-                                                            <a
-                                                                href="https://agc18.com.vn/danh-muc/san-pham/phu-kien-xe-hoi/nuoc-hoa-aroma-nhap-khau-phap/aroma-car-gel/"><i
-                                                                    class="_mi _before fa fa-check-square"
-                                                                    aria-hidden="true"></i><span>Aroma Car
-                                                                    Gel</span></a>
-                                                        </li>
-                                                        <li id="menu-item-3778"
-                                                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3778">
-                                                            <a
-                                                                href="https://agc18.com.vn/danh-muc/san-pham/phu-kien-xe-hoi/nuoc-hoa-aroma-nhap-khau-phap/la-thom-aroma-car-leaf/"><i
-                                                                    class="_mi _before fa fa-check-square"
-                                                                    aria-hidden="true"></i><span>Lá thơm
-                                                                    Aroma</span></a>
-                                                        </li>
-                                                        <li id="menu-item-3779"
-                                                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3779">
-                                                            <a
-                                                                href="https://agc18.com.vn/danh-muc/san-pham/phu-kien-xe-hoi/nuoc-hoa-aroma-nhap-khau-phap/nuoc-hoa-dang-xit-aroma/"><i
-                                                                    class="_mi _before fa fa-check-square"
-                                                                    aria-hidden="true"></i><span>Nước hoa dạng xịt
-                                                                    Aroma</span></a>
-                                                        </li>
-                                                        <li id="menu-item-3780"
-                                                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3780">
-                                                            <a
-                                                                href="https://agc18.com.vn/danh-muc/san-pham/phu-kien-xe-hoi/nuoc-hoa-aroma-nhap-khau-phap/sap-thom-organic-40g/"><i
-                                                                    class="_mi _before fa fa-check-square"
-                                                                    aria-hidden="true"></i><span>Sáp thơm
-                                                                    Aroma</span></a>
-                                                        </li>
-                                                        <li id="menu-item-3788"
-                                                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3788">
-                                                            <a
-                                                                href="https://agc18.com.vn/danh-muc/san-pham/phu-kien-xe-hoi/nuoc-hoa-aroma-nhap-khau-phap/kep-cua-gio-aroma/"><i
-                                                                    class="_mi _before fa fa-check-square"
-                                                                    aria-hidden="true"></i><span>Kẹp cửa gió
-                                                                    Aroma</span></a>
-                                                        </li>
-                                                        <li id="menu-item-3787"
-                                                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3787">
-                                                            <a
-                                                                href="https://agc18.com.vn/danh-muc/san-pham/phu-kien-xe-hoi/nuoc-hoa-aroma-nhap-khau-phap/tinh-dau-treo-aroma/"><i
-                                                                    class="_mi _before fa fa-check-square"
-                                                                    aria-hidden="true"></i><span>Tinh dầu treo
-                                                                    Aroma</span></a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li id="menu-item-4689"
-                                                    class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-4689">
-                                                    <a
-                                                        href="https://agc18.com.vn/danh-muc/san-pham/phu-kien-xe-hoi/xit-khu-mui-ozium/"><i
-                                                            class="_mi _before fa fa-arrow-circle-right"
-                                                            aria-hidden="true"></i><span>Khử mùi Ozium</span></a>
-                                                </li>
-                                                <li id="menu-item-2644"
-                                                    class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-2644">
-                                                    <a
-                                                        href="https://agc18.com.vn/danh-muc/san-pham/phu-kien-xe-hoi/tinh-dau-viet-nam/"><i
-                                                            class="_mi _before fa fa-arrow-circle-right"
-                                                            aria-hidden="true"></i><span>Tinh dầu Việt Nam</span></a>
-                                                </li>
-                                                <li id="menu-item-2645"
-                                                    class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-2645">
-                                                    <a
-                                                        href="https://agc18.com.vn/danh-muc/san-pham/phu-kien-xe-hoi/tuong-phong-thuy/"><i
-                                                            class="_mi _before fa fa-arrow-circle-right"
-                                                            aria-hidden="true"></i><span>Tượng phong thủy</span></a>
-                                                </li>
-                                                <li id="menu-item-2639"
-                                                    class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-2639">
-                                                    <a
-                                                        href="https://agc18.com.vn/danh-muc/san-pham/phu-kien-xe-hoi/bao-tay-lai/"><i
-                                                            class="_mi _before fa fa-arrow-circle-right"
-                                                            aria-hidden="true"></i><span>Bao tay lái</span></a>
-                                                </li>
-                                                <li id="menu-item-2640"
-                                                    class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-2640">
-                                                    <a
-                                                        href="https://agc18.com.vn/danh-muc/san-pham/phu-kien-xe-hoi/khan-lau-xe/"><i
-                                                            class="_mi _before fa fa-arrow-circle-right"
-                                                            aria-hidden="true"></i><span>Khăn lau xe</span></a>
-                                                </li>
-                                                <li id="menu-item-2641"
-                                                    class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-2641">
-                                                    <a
-                                                        href="https://agc18.com.vn/danh-muc/san-pham/phu-kien-xe-hoi/ao-ghe-9d/"><i
-                                                            class="_mi _before fa fa-arrow-circle-right"
-                                                            aria-hidden="true"></i><span>Áo ghế 9D</span></a>
-                                                </li>
-                                                <li id="menu-item-5184"
-                                                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5184">
-                                                    <a
-                                                        href="https://agc18.com.vn/danh-muc/san-pham/phu-kien-xe-hoi/lot-ghe-sang-chanh/"><i
-                                                            class="_mi _before fa fa-arrow-circle-right"
-                                                            aria-hidden="true"></i><span>Lót ghế sang chảnh</span></a>
-                                                </li>
-                                                <li id="menu-item-2642"
-                                                    class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-2642">
-                                                    <a
-                                                        href="https://agc18.com.vn/danh-muc/san-pham/phu-kien-xe-hoi/moc-chia-khoa/"><i
-                                                            class="_mi _before fa fa-arrow-circle-right"
-                                                            aria-hidden="true"></i><span>Móc chìa khóa</span></a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li id="menu-item-2646"
-                                            class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-2646 nav-dropdown-col">
-                                            <a href="category.html">Phụ tùng
-                                                xe hơi</a>
-                                            <ul class="sub-menu nav-column nav-dropdown-simple">
-                                                <li id="menu-item-2647"
-                                                    class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-2647">
-                                                    <a href="category.html"><i
-                                                            class="_mi _before fa fa-arrow-circle-right"
-                                                            aria-hidden="true"></i><span>Gạt mưa Hàn Quốc UB</span></a>
-                                                </li>
-                                                <li id="menu-item-4109"
-                                                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4109">
-                                                    <a
-                                                        href="https://agc18.com.vn/danh-muc/san-pham/phu-tung-xe-hoi/bong-den-coi-xe-denso/"><i
-                                                            class="_mi _before fa fa-arrow-circle-right"
-                                                            aria-hidden="true"></i><span>Bóng đèn &#8211; Còi xe
-                                                            Denso</span></a>
-                                                </li>
-                                                <li id="menu-item-5873"
-                                                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5873">
-                                                    <a
-                                                        href="https://agc18.com.vn/danh-muc/san-pham/phu-tung-xe-hoi/bugi-denso/"><i
-                                                            class="_mi _before fa fa-arrow-circle-right"
-                                                            aria-hidden="true"></i><span>Bugi Denso</span></a>
-                                                </li>
-                                                <li id="menu-item-4110"
-                                                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4110">
-                                                    <a
-                                                        href="https://agc18.com.vn/danh-muc/san-pham/phu-tung-xe-hoi/loc-dieu-hoa/"><i
-                                                            class="_mi _before fa fa-arrow-circle-right"
-                                                            aria-hidden="true"></i><span>Lọc Điều Hòa &#8211; Lọc Động
-                                                            Cơ</span></a>
-                                                </li>
-                                                <li id="menu-item-5231"
-                                                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5231">
-                                                    <a
-                                                        href="https://agc18.com.vn/danh-muc/san-pham/phu-tung-xe-hoi/loc-dau-nhot/"><i
-                                                            class="_mi _before fa fa-arrow-circle-right"
-                                                            aria-hidden="true"></i><span>Lọc Dầu/Nhớt</span></a>
-                                                </li>
-                                            </ul>
-                                        </li> --}}
                                     </ul>
                                 </li>
                                 <li id="menu-item-63"
                                     class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-63 menu-item-design-default">
-                                    <a href="news.html" class="nav-top-link">TIN TỨC</a>
+                                    <a href="{{ route('News') }}" class="nav-top-link">TIN TỨC</a>
                                 </li>
                                 <li id="menu-item-2696"
                                     class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2696 menu-item-design-default">
-                                    <a href="contact.html" class="nav-top-link">LIÊN HỆ</a>
+                                    <a href="{{ route('Contact') }}" class="nav-top-link">LIÊN HỆ</a>
                                 </li>
                             </ul>
                         </div>
@@ -1854,7 +1666,7 @@
                             <ul
                                 class="nav header-nav header-bottom-nav nav-right  nav-divided nav-size-large nav-spacing-xlarge nav-uppercase">
                                 <li class="html custom html_top_right_text">
-                                    <p><a href="https://agc18.com.vn/chinh-sach-hop-tac/"><span
+                                    <p><a href="{{ route('Cooperation_policy') }}"><span
                                                 style="font-size: 110%; border: 2PX SOLID GREEN; padding: 10PX; background-color: white;"><strong><span
                                                         style="color: #056401;">CHÍNH SÁCH HỢP
                                                         TÁC</span></strong></span></a></p>
@@ -1903,7 +1715,7 @@
                     <div class="header-search-form-wrapper">
                         <div class="searchform-wrapper ux-search-box relative is-normal">
                             <form role="search" method="get" class="searchform"
-                                action="https://agc18.com.vn/">
+                                >
                                 <div class="flex-row relative">
                                     <div class="flex-col flex-grow">
                                         <label class="screen-reader-text"
@@ -2158,123 +1970,7 @@
                         src="https://agc18.com.vn/wp-content/uploads/2019/12/messenger-1.png">Facebook</a></li>
         </ul>
     </div>
-    <div id="login-form-popup" class="lightbox-content mfp-hide">
-        <div class="woocommerce">
-            <div class="woocommerce-notices-wrapper"></div>
-            <div class="account-container lightbox-inner">
 
-
-                <div class="col2-set row row-divided row-large" id="customer_login">
-
-                    <div class="col-1 large-6 col pb-0">
-
-
-                        <div class="account-login-inner">
-
-                            <h3 class="uppercase">Đăng nhập</h3>
-
-                            <form class="woocommerce-form woocommerce-form-login login" method="post">
-
-
-                                <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-                                    <label for="username">Tên tài khoản hoặc địa chỉ email&nbsp;<span
-                                            class="required">*</span></label>
-                                    <input type="text"
-                                        class="woocommerce-Input woocommerce-Input--text input-text" name="username"
-                                        id="username" autocomplete="username" value="" />
-                                </p>
-                                <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-                                    <label for="password">Mật khẩu&nbsp;<span class="required">*</span></label>
-                                    <input class="woocommerce-Input woocommerce-Input--text input-text"
-                                        type="password" name="password" id="password"
-                                        autocomplete="current-password" />
-                                </p>
-
-
-                                <p class="form-row">
-                                    <label
-                                        class="woocommerce-form__label woocommerce-form__label-for-checkbox woocommerce-form-login__rememberme">
-                                        <input class="woocommerce-form__input woocommerce-form__input-checkbox"
-                                            name="rememberme" type="checkbox" id="rememberme" value="forever" />
-                                        <span>Ghi nhớ mật khẩu</span>
-                                    </label>
-                                    <input type="hidden" id="woocommerce-login-nonce"
-                                        name="woocommerce-login-nonce" value="b144cf27cf" /><input type="hidden"
-                                        name="_wp_http_referer" value="/" />
-                                    <button type="submit"
-                                        class="woocommerce-button button woocommerce-form-login__submit"
-                                        name="login" value="Đăng nhập">Đăng nhập</button>
-                                </p>
-                                <p class="woocommerce-LostPassword lost_password">
-                                    <a href="https://agc18.com.vn/tai-khoan/lost-password/">Quên mật khẩu?</a>
-                                </p>
-
-
-                            </form>
-                        </div>
-
-
-                    </div>
-
-                    <div class="col-2 large-6 col pb-0">
-
-                        <div class="account-register-inner">
-
-                            <h3 class="uppercase">Đăng ký</h3>
-
-                            <form method="post" class="woocommerce-form woocommerce-form-register register">
-
-
-
-                                <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-                                    <label for="reg_username">Tên tài khoản&nbsp;<span
-                                            class="required">*</span></label>
-                                    <input type="text"
-                                        class="woocommerce-Input woocommerce-Input--text input-text" name="username"
-                                        id="reg_username" autocomplete="username" value="" />
-                                </p>
-
-
-                                <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-                                    <label for="reg_email">Địa chỉ email&nbsp;<span
-                                            class="required">*</span></label>
-                                    <input type="email"
-                                        class="woocommerce-Input woocommerce-Input--text input-text" name="email"
-                                        id="reg_email" autocomplete="email" value="" />
-                                </p>
-
-
-                                <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-                                    <label for="reg_password">Mật khẩu&nbsp;<span class="required">*</span></label>
-                                    <input type="password"
-                                        class="woocommerce-Input woocommerce-Input--text input-text" name="password"
-                                        id="reg_password" autocomplete="new-password" />
-                                </p>
-
-
-                                <div class="woocommerce-privacy-policy-text"></div>
-                                <p class="woocommerce-form-row form-row">
-                                    <input type="hidden" id="woocommerce-register-nonce"
-                                        name="woocommerce-register-nonce" value="cb1a2e4dd9" /><input
-                                        type="hidden" name="_wp_http_referer" value="/" /> <button
-                                        type="submit"
-                                        class="woocommerce-Button woocommerce-button button woocommerce-form-register__submit"
-                                        name="register" value="Đăng ký">Đăng ký</button>
-                                </p>
-
-
-                            </form>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-    </div>
     <script type="text/javascript">
         (function() {
             var c = document.body.className;
