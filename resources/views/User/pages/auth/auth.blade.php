@@ -259,19 +259,31 @@
 <body>
     <div class="container" id="container">
         <div class="form-container sign-up-container">
-            <form>
+            <form action="{{ route('register_User') }}" method="POST" enctype="multipart/form-data">
+                @csrf
                 <h1>Tạo tài khoản</h1>
                 <span>hoặc sử dụng email của bạn để đăng ký</span>
                 <input type="text" placeholder="Tên của bạn" />
-                <input type="text" placeholder="Tên tài khoản" />
+                @if ($errors->has('name'))
+                    <span class="text-danger" role="alert">{{ $errors->first('name') }}</span>
+                @endif
+                {{-- <input type="text" placeholder="Tên tài khoản" /> --}}
                 <input type="email" id="signUpEmail"placeholder="Email" />
+                @if ($errors->has('email'))
+                    <span class="text-danger" role="alert">{{ $errors->first('email') }}</span>
+                @endif
                 <input type="password" placeholder="Password" />
+                @if ($errors->has('password'))
+                    <span class="text-danger" role="alert">{{ $errors->first('password') }}</span>
+                @endif
                 <button type="submit">Đăng ký</button>
             </form>
         </div>
 
         <div class="form-container sign-in-container">
-            <form onSubmit={this.handleSubmitLogin}>
+            {{-- <form onSubmit={this.handleSubmitLogin}> --}}
+            <form action="{{ route('login_User') }}" method="POST" enctype="multipart/form-data">
+                @csrf
                 <h1>Đăng nhập</h1>
                 <span>hoặc sử dụng tài khoản của bạn</span>
                 <input type="email" id="signInEmail" placeholder="Email" />

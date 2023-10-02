@@ -6,26 +6,25 @@ use App\Http\Controllers\Controller;
 use App\Models\Categories;
 use App\Models\Products;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class IndexController extends Controller
 {
     // private $category_limit3;
 
-    public function this_cate()
-    {
-        $data['category'] = Categories::with([
-            'products'=> function ($query) {
-            $query->with('images')->distinct();
-        }])->take(3)->get();
-        return $data['category'];
-    }
-    /**
+        /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
+        if (Auth::check()) {
+            if (auth()->user()->role === 2) {
+            $userName = Auth::user()->name;
+            dd($userName);
+            }
+        }
         $data['product_selling'] = Products::with('images')->where('selling',1)->get();
         $data['category'] = $this->this_cate();
 
@@ -35,6 +34,15 @@ class IndexController extends Controller
         return view('User.pages.index.index',compact('data'));
         // return view('Admin.pages.products.product_list', compact('product'));
     }
+    public function this_cate()
+    {
+        $data['category'] = Categories::with([
+            'products'=> function ($query) {
+            $query->with('images')->distinct();
+        }])->take(3)->get();
+        return $data['category'];
+    }
+
 
 
     /**

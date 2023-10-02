@@ -16,6 +16,16 @@ include __DIR__.'/admin.php';
 |
 */
 Route::get('login', [authController::class, 'showLogin'])->name('showlogin_User');
+Route::post('login', [authController::class, 'login'])->name('login_User');
+
+Route::get('register', [authController::class, 'showRegistration'])->name('showregister_User');
+Route::post('register', [authController::class, 'register'])->name('register_User');
+
+Route::post('logout', [authController::class, 'logout'])->name('logout_User');
+
+
+
+//
 
 Route::get('/', [IndexController::class, 'index'])->name('HomeIndex');
 
