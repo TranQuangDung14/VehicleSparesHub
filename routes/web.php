@@ -16,6 +16,16 @@ include __DIR__.'/admin.php';
 |
 */
 Route::get('login', [authController::class, 'showLogin'])->name('showlogin_User');
+Route::post('login', [authController::class, 'login'])->name('login_User');
+
+Route::get('register', [authController::class, 'showRegistration'])->name('showregister_User');
+Route::post('register', [authController::class, 'register'])->name('register_User');
+
+Route::post('logout', [authController::class, 'logout'])->name('logout_User');
+
+
+
+//
 
 Route::get('/', [IndexController::class, 'index'])->name('HomeIndex');
 
@@ -23,7 +33,6 @@ Route::get('chi_tiet_san_pham/{id}', [IndexController::class, 'detail'])->name('
 
 Route::get('danh_muc_san_pham/{id}', [IndexController::class, 'category_product'])->name('CategoryProduct');
 
-Route::get('gio_hang', [CartController::class, 'index'])->name('Cart');
 
 
 Route::get('gioi_thieu',  [IndexController::class, 'Introduce'])->name('Introduce');
@@ -35,3 +44,7 @@ Route::get('Lien_he',[IndexController::class, 'Contact'])->name('Contact');
 Route::get('Tin_tuc',[IndexController::class, 'News'])->name('News');
 
 
+// chức năng giỏ hàng
+Route::get('gio_hang', [CartController::class, 'index'])->name('Cart');
+
+Route::post('/cart-add', [CartController::class, 'addProduct'])->name('AddCart');

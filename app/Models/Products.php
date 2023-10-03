@@ -18,6 +18,11 @@ class Products extends Model
     {
         return $this->belongsTo(Categories::class,'category_id');
     }
+
+    public function cartDetails()
+    {
+        return $this->hasMany(Cart_detail::class,'product_id');
+    }
     protected $fillable = [
         'category_id',
         'name',

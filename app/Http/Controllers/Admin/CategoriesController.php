@@ -17,7 +17,7 @@ class CategoriesController extends Controller
             // dd('test');
             $category = Categories::where('name','LIKE', '%' . $request->search . '%')->orderBy('id','desc')->paginate(10);
 
-            return view('Admin.pages.categories.categories_list',compact('catgeory'));
+            return view('Admin.pages.categories.categories_list',compact('category'));
 
         } catch (\Exception $e) {
             dd($e);
