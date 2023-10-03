@@ -33,7 +33,6 @@ Route::get('chi_tiet_san_pham/{id}', [IndexController::class, 'detail'])->name('
 
 Route::get('danh_muc_san_pham/{id}', [IndexController::class, 'category_product'])->name('CategoryProduct');
 
-Route::get('gio_hang', [CartController::class, 'index'])->name('Cart');
 
 
 Route::get('gioi_thieu',  [IndexController::class, 'Introduce'])->name('Introduce');
@@ -45,3 +44,7 @@ Route::get('Lien_he',[IndexController::class, 'Contact'])->name('Contact');
 Route::get('Tin_tuc',[IndexController::class, 'News'])->name('News');
 
 
+// chức năng giỏ hàng
+Route::get('gio_hang', [CartController::class, 'index'])->name('Cart');
+
+Route::post('/cart-add', [CartController::class, 'addProduct'])->name('AddCart');

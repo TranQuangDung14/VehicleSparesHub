@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User\auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Cutomers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -47,7 +48,7 @@ class authController extends Controller
     public function logout(Request $request)
     {
         Auth::logout();
-        return redirect()->route('showlogin_User');
+        return redirect()->route('HomeIndex');
     }
 
     public function showRegistration()
@@ -90,10 +91,19 @@ class authController extends Controller
                 'password' => Hash::make($request->password),
                 'role' => '2',
             ]);
+            $customer = Cutomers::create([
+                'user_id' => $user->id,
+                'name' => $request->name,
+                // 'date_of_birth' => $request->input('date_of_birth'),
+                // 'sex' => $request->input('sex'),
+                // 'number_phone' => $request->input('number_phone'),
+                // 'address' => $request->input('address'),
+            ]);
+
             // Auth::login($user);
         } catch (\Exception $e) {
             dd($e);
         }
-        return redirect()->route('showlogin');
+        return redirect()->route('showlogin_User');
     }
 }
