@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\auth\AuthController;
 use App\Http\Controllers\Admin\CategoriesController;
+use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\Admin\Testcontroller;
@@ -49,6 +50,16 @@ Route::prefix('admin')->group(function () {
         Route::delete('delete/{id}', [ProductsController::class, 'delete'])->name('productDelete');
         Route::get('update_status', [ProductsController::class, 'UpdateStatus'])->name('productUpdateStatus');
     });
+
+        // khách hàng
+        Route::prefix('Customer')->middleware('auth')->group(function () {
+            Route::get('', [CustomerController::class, 'index'])->name('customerIndex');
+            // Route::get('add', [CustomerController::class, 'create'])->name('customerCreate');
+            // Route::post('add', [CustomerController::class, 'store'])->name('customerStore');
+            Route::get('edit/{id}', [CustomerController::class, 'edit'])->name('customerEdit');
+            Route::get('update/{id}', [CustomerController::class, 'update'])->name('customerUpdate');
+            // Route::delete('delete/{id}', [CustomerController::class, 'delete'])->name('customerDelete');
+        });
 });
 
 

@@ -88,12 +88,15 @@
                                                     <div
                                                         class="image-tools grid-tools text-center hide-for-small bottom hover-slide-in show-on-hover">
                                                     </div>
+                                                    @if ($product->quantity == null || $product->quantity < 0)
+                                                        <div class="out-of-stock-label">Hết hàng</div>
+                                                    @endif
                                                 </div>
 
                                                 <div class="box-text text-center">
                                                     <div class="title-wrapper">
                                                         <p class="name product-title woocommerce-loop-product__title">
-                                                            <a href="#"
+                                                            <a href="{{ route('DetailProduct', $product->id) }}"
                                                                 class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
                                                                 {{ $product->name }}
                                                             </a>
@@ -106,12 +109,25 @@
                                                                     <span
                                                                         class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span></span>
                                                     </div>
-                                                    <form action="{{ route('AddCart') }}" method="POST" enctype="multipart/form-data">
-                                                        @csrf
-                                                        <input type="hidden" name="product_id" value="{{$product->id}}">
-                                                        <input type="hidden" name="quantity" value="1">
-                                                        <button class="primary is-small mb-0 button product_type_simple add_to_cart_button ajax_add_to_cart is-outline add-to-cart-button">Thêm vào giỏ hàng</button>
-                                                    </form>
+                                                    @if ($product->quantity == null || $product->quantity < 0)
+                                                        <div class="add-to-cart-button"><a
+                                                                href="{{ route('DetailProduct', $product->id) }}"
+                                                                data-quantity="1"
+                                                                class="primary is-small mb-0 button product_type_simple is-outline"
+                                                                rel="nofollow">Đọc tiếp</a></div>
+                                                    @else
+                                                        <form action="{{ route('AddCart') }}" method="POST"
+                                                            enctype="multipart/form-data">
+                                                            @csrf
+                                                            <input type="hidden" name="product_id"
+                                                                value="{{ $product->id }}">
+                                                            <input type="hidden" name="quantity" value="1">
+                                                            <button
+                                                                class="primary is-small mb-0 button product_type_simple add_to_cart_button ajax_add_to_cart is-outline add-to-cart-button">Thêm
+                                                                vào giỏ hàng</button>
+                                                        </form>
+                                                    @endif
+
                                                 </div>
                                             </div>
                                         </div>
@@ -185,11 +201,14 @@
                                                 <div
                                                     class="image-tools grid-tools text-center hide-for-small bottom hover-slide-in show-on-hover">
                                                 </div>
+                                                @if ($product->quantity == null || $product->quantity < 0)
+                                                <div class="out-of-stock-label">Hết hàng</div>
+                                            @endif
                                             </div>
                                             <div class="box-text text-center">
                                                 <div class="title-wrapper">
                                                     <p class="name product-title woocommerce-loop-product__title">
-                                                        <a href="#"
+                                                        <a href="{{ route('DetailProduct', $selling->id) }}"
                                                             class="woocommerce-LoopProduct-link woocommerce-loop-product__link">{{ $selling->name }}</a>
                                                     </p>
                                                 </div>
@@ -200,11 +219,29 @@
                                                                 <span
                                                                     class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span></span>
                                                 </div>
-                                                <div class="add-to-cart-button"><a href="?add-to-cart=4251"
+                                                {{-- <div class="add-to-cart-button"><a href="?add-to-cart=4251"
                                                         data-quantity="1"
                                                         class="primary is-small mb-0 button product_type_simple add_to_cart_button ajax_add_to_cart is-outline">Thêm
                                                         vào giỏ hàng</a>
-                                                </div>
+                                                </div> --}}
+                                                @if ($selling->quantity == null || $selling->quantity < 0)
+                                                    <div class="add-to-cart-button"><a
+                                                            href="{{ route('DetailProduct', $selling->id) }}"
+                                                            data-quantity="1"
+                                                            class="primary is-small mb-0 button product_type_simple is-outline"
+                                                            rel="nofollow">Đọc tiếp</a></div>
+                                                @else
+                                                    <form action="{{ route('AddCart') }}" method="POST"
+                                                        enctype="multipart/form-data">
+                                                        @csrf
+                                                        <input type="hidden" name="product_id"
+                                                            value="{{ $selling->id }}">
+                                                        <input type="hidden" name="quantity" value="1">
+                                                        <button
+                                                            class="primary is-small mb-0 button product_type_simple add_to_cart_button ajax_add_to_cart is-outline add-to-cart-button">Thêm
+                                                            vào giỏ hàng</button>
+                                                    </form>
+                                                @endif
                                             </div>
                                         </div>
 
