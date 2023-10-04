@@ -27,9 +27,34 @@ class CartController extends Controller
     {
         $data['category'] = $this->indexController->this_cate();
         $data['userName'] = $this->indexController->userName();
+        $data['cart'] = auth()->user()->cart;
+        if (!$data['cart']) {
+            // dd($cart); ronoaro
+            // return response()->json([
+            //     'message' => 'Giỏ hàng của bạn hiện đang trống!'
+            // ]);
+            $data['cart']= 'Giỏ hàng của bạn hiện đang trống!';
+            // dd( $data['cart']);
+            return view('User.pages.cart.cart', compact('data'));
+        }
+        $data['cart']->load('cartDetails.product.images');
+        // dd( $data['cart']);
         return view('User.pages.cart.cart', compact('data'));
     }
 
+    // public function getCart()
+    // {
+    //     // dd(auth()->user());
+    //     $cart = auth()->user()->cart;
+    //     if (!$cart) {
+    //         return response()->json([
+    //             'message' => 'Giỏ hàng của bạn hiện đang trống!'
+    //         ]);
+    //     }
+    //     $cart->load('cartDetails.product.images');
+
+    //     return response()->json($cart);
+    // }
     public function addProduct(Request $request)
     {
         // dd($request->all());

@@ -24,48 +24,52 @@
                                             cellspacing="0">
                                             <thead>
                                                 <tr>
-                                                    <th class="product-name" colspan="3">Sản phẩm</th>
+                                                    <th class="product-name" colspan="2">Sản phẩm</th>
                                                     <th class="product-price">Giá</th>
                                                     <th class="product-quantity">Số lượng</th>
                                                     <th class="product-subtotal">Tạm tính</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-
+                                                @foreach ($data['cart']->cartDetails as $cart_detai )
+                                                    
+                                               
                                                 <tr class="woocommerce-cart-form__cart-item cart_item">
 
-                                                    <td class="product-remove">
+                                                    {{-- <td class="product-remove">
                                                         <a href="https://agc18.com.vn/gio-hang/?remove_item=e9510081ac30ffa83f10b68cde1cac07&#038;_wpnonce=f09876342b"
                                                             class="remove" aria-label="Xóa sản phẩm này"
                                                             data-product_id="6666"
                                                             data-product_sku="AGC - 251-1">&times;</a>
-                                                    </td>
+                                                    </td> --}}
 
                                                     <td class="product-thumbnail">
                                                         <a
-                                                            href="https://agc18.com.vn/san-pham/nuoc-hoa-oto-lacent-diffuser-black-cherry-50ml/"><img
+                                                            href="{{ route('DetailProduct', $cart_detai->product->id) }}"><img
                                                                 width="246" height="185"
-                                                                src="https://agc18.com.vn/wp-content/uploads/2022/08/Ban-sao-cua-Thiet-ke-chua-co-ten-246x185.png"
+                                                                src="{{ asset('storage/image/product/' . $cart_detai->product->images[0]->image) }}"
                                                                 class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
                                                                 alt="Nước Hoa ÔTô Lâcent Diffuser Black Cherry 50ml"
                                                                 decoding="async"
-                                                                srcset="https://agc18.com.vn/wp-content/uploads/2022/08/Ban-sao-cua-Thiet-ke-chua-co-ten-246x185.png 246w, https://agc18.com.vn/wp-content/uploads/2022/08/Ban-sao-cua-Thiet-ke-chua-co-ten-300x225.png 300w, https://agc18.com.vn/wp-content/uploads/2022/08/Ban-sao-cua-Thiet-ke-chua-co-ten-1024x767.png 1024w, https://agc18.com.vn/wp-content/uploads/2022/08/Ban-sao-cua-Thiet-ke-chua-co-ten-768x575.png 768w, https://agc18.com.vn/wp-content/uploads/2022/08/Ban-sao-cua-Thiet-ke-chua-co-ten-600x450.png 600w, https://agc18.com.vn/wp-content/uploads/2022/08/Ban-sao-cua-Thiet-ke-chua-co-ten.png 1276w"
+                                                                srcset="{{ asset('storage/image/product/' . $cart_detai->product->images[0]->image) }}"
                                                                 sizes="(max-width: 246px) 100vw, 246px" /></a>
                                                     </td>
 
                                                     <td class="product-name" data-title="Sản phẩm">
                                                         <a
-                                                            href="https://agc18.com.vn/san-pham/nuoc-hoa-oto-lacent-diffuser-black-cherry-50ml/">Nước
-                                                            Hoa ÔTô Lâcent Diffuser Black Cherry 50ml</a>
-                                                        <div class="show-for-small mobile-product-price">
+                                                            href="{{ route('DetailProduct', $cart_detai->product->id) }}">{{$cart_detai->product->name}}</a>
+                                                        {{-- <div class="show-for-small mobile-product-price">
                                                             <span class="mobile-product-price__qty">1 x </span>
                                                             <span class="woocommerce-Price-amount amount"><bdi>400.000<span
                                                                         class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span>
-                                                        </div>
+                                                        </div> --}}
                                                     </td>
 
                                                     <td class="product-price" data-title="Giá">
-                                                        <span class="woocommerce-Price-amount amount"><bdi>400.000<span
+                                                        <span class="woocommerce-Price-amount amount"><bdi>
+                                                            {{-- {{$cart_detai->product->price}} --}}
+                                                            {{ number_format($cart_detai->product->price, 0, '.', '.') }}
+                                                            <span
                                                                     class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span>
                                                     </td>
 
@@ -88,11 +92,15 @@
                                                     </td>
 
                                                     <td class="product-subtotal" data-title="Tạm tính">
-                                                        <span class="woocommerce-Price-amount amount"><bdi>400.000<span
+                                                        <span class="woocommerce-Price-amount amount"><bdi>
+                                                            {{-- {{$cart_detai->price_by_quantity}} --}}
+                                                            {{ number_format($cart_detai->price_by_quantity, 0, '.', '.') }}
+                                                            <span
                                                                     class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span>
                                                     </td>
                                                 </tr>
-
+                                                
+                                                @endforeach
 
                                                 <tr>
                                                     <td colspan="6" class="actions clear">
