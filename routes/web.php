@@ -51,3 +51,4 @@ Route::post('/cart-add', [CartController::class, 'addProduct'])->name('AddCart')
 Route::delete('/cart-remove/{cartDetail}', [CartController::class, 'removeProduct'])->name('DeleteCart');
 
 Route::post('/cart-edit-quantity', [CartController::class, 'updateQuantity'])->name('UpdateQuantityCart');
+
