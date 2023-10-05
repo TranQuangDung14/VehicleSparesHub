@@ -33,6 +33,7 @@
     <meta property="og:image:type" content="image/png" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <script type="application/ld+json"
         class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://agc18.com.vn/","url":"https://agc18.com.vn/","name":"Phụ Kiện Xe Hơi - Trang chủ - Công ty phân phối phụ kiện - phụ tùng oto","isPartOf":{"@id":"https://agc18.com.vn/#website"},"about":{"@id":"https://agc18.com.vn/#organization"},"primaryImageOfPage":{"@id":"https://agc18.com.vn/#primaryimage"},"image":{"@id":"https://agc18.com.vn/#primaryimage"},"thumbnailUrl":"https://agc18.com.vn/wp-content/uploads/2019/06/logo-chuan-ty-le.png","datePublished":"2018-01-30T15:59:56+00:00","dateModified":"2021-11-24T08:31:33+00:00","description":"Phụ Kiện Xe Hơi -Công ty chuyên phân phối các sản phẩm phụ tùng và phụ kiện oto chất lượng hàng đầu Việt Nam. Khám phá các ưu đãi sản phẩm và đánh giá về","breadcrumb":{"@id":"https://agc18.com.vn/#breadcrumb"},"inLanguage":"vi","potentialAction":[{"@type":"ReadAction","target":["https://agc18.com.vn/"]}]},{"@type":"ImageObject","inLanguage":"vi","@id":"https://agc18.com.vn/#primaryimage","url":"https://agc18.com.vn/wp-content/uploads/2019/06/logo-chuan-ty-le.png","contentUrl":"https://agc18.com.vn/wp-content/uploads/2019/06/logo-chuan-ty-le.png","width":894,"height":552,"caption":"CÔNG TY TNHH TM-DV AGC18 Số 11 đường số 4, KDC T30, Xã Bình Hưng, Huyện Bình Chánh, TP.HCM Phụ KIỆN xe hơi"},{"@type":"BreadcrumbList","@id":"https://agc18.com.vn/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Trang chủ"}]},{"@type":"WebSite","@id":"https://agc18.com.vn/#website","url":"https://agc18.com.vn/","name":"CÔNG TY PHÂN PHỐI PHỤ KIỆN - PHỤ TÙNG OTO","description":"agc18","publisher":{"@id":"https://agc18.com.vn/#organization"},"potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://agc18.com.vn/?s={search_term_string}"},"query-input":"required name=search_term_string"}],"inLanguage":"vi"},{"@type":"Organization","@id":"https://agc18.com.vn/#organization","name":"CÔNG TY TNHH TM-DV AGC18","url":"https://agc18.com.vn/","logo":{"@type":"ImageObject","inLanguage":"vi","@id":"https://agc18.com.vn/#/schema/logo/image/","url":"https://agc18.com.vn/wp-content/uploads/2019/06/logo-chuan-ty-le.png","contentUrl":"https://agc18.com.vn/wp-content/uploads/2019/06/logo-chuan-ty-le.png","width":894,"height":552,"caption":"CÔNG TY TNHH TM-DV AGC18"},"image":{"@id":"https://agc18.com.vn/#/schema/logo/image/"},"sameAs":["https://www.facebook.com/agcauto/","https://twitter.com/CongAgc18","https://www.instagram.com/agc18.auto/","https://www.youtube.com/channel/UCHSGUqYE_9cLk5aFKJKaGjg"]}]}</script>
     <meta name="msvalidate.01" content="EB59714F082D6D2EEF10F0362D1B70E8" />
@@ -1206,6 +1207,10 @@
             unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
         }
     </style>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 </head>
 <body data-rsssl=1
     class="home page-template page-template-page-blank page-template-page-blank-php page page-id-2 theme-flatsome ot-vertical-menu woocommerce-no-js lightbox nav-dropdown-has-arrow nav-dropdown-has-shadow nav-dropdown-has-border">

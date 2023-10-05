@@ -8,6 +8,7 @@ use App\Models\Carts;
 use App\Models\Categories;
 use App\Models\Products;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class CartController extends Controller
@@ -27,7 +28,7 @@ class CartController extends Controller
     {
         $data['category'] = $this->indexController->this_cate();
         $data['userName'] = $this->indexController->userName();
-        $data['message']= 'Giỏ hàng của bạn hiện đang trống!';
+        $data['message'] = 'Giỏ hàng của bạn hiện đang trống!';
         $data['cart'] = auth()->user()->cart;
         if (!$data['cart']) {
             // dd($cart);
@@ -106,8 +107,8 @@ class CartController extends Controller
         $totalMoney = $cart->cartDetails->sum(function ($cartDetail) {
             return $cartDetail->product->price * $cartDetail->quantity;
         });
-        $discountAmount = $cart->discounted_price;
-        $realMoney = $totalMoney - $discountAmount;
+        // $discountAmount = $cart->discounted_price;
+        $realMoney = $totalMoney;
 
         $cart->update([
             'total_money' => $totalMoney,
@@ -115,19 +116,32 @@ class CartController extends Controller
         ]);
     }
 
-    public function updateQuantity(Request $request,Carts $cart)
+    public function updateQuantity(Request $request, Cart_detail $cartDetail)
     {
-        $quantity= $request->quantity;
-        dd($quantity);
-        foreach ($quantity as $qty) {
-            $cart->cartDetails->update([
-                'quantity' => $qty,
-                // 'real_money' => $realMoney
-            ]);
-            // dd($quantity);
-        //    Cart_detail::update($qty);
-        }
+        try {
+            // DB::beginTransaction();
+            $Detail = $cartDetail->find($request->id);
+            if (!$Detail) {
+                return response()->json(['message' => 'Không tìm thấy sản phẩm trong giỏ hàng.'], 404);
+            }
+            // Kiểm tra số lượng sản phẩm trong kho
+            $availableQuantity = $Detail->product->quantity;
 
+            if ($request->quantity > $availableQuantity) {
+                return response()->json(['message' => 'Số lượng sản phẩm trong giỏ hàng vượt quá số lượng trong kho.'],400);
+            }
+
+            $cart = $Detail->cart;
+            $Detail->quantity = $request->quantity;
+            $Detail->price_by_quantity =  ($request->quantity) * ($Detail->product->price);
+            $Detail->update();
+            $this->updateCartTotal($cart);
+            // DB::commit();
+            return response()->json(['message' => 'Đã cập nhật số lượng sản phẩm trong giỏ hàng.']);
+        } catch (\Exception $e) {
+            DB::rollback();
+            // dd($e);
+        }
     }
 
 
@@ -144,9 +158,13 @@ class CartController extends Controller
             // 'discounted_price' => 0,
             'real_money' => $cart->total_money
         ]);
-        return redirect()->back();
-        // return response()->json(['message' => 'Đã xóa sản phẩm khỏi giỏ hàng!']);
+        // $cartData = $this->index();
+        // dd($cartData);
+        // return redirect()->back();
+        // session()->flash('success_message', 'Đã xóa sản phẩm khỏi giỏ hàng!');
+        return response()->json([
+            'message' => 'Đã xóa sản phẩm khỏi giỏ hàng!',
+            // 'cartData'=>$cartData
+        ]);
     }
-
-
 }
