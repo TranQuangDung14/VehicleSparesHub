@@ -233,22 +233,22 @@
                             <h4 style="color: #fff;font-weight: 800">THỐNG KÊ TRUY CẬP</h4>
                         </li>
                         <li style="margin-bottom:10px"><span style="color: #fafafa"><a style="color: #fafafa"
-                                    href="http://vienthongso.com.vn/wp-content/uploads/2019/02/truyen-hinh-so.png"><img
+                                    href=""><img
                                         class="alignnonewp-image-2706"
-                                        src="https://vienthongso.com.vn/wp-content/uploads/2019/02/truyen-hinh-so.png"
+                                        src=""
                                         alt="" width="20" height="20" /></a> Hôm nay:
                                 <strong>80</strong>.
                             </span></li>
                         <li style="margin-bottom:10px"><span style="color: #fafafa"><a style="color: #fafafa"
-                                    href="http://vienthongso.com.vn/wp-content/uploads/2019/02/phu-kien-1.png"><img
+                                    href=""><img
                                         class="alignnonewp-image-2699"
-                                        src="https://vienthongso.com.vn/wp-content/uploads/2019/02/phu-kien-1.png"
+                                        src=""
                                         alt="" width="20" height="20" /></a> Tháng này:
                                 <strong>2146</strong>.</span></li>
                         <li><span style="color: #fafafa"><a style="color: #fafafa"
-                                    href="http://vienthongso.com.vn/wp-content/uploads/2019/02/dien-gia-dung.png"><img
+                                    href=""><img
                                         class="alignnonewp-image-2692"
-                                        src="https://vienthongso.com.vn/wp-content/uploads/2019/02/dien-gia-dung.png"
+                                        src=""
                                         alt="" width="20" height="20" /></a> Tổng truy
                                 cập:
                                 <strong>121096</strong>.</span></li>
