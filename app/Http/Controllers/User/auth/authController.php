@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User\auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Customers;
 use App\Models\Cutomers;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -91,7 +92,7 @@ class authController extends Controller
                 'password' => Hash::make($request->password),
                 'role' => '2',
             ]);
-            $customer = Cutomers::create([
+            $customer = Customers::create([
                 'user_id' => $user->id,
                 'name' => $request->name,
                 // 'date_of_birth' => $request->input('date_of_birth'),

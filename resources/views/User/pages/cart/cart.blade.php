@@ -247,7 +247,7 @@
         $(document).ready(function() {
             $('.remove-product-button').on('click', function() {
                 var url = $(this).data('url');
-
+                // console.log($(this).data('url'))
                 $.ajax({
                     type: 'DELETE',
                     url: url,
@@ -291,7 +291,7 @@
                         console.log('ra rồi', data.message)
 
                         // toastr.success(data.message);
-                        // location.reload();
+                        location.reload();
                         // Cập nhật giao diện người dùng nếu cần
                     },
                     error: function(data) {
