@@ -40,7 +40,6 @@
                                         class="ti ti-plus"></i></button></a>
                         </div> --}}
                     </div>
-                    {{-- <p class="mb-0">This is a sample page </p> --}}
                 </div>
             </div>
         </div>
