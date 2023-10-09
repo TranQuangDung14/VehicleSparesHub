@@ -110,16 +110,25 @@
                                                         class="woocommerce-Price-amount amount"><bdi>{{ number_format($product->price, 0, '.', ',') }}<span
                                                                 class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span></span>
                                             </div>
-                                            @if ($product->quantity == null || $product->quantity < 0)
+                                            {{-- @if ($product->quantity == null || $product->quantity < 0)
                                                 <div class="add-to-cart-button"><a
                                                         href="{{ route('DetailProduct', $product->id) }}" data-quantity="1"
                                                         class="primary is-small mb-0 button product_type_simple is-outline"
                                                         rel="nofollow">Đọc tiếp</a></div>
-                                            @else
-                                                <div class="add-to-cart-button"><a href="#" data-quantity="1"
-                                                        class="primary is-small mb-0 button product_type_simple add_to_cart_button ajax_add_to_cart is-outline"
-                                                        rel="nofollow">Thêm vào giỏ hàng</a></div>
-                                            @endif
+                                            @else --}}
+                                            {{-- <div class="add-to-cart-button"><a href="#" data-quantity="1"
+                                                    class="primary is-small mb-0 button product_type_simple add_to_cart_button ajax_add_to_cart is-outline"
+                                                    rel="nofollow">Thêm vào giỏ hàng</a></div> --}}
+                                            <form action="{{ route('AddCart') }}" method="POST"
+                                                enctype="multipart/form-data">
+                                                @csrf
+                                                <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                                <input type="hidden" name="quantity" value="1">
+                                                <button
+                                                    class="primary is-small mb-0 button product_type_simple add_to_cart_button ajax_add_to_cart is-outline add-to-cart-button">Thêm
+                                                    vào giỏ hàng</button>
+                                            </form>
+                                            {{-- @endif --}}
 
                                         </div>
                                     </div>

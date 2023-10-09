@@ -60,7 +60,6 @@ class CartController extends Controller
     {
 
         try {
-
             // Kiểm tra đăng nhập
             if (auth()->check()) {
                 if (auth()->user()->role === 2) {
@@ -73,9 +72,7 @@ class CartController extends Controller
                             $cart->save();
                             // dd($cart );
                         }
-
                         $cartDetail = $cart->cartDetails()->where('product_id', $request->product_id)->first();
-
                         if ($cartDetail) {
                             $cartDetail->update([
                                 'quantity' => $cartDetail->quantity + $request->quantity,
@@ -94,7 +91,7 @@ class CartController extends Controller
                         }
 
                         $this->updateCartTotal($cart);
-                        return redirect()->route('HomeIndex');
+                        return redirect()->back();
                         // return response()->json([
                         //     'message' => 'Đã thêm sản phẩm vào giỏ hàng'
                         // ]);
@@ -105,10 +102,14 @@ class CartController extends Controller
                         ]);
                     }
                 } else {
-                    dd('chưa đăng nhập 2');
+                    // dd('chưa đăng nhập 2');
+                    session()->flash('error', 'Yêu cầu đăng nhập để sử dụng chức năng giỏ hàng.');
+                    return redirect()->back();
                 }
             }
-            dd('chưa đăng nhập');
+            // dd('chưa đăng nhập');
+            session()->flash('error', 'Yêu cầu đăng nhập để sử dụng chức năng giỏ hàng.');
+            return redirect()->back();
         } catch (\Exception $e) {
             dd($e);
         }
