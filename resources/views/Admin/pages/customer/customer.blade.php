@@ -34,13 +34,12 @@
                             </form>
                         </div>
                         {{-- <div class="col-4">
-
+                            đây là ví dụ
                             <a href="{{ route('categoryCreate') }}"> <button type="button"
                                     class="btn btn-primary m-1 float-end" title="Thêm mới danh mục"><i
                                         class="ti ti-plus"></i></button></a>
                         </div> --}}
                     </div>
-                    {{-- <p class="mb-0">This is a sample page </p> --}}
                 </div>
             </div>
         </div>
