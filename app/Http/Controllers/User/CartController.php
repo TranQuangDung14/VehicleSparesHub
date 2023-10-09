@@ -29,17 +29,29 @@ class CartController extends Controller
         $data['category'] = $this->indexController->this_cate();
         $data['userName'] = $this->indexController->userName();
         $data['message'] = 'Giỏ hàng của bạn hiện đang trống!';
-        $data['cart'] = auth()->user()->cart;
-        if (!$data['cart']) {
-            // dd($cart);
-            // return response()->json([
-            //     'message' => 'Giỏ hàng của bạn hiện đang trống!'
-            // ]);
-            // $data['message']= 'Giỏ hàng của bạn hiện đang trống!';
-            // dd( $data['cart']);
-            return view('User.pages.cart.cart', compact('data'));
+
+        if (auth()->check()) {
+            $user = auth()->user();
+            if ($user->cart) {
+                $data['cart'] = $user->cart;
+                $data['cart']->load('cartDetails.product.images');
+            } else {
+                // Nếu không có giỏ hàng, bạn có thể xử lý theo cách khác ở đây
+                $data['cart'] = null;
+            }
+        } else {
+            // Nếu người dùng chưa đăng nhập, bạn cũng cần xử lý theo cách khác ở đây
+            session()->flash('error', 'Yêu cầu đăng nhập để sử dụng chức năng giỏ hàng.');
+            return redirect()->back();
+
+            // $data['cart'] = null;
         }
-        $data['cart']->load('cartDetails.product.images');
+        // $data['cart'] = auth()->user()->cart;
+        // if (!$data['cart']) {
+
+        //     return view('User.pages.cart.cart', compact('data'));
+        // }
+        // $data['cart']->load('cartDetails.product.images');
         // dd( $data['cart']);
         return view('User.pages.cart.cart', compact('data'));
     }

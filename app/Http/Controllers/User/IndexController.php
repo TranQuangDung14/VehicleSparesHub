@@ -21,9 +21,9 @@ class IndexController extends Controller
     {
 
         $data['userName']=$this->userName();
-        $data['product_selling'] = Products::with('images')->where('selling', 1)->get();
+        $data['product_selling'] = Products::with('images')->where('selling', 1)->where('quantity','>',0)->get();
         $data['category'] = $this->this_cate();
-        // dd($data);
+        // dd($data['product_selling']);
         return view('User.pages.index.index', compact('data'));
         // return view('Admin.pages.products.product_list', compact('product'));
     }
@@ -31,7 +31,7 @@ class IndexController extends Controller
     {
         $data['category'] = Categories::with([
             'products' => function ($query) {
-                $query->with('images')->distinct();
+                $query->with('images')->where('quantity','>',0)->distinct();
             }
         ])->take(3)->get();
 
@@ -65,9 +65,9 @@ class IndexController extends Controller
         //
         try {
             $data['userName']=$this->userName();
-            $data['product_selling'] = Products::with('images')->where('selling', 1)->get();
-            $data['detail'] = Products::with('images', 'category')->find($id);
-            $data['product_related'] = Products::with('images')->where('category_id', $data['detail']->category_id)->get();
+            $data['product_selling'] = Products::with('images')->where('selling', 1)->where('quantity','>',0)->get();
+            $data['detail'] = Products::with('images', 'category')->where('quantity','>',0)->find($id);
+            $data['product_related'] = Products::with('images')->where('category_id', $data['detail']->category_id)->where('quantity','>',0)->get();
 
             $data['category'] = $this->this_cate();
 
@@ -93,7 +93,7 @@ class IndexController extends Controller
             // $data['products'] = $category->products()->paginate($perPage);
             //    $data['product']=  $data['category_product']->products()->paginate(1);
 
-            $data['product'] = Products::with(['category', 'images'])->where('category_id', $id)->orderBy('id', 'desc')->paginate(8);
+            $data['product'] = Products::with(['category', 'images'])->where('category_id', $id)->orderBy('id', 'desc')->where('quantity','>',0)->paginate(8);
             //  dd($data['product']);
             // $category = Categories::where('name','LIKE', '%' . $request->search . '%')->orderBy('id','desc')->paginate(10);
             return view('User.pages.category_product.category_product', compact('data'));

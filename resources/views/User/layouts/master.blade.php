@@ -1215,10 +1215,20 @@
 <body data-rsssl=1
     class="home page-template page-template-page-blank page-template-page-blank-php page page-id-2 theme-flatsome ot-vertical-menu woocommerce-no-js lightbox nav-dropdown-has-arrow nav-dropdown-has-shadow nav-dropdown-has-border">
     <a class="skip-link screen-reader-text" href="#main">Skip to content</a>
+    @if (session('error'))
+    <div class="alert alert-danger" style="color: white">
+        {{ session('error') }}
+        <span type="button" class="X-close float-end"  data-dismiss="alert" aria-label="Close">
+            {{-- <i class="ti ti-x"></i> --}}X
+        </span>
+    </div>
+    @endif
+    <script src="{{ asset('Admin/') }}/js/main.js"></script>
     <div id="wrapper">
         <header id="header" class="header ">
             @include('User.partial.header')
         </header>
+
         <!-- main ở đây -->
         <main id="main" class="">
                 @yield('content')
@@ -2003,7 +2013,7 @@
         src='https://agc18.com.vn/wp-content/plugins/woocommerce/assets/js/frontend/password-strength-meter.min.js?ver=8.1.1'
         id='wc-password-strength-meter-js'>
     </script>
-
+  {{-- <script src="{{ asset('Admin/') }}/js/main.js"></script> --}}
 </body>
 
 </html>
