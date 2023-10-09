@@ -70,13 +70,23 @@
                                                             class="woocommerce-Price-amount amount"><bdi>{{ number_format($selling->price, 0, '.', ',') }}<span
                                                                     class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span></span>
                                                 </div>
-                                                <div class="add-to-cart-button"><a href="?add-to-cart=3326"
-                                                        data-quantity="1"
-                                                        class="primary is-small mb-0 button product_type_simple add_to_cart_button ajax_add_to_cart is-outline"
-                                                        data-product_id="3326" data-product_sku="LG- 101"
-                                                        aria-label="Thêm &ldquo;Lót ghế xe hơi LG – 101&rdquo; vào giỏ hàng"
-                                                        aria-describedby="" rel="nofollow">Thêm vào giỏ hàng</a>
-                                                </div>
+
+                                                <form action="{{ route('AddCart') }}" method="POST"
+                                                    enctype="multipart/form-data">
+                                                    @csrf
+                                                    <input type="hidden" name="product_id" value="{{ $selling->id }}">
+                                                    <input type="hidden" name="quantity" value="1">
+                                                    <button
+                                                        class="primary is-small mb-0 button product_type_simple add_to_cart_button ajax_add_to_cart is-outline">Thêm
+                                                        vào giỏ hàng</button>
+                                                    {{-- <div class="add-to-cart-button">
+                                                        <a href="?add-to-cart=3326" data-quantity="1"
+                                                            class="primary is-small mb-0 button product_type_simple add_to_cart_button ajax_add_to_cart is-outline"
+                                                            data-product_id="3326" data-product_sku="LG- 101"
+                                                            aria-label="Thêm &ldquo;Lót ghế xe hơi LG – 101&rdquo; vào giỏ hàng"
+                                                            aria-describedby="" rel="nofollow">Thêm vào giỏ hàng</a>
+                                                    </div> --}}
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
@@ -222,38 +232,28 @@
 
                                 </div>
 
-                                <form class="cart"
-                                    action="https://agc18.com.vn/san-pham/binh-xit-khu-mui-ozium-air-sanitizer-spray-0-8-oz-22-6g-citrus/"
-                                    method="post" enctype='multipart/form-data'>
-
+                                <form action="{{ route('AddCart') }}" method="POST" enctype="multipart/form-data">
+                                    @csrf
                                     <div class="quantity buttons_added">
                                         <input type="button" value="-" class="minus button is-form">
-                                        {{-- <label
-                                            class="screen-reader-text" for="quantity_650ab6e6281ed">Bình xịt khử
-                                            mùi Ozium Air Sanitizer Spray 0.8 oz (22.6g) Hương Citrus số
-                                            lượng</label> --}}
                                         <input type="number" id="quantity_650ab6e6281ed" class="input-text qty text"
                                             step="1" min="1" max="" name="quantity" value="1"
                                             title="SL" size="4" placeholder="" inputmode="numeric" />
                                         <input type="button" value="+" class="plus button is-form">
                                     </div>
-
-                                    <button type="submit" name="add-to-cart" value="4657"
+                                    <input type="hidden" name="product_id"
+                                    value="{{ $data['detail']->id }}">
+                                {{-- <input type="hidden" name="quantity" value="1"> --}}
+                                    <button type="submit" name="add-to-cart"
                                         class="single_add_to_cart_button button alt">Thêm vào giỏ hàng</button>
 
                                 </form>
 
 
                                 <div class="product_meta">
-
-
-
                                     <span class="sku_wrapper">Mã: <span class="sku">AGC - 102</span></span>
-
-
                                     <span class="posted_in">Danh mục: <a href="#"
                                             rel="tag">{{ $data['detail']->category->name }}</a>,
-
                                         <br>
                                         <span class="tagged_as">Thông số:
                                             <a href="https://agc18.com.vn/tu-khoa/binh-xit/"

@@ -1219,7 +1219,7 @@
     <div class="alert alert-danger" style="color: white">
         {{ session('error') }}
         <span type="button" class="X-close float-end"  data-dismiss="alert" aria-label="Close">
-            {{-- <i class="ti ti-x"></i> --}}X
+            {{-- <i class="ti ti-x"></i> --}}
         </span>
     </div>
     @endif
