@@ -34,7 +34,7 @@
                             </form>
                         </div>
                         {{-- <div class="col-4">
-
+                            đây là ví dụ
                             <a href="{{ route('categoryCreate') }}"> <button type="button"
                                     class="btn btn-primary m-1 float-end" title="Thêm mới danh mục"><i
                                         class="ti ti-plus"></i></button></a>
