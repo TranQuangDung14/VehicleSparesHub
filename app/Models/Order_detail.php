@@ -9,4 +9,14 @@ class Order_detail extends Model
 {
     use HasFactory;
     protected $table = 'vs_order_detail';
+
+    public function order()
+    {
+        // return $this->belongsTo(Order::class);
+        return $this->belongsTo(Orders::class);
+    }
+    public function product()
+    {
+        return $this->belongsTo(Products::class);
+    }
 }
