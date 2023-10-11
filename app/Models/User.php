@@ -48,6 +48,10 @@ class User extends Authenticatable
     {
         return $this->hasOne(Carts::class, 'customer_id');
     }
+    public function customer()
+    {
+        return $this->hasOne(Customers::class, 'user_id');
+    }
     // public function order()
     // {
     //     return $this->hasMany(Orders::class, 'customer_id');

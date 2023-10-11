@@ -186,8 +186,12 @@
                                 <div class="is-divider small"></div>
                                 Mã Sản Phẩm: {{ $data['detail']->id }}<div class="price-wrapper">
                                     <p class="price product-page-price ">
-                                        <span class="woocommerce-Price-amount amount"><bdi>{{ number_format($data['detail']->price, 0, '.', ',') }}<span
-                                                    class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span>
+                                        <span class="woocommerce-Price-amount amount">
+                                            <bdi>
+                                                {{ number_format($data['detail']->price, 0, '.', ',') }}
+                                                <span class="woocommerce-Price-currencySymbol">&#8363;</span>
+                                            </bdi>
+                                        </span>
                                     </p>
                                 </div>
                                 <div class="product-short-description">
@@ -241,9 +245,8 @@
                                             title="SL" size="4" placeholder="" inputmode="numeric" />
                                         <input type="button" value="+" class="plus button is-form">
                                     </div>
-                                    <input type="hidden" name="product_id"
-                                    value="{{ $data['detail']->id }}">
-                                {{-- <input type="hidden" name="quantity" value="1"> --}}
+                                    <input type="hidden" name="product_id" value="{{ $data['detail']->id }}">
+                                    {{-- <input type="hidden" name="quantity" value="1"> --}}
                                     <button type="submit" name="add-to-cart"
                                         class="single_add_to_cart_button button alt">Thêm vào giỏ hàng</button>
 

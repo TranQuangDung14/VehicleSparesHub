@@ -139,9 +139,7 @@
                                                         </tr>
                                                     </thead>
                                                 </table>
-
                                                 <h2>Cộng giỏ hàng</h2>
-
                                                 <table cellspacing="0" class="shop_table shop_table_responsive">
 
                                                     <tr class="cart-subtotal">
@@ -163,25 +161,17 @@
                                                         </td>
                                                     </tr>
                                                 </table>
-
                                                 <div class="wc-proceed-to-checkout">
-
-                                                    <a href="#" class="checkout-button button alt wc-forward">
+                                                    <a href="{{ route('Order') }}" class="checkout-button button alt wc-forward">
                                                         Tiến hành thanh toán</a>
                                                 </div>
-
-
                                             </div>
                                             <div class="cart-sidebar-content relative"></div>
                                         </div>
-
                                     </div>
                                 </div>
-
                                 <div class="cart-footer-content after-cart-content relative"></div>
                             </div>
-
-
                         </div>
                     </div>
                 </div>
@@ -191,9 +181,6 @@
                 <div class="row row-main">
                     <div class="large-12 col">
                         <div class="col-inner">
-
-
-
                             <div class="woocommerce">
                                 <div class="text-center pt pb">
                                     <div class="woocommerce-notices-wrapper"></div>

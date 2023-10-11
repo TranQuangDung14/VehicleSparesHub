@@ -11,6 +11,23 @@ use Illuminate\Http\Request;
 class Order_UserController extends Controller
 {
     //
+    protected $indexController;
+
+    public function __construct(IndexController $indexController)
+    {
+        $this->indexController = $indexController;
+    }
+    public function index()
+    {
+        $data['category'] = $this->indexController->this_cate();
+        $data['userName'] = $this->indexController->userName();
+        $data['customer']     =   auth()->user()->customer;
+        $data['cart'] = auth()->user()->cart;
+        $data['cart']->load('cartDetails.product.images');
+        // dd($data['cart']);
+        return view('User.pages.checkout.checkout', compact('data'));
+    }
+
     public function store(Request $request)
     {
         try {
@@ -21,33 +38,31 @@ class Order_UserController extends Controller
                     'message' => 'Giỏ hàng của bạn hiện đang trống!'
                 ]);
             }
-            $maxId = Orders::max('id') + 1;
-            $code_order = 'MDH_' . $maxId;
+            // $maxId = Orders::max('id') + 1;
+            // $code_order = 'MDH_' . $maxId;
 
             // Tạo đơn hàng và các chi tiết đơn hàng
             $order = Orders::create([
-                'customer_id' => $cart->customer_id,
-                'code_order' => $code_order,
-                'payment_method' => $request->payment_method,
-                'total_money' => $cart->real_money,
-                'shipping_fee' => $request->shipping_fee,
-                'receiver_name' => $request->receiver_name,
-                'number_phone' => $request->number_phone,
-                'receiver_address' => $request->receiver_address,
-                'ward_id' => $request->ward_id,
-                'districts_id' => $request->districts_id,
-                'provinces_id' => $request->provinces_id,
+                'customer_id'       => $cart  ->customer_id, // id khách hàng
+                // 'code_order'        => $code_order, // mã đơn hàng
+                // 'payment_method'    => $request->payment_method,
+                'total_money'       => $cart   ->real_money, // tổng tiền
+                'shipping_fee'      => $request->shipping_fee, // phí vận chuyển 
+                'receiver_name'     => $request->receiver_name, // Tên người nhân
+                'number_phone'      => $request->number_phone, // Số điện thoại
+                'receiver_address'  => $request->receiver_address, // địa chỉ giao
+                'note'              => $request->note,
                 // 'status' => 1,
                 // 'delivery_date' => $cart->delivery_date,
             ]);
 
             foreach ($cart->cartDetails as $cartDetail) {
                 Order_detail::create([
-                    'order_id' => $order->id,
-                    'product_id' => $cartDetail->product_id,
-                    'price' => $cartDetail->price_by_quantity,
-                    'quantity' => $cartDetail->quantity,
-                    'discount' => $cartDetail->discount,
+                    'order_id'      => $order->id,
+                    'product_id'    => $cartDetail->product_id,
+                    'price'         => $cartDetail->price_by_quantity,
+                    'quantity'      => $cartDetail->quantity,
+                    // 'discount'      => $cartDetail->discount,
                 ]);
             }
 
@@ -57,14 +72,14 @@ class Order_UserController extends Controller
 
             // Trả về response thành công
             return response()->json([
-                'message' => 'Đặt hàng thành công.',
-                'order_id' => $order->id,
+                'message'   => 'Đặt hàng thành công.',
+                'order_id'  => $order->id,
             ]);
         } catch (\Exception $e) {
             dd($e);
             return response()->json([
-                'message' => 'Đã xảy ra lỗi khi thực hiện đặt hàng.',
-                'error' => $e->getMessage(),
+                'message'   => 'Đã xảy ra lỗi khi thực hiện đặt hàng.',
+                'error'     => $e->getMessage(),
             ], 500);
         }
     }
