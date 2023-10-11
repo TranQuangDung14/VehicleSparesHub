@@ -10,6 +10,11 @@ class Customers extends Model
     use HasFactory;
     protected $table = 'vs_customer';
 
+    public function user()
+    {
+        return $this->hasOne(User::class, 'user_id');
+    }
+    
     protected $fillable = [
         'name',
         'user_id',

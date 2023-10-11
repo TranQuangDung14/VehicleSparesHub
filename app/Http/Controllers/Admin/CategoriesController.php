@@ -56,9 +56,9 @@ class CategoriesController extends Controller
         }
         DB::beginTransaction();
         try {
-            $category = new Categories();
-            $category->name = $request->name;
-            $category->description = $request->description ?? null;
+            $category               = new Categories();
+            $category->name         = $request->name;
+            $category->description  = $request->description ?? null;
             $category->save();
             DB::commit();
 
@@ -104,9 +104,9 @@ class CategoriesController extends Controller
         }
         DB::beginTransaction();
         try {
-            $category = Categories::find($id);
-            $category->name = $request->name;
-            $category->description = $request->description ?? null;
+            $category               = Categories::find($id);
+            $category->name         = $request->name;
+            $category->description  = $request->description ?? null;
             $category->update();
             DB::commit();
             session()->flash('success', 'Cập nhật thành công!');

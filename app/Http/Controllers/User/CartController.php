@@ -28,7 +28,7 @@ class CartController extends Controller
     {
         $data['category'] = $this->indexController->this_cate();
         $data['userName'] = $this->indexController->userName();
-        $data['message'] = 'Giỏ hàng của bạn hiện đang trống!';
+        $data['message']  = 'Giỏ hàng của bạn hiện đang trống!';
 
         if (auth()->check()) {
             $user = auth()->user();
@@ -79,11 +79,11 @@ class CartController extends Controller
                                 'price_by_quantity' => $cartDetail->product->price * ($cartDetail->quantity + $request->quantity),
                             ]);
                         } else {
-                            $product = Products::findOrFail($request->product_id);
-                            $priceByQuantity = $product->price * $request->quantity;
-                            $cartDetail = new Cart_detail([
-                                'product_id' => $request->product_id,
-                                'quantity' => $request->quantity,
+                            $product                = Products::findOrFail($request->product_id);
+                            $priceByQuantity        = $product->price * $request->quantity;
+                            $cartDetail             = new Cart_detail([
+                                'product_id'        => $request->product_id,
+                                'quantity'          => $request->quantity,
                                 'price_by_quantity' => $priceByQuantity,
                             ]);
                             // dd()

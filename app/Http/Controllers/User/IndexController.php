@@ -64,12 +64,12 @@ class IndexController extends Controller
     {
         //
         try {
-            $data['userName']=$this->userName();
+            $data['userName']        = $this->userName();
             $data['product_selling'] = Products::with('images')->where('selling', 1)->where('quantity','>',0)->get();
-            $data['detail'] = Products::with('images', 'category')->where('quantity','>',0)->find($id);
+            $data['detail']          = Products::with('images', 'category')->where('quantity','>',0)->find($id);
             $data['product_related'] = Products::with('images')->where('category_id', $data['detail']->category_id)->where('quantity','>',0)->get();
 
-            $data['category'] = $this->this_cate();
+            $data['category']        = $this->this_cate();
 
             // dd($data['detail']);
             return view('User.pages.detail.detail', compact('data'));
@@ -87,13 +87,13 @@ class IndexController extends Controller
     {
         //
         try {
-            $data['category_product'] = Categories::find($id);
-            $data['userName']=$this->userName();
-            $data['category'] = $this->this_cate();
+            $data['category_product']   = Categories::find($id);
+            $data['userName']           = $this->userName();
+            $data['category']           = $this->this_cate();
             // $data['products'] = $category->products()->paginate($perPage);
             //    $data['product']=  $data['category_product']->products()->paginate(1);
 
-            $data['product'] = Products::with(['category', 'images'])->where('category_id', $id)->orderBy('id', 'desc')->where('quantity','>',0)->paginate(8);
+            $data['product']            = Products::with(['category', 'images'])->where('category_id', $id)->orderBy('id', 'desc')->where('quantity','>',0)->paginate(8);
             //  dd($data['product']);
             // $category = Categories::where('name','LIKE', '%' . $request->search . '%')->orderBy('id','desc')->paginate(10);
             return view('User.pages.category_product.category_product', compact('data'));
@@ -112,8 +112,8 @@ class IndexController extends Controller
     public function Introduce()
     {
         //
-        $data['category'] = $this->this_cate();
-        $data['userName']=$this->userName();
+        $data['category']   = $this->this_cate();
+        $data['userName']   = $this->userName();
         // dd($this->this_cate());
         return view('User.pages.introduce.introduce', compact('data'));
     }
@@ -125,8 +125,8 @@ class IndexController extends Controller
     public function Cooperation_policy()
     {
         //
-        $data['category'] = $this->this_cate();
-        $data['userName']=$this->userName();
+        $data['category']   = $this->this_cate();
+        $data['userName']   = $this->userName();
         return view('User.pages.cooperation_policy.cooperation_policy', compact('data'));
     }
     /**
@@ -137,8 +137,8 @@ class IndexController extends Controller
     public function Contact()
     {
         //
-        $data['category'] = $this->this_cate();
-        $data['userName']=$this->userName();
+        $data['category']   = $this->this_cate();
+        $data['userName']   = $this->userName();
         return view('User.pages.contact.contact', compact('data'));
     }
     /**
@@ -149,8 +149,8 @@ class IndexController extends Controller
     public function News()
     {
         //
-        $data['category'] = $this->this_cate();
-        $data['userName']=$this->userName();
+        $data['category']   = $this->this_cate();
+        $data['userName']   = $this->userName();
         return view('User.pages.news.news', compact('data'));
     }
 

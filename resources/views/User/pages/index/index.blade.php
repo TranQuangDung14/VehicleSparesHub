@@ -238,13 +238,12 @@
                                                             value="{{ $selling->id }}">
                                                         <input type="hidden" name="quantity" value="1">
                                                         <button
-                                                            class="primary is-small mb-0 button product_type_simple add_to_cart_button ajax_add_to_cart is-outline add-to-cart-button">Thêm
-                                                            vào giỏ hàng</button>
+                                                            class="primary is-small mb-0 button product_type_simple add_to_cart_button ajax_add_to_cart is-outline add-to-cart-button">
+                                                            Thêm vào giỏ hàng</button>
                                                     </form>
                                                 @endif
                                             </div>
                                         </div>
-
                                     </div>
                                 </div>
                             @endforeach

@@ -143,14 +143,14 @@ class ProductsController extends Controller
         DB::beginTransaction();
         try {
             // dd($request->all());
-            $product = Products::findOrFail($id);
-            $product->category_id = $request->category_id;
-            $product->name = $request->name;
-            $product->price = $request->price;
+            $product                    = Products::findOrFail($id);
+            $product->category_id       = $request->category_id;
+            $product->name              = $request->name;
+            $product->price             = $request->price;
             $product->short_description = $request->short_description ?? null;
-            $product->description = $request->description ?? null;
-            $product->tech_specs = $request->tech_specs ?? null;
-            $product->quantity = $request->quantity ?? null;
+            $product->description       = $request->description ?? null;
+            $product->tech_specs        = $request->tech_specs ?? null;
+            $product->quantity          = $request->quantity ?? null;
 
             $product->update();
             if ($request->hasFile('image')) {
@@ -264,8 +264,8 @@ class ProductsController extends Controller
             } else {
                 $status = 0;
             }
-            $product = Products::find($request->id);
-            $product->selling = $status;
+            $product            = Products::find($request->id);
+            $product->selling   = $status;
             $product->save();
             return response()->json($product);
         } catch (\Exception $e) {

@@ -3,6 +3,7 @@
 use App\Http\Controllers\User\auth\authController;
 use App\Http\Controllers\User\CartController;
 use App\Http\Controllers\User\IndexController;
+use App\Http\Controllers\User\Order_UserController;
 use Illuminate\Support\Facades\Route;
 include __DIR__.'/admin.php';
 /*
@@ -51,4 +52,7 @@ Route::post('/cart-add', [CartController::class, 'addProduct'])->name('AddCart')
 Route::delete('/cart-remove/{cartDetail}', [CartController::class, 'removeProduct'])->name('DeleteCart');
 
 Route::post('/cart-edit-quantity', [CartController::class, 'updateQuantity'])->name('UpdateQuantityCart');
+
+// thanh toán
+Route::get('thanh_toan', [Order_UserController::class, 'index'])->name('Order');
 
