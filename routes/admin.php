@@ -25,12 +25,12 @@ Route::prefix('admin')->group(function () {
         Route::post('logout', [AuthController::class, 'logout'])->name('logout');
     // });
     // bảng điều khiển
-    Route::prefix('dashboard')->middleware('auth')->group(function () {
+    Route::prefix('dashboard')->middleware('auth','admin')->group(function () {
         Route::get('', [DashboardController::class, 'index'])->name('dashboardIndex');
     });
 
     // danh mục
-    Route::prefix('Categories')->middleware('auth')->group(function () {
+    Route::prefix('Categories')->middleware('auth','admin')->group(function () {
         Route::get('', [CategoriesController::class, 'index'])->name('categoryIndex');
         Route::get('add', [CategoriesController::class, 'create'])->name('categoryCreate');
         Route::post('add', [CategoriesController::class, 'store'])->name('categoryStore');
@@ -40,7 +40,7 @@ Route::prefix('admin')->group(function () {
     });
 
     // sản phẩm
-    Route::prefix('Products')->middleware('auth')->group(function () {
+    Route::prefix('Products')->middleware('auth','admin')->group(function () {
         Route::get('', [ProductsController::class, 'index'])->name('productIndex');
         Route::get('add', [ProductsController::class, 'create'])->name('productCreate');
         Route::post('add', [ProductsController::class, 'store'])->name('productStore');
@@ -52,7 +52,7 @@ Route::prefix('admin')->group(function () {
     });
 
         // khách hàng
-        Route::prefix('Customer')->middleware('auth')->group(function () {
+        Route::prefix('Customer')->middleware('auth','admin')->group(function () {
             Route::get('', [CustomerController::class, 'index'])->name('customerIndex');
             // Route::get('add', [CustomerController::class, 'create'])->name('customerCreate');
             // Route::post('add', [CustomerController::class, 'store'])->name('customerStore');
