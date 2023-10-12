@@ -22,7 +22,7 @@ class CreateVsOrderTable extends Migration
             $table->string("receiver_name",200)->nullable(); // Tên người nhận
             $table->string("number_phone",20)->nullable();//số điện thoại người nhận
             $table->string("receiver_address",200)->nullable();//địa chỉ chi tiết
-            // $table->integer("status")->default(1);
+            $table->integer("status")->default(1);
             $table->text("note")->nullable();
             $table->timestamps();
         });

@@ -18,9 +18,10 @@
             </div>
         </div>
         @if (session('error'))
-        <div class="alert alert-danger">
+        <div class="alert alert-danger" id="error-alert">
             {{ session('error') }}
-            <span type="button" class="X-close float-end" data-dismiss="alert" aria-label="Close">
+                {{-- <span type="button" class="X-close float-end" data-dismiss="alert" aria-label="Close"> --}}
+                <span type="button" class="X-close float-end" data-dismiss="alert" aria-label="Close">
                 <i class="ti ti-x"></i>
             </span>
         </div>

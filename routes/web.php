@@ -55,4 +55,5 @@ Route::post('/cart-edit-quantity', [CartController::class, 'updateQuantity'])->n
 
 // thanh toán
 Route::get('thanh_toan', [Order_UserController::class, 'index'])->name('Order');
+Route::post('/checkout', [Order_UserController::class, 'store'])->name('checkout');
 

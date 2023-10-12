@@ -102,25 +102,27 @@
                         </li>
                     @endif
 
-                    <li class="cart-item has-icon has-dropdown">
+                    <li class="cart-item has-icon ">
 
                         <a href="{{ route('Cart') }}" title="Giỏ hàng" class="header-cart-link is-small">
                             <span class="header-cart-title">
-                                Giỏ hàng / <span class="cart-price"><span
+                                Giỏ hàng
+                                 {{-- <span class="cart-price"><span
                                         class="woocommerce-Price-amount amount"><bdi>0<span
-                                                class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span></span>
+                                                class="woocommerce-Price-currencySymbol">&#8363;</span>
+                                            </bdi></span></span> --}}
                             </span>
                             <i class="icon-shopping-cart" data-icon-label="0">
                             </i>
                         </a>
-                        <ul class="nav-dropdown nav-dropdown-simple">
+                        {{-- <ul class="nav-dropdown nav-dropdown-simple">
                             <li class="html widget_shopping_cart">
                                 <div class="widget_shopping_cart_content">
                                     <p class="woocommerce-mini-cart__empty-message">Chưa có sản phẩm trong
                                         giỏ hàng.</p>
                                 </div>
                             </li>
-                        </ul>
+                        </ul> --}}
 
                     </li>
                 </ul>
