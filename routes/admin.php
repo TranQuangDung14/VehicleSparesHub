@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\auth\AuthController;
 use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\Admin\Testcontroller;
 use Illuminate\Support\Facades\Route;
@@ -52,14 +53,24 @@ Route::prefix('admin')->group(function () {
     });
 
         // khách hàng
-        Route::prefix('Customer')->middleware('auth','admin')->group(function () {
-            Route::get('', [CustomerController::class, 'index'])->name('customerIndex');
-            // Route::get('add', [CustomerController::class, 'create'])->name('customerCreate');
-            // Route::post('add', [CustomerController::class, 'store'])->name('customerStore');
-            Route::get('edit/{id}', [CustomerController::class, 'edit'])->name('customerEdit');
-            Route::get('update/{id}', [CustomerController::class, 'update'])->name('customerUpdate');
-            // Route::delete('delete/{id}', [CustomerController::class, 'delete'])->name('customerDelete');
-        });
+    Route::prefix('Customer')->middleware('auth','admin')->group(function () {
+        Route::get('', [CustomerController::class, 'index'])->name('customerIndex');
+        // Route::get('add', [CustomerController::class, 'create'])->name('customerCreate');
+        // Route::post('add', [CustomerController::class, 'store'])->name('customerStore');
+        Route::get('edit/{id}', [CustomerController::class, 'edit'])->name('customerEdit');
+        Route::get('update/{id}', [CustomerController::class, 'update'])->name('customerUpdate');
+        // Route::delete('delete/{id}', [CustomerController::class, 'delete'])->name('customerDelete');
+    });
+
+            // danh mục
+    Route::prefix('order')->middleware('auth','admin')->group(function () {
+        Route::get('', [OrderController::class, 'index'])->name('orderIndex');
+        // Route::get('add', [CategoriesController::class, 'create'])->name('categoryCreate');
+        // Route::post('add', [CategoriesController::class, 'store'])->name('categoryStore');
+        // Route::get('edit/{id}', [CategoriesController::class, 'edit'])->name('categoryEdit');
+        // Route::get('update/{id}', [CategoriesController::class, 'update'])->name('categoryUpdate');
+        // Route::delete('delete/{id}', [CategoriesController::class, 'delete'])->name('categoryDelete');
+    });
 });
 
 
