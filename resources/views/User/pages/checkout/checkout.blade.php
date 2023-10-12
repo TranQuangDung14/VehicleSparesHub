@@ -10,7 +10,9 @@
                 <div class="col-inner">
                     <div class="woocommerce">
                         <div class="woocommerce-notices-wrapper"></div>
-                        <form name="checkout" method="post" class="checkout woocommerce-checkout "  action="#" enctype="multipart/form-data">
+                        {{-- <form name="checkout" method="post" class="checkout woocommerce-checkout "  action="#" enctype="multipart/form-data"> --}}
+                        <form action="{{ route('checkout') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
                             <div class="row pt-0 ">
                                 <div class="large-7 col  ">
                                     <div id="customer_details">
@@ -23,7 +25,7 @@
                                                         <label for="billing_first_name" class="">Tên&nbsp;
                                                             <abbr class="required" title="bắt buộc">*</abbr></label>
                                                         <span class="woocommerce-input-wrapper">
-                                                            <input  type="text"class="input-text " name="name"  id="name"  value="{{ $data['customer']  ->name}}"  /></span>
+                                                            <input  type="text"class="input-text " name="receiver_name"  id="receiver_name"  value="{{ $data['customer']  ->name}}"  /></span>
                                                     </p>
                                                     <p class="form-row address-field form-row-wide validate-required"   id="billing_address_1_field" data-priority="50">
                                                         <label for="billing_address_1" class="">
@@ -36,7 +38,7 @@
                                                         <label for="billing_phone" class="">
                                                             Số điện thoại&nbsp;
                                                             <abbr class="required" title="bắt buộc">*</abbr>
-                                                        </label> 
+                                                        </label>
                                                         <span class="woocommerce-input-wrapper">
                                                             <input type="number" class="input-text " name="number_phone" id="number_phone" placeholder="" value="{{ $data['customer']->number_phone}}" utocomplete="tel" /></span></p>
                                                 </div>
@@ -88,8 +90,6 @@
                                                     <tbody>
                                                         @foreach ( $data['cart']->cartDetails as $cart_detai)
                                                         <tr class="cart_item">
-                                                                
-                                                           
                                                             <td class="product-name">
                                                                 {{$cart_detai->product->name }}   <strong
                                                                     class="product-quantity">&times;&nbsp;{{$cart_detai->quantity}}</strong>
@@ -121,7 +121,7 @@
                                                     </tfoot>
                                                 </table>
                                                 <div id="payment" class="woocommerce-checkout-payment">
-                                                    <ul class="wc_payment_methods payment_methods methods">
+                                                    {{-- <ul class="wc_payment_methods payment_methods methods">
                                                         <li class="wc_payment_method payment_method_cod">
                                                             <input id="payment_method_cod" type="radio"
                                                                 class="input-radio" name="payment_method" value="cod"
@@ -134,53 +134,14 @@
                                                                     bưu điện</p>
                                                             </div>
                                                         </li>
-                                                        <li class="wc_payment_method payment_method_bacs">
-                                                            <input id="payment_method_bacs" type="radio"
-                                                                class="input-radio" name="payment_method" value="bacs"
-                                                                data-order_button_text="" />
-
-                                                            <label for="payment_method_bacs">
-                                                                Chuyển khoản ngân hàng </label>
-                                                            <div class="payment_box payment_method_bacs"
-                                                                style="display:none;">
-                                                                <p>Thông tin chuyển khoản<br />
-                                                                    Chủ tài khoản: Phan Đức Thuận.<br />
-                                                                    140 247 608 30010: NH Techcombank, chi nhánh
-                                                                    Phong Phú, Tp. HCM<br />
-                                                                    170 220 519 01232: NH Agribank, chi nhánh 9,
-                                                                    Tp. HCM<br />
-                                                                    060 107 957 203: NH Sacombank, quận 8, Tp.
-                                                                    HCM.<br />
-                                                                    Tiền ship quý khách vui lòng thanh toán theo
-                                                                    cước của Bưu điện</p>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                    <div class="form-row place-order">
-                                                        {{-- <noscript>
-                                                            Trình duyệt của bạn không hỗ trợ JavaScript, hoặc nó
-                                                            bị vô hiệu hóa, hãy đảm bảo bạn nhấp vào <em>Cập
-                                                                nhật giỏ hàng</em> trước khi bạn thanh toán. Bạn
-                                                            có thể phải trả nhiều hơn số tiền đã nói ở trên, nếu
-                                                            bạn không làm như vậy. <br /><button type="submit"
-                                                                class="button alt"
-                                                                name="woocommerce_checkout_update_totals"
-                                                                value="Cập nhật tổng">Cập nhật tổng</button>
-                                                        </noscript> --}}
-
+                                                    </ul> --}}
+                                                    <div class="form-row place-order" style="display: flex;
+                                                    flex-direction: column;
+                                                    align-items: center;
+                                                    justify-content: center; ">
                                                         <div class="woocommerce-terms-and-conditions-wrapper">
-
                                                         </div>
-
-
-                                                        <button type="submit" class="button alt"
-                                                            name="woocommerce_checkout_place_order" id="place_order"
-                                                            value="Đặt hàng" data-value="Đặt hàng">Đặt hàng</button>
-
-                                                        <input type="hidden" id="woocommerce-process-checkout-nonce"
-                                                            name="woocommerce-process-checkout-nonce"
-                                                            value="afc07cdb96" /><input type="hidden"
-                                                            name="_wp_http_referer" value="/thanh-toan/" />
+                                                        <button type="submit" class="button alt" >Đặt hàng</button>
                                                     </div>
                                                 </div>
                                             </div>

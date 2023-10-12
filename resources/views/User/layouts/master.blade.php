@@ -1215,7 +1215,14 @@
 <body data-rsssl=1
     class="home page-template page-template-page-blank page-template-page-blank-php page page-id-2 theme-flatsome ot-vertical-menu woocommerce-no-js lightbox nav-dropdown-has-arrow nav-dropdown-has-shadow nav-dropdown-has-border">
     <a class="skip-link screen-reader-text" href="#main">Skip to content</a>
-    @if (session('error'))
+    @if (session('success'))
+    <div class="alert alert-success" id="success-alert" style="background-color: #33FF00">
+        {{ session('success') }}
+        <span type="button" class="X-close float-end" data-dismiss="alert" aria-label="Close">
+            {{-- <span aria-hidden="true">&times;</span><i class="ti ti-x"></i> --}}
+        </span>
+    </div>
+    @elseif (session('error'))
     <div class="alert alert-danger" style="color: white">
         {{ session('error') }}
         <span type="button" class="X-close float-end"  data-dismiss="alert" aria-label="Close">
