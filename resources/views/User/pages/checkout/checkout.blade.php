@@ -3,7 +3,6 @@
 @section('title', 'Thanh toán')
 
 @section('content')
-
     <div id="content" class="content-area page-wrapper" role="main">
         <div class="row row-main">
             <div class="large-12 col">
@@ -25,14 +24,14 @@
                                                         <label for="billing_first_name" class="">Tên&nbsp;
                                                             <abbr class="required" title="bắt buộc">*</abbr></label>
                                                         <span class="woocommerce-input-wrapper">
-                                                            <input  type="text"class="input-text " name="receiver_name"  id="receiver_name"  value="{{ $data['customer']  ->name}}"  /></span>
+                                                            <input  type="text"class="input-text " name="receiver_name"  id="receiver_name"  value="{{ $data['customer']->name ?? 'null'}}"  /></span>
                                                     </p>
                                                     <p class="form-row address-field form-row-wide validate-required"   id="billing_address_1_field" data-priority="50">
                                                         <label for="billing_address_1" class="">
                                                             Địa chỉ&nbsp;
                                                             <abbr lass="required" title="bắt buộc">*</abbr></label>
                                                             <span class="woocommerce-input-wrapper">
-                                                                <input type="text" class="input-text " name="receiver_address" id="receiver_address" placeholder="Địa chỉ" value="{{ $data['customer']->adress}}"  /></span>
+                                                                <input type="text" class="input-text " name="receiver_address" id="receiver_address" placeholder="Địa chỉ" value="{{ $data['customer']->adress?? 'null'}}"  /></span>
                                                     </p>
                                                     <p class="form-row form-row-wide validate-required validate-phone" id="billing_phone_field" data-priority="100">
                                                         <label for="billing_phone" class="">
@@ -40,7 +39,7 @@
                                                             <abbr class="required" title="bắt buộc">*</abbr>
                                                         </label>
                                                         <span class="woocommerce-input-wrapper">
-                                                            <input type="number" class="input-text " name="number_phone" id="number_phone" placeholder="" value="{{ $data['customer']->number_phone}}" utocomplete="tel" /></span></p>
+                                                            <input type="number" class="input-text " name="number_phone" id="number_phone" placeholder="" value="{{ $data['customer']->number_phone?? 'null'}}" utocomplete="tel" /></span></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -60,25 +59,14 @@
                                                         </span>
                                                     </p>
                                                 </div>
-
-
                                             </div>
                                         </div>
                                     </div>
-
-
-
                                 </div>
-
                                 <div class="large-5 col">
-
                                     <div class="col-inner has-border">
                                         <div class="checkout-sidebar sm-touch-scroll">
-
-
                                             <h3 id="order_review_heading">Đơn hàng của bạn</h3>
-
-
                                             <div id="order_review" class="woocommerce-checkout-review-order">
                                                 <table class="shop_table woocommerce-checkout-review-order-table">
                                                     <thead>
@@ -102,7 +90,6 @@
                                                         @endforeach
                                                     </tbody>
                                                     <tfoot>
-
                                                         <tr class="cart-subtotal">
                                                             <th>Tạm tính</th>
                                                             <td><span class="woocommerce-Price-amount amount"><bdi>{{number_format( $data['cart']->total_money , 0, '.', '.')}}<span
@@ -116,25 +103,9 @@
                                                                                 class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span></strong>
                                                             </td>
                                                         </tr>
-
-
                                                     </tfoot>
                                                 </table>
                                                 <div id="payment" class="woocommerce-checkout-payment">
-                                                    {{-- <ul class="wc_payment_methods payment_methods methods">
-                                                        <li class="wc_payment_method payment_method_cod">
-                                                            <input id="payment_method_cod" type="radio"
-                                                                class="input-radio" name="payment_method" value="cod"
-                                                                checked='checked' data-order_button_text="" />
-
-                                                            <label for="payment_method_cod">
-                                                                Trả tiền mặt khi nhận hàng (COD) </label>
-                                                            <div class="payment_box payment_method_cod">
-                                                                <p>Trả tiền mặt khi giao hàng + thêm phí Ship
-                                                                    bưu điện</p>
-                                                            </div>
-                                                        </li>
-                                                    </ul> --}}
                                                     <div class="form-row place-order" style="display: flex;
                                                     flex-direction: column;
                                                     align-items: center;
@@ -145,19 +116,13 @@
                                                     </div>
                                                 </div>
                                             </div>
-
                                             <div class="woocommerce-privacy-policy-text"></div>
                                         </div>
                                     </div>
-
                                 </div>
-
                             </div>
                         </form>
-
                     </div>
-
-
                 </div>
             </div>
         </div>

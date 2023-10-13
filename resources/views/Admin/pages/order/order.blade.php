@@ -23,23 +23,16 @@
                     <div class="row">
 
                         <div class="col-8">
-                            <label>Nhập tên khách để tìm kiếm</label>
-                            <form action="{{ route('customerIndex') }}" method="get" enctype="multipart/form-data">
+                            <label>Nhập mã đơn hàng</label>
+                            <form action="{{ route('orderIndex') }}" method="get" enctype="multipart/form-data">
                                 <div class="input-group">
 
-                                    <input class="form-control" type="text" name="search" value=""
+                                    <input class="form-control" type="text" name="search" value=" "
                                         placeholder="nhập tên khách hàng">
                                     <button class="btn btn-primary" type="submit"><i class="ti ti-search"></i></button>
                                 </div>
                             </form>
                         </div>
-                        {{-- <div class="col-4">
-
-
-                                { route('categoryCreate') }}"> <button type="button"
-                                    class="btn btn-primary m-1 float-end" title="Thêm mới danh mục"><i
-                                        class="ti ti-plus"></i></button></a>
-                        </div> --}}
                     </div>
                     {{-- <p class="mb-0">This is a sample page </p> --}}
                 </div>
@@ -53,7 +46,7 @@
                 </span>
             </div>
         @elseif (session('error'))
-            <div class="alert alert-danger">
+            <div class="alert alert-danger" id="error-alert">
                 {{ session('error') }}
                 <span type="button" class="X-close float-end" data-dismiss="alert" aria-label="Close">
                     <i class="ti ti-x"></i>
@@ -72,53 +65,116 @@
                                         <h6 class="fw-semibold mb-0">STT</h6>
                                     </th>
                                     <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">Mã đơn hàng</h6>
+                                    </th>
+
+                                    <th class="border-bottom-0">
                                         <h6 class="fw-semibold mb-0">Tên khách hàng</h6>
                                     </th>
                                     <th class="border-bottom-0">
-                                        <h6 class="fw-semibold mb-0">Thông tin khách hàng</h6>
+                                        <h6 class="fw-semibold mb-0">Ngày đặt hàng</h6>
                                     </th>
                                     <th class="border-bottom-0">
-                                        <h6 class="fw-semibold mb-0">Địa chỉ</h6>
+                                        <h6 class="fw-semibold mb-0">Tổng tiền đơn hàng</h6>
                                     </th>
-
                                     <th class="border-bottom-0">
                                         <h6 class="fw-semibold mb-0">Hành động</h6>
                                     </th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($customer as $key => $value)
+                                @foreach ($order as $key => $value)
                                     <tr>
                                         <td class="border-bottom-0">
                                             {{ $key + 1 }}
                                         </td>
                                         <td class="border-bottom-0">
-                                            <span class="fw-normal">{{ $value->name }}</span>
+                                            <span class="fw-normal">{{ $value->id }}</span>
                                         </td>
                                         <td class="border-bottom-0">
-                                            <span><span style="color: #6699FF">Giới
-                                                    tính:</span>{{ $value->sex ?? ' - ' }}</span><br>
-                                            <span><span style="color: #6699FF">Số điện
-                                                    thoại:</span>{{ $value->number_phone ?? ' - ' }}</span><br>
-                                            <span><span
-                                                    style="color: #6699FF">email:</span>{{ $value->email ?? ' - ' }}</span>
+                                            <span class="fw-normal">{{ $value->customer->name }}</span>
                                         </td>
                                         <td class="border-bottom-0">
-                                            <span class="fw-normal">{{ $value->adress ?? '-' }}</span>
+                                            <span
+                                                class="fw-normal">{{ date('d/m/Y', strtotime($value->created_at)) }}</span>
                                         </td>
                                         <td class="border-bottom-0">
+                                            <span class="fw-normal"
+                                                style="color: red">{{ number_format($value->total_money, 0, '.', '.') }}
+                                                đ</span>
+                                        </td>
+
+                                        <td class="border-bottom-0">
+                                            <a href="" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal_{{ $value->id }}"
+                                                title="Xem chi tiết đơn hàng"><i class="ti ti-eye-check fs-8"></i></a>
                                             <a href="{{ route('customerEdit', $value->id) }}" title="Sửa danh mục"><i
                                                     class="ti ti-edit fs-8"></i></a>
                                         </td>
-
                                     </tr>
                                 @endforeach
-
-
                             </tbody>
                         </table>
                     </div>
-                    {{ $customer->links() }}
+                    {{ $order->links() }}
+
+                    @foreach ($order as $value)
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal_{{ $value->id }}" tabindex="-1"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-xl">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Chi tiết đơn hàng:
+                                            {{ $value->id }}</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-4">Mã đơn hàng: {{ $value->id }}</div>
+                                            <div class="col-4">Tên người nhận: {{ $value->customer->name }}</div>
+                                            <div class="col-4">Tổng tiền: <span
+                                                    style="color: red">{{ number_format($value->total_money, 0, '.', '.') }}đ</span>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-3">
+                                            <div class="col-12">
+                                                <label for="">Thông tin sản phẩm:</label>
+                                                <table class="table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">stt</th>
+                                                            <th scope="col">Sản phẩm</th>
+                                                            <!-- <th scope="col">Tên sản phẩm</th> -->
+                                                            <th scope="col">Số lượng</th>
+                                                            <th scope="col">Giá</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach ($value->orderDetails as $key => $order_detail)
+                                                            <tr>
+                                                                <td class="ps-4"> {{ $key + 1 }}</td>
+                                                                <td>{{ $order_detail->product->name }}</td>
+                                                                <td>{{ $order_detail->quantity }}</td>
+                                                                <td style="color: red;">
+                                                                    {{ number_format($order_detail->price, 0, '.', '.') }}đ
+                                                                </td>
+                                                            </tr>
+                                                        @endforeach
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>

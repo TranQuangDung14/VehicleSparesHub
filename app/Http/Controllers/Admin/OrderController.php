@@ -13,14 +13,17 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         try {
-            $order = Orders::with('orderDetails.product.images')->orderBy('id','desc')->get();
+            $order = Orders::with('orderDetails.product.images','customer')->where('id','LIKE', '%' . $request->search . '%')->orderBy('id','desc')->paginate(10);
             //
-            return response()->json([
-                'data' => $order,
-            ], 200);
+            // $customer = Customers::where('name','LIKE', '%' . $request->search . '%')->orderBy('id','desc')->paginate(10);
+            // dd($order);
+            return view('Admin.pages.order.order',compact('order'));
+            // return response()->json([
+            //     'data' => $order,
+            // ], 200);
         } catch (\Exception $e) {
             dd($e);
         }
