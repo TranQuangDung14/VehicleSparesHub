@@ -33,6 +33,11 @@
                                 </div>
                             </form>
                         </div>
+                        <div class="col-4">
+                            <a href="{{ route('ExportOrder') }}" title="xuất file Excel">
+                            <button type="button" class="btn btn-outline-success m-1 mt-4 float-end" ><i class="ti ti-download"></i></button>
+                        </a>
+                        </div>
                     </div>
                     {{-- <p class="mb-0">This is a sample page </p> --}}
                 </div>
@@ -140,22 +145,30 @@
                                         </div>
                                         <div class="row mt-3">
                                             <div class="col-12">
-                                                <label for="">Thông tin sản phẩm:</label>
+                                                <label for="">Thông tin sản phẩm</label>
                                                 <table class="table">
-                                                    <thead>
+                                                    <thead style="background-color: #CFCFCF">
                                                         <tr>
-                                                            <th scope="col">stt</th>
-                                                            <th scope="col">Sản phẩm</th>
+                                                            <th class="col-lg-1">stt</th>
+                                                            <th class="col-lg-5">Sản phẩm</th>
                                                             <!-- <th scope="col">Tên sản phẩm</th> -->
-                                                            <th scope="col">Số lượng</th>
-                                                            <th scope="col">Giá</th>
+                                                            <th class="col-lg-3">Số lượng</th>
+                                                            <th class="col-lg-3">Giá</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                         @foreach ($value->orderDetails as $key => $order_detail)
                                                             <tr>
-                                                                <td class="ps-4"> {{ $key + 1 }}</td>
-                                                                <td>{{ $order_detail->product->name }}</td>
+                                                                <td> {{ $key + 1 }}</td>
+                                                                <td>
+                                                                        <img src="{{ asset('storage/image/product/' . $order_detail->product->images[0]->image) }}"
+                                                                            alt="Ảnh sản phẩm"
+                                                                            style="width: 20%; height: 20%;">
+                                                                    <img src="" alt="">
+                                                                    <span>
+                                                                        {{ $order_detail->product->name }}
+                                                                    </span>
+                                                                </td>
                                                                 <td>{{ $order_detail->quantity }}</td>
                                                                 <td style="color: red;">
                                                                     {{ number_format($order_detail->price, 0, '.', '.') }}đ

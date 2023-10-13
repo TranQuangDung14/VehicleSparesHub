@@ -63,6 +63,8 @@ Route::prefix('admin')->group(function () {
     });
 
             // danh mục
+    Route::get('/export_order', [OrderController::class, 'export'])->name('ExportOrder');
+
     Route::prefix('order')->middleware('auth','admin')->group(function () {
         Route::get('', [OrderController::class, 'index'])->name('orderIndex');
         // Route::get('add', [CategoriesController::class, 'create'])->name('categoryCreate');
