@@ -13,7 +13,7 @@ class Orders extends Model
     public function orderDetails()
     {
         // return $this->hasMany(Orders_details::class);
-        return $this->hasMany(Order_detail::class,'order_id');
+        return $this->hasMany(Order_detail::class, 'order_id');
     }
     public function customer()
     {

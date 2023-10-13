@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exports\OrderExport;
 use App\Http\Controllers\Controller;
 use App\Models\Orders;
 use Illuminate\Http\Request;
-
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\SampleExport; // Tạo một Export class
 class OrderController extends Controller
 {
     /**
@@ -28,6 +30,16 @@ class OrderController extends Controller
             dd($e);
         }
     }
-
+    public function export()
+    {
+        try {
+            //code...
+            return Excel::download(new OrderExport, 'DANH SÁCH ĐƠN HÀNG.xlsx');
+        } catch (\Exception $e) {
+            //throw $th;
+            session()->flash('error', 'Xuất file thất bại!');
+            return redirect()->back();
+        }
+    }
 
 }
