@@ -1,0 +1,13 @@
+Q.Dũng đỉnh của chóp ><
+
+
+bug( Problem 1
+    - phpoffice/phpspreadsheet is locked to version 1.29.0 and an update of this package was not requested.
+    - phpoffice/phpspreadsheet 1.29.0 requires ext-gd * -> it is missing from your system. Install or enable PHP's gd extension.
+  Problem 2
+    - phpoffice/phpspreadsheet 1.29.0 requires ext-gd * -> it is missing from your system. Install or enable PHP's gd extension.
+    - maatwebsite/excel 3.1.48 requires phpoffice/phpspreadsheet ^1.18 -> satisfiable by phpoffice/phpspreadsheet[1.29.0].
+    - maatwebsite/excel is locked to version 3.1.48 and an update of this package was not requested.)
+
+    fix bug =>
+open php.ini -> search (extension=gd) -> delete ; //(default ;extension=gd)

@@ -55,11 +55,11 @@
           </a>
         </li>
         <li class="sidebar-item">
-          <a class="sidebar-link" href="#" aria-expanded="false">
+          <a class="sidebar-link" href="{{route('warehouseIndex')}}" aria-expanded="false">
             <span>
               <i class="ti ti-file-description"></i>
             </span>
-            <span class="hide-menu">Thống kê</span>
+            <span class="hide-menu">Quản lý kho hàng</span>
           </a>
         </li>
          <li class="sidebar-item">

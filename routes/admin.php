@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\Admin\Testcontroller;
+use App\Http\Controllers\Admin\WarehouseController;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
@@ -73,6 +74,18 @@ Route::prefix('admin')->group(function () {
         // Route::get('update/{id}', [CategoriesController::class, 'update'])->name('categoryUpdate');
         // Route::delete('delete/{id}', [CategoriesController::class, 'delete'])->name('categoryDelete');
     });
+
+        // kho sản phẩm
+        Route::prefix('warehouse')->middleware('auth','admin')->group(function () {
+            Route::get('', [WarehouseController::class, 'index'])->name('warehouseIndex');
+            // Route::get('add', [WarehouseController::class, 'create'])->name('productCreate');
+            // Route::post('add', [WarehouseController::class, 'store'])->name('productStore');
+            // Route::get('edit/{id}', [WarehouseController::class, 'edit'])->name('productEdit');
+            // Route::put('update/{id}', [WarehouseController::class, 'update'])->name('productUpdate');
+            // // Route::get('update/{id}', [ProductsController::class, 'update'])->name('productUpdate');
+            // Route::delete('delete/{id}', [WarehouseController::class, 'delete'])->name('productDelete');
+            // Route::get('update_status', [WarehouseController::class, 'UpdateStatus'])->name('productUpdateStatus');
+        });
 });
 
 
