@@ -35,6 +35,7 @@ class CustomerController extends Controller
      */
     public function edit($id)
     {
+
         try {
             $editData = Customers::find($id);
             return view('Admin.pages.customer.edit_customer',compact('editData'));

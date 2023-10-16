@@ -35,8 +35,9 @@
                         </div>
                         <div class="col-4">
                             <a href="{{ route('ExportOrder') }}" title="xuất file Excel">
-                            <button type="button" class="btn btn-outline-success m-1 mt-4 float-end" ><i class="ti ti-download"></i></button>
-                        </a>
+                                <button type="button" class="btn btn-outline-success m-1 mt-4 float-end"><i
+                                        class="ti ti-download"></i></button>
+                            </a>
                         </div>
                     </div>
                     {{-- <p class="mb-0">This is a sample page </p> --}}
@@ -137,10 +138,18 @@
                                     </div>
                                     <div class="modal-body">
                                         <div class="row">
-                                            <div class="col-4">Mã đơn hàng: {{ $value->id }}</div>
-                                            <div class="col-4">Tên người nhận: {{ $value->customer->name }}</div>
-                                            <div class="col-4">Tổng tiền: <span
+                                            <div class="col-3">Mã đơn hàng: {{ $value->id }}</div>
+                                            <div class="col-3">Tên người nhận: {{ $value->customer->name }}</div>
+                                            <div class="col-3">Tổng tiền: <span
                                                     style="color: red">{{ number_format($value->total_money, 0, '.', '.') }}đ</span>
+                                            </div>
+                                            <div class="col-3">
+                                                <a href="{{ route('ExportDetailOrder', $value->id) }}" title="Xuất excel">
+                                                    <button type="button"
+                                                        class="btn btn-success m-1 float-end">
+                                                        <i class="ti ti-download"></i>
+                                                    </button>
+                                                </a>
                                             </div>
                                         </div>
                                         <div class="row mt-3">
@@ -161,9 +170,9 @@
                                                             <tr>
                                                                 <td> {{ $key + 1 }}</td>
                                                                 <td>
-                                                                        <img src="{{ asset('storage/image/product/' . $order_detail->product->images[0]->image) }}"
-                                                                            alt="Ảnh sản phẩm"
-                                                                            style="width: 20%; height: 20%;">
+                                                                    <img src="{{ asset('storage/image/product/' . $order_detail->product->images[0]->image) }}"
+                                                                        alt="Ảnh sản phẩm"
+                                                                        style="width: 20%; height: 20%;">
                                                                     <img src="" alt="">
                                                                     <span>
                                                                         {{ $order_detail->product->name }}

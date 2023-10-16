@@ -9,6 +9,7 @@ use Maatwebsite\Excel\Concerns\WithColumnWidths;
 use Maatwebsite\Excel\Concerns\WithTitle;
 use Maatwebsite\Excel\Concerns\WithStyles;
 use Maatwebsite\Excel\Concerns\WithStrictNullComparison;
+use PhpOffice\PhpSpreadsheet\Style\Fill;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
 class OrderExport implements FromCollection, WithHeadings, WithColumnWidths, WithTitle, WithStyles, WithStrictNullComparison
@@ -37,10 +38,11 @@ class OrderExport implements FromCollection, WithHeadings, WithColumnWidths, Wit
             [
                 'STT',
                 'Mã đơn hàng',
-                'Tên khách hàng', 
+                'Tên khách hàng',
                 'Số điện thoại',
                 'Ngày đặt',
                 'Địa chỉ giao',
+                'Tổng tiền',
                 'ghi chú'
             ]
         ];
@@ -62,7 +64,11 @@ class OrderExport implements FromCollection, WithHeadings, WithColumnWidths, Wit
             ],
             3    => [
                 'font' => ['bold' => true],
-                'alignment' => ['horizontal' => 'center']
+                'alignment' => ['horizontal' => 'center'],
+                'fill' => [
+                    'fillType' => Fill::FILL_SOLID, // Chọn kiểu fill
+                    'startColor' => ['rgb' => 'FFFFCC'], // Màu nền (ví dụ: màu vàng)
+                ],
             ],
         ];
     }
@@ -71,13 +77,14 @@ class OrderExport implements FromCollection, WithHeadings, WithColumnWidths, Wit
     public function columnWidths(): array
     {
         return [
-            'A' => 10, //STT                   
-            'B' => 20, //Mã đơn hàng          
-            'C' => 50, //Tên khách hàng   
-            'D' => 50, //Số điện thoại  
-            'E' => 40, //Ngày đặt           
-            'F' => 40, //Địa chỉ giao    
-            'G' => 60, //ghi chú
+            'A' => 10, //STT
+            'B' => 20, //Mã đơn hàng
+            'C' => 50, //Tên khách hàng
+            'D' => 50, //Số điện thoại
+            'E' => 40, //Ngày đặt
+            'F' => 40, //Địa chỉ giao
+            'G' => 60, //Tổng tiền
+            'H' => 60, //ghi chú
         ];
     }
 
@@ -107,6 +114,7 @@ class OrderExport implements FromCollection, WithHeadings, WithColumnWidths, Wit
                                 'vs_order.number_phone as number_phone',
                                 'vs_order.created_at as created_at',
                                 'vs_order.receiver_address as receiver_address',
+                                'vs_order.total_money as total_money',
                                 'vs_order.note as note',
                             )
                             // ->where('sm_local_farm.deleted_at', null)

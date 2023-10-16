@@ -74,6 +74,7 @@ class CategoriesController extends Controller
     }
     public function edit($id)
     {
+        // dd($id);
         try {
             $editData = Categories::find($id);
             return view('Admin.pages.categories.cate_add_edit',compact('editData'));

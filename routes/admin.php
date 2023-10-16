@@ -63,8 +63,9 @@ Route::prefix('admin')->group(function () {
         // Route::delete('delete/{id}', [CustomerController::class, 'delete'])->name('customerDelete');
     });
 
-            // danh mục
+            // đơn hàng
     Route::get('/export_order', [OrderController::class, 'export'])->name('ExportOrder');
+    Route::get('/export_detail/{id}', [OrderController::class, 'export_detail'])->name('ExportDetailOrder');
 
     Route::prefix('order')->middleware('auth','admin')->group(function () {
         Route::get('', [OrderController::class, 'index'])->name('orderIndex');
