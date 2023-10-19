@@ -130,4 +130,18 @@ class AuthController extends Controller
 
         return redirect()->route('showlogin');
     }
+
+    public function index(Request $request)
+    {
+        try {
+            $user = User::where('name','LIKE', '%' . $request->search . '%')->orderBy('id','desc')->paginate(10);
+
+            return view('Admin.pages.auth.account',compact('user'));
+        } catch (\Exception $e) {
+            //throw $th;
+            dd($e);
+            return redirect()->back();
+        }
+    }
+
 }

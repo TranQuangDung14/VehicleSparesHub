@@ -33,7 +33,7 @@ class IndexController extends Controller
             'products' => function ($query) {
                 $query->with('images')->where('quantity','>',0)->distinct();
             }
-        ])->take(3)->get();
+        ])->get();
 
         // if (Auth::check()) {
         //     if (auth()->user()->role === 2) {

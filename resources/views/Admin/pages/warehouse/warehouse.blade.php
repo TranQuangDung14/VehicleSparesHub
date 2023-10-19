@@ -86,7 +86,10 @@
                                             <h6 class="fw-semibold mb-0">{{ $key + 1 }}</h6>
                                         </td>
                                         <td class="border-bottom-0">
-                                            <h6 class="fw-semibold mb-1" title="{{$value->name}}"><span style="color: #6699FF">Tên sản phẩm</span>:
+                                            <span class="fw-normal"><span style="color: #00FFCC">Mã sản phẩm:
+                                                </span>{{ $value->id }}</span>
+                                            <h6 class="fw-semibold mb-1" title="{{ $value->name }}"><span
+                                                    style="color: #6699FF">Tên sản phẩm</span>:
                                                 {{-- {{ $value->name }} --}}
                                                 @if (strlen($value->name) > 20)
                                                     {{-- Thay 20 bằng giới hạn ký tự mà bạn muốn --}}
@@ -98,55 +101,61 @@
                                             <span class="fw-normal"><span style="color: #6699FF">Danh mục:
                                                 </span>{{ $value->category->name }}</span>
                                         </td>
-                                        {{-- <td class="border-bottom-0">
-
-                                            @if ($value->images->count() > 0)
-                                                <img src="{{ asset('storage/image/product/' . $value->images[0]->image) }}"
-                                                    alt="Ảnh sản phẩm" style="width: 80%; height: auto;">
-                                            @else
-                                                <img src="{{ asset('Admin/') }}/images/profile/no_image.jpg" alt=""
-                                                    width="120" height="100">
-                                            @endif
+                                        <td class="border-bottom-0 ">
+                                            <h6 class="fw-semibold mb-0 fs-4">{{ $value->quantity ?? '0' }}</h6>
                                         </td>
                                         <td class="border-bottom-0 ">
-                                            <span class="fw-normal">
-                                                {{ number_format($value->price, 0, '.', ',') }}
-                                                <span style="color:red ">vnđ</span></span>
-                                        </td> --}}
-                                        <td class="border-bottom-0 ">
-                                            <h6 class="fw-semibold mb-0 fs-4">{{ $value->quantity ?? '-' }}</h6>
-                                        </td>
-                                        <td class="border-bottom-0 ">
-                                            <a href="{{ route('productEdit', $value->id) }}" title="Cập nhật số lượng"><i
-                                                    class="ti ti-edit fs-8"></i></a>
+                                            <a href="" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal_{{ $value->id }}"
+                                                title="Cập nhật số lượng">
+                                                <i class="ti ti-pencil-plus fs-8"></i></a>
                                         </td>
                                     </tr>
                                     <!-- Modal -->
-                                    {{-- <div class="modal fade" id="exampleModal_{{ $value->id }}" tabindex="-1"
+                                    <div class="modal fade" id="exampleModal_{{ $value->id }}" tabindex="-1"
                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Xóa</h5>
+                                                    <h5 class="modal-title" id="exampleModalLabel">Cập nhật số lượng sản phẩm</h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                         aria-label="Close"></button>
                                                 </div>
-                                                <div class="modal-body">
-                                                    Bạn có chắc muốn xóa sản phẩm này không ?
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary"
-                                                        data-bs-dismiss="modal">Hủy</button>
-                                                    <form action="{{ route('productDelete', $value->id) }}"
-                                                        method="POST" enctype="multipart/form-data">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" class="btn btn-primary">Xóa</button>
-                                                    </form>
-                                                </div>
+                                                <form action="{{ route('warehousequantityUpdate', $value->id) }}" method="POST"
+                                                    enctype="multipart/form-data">
+                                                    @csrf
+                                                    {{-- @method('PUT') --}}
+                                                    <input type="hidden" name="_method" value="PUT">
+                                                    <div class="modal-body">
+                                                        {{-- Bạn có chắc muốn xóa sản phẩm này không ? --}}
+                                                        <div class="mb-3">
+                                                            <label for="recipient-name" class="col-form-label">Số lượng
+                                                                trong kho</label>
+                                                            <input type="text" class="form-control" id="recipient-name"
+                                                                value="{{ $value->quantity ?? '0' }}" disabled>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="recipient-name" class="col-form-label"> <i
+                                                                    class="ti ti-plus" style="color: #6699FF"></i> Nhập
+                                                                kho</label>
+                                                            <input type="text" class="form-control" id="quantity"
+                                                                class="quantity" name="quantity" value="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Hủy</button>
+                                                        {{-- <form action="{{ route('productDelete', $value->id) }}"
+                                                        method="POST" enctype="multipart/form-data"> --}}
+                                                        {{-- @csrf
+                                                        @method('DELETE') --}}
+                                                        <button type="submit" class="btn btn-primary">Cập nhật</button>
+
+                                                    </div>
+                                                </form>
                                             </div>
                                         </div>
-                                    </div> --}}
+                                    </div>
                                 @endforeach
                             </tbody>
                         </table>

@@ -16,7 +16,7 @@ class CreateVsOrderTable extends Migration
         Schema::create('vs_order', function (Blueprint $table) {
             $table->id();
             $table->integer("customer_id")->unsigned()->nullable(); // mã khách hàng
-            $table->decimal("total_money", 10, 2)->unsigned()->default(0);// tổng tiền
+            $table->decimal("total_money", 20, 2)->unsigned()->default(0);// tổng tiền
             $table->date("delivery_date",200)->nullable(); // ngày nhận dự tính
             $table->integer("shipping_fee")->unsigned()->nullable(); // phí vận chuyển
             $table->string("receiver_name",200)->nullable(); // Tên người nhận

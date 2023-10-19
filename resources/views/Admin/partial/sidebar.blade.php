@@ -12,14 +12,14 @@
       <ul id="sidebarnav">
         <li class="nav-small-cap">
           <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-          <span class="hide-menu">Bảng điều khiển</span>
+          <span class="hide-menu"></span>
         </li>
         <li class="sidebar-item">
           <a class="sidebar-link" href="{{route('dashboardIndex')}}" aria-expanded="false">
             <span>
               <i class="ti ti-layout-dashboard"></i>
             </span>
-            <span class="hide-menu">Dashboard</span>
+            <span class="hide-menu">Bảng điều khiển</span>
           </a>
         </li>
         <li class="nav-small-cap">
@@ -44,7 +44,7 @@
         </li>
         <li class="nav-small-cap">
             <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-            <span class="hide-menu">Sản phẩm</span>
+            <span class="hide-menu">Thông tin</span>
           </li>
         <li class="sidebar-item">
           <a class="sidebar-link" href="{{route('orderIndex')}}" aria-expanded="false">
@@ -71,7 +71,7 @@
           </a>
         </li>
          <li class="sidebar-item">
-          <a class="sidebar-link" href="#" aria-expanded="false">
+          <a class="sidebar-link" href="{{route('accountIndex')}}" aria-expanded="false">
             <span>
               <i class="ti ti-typography"></i>
             </span>

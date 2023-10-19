@@ -27,6 +27,9 @@ Route::prefix('admin')->group(function () {
         Route::post('logout', [AuthController::class, 'logout'])->name('logout');
     // });
     // bảng điều khiển
+    Route::prefix('account')->middleware('auth','admin')->group(function () {
+        Route::get('', [AuthController::class, 'index'])->name('accountIndex');
+    });
     Route::prefix('dashboard')->middleware('auth','admin')->group(function () {
         Route::get('', [DashboardController::class, 'index'])->name('dashboardIndex');
     });
@@ -84,7 +87,7 @@ Route::prefix('admin')->group(function () {
             // Route::get('edit/{id}', [WarehouseController::class, 'edit'])->name('productEdit');
             // Route::put('update/{id}', [WarehouseController::class, 'update'])->name('productUpdate');
             // // Route::get('update/{id}', [ProductsController::class, 'update'])->name('productUpdate');
-            // Route::delete('delete/{id}', [WarehouseController::class, 'delete'])->name('productDelete');
+            Route::put('update_quantity/{id}', [WarehouseController::class, 'update_quantity'])->name('warehousequantityUpdate');
             // Route::get('update_status', [WarehouseController::class, 'UpdateStatus'])->name('productUpdateStatus');
         });
 });

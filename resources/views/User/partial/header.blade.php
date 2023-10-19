@@ -8,22 +8,20 @@
 
                             <li class="">
                                 <a href="mailto:agc18.auto@gmail.com" class="tooltip" title="agc18.auto@gmail.com">
-                                    <i class="icon-envelop" style="font-size:16px;"></i> <span>
-                                        agc18.auto@gmail.com </span>
+                                   <i class="fa-regular fa-envelope"  style="font-size:16px;"></i><span>
+                                        quynhanh@gmail.com </span>
                                 </a>
                             </li>
                             <li class="">
                                 <a class="tooltip" title="08:00 - 17:00 ">
-                                    <i class="icon-clock" style="font-size:16px;"></i> <span>08:00 -
+                                    <i class="fa-regular fa-clock" style="font-size:16px;"></i><span>08:00 -
                                         17:00</span>
                                 </a>
                             </li>
                             <li class="">
-                                <a href="tel:0866.2015.82 - (028).2215.9268" class="tooltip"
-                                    title="0866.2015.82 - (028).2215.9268">
-                                    <i class="icon-phone" style="font-size:16px;"></i> <span>0866.2015.82
-                                        -
-                                        (028).2215.9268</span>
+                                <a href="0123.456.789 - (098).1234.5678" class="tooltip"
+                                    title="0123.456.789 - (098).1234.5678">
+                                    <i class="fa-solid fa-phone" style="font-size:16px;"></i><span>0123.456.789 - (098).1234.5678</span>
                                 </a>
                             </li>
                         </ul>
@@ -107,22 +105,10 @@
                         <a href="{{ route('Cart') }}" title="Giỏ hàng" class="header-cart-link is-small">
                             <span class="header-cart-title">
                                 Giỏ hàng
-                                 {{-- <span class="cart-price"><span
-                                        class="woocommerce-Price-amount amount"><bdi>0<span
-                                                class="woocommerce-Price-currencySymbol">&#8363;</span>
-                                            </bdi></span></span> --}}
                             </span>
-                            <i class="icon-shopping-cart" data-icon-label="0">
-                            </i>
+                            <i class="fa-solid fa-cart-shopping"></i>
                         </a>
-                        {{-- <ul class="nav-dropdown nav-dropdown-simple">
-                            <li class="html widget_shopping_cart">
-                                <div class="widget_shopping_cart_content">
-                                    <p class="woocommerce-mini-cart__empty-message">Chưa có sản phẩm trong
-                                        giỏ hàng.</p>
-                                </div>
-                            </li>
-                        </ul> --}}
+
 
                     </li>
                 </ul>
@@ -138,7 +124,7 @@
             <div id="logo" class="flex-col logo">
 
                 <!-- Header logo -->
-                <a href="https://agc18.com.vn/" title="Công ty phân phối phụ kiện &#8211; phụ tùng oto - agc18"
+                <a href="" title="Công ty phân phối phụ kiện &#8211; phụ tùng oto - agc18"
                     rel="home">
                     <img width="894" height="552" src="https://agc18.com.vn/wp-content/uploads/2019/03/image1.png"
                         class="header_logo header-logo" alt="Công ty phân phối phụ kiện &#8211; phụ tùng oto" /><img
@@ -185,8 +171,7 @@ flex-grow">
 
 
                                         <div class="searchform-wrapper ux-search-box relative form-flat is-normal">
-                                            <form role="search" method="get" class="searchform"
-                                                action="https://agc18.com.vn/">
+                                            
                                                 <div class="flex-row relative">
                                                     <div class="flex-col flex-grow">
                                                         <label class="screen-reader-text"
@@ -202,11 +187,11 @@ flex-grow">
                                                         <button type="submit" value="Tìm kiếm"
                                                             class="ux-search-submit submit-button secondary button icon mb-0"
                                                             aria-label="Submit">
-                                                            <i class="icon-search"></i> </button>
+                                                            <i class="fa-solid fa-magnifying-glass"></i>
+                                                        </button>
                                                     </div>
                                                 </div>
                                                 <div class="live-search-results text-left z-top"></div>
-                                            </form>
                                         </div>
 
 
@@ -249,7 +234,7 @@ flex-grow">
 
 
                                                 <p style="text-align: left;"><span
-                                                        style="font-size: 140%; color: #50b848;"><strong>0866.2015.82</strong></span>
+                                                        style="font-size: 140%; color: #50b848;"><strong>0123.456.789</strong></span>
                                                 </p>
                                                 <p style="text-align: left;">Tư vấn miễn phí 24/7</p>
 
@@ -320,43 +305,42 @@ flex-grow">
                 <ul class="header-nav header-nav-main nav nav-right  nav-uppercase">
                 </ul>
             </div>
+ <!-- Mobile Right Elements -->
+ <div class="flex-col show-for-medium flex-right">
+    <ul class="mobile-nav nav nav-right ">
+        <li class="cart-item has-icon">
 
-            <!-- Mobile Right Elements -->
-            <div class="flex-col show-for-medium flex-right">
-                <ul class="mobile-nav nav nav-right ">
-                    <li class="cart-item has-icon">
+            <a href="https://agc18.com.vn/gio-hang/"
+                class="header-cart-link off-canvas-toggle nav-top-link is-small" data-open="#cart-popup"
+                data-class="off-canvas-cart" title="Giỏ hàng" data-pos="right">
 
-                        <a href="https://agc18.com.vn/gio-hang/"
-                            class="header-cart-link off-canvas-toggle nav-top-link is-small" data-open="#cart-popup"
-                            data-class="off-canvas-cart" title="Giỏ hàng" data-pos="right">
-
-                            <i class="icon-shopping-cart" data-icon-label="0">
-                            </i>
-                        </a>
-
-
-                        <!-- Cart Sidebar Popup -->
-                        <div id="cart-popup" class="mfp-hide widget_shopping_cart">
-                            <div class="cart-popup-inner inner-padding">
-                                <div class="cart-popup-title text-center">
-                                    <h4 class="uppercase">Giỏ hàng</h4>
-                                    <div class="is-divider"></div>
-                                </div>
-                                <div class="widget_shopping_cart_content">
+                <i class="icon-shopping-cart" data-icon-label="0">
+                </i>
+            </a>
 
 
-                                    <p class="woocommerce-mini-cart__empty-message">Chưa có sản phẩm trong
-                                        giỏ hàng.</p>
+            <!-- Cart Sidebar Popup -->
+            <div id="cart-popup" class="mfp-hide widget_shopping_cart">
+                <div class="cart-popup-inner inner-padding">
+                    <div class="cart-popup-title text-center">
+                        <h4 class="uppercase">Giỏ hàng</h4>
+                        <div class="is-divider"></div>
+                    </div>
+                    <div class="widget_shopping_cart_content">
 
 
-                                </div>
-                                <div class="cart-sidebar-content relative"></div>
-                            </div>
-                        </div>
+                        <p class="woocommerce-mini-cart__empty-message">Chưa có sản phẩm trong
+                            giỏ hàng.</p>
 
-                    </li>
-                </ul>
+
+                    </div>
+                    <div class="cart-sidebar-content relative"></div>
+                </div>
             </div>
+
+        </li>
+    </ul>
+</div>
 
         </div>
 
@@ -369,22 +353,22 @@ flex-grow">
                     class="nav header-nav header-bottom-nav nav-left  nav-divided nav-size-large nav-spacing-xlarge nav-uppercase">
                     <div id="mega-menu-wrap" class="ot-vm-hover">
                         <div id="mega-menu-title">
-                            <i class="icon-menu"></i> DANH MỤC SẢN PHẨM
+                            <i class="fa-solid fa-bars"></i>DANH MỤC SẢN PHẨM
                         </div>
                         <ul id="mega_menu" class="sf-menu sf-vertical">
                             @foreach ($data['category'] as $cate)
                                 <li id="menu-item-882"
                                     class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-882">
                                     <a href="{{ route('CategoryProduct', $cate->id) }}">{{ $cate->name }}</a>
-                                    <ul class="sub-menu">
+                                    <ul>
+                                        
                                         @foreach ($cate->products as $product)
-                                            <li id="menu-item-101"
-                                                class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-101">
-                                                <a href="{{ route('DetailProduct', $product->id) }}"><i
-                                                        class="_mi _before fa fa-play"
-                                                        aria-hidden="true"></i><span>{{ $product->name }}</span></a>
+                                           <li id="menu-item-101" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-101">
+                                            <a href="{{ route('DetailProduct', $product->id) }}">
+                                                <i class="_mi _before fa fa-play"
+                                                    aria-hidden="true"></i><span>{{ $product->name }}</span></a>
 
-                                            </li>
+                                        </li>
                                         @endforeach
                                     </ul>
                                 </li>
@@ -404,8 +388,8 @@ flex-grow">
                     <li id="menu-item-59"
                         class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-59 menu-item-design-default has-dropdown">
                         <a href="{{ route('Introduce') }}" class="nav-top-link" aria-expanded="false"
-                            aria-haspopup="menu">GIỚI THIỆU<i class="icon-angle-down"></i></a>
-                        <ul class="sub-menu nav-dropdown nav-dropdown-simple">
+                            aria-haspopup="menu">GIỚI THIỆU&ensp;<i class="fa-solid fa-caret-down"></i></a>
+                        <ul class=" nav-dropdown nav-dropdown-simple">
                             <li id="menu-item-921"
                                 class="menu-item menu-item-type-post_type menu-item-object-page menu-item-921">
                                 <a href="{{ route('Cooperation_policy') }}">Chính sách bảo
@@ -415,14 +399,13 @@ flex-grow">
                     </li>
                     <li id="menu-item-3485"
                         class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-3485 menu-item-design-default has-dropdown">
-                        <a href="#" class="nav-top-link" aria-expanded="false" aria-haspopup="menu">SẢN PHẨM<i
-                                class="icon-angle-down"></i></a>
-                        <ul class="sub-menu nav-dropdown nav-dropdown-simple">
+                        <a href="#" class="nav-top-link" aria-expanded="false" aria-haspopup="menu">SẢN PHẨM&ensp;<i class="fa-solid fa-caret-down"></i></a>
+                        <ul class="nav-dropdown nav-dropdown-simple">
                             @foreach ($data['category'] as $cate)
                                 <li id="menu-item-2634"
                                     class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-2634 nav-dropdown-col">
                                     <a href="{{ route('CategoryProduct', $cate->id) }}">{{ $cate->name }}</a>
-                                    <ul class="sub-menu nav-column nav-dropdown-simple">
+                                    <ul class=" nav-column nav-dropdown-simple">
                                         @foreach ($cate->products as $product)
                                             <li id="menu-item-2635"
                                                 class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-2635">

@@ -48,8 +48,8 @@ class Order_DetailExport implements FromCollection, WithHeadings, WithColumnWidt
     public function styles(Worksheet $sheet)
     {
 
-        $sheet->mergeCells('A1:G1');
-        $sheet->mergeCells('A1:A2');
+        $sheet->mergeCells('A1:D1');
+        // $sheet->mergeCells('A1:A2');
         $sheet->mergeCells('A3:D3');
         $sheet->mergeCells('A4:D4');
         $sheet->mergeCells('A5:D5');

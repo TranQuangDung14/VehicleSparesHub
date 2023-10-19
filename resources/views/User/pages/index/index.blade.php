@@ -51,8 +51,7 @@
                                 <h3 class="section-title section-title-normal"><b></b>
                                     <span class="section-title-main">
                                         {{ $category->name }}</span><b></b><a
-                                        href="{{ route('CategoryProduct', $category->id) }}" target="">Xem tất cả<i
-                                            class="icon-angle-right"></i></a>
+                                        href="{{ route('CategoryProduct', $category->id) }}" target="">Xem tất cả&ensp;<i class="fa-solid fa-caret-down"></i></a>
                                 </h3>
                             </div>
                             <div class="row large-columns-4 medium-columns-3 small-columns-2 row-small has-shadow row-box-shadow-1 slider row-slider slider-nav-simple slider-nav-outside slider-nav-push"

@@ -109,13 +109,12 @@
                                                 style="color: red">{{ number_format($value->total_money, 0, '.', '.') }}
                                                 đ</span>
                                         </td>
-
                                         <td class="border-bottom-0">
                                             <a href="" data-bs-toggle="modal"
                                                 data-bs-target="#exampleModal_{{ $value->id }}"
                                                 title="Xem chi tiết đơn hàng"><i class="ti ti-eye-check fs-8"></i></a>
-                                            <a href="{{ route('customerEdit', $value->id) }}" title="Sửa danh mục"><i
-                                                    class="ti ti-edit fs-8"></i></a>
+                                            {{-- <a href="{{ route('customerEdit', $value->id) }}" title="Sửa danh mục"><i
+                                                    class="ti ti-edit fs-8"></i></a> --}}
                                         </td>
                                     </tr>
                                 @endforeach
@@ -145,8 +144,7 @@
                                             </div>
                                             <div class="col-3">
                                                 <a href="{{ route('ExportDetailOrder', $value->id) }}" title="Xuất excel">
-                                                    <button type="button"
-                                                        class="btn btn-success m-1 float-end">
+                                                    <button type="button" class="btn btn-success m-1 float-end">
                                                         <i class="ti ti-download"></i>
                                                     </button>
                                                 </a>
@@ -170,12 +168,17 @@
                                                             <tr>
                                                                 <td> {{ $key + 1 }}</td>
                                                                 <td>
-                                                                    <img src="{{ asset('storage/image/product/' . $order_detail->product->images[0]->image) }}"
-                                                                        alt="Ảnh sản phẩm"
-                                                                        style="width: 20%; height: 20%;">
-                                                                    <img src="" alt="">
+                                                                    @if ($order_detail->product)
+                                                                        <img src="{{ asset('storage/image/product/' . $order_detail->product->images[0]->image) }}"
+                                                                            alt="Ảnh sản phẩm"
+                                                                            style="width: 20%; height: 20%;">
+                                                                    @else                                                                 
+                                                                        <img src="{{ asset('Admin/') }}/images/profile/no_image.jpg"
+                                                                            alt=""
+                                                                            style="width: 20%; height: 20%;">
+                                                                    @endif
                                                                     <span>
-                                                                        {{ $order_detail->product->name }}
+                                                                        {{ $order_detail->product->name ?? 'Sản phẩm không còn tồn tại trên hệ thống' }}
                                                                     </span>
                                                                 </td>
                                                                 <td>{{ $order_detail->quantity }}</td>

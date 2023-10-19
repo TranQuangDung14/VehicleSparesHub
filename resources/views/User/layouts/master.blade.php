@@ -1208,7 +1208,10 @@
         }
     </style>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 </head>
@@ -1480,23 +1483,23 @@
         </div>
     </div>
     <div class="button-dinhit">
-        <div class="messenger"><a href="https://m.me/agcauto/" target="_blank"><img
+        <div class="messenger"><a href="https://m.me/phut.mot.5015/" target="_blank"><img
                     src="https://agc18.com.vn/wp-content/uploads/2019/12/messenger.png" alt="chat facebook"
                     class="messenger-1"></a></div>
-        <div class="zalo-1"><a href="https://zalo.me/0866201582" target="_blank"><img
+        <div class="zalo-1"><a href="https://zalo.me/0869638364" target="_blank"><img
                     src="https://agc18.com.vn/wp-content/uploads/2019/12/zalo.png" alt="chat zalo"
                     class=""></a></div>
     </div>
     </div>
     <div class="chat">
         <ul>
-            <li><a class="phone" href="tel:0866201582"><img
+            <li><a class="phone" href="tel:0869638364"><img
                         src="https://agc18.com.vn/wp-content/uploads/2019/12/green-phone-7.png">Hotline</a></li>
 
-            <li><a class="zalo" href="https://zalo.me/0866201582"><img
+            <li><a class="zalo" href="https://zalo.me/0869638364"><img
                         src="https://agc18.com.vn/wp-content/uploads/2019/12/zalo-2.png">Zalo</a></li>
 
-            <li><a class="messenger" href="https://m.me/agcauto/"><img
+            <li><a class="messenger" href="https://m.me/phut.mot.5015/"><img
                         src="https://agc18.com.vn/wp-content/uploads/2019/12/messenger-1.png">Facebook</a></li>
         </ul>
     </div>

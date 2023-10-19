@@ -55,7 +55,7 @@
                                                 Ghi nhớ thiết bị này
                                             </label>
                                         </div>
-                                        <a class="text-primary fw-bold" href="./index.html">Quên mật khẩu ?</a>
+                                        {{-- <a class="text-primary fw-bold" href="./index.html">Quên mật khẩu ?</a> --}}
                                     </div>
 
                                     {{-- <button> --}}
@@ -63,11 +63,11 @@
                                         Đăng nhập
                                     </button>
                                     {{-- </button> --}}
-                                    <div class="d-flex align-items-center justify-content-center">
+                                    {{-- <div class="d-flex align-items-center justify-content-center">
                                         <p class="fs-4 mb-0 fw-bold">Bạn chưa có tài khoản?</p>
                                         <a class="text-primary fw-bold ms-2" href="{{ route('showregister') }}">Tạo một
                                             tài khoản</a>
-                                    </div>
+                                    </div> --}}
                                 </form>
                             </div>
                         </div>
