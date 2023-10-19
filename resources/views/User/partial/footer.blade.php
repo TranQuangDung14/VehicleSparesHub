@@ -144,14 +144,14 @@
 
                     <ul style="color: #fff">
                         <li style="margin-bottom:0px">
-                            <h4 style="color: #fff;font-weight: 800">CÔNG TY TNHH TM-DV AGC18</h4>
+                            <h4 style="color: #fff;font-weight: 800">CỬA HÀNG NAM HẢI AUTO</h4>
                         </li>
-                        <li class="bullet-arrow" style="margin-bottom:0px"><strong>GPKD:</strong>
+                        <li ><strong>GPKD:</strong>
                             0313675402
                         </li>
                         <li><strong>Do:</strong> Phòng ĐKKD - Sở kế hoạch và đầu tư Tp. Hồ Chí Minh</li>
                         <li><strong>ĐK lần đầu:</strong> 04/03/2016</li>
-                        <li class="bullet-arrow"><strong>Thay đổi lần 2:</strong> 10/03/2016</li>
+                        <li><strong>Thay đổi lần 2:</strong> 10/10/2023</li>
                     </ul>
 
                 </div>
@@ -168,11 +168,9 @@
                         <li style="margin-bottom:0px">
                             <h4 style="color: #fff;font-weight: 800">THÔNG TIN LIÊN HỆ</h4>
                         </li>
-                        <li class="bullet-arrow" style="margin-bottom:0px"><strong>Địa chỉ:</strong> Số
-                            11
-                            đường số 4, KDC T30, Xã Bình Hưng, Huyện Bình Chánh, TP.HCM</li>
-                        <li><strong>Điện thoại:</strong> 0866.2015.82 - (028).2215.9268</li>
-                        <li><strong>Email:</strong> agc18.auto@gmail.com</li>
+                        <li><strong>Địa chỉ:</strong> 289 Nguyễn Xiển, Hoàng Mai, Hà Nội</li>
+                        <li><strong>Điện thoại:</strong> 0123.456.789 - (098).1234.5678</li>
+                        <li><strong>Email:</strong> quynhanh@gmail.com</li>
                     </ul>
 
                 </div>
@@ -209,8 +207,7 @@
                                         height="50" width="50" alt=""></p>
                                     <div><a class="t-name" title="Agc18-Phụ Tùng, Phụ Trợ Dành Cho Ôtô"
                                             href="https://www.facebook.com/agcauto/" target="_blank"
-                                            rel="noopener noreferrer">Agc18-Phụ Tùng, Phụ Trợ Dành Cho
-                                            Ôtô</a></div>
+                                            rel="noopener noreferrer">Cửa hàng hải nam auto</a></div>
                                 </div>
 
                             </div>
@@ -223,7 +220,7 @@
 
 
 
-            <div id="col-380162678" class="col medium-3 small-12 large-3">
+            {{-- <div id="col-380162678" class="col medium-3 small-12 large-3">
                 <div class="col-inner">
 
 
@@ -281,7 +278,7 @@
 
 
                 </div>
-            </div>
+            </div> --}}
 
 
 

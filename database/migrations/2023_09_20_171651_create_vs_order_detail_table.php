@@ -17,7 +17,7 @@ class CreateVsOrderDetailTable extends Migration
             $table->id();
             $table->integer("order_id")->unsigned()->nullable();
             $table->integer("product_id")->unsigned()->nullable();
-            $table->decimal('price', 10, 2)->default(0)->nullable();
+            $table->decimal('price', 20, 2)->default(0)->nullable();
             $table->integer("quantity")->unsigned()->nullable();
             // $table->string("discout",200)->nullable();
 

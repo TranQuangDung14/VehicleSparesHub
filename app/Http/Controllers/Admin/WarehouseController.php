@@ -23,5 +23,19 @@ class WarehouseController extends Controller
             dd($e);
         }
     }
+    public function update_quantity(Request $request,$id){
+        try {
+            // dd($request->all());
+            $product = Products::find($id);
+            $product->quantity = $request->quantity + $product->quantity;
+            $product->update();
+            session()->flash('success', 'Cập nhật thành công!');
+            return redirect()->route('warehouseIndex');
+        } catch (\Exception $e) {
+            //throw $th;
+            session()->flash('error', 'Cập nhật thất bại!');
+            dd($e);
+        }
+    }
 
 }

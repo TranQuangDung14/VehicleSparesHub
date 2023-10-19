@@ -133,11 +133,7 @@
                                                         src="{{ asset('storage/image/product/' . $image->image) }}"
                                                         class="wp-post-image skip-lazy" alt="{{ $data['detail']->name }}"
                                                         decoding="async" title="{{ $data['detail']->name }}"
-                                                        data-caption="{{ $data['detail']->name }}" {{-- data-src="https://agc18.com.vn/wp-content/uploads/2019/06/15.png"
-                                                    data-large_image="https://agc18.com.vn/wp-content/uploads/2019/06/15.png"
-                                                    data-large_image_width="1276" data-large_image_height="956"
-                                                    loading="lazy"
-                                                    srcset="https://agc18.com.vn/wp-content/uploads/2019/06/15-600x450.png 600w, https://agc18.com.vn/wp-content/uploads/2019/06/15-246x185.png 246w, https://agc18.com.vn/wp-content/uploads/2019/06/15-300x225.png 300w, https://agc18.com.vn/wp-content/uploads/2019/06/15-1024x767.png 1024w, https://agc18.com.vn/wp-content/uploads/2019/06/15-768x575.png 768w, https://agc18.com.vn/wp-content/uploads/2019/06/15.png 1276w" --}}
+                                                        data-caption="{{ $data['detail']->name }}"
                                                         sizes="(max-width: 600px) 100vw, 600px" />
                                                 </a>
                                             </div>
@@ -145,12 +141,12 @@
 
                                     </figure>
 
-                                    <div class="image-tools absolute bottom left z-3">
+                                    {{-- <div class="image-tools absolute bottom left z-3">
                                         <a href="#product-zoom"
                                             class="zoom-button button is-outline circle icon tooltip hide-for-small"
                                             title="Zoom">
                                             <i class="icon-expand"></i> </a>
-                                    </div>
+                                    </div> --}}
                                 </div>
 
                                 <div class="product-thumbnails thumbnails slider-no-arrows slider row row-small row-slider slider-nav-small small-columns-4"
@@ -194,6 +190,9 @@
                                         </span>
                                     </p>
                                 </div>
+                                <span class="tagged_as">Mô tả ngắn:
+                                  {!! $data['detail']->short_description !!}
+                                </span>
                                 <div class="product-short-description">
                                     <h4></h4>
                                 </div>
@@ -205,7 +204,7 @@
 
 
 
-                                            <a rel="noopener noreferrer" href="https://www.facebook.com/agcauto/"
+                                            <a rel="noopener noreferrer" href="#"
                                                 target="_blank" class="button primary is-normal lowercase expand"
                                                 style="border-radius:5px;">
                                                 <span>Fanpage Facebook</span>
@@ -222,10 +221,10 @@
 
 
 
-                                            <a rel="noopener noreferrer" href="tel:+84866201582" target="_blank"
+                                            <a rel="noopener noreferrer" href="tel:+0123456789" target="_blank"
                                                 class="button success is-normal lowercase expand"
                                                 style="border-radius:5px;">
-                                                <span>Gọi 0866.2015.82</span>
+                                                <span>Gọi 01234.567.89</span>
                                             </a>
 
 
@@ -259,8 +258,9 @@
                                             rel="tag">{{ $data['detail']->category->name }}</a>,
                                         <br>
                                         <span class="tagged_as">Thông số:
-                                            <a href="https://agc18.com.vn/tu-khoa/binh-xit/"
-                                                rel="tag">{!! $data['detail']->tech_specs !!}</a>
+                                            {!! $data['detail']->tech_specs !!}
+                                        </span>
+                                    </span>
 
 
                                 </div>
