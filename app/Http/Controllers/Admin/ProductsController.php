@@ -71,7 +71,7 @@ class ProductsController extends Controller
             $product->short_description = $request->short_description ?? null;
             $product->description = $request->description ?? null;
             $product->tech_specs = $request->tech_specs ?? null;
-            $product->quantity = $request->quantity ?? null;
+            // $product->quantity = $request->quantity ?? null;
             // $product->selling = $request->selling ?? null;
             $product->save();
             if ($request->hasFile('image')) {
@@ -150,7 +150,7 @@ class ProductsController extends Controller
             $product->short_description = $request->short_description ?? null;
             $product->description       = $request->description ?? null;
             $product->tech_specs        = $request->tech_specs ?? null;
-            $product->quantity          = $request->quantity ?? null;
+            // $product->quantity          = $request->quantity ?? null;
 
             $product->update();
             if ($request->hasFile('image')) {
