@@ -77,11 +77,11 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="mb-3 col-6">
+                        {{-- <div class="mb-3 col-6">
                             <label for="exampleInputEmail1" class="form-label">Số lượng</label>
                             <input type="number" class="form-control" name="quantity" id="quantity"
                                 value="{{ isset($editData) ? $editData->quantity : old('quantity') }}">
-                        </div>
+                        </div> --}}
 
                         {{-- Giá --}}
 
