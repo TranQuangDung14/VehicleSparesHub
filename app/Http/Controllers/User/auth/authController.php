@@ -69,15 +69,20 @@ class authController extends Controller
                 'name'              => 'required|string',
                 'email'             => 'required|string|email|max:255|unique:users',
                 'password'          => 'required',
+                'number_phone'      => 'required',
+                'adress'            => 'required',
+
             );
             $messages = array(
-                'name.required'     => '--Tên người dùng không được để trống!--',
-                'email.required'    => '--Email không được để trống!--',
-                'email.string'      => '--Email phải là chuỗi!--',
-                'email.email'       => '--Email không hợp lệ!--',
-                'email.max'         => '--Email không được vượt quá 255 ký tự!--',
-                'email.unique'      => '--Email đã tồn tại trong hệ thống!--',
-                'password.required' => '--Mật khẩu không được để trống!--',
+                'name.required'             => '--Tên người dùng không được để trống!--',
+                'number_phone.required'     => '--Số điện thoại không được để trống!--',
+                'adress.required'           => '--Địa chỉ không được để trống!--',
+                'email.required'            => '--Email không được để trống!--',
+                'email.string'              => '--Email phải là chuỗi!--',
+                'email.email'               => '--Email không hợp lệ!--',
+                'email.max'                 => '--Email không được vượt quá 255 ký tự!--',
+                'email.unique'              => '--Email đã tồn tại trong hệ thống!--',
+                'password.required'         => '--Mật khẩu không được để trống!--',
             );
             $validator = Validator::make($input, $rules, $messages);
             if ($validator->fails()) {
@@ -93,14 +98,12 @@ class authController extends Controller
                 'role'      => '2',
             ]);
             $customer = Customers::create([
-                'user_id'   => $user->id,
-                'name'      => $request->name,
-                // 'date_of_birth' => $request->input('date_of_birth'),
-                // 'sex' => $request->input('sex'),
-                // 'number_phone' => $request->input('number_phone'),
-                // 'address' => $request->input('address'),
+                'user_id'           => $user->id,
+                'name'              => $request->name,
+                'number_phone'      => $request->number_phone,
+                'adress'            => $request->adress,
             ]);
-
+            session()->flash('success', 'Tạo tài khoản thành công!');
             // Auth::login($user);
         } catch (\Exception $e) {
             dd($e);

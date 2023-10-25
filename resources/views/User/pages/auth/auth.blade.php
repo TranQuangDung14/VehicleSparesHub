@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -262,9 +263,25 @@
         }
     </style>
 </head>
+
 <body>
-    @if (session('error'))
+    {{-- @if (session('error'))
         <div class="alert alert-danger">
+            {{ session('error') }}
+            <span type="button" class="X-close float-end" data-dismiss="alert" aria-label="Close">
+                <i class="ti ti-x"></i>
+            </span>
+        </div>
+    @endif --}}
+    @if (session('success'))
+        <div class="alert alert-success" id="success-alert">
+            {{ session('success') }}
+            <span type="button" class="X-close float-end" data-dismiss="alert" aria-label="Close">
+               <i class="ti ti-x"></i>
+            </span>
+        </div>
+    @elseif (session('error'))
+        <div class="alert alert-danger" id="error-alert">
             {{ session('error') }}
             <span type="button" class="X-close float-end" data-dismiss="alert" aria-label="Close">
                 <i class="ti ti-x"></i>
@@ -278,16 +295,23 @@
                 @csrf
                 <h1>Tạo tài khoản</h1>
                 <span>hoặc sử dụng email của bạn để đăng ký</span>
-                <input type="text" name="name" placeholder="Tên của bạn" />
+                <input type="text" name="name" placeholder="Tên của bạn*" />
                 @if ($errors->has('name'))
                     <span class="text-danger" role="alert">{{ $errors->first('name') }}</span>
                 @endif
-                {{-- <input type="text" placeholder="Tên tài khoản" /> --}}
-                <input type="email" name="email" id="signUpEmail"placeholder="Email" />
+                <input type="number" name="number_phone" placeholder="Số điện thoại*" />
+                @if ($errors->has('number_phone'))
+                    <span class="text-danger" role="alert">{{ $errors->first('number_phone') }}</span>
+                @endif
+                <input type="text" name="adress" placeholder="Địa chỉ*" />
+                @if ($errors->has('adress'))
+                    <span class="text-danger" role="alert">{{ $errors->first('adress') }}</span>
+                @endif
+                <input type="email" name="email" id="signUpEmail" placeholder="Email*" />
                 @if ($errors->has('email'))
                     <span class="text-danger" role="alert">{{ $errors->first('email') }}</span>
                 @endif
-                <input type="password" name="password" placeholder="Password" />
+                <input type="password" name="password" placeholder="Password*" />
                 @if ($errors->has('password'))
                     <span class="text-danger" role="alert">{{ $errors->first('password') }}</span>
                 @endif
@@ -343,5 +367,6 @@
             signUpEmail.value = signInEmail.value;
         }
     }
-    </script>
+</script>
+
 </html>

@@ -29,6 +29,7 @@ Route::prefix('admin')->group(function () {
     // bảng điều khiển
     Route::prefix('account')->middleware('auth','admin')->group(function () {
         Route::get('', [AuthController::class, 'index'])->name('accountIndex');
+        Route::post('lock_account', [AuthController::class, 'lock_account'])->name('lock_account');
     });
     Route::prefix('dashboard')->middleware('auth','admin')->group(function () {
         Route::get('', [DashboardController::class, 'index'])->name('dashboardIndex');
