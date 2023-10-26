@@ -144,4 +144,30 @@ class AuthController extends Controller
         }
     }
 
+    public function lock_account(Request $request)
+    {
+        dd($request->all());
+        try {
+            $user            = User::find($request->id);
+
+            if ($request->lock == 'on') {
+                $lock = 0;
+                session()->flash('success', 'Đã khóa tài khoản '.$user->name.' thành công.');
+
+            } else {
+                $lock = 1;
+                session()->flash('success', 'Đã mở khóa '.$user->name.' thành công.');
+            }
+            $user->lock      = $lock;
+            $user->save();
+
+            return redirect()->back();
+        } catch (\Exception $e) {
+            dd($e);
+            session()->flash('error', 'Có lỗi bất ngờ xảy ra!');
+            // Toastr::error('kích hoạt thất bại!', 'Failed');
+            return redirect()->back();
+        }
+    }
+
 }

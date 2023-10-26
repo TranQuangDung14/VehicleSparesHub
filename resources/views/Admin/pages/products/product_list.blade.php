@@ -61,7 +61,7 @@
             <div class="card border w-100">
                 <div class="card-body p-4">
                     {{-- <h5 class="card-title fw-semibold mb-4">Recent Transactions</h5> --}}
-                    <div class="table-responsive">
+                    <div id="list_product" class="table-responsive">
                         <table class="table text-nowrap mb-0 align-middle">
                             <thead class="text-dark fs-4">
                                 <tr>
@@ -217,9 +217,11 @@
                 url: "Products/update_status",
                 success: function(data) {
                     console.log('data đây',data);
+
                     setTimeout(function() {
                         toastr.success(
                             message,
+                            // $('#list_product').reload(),
                             "Thành công", {
                                 iconClass: "customer-info",
                             }, {

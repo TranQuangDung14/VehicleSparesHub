@@ -78,6 +78,9 @@
                                     <th class="border-bottom-0">
                                         <h6 class="fw-semibold mb-0">Quyền</h6>
                                     </th>
+                                    <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">Khóa tài khoản</h6>
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -99,11 +102,71 @@
                                                 <span class="fw-normal">User</span>
                                             @endif
                                         </td>
-                                        {{-- <td class="border-bottom-0">
-                                            <a href="{{ route('categoryEdit', $value->id) }}" title="Sửa danh mục"><i
-                                                    class="ti ti-edit fs-8"></i></a>
-                                                <!-- Modal -->
-                                        </td> --}}
+                                        <td class="border-bottom-0">
+                                            @if ($value->lock == 0)
+                                                <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal_{{ $value->id }}"
+                                                    title="Khóa tài khoản">
+                                                    <i class="ti ti-key fs-8"></i>
+                                                </a>
+                                            @else
+                                                <a href="" data-bs-toggle="modal" style="color: red" data-bs-target="#exampleModal_{{ $value->id }}"
+                                                    title="mở tài khoản">
+                                                    <i class="ti ti-key fs-8"></i>
+                                                </a>
+                                            @endif
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="exampleModal_{{ $value->id }}" tabindex="-1"
+                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Khóa tài khoản
+                                                            </h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                                aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            @if ($value->lock == 0)
+                                                                Bạn có chắc muốn khóa tài khoản này?
+                                                            @else
+                                                                Bạn có chắc chắn mở khóa tài khoản này chứ?
+                                                            @endif
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-bs-dismiss="modal">Hủy</button>
+                                                                @if ($value->lock == 0)
+                                                            <form action="{{ route('lock_account') }}" method="POST"
+                                                                enctype="multipart/form-data">
+                                                                @csrf
+                                                                <input type="hidden" class="id" name="id"
+                                                                    id="" value="{{ $value->id }}">
+                                                                {{-- <input type="hidden"  name="lock" id="" value="{{ $value->lock=='on' }}"> --}}
+
+                                                                    <input type="hidden" name="lock" id=""
+                                                                        value="on" {{ $value->lock == 'on' }}>
+                                                                <button type="submit"
+                                                                    class="btn btn-primary">Khóa</button>
+                                                            </form>
+                                                            @else
+                                                            <form action="{{ route('lock_account') }}" method="POST"
+                                                                enctype="multipart/form-data">
+                                                                @csrf
+                                                                <input type="hidden" class="id" name="id"
+                                                                    id="" value="{{ $value->id }}">
+
+                                                                    <input type="hidden" name="lock" id=""
+                                                                        value="off" {{ $value->lock == 'off' }}>
+
+                                                                <button type="submit"
+                                                                    class="btn btn-primary">Mở khóa</button>
+                                                            </form>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
 
                                     </tr>
                                 @endforeach
