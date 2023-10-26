@@ -38,7 +38,10 @@ class authController extends Controller
             session()->flash('error', 'Thông tin tài khoản mật khẩu không chính xác!');
             return redirect()->route('showlogin_User');
         }
-
+        elseif ($user->lock == 1) {
+            session()->flash('error', 'Tài khoản này đã bị khóa!');
+            return redirect()->route('showlogin_User');
+        }
         Auth::login($user);
 
         // Xử lý khi người dùng đăng nhập thành công

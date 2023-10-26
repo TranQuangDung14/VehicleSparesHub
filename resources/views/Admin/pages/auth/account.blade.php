@@ -90,7 +90,7 @@
                                             {{ $key + 1 }}
                                         </td>
                                         <td class="border-bottom-0">
-                                            <span class="fw-normal">{{ $value->name }}</span>
+                                            <span class="fw-normal">@if ($value->lock == 0){{ $value->name }}@else <span style="color: red">{{ $value->name }} (đang khóa)</span>@endif</span>
                                         </td>
                                         <td class="border-bottom-0">
                                             <span class="fw-normal">{{ $value->email }}</span>

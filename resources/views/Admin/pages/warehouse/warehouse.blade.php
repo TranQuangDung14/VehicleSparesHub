@@ -16,32 +16,6 @@
             </div>
         </div>
         {{-- lọc --}}
-        {{-- <div class="row">
-            <div class="card border">
-                <div class="card-body">
-                    <div class="row">
-
-                        <div class="col-8">
-                            <label>Nhập tên danh mục để tìm kiếm</label>
-                            <form action="{{ route('categoryIndex') }}" method="get" enctype="multipart/form-data">
-                                <div class="input-group">
-
-                                    <input class="form-control" type="text" name="search" value=""
-                                        placeholder="nhập tên danh mục">
-                                    <button class="btn btn-primary" type="submit"><i class="ti ti-search"></i></button>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="col-4">
-
-                            <a href="{{ route('categoryCreate') }}"> <button type="button"
-                                    class="btn btn-primary m-1 float-end" title="Thêm mới danh mục"><i
-                                        class="ti ti-plus"></i></button></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> --}}
         @if (session('success'))
             <div class="alert alert-success" id="success-alert">
                 {{ session('success') }}
@@ -75,6 +49,12 @@
                                         <h6 class="fw-semibold mb-0">Số lượng</h6>
                                     </th>
                                     <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">Giá tiền</h6>
+                                    </th>
+                                    <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">Tổng tiền</h6>
+                                    </th>
+                                    <th class="border-bottom-0">
                                         <h6 class="fw-semibold mb-0">Hành động</h6>
                                     </th>
                                 </tr>
@@ -103,6 +83,12 @@
                                         </td>
                                         <td class="border-bottom-0 ">
                                             <h6 class="fw-semibold mb-0 fs-4">{{ $value->quantity ?? '0' }}</h6>
+                                        </td>
+                                        <td class="border-bottom-0 ">
+                                            <h6 class="fw-semibold mb-0 fs-3" style="color: #FF3333">{{ number_format($value->price, 0, '.', ',') ?? '0' }} VNĐ</h6>
+                                        </td>
+                                        <td class="border-bottom-0 ">
+                                            <h6 class="fw-semibold mb-0 fs-3" style="color: #FF3333">{{ number_format($value->quantity*$value->price, 0, '.', ',') ?? '0' }} VNĐ</h6>
                                         </td>
                                         <td class="border-bottom-0 ">
                                             <a href="" data-bs-toggle="modal"
