@@ -38,6 +38,11 @@
                                 <button type="button" class="btn btn-outline-success m-1 mt-4 float-end"><i
                                         class="ti ti-download"></i></button>
                             </a>
+                            {{-- <a href="" title="xuất file Excel"> --}}
+                                <button type="button" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal_add" class="btn btn-outline-success m-1 mt-4 float-end" title="Tạo đơn hàng"><i
+                                        class="ti ti-download"></i></button>
+                            {{-- </a> --}}
                         </div>
                     </div>
                     {{-- <p class="mb-0">This is a sample page </p> --}}
@@ -172,7 +177,7 @@
                                                                         <img src="{{ asset('storage/image/product/' . $order_detail->product->images[0]->image) }}"
                                                                             alt="Ảnh sản phẩm"
                                                                             style="width: 20%; height: 20%;">
-                                                                    @else                                                                 
+                                                                    @else
                                                                         <img src="{{ asset('Admin/') }}/images/profile/no_image.jpg"
                                                                             alt=""
                                                                             style="width: 20%; height: 20%;">
@@ -205,7 +210,81 @@
         </div>
     </div>
 
-
+    {{-- modal tạo đơn hàng --}}
+    <div class="modal fade" id="exampleModal_add" tabindex="-1"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Tạo mới đơn hàng
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    {{-- <div class="row">
+                        <div class="col-3">Mã đơn hàng: {{ $value->id }}</div>
+                        <div class="col-3">Tên người nhận: {{ $value->customer->name }}</div>
+                        <div class="col-3">Tổng tiền: <span
+                                style="color: red">{{ number_format($value->total_money, 0, '.', '.') }}đ</span>
+                        </div>
+                        <div class="col-3">
+                            <a href="{{ route('ExportDetailOrder', $value->id) }}" title="Xuất excel">
+                                <button type="button" class="btn btn-success m-1 float-end">
+                                    <i class="ti ti-download"></i>
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-12">
+                            <label for="">Thông tin sản phẩm</label>
+                            <table class="table">
+                                <thead style="background-color: #CFCFCF">
+                                    <tr>
+                                        <th class="col-lg-1">stt</th>
+                                        <th class="col-lg-5">Sản phẩm</th>
+                                        <!-- <th scope="col">Tên sản phẩm</th> -->
+                                        <th class="col-lg-3">Số lượng</th>
+                                        <th class="col-lg-3">Giá</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($value->orderDetails as $key => $order_detail)
+                                        <tr>
+                                            <td> {{ $key + 1 }}</td>
+                                            <td>
+                                                @if ($order_detail->product)
+                                                    <img src="{{ asset('storage/image/product/' . $order_detail->product->images[0]->image) }}"
+                                                        alt="Ảnh sản phẩm"
+                                                        style="width: 20%; height: 20%;">
+                                                @else
+                                                    <img src="{{ asset('Admin/') }}/images/profile/no_image.jpg"
+                                                        alt=""
+                                                        style="width: 20%; height: 20%;">
+                                                @endif
+                                                <span>
+                                                    {{ $order_detail->product->name ?? 'Sản phẩm không còn tồn tại trên hệ thống' }}
+                                                </span>
+                                            </td>
+                                            <td>{{ $order_detail->quantity }}</td>
+                                            <td style="color: red;">
+                                                {{ number_format($order_detail->price, 0, '.', '.') }}đ
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div> --}}
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 
