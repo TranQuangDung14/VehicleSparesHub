@@ -74,7 +74,7 @@ Route::prefix('admin')->group(function () {
     Route::prefix('order')->middleware('auth','admin')->group(function () {
         Route::get('', [OrderController::class, 'index'])->name('orderIndex');
         // Route::get('add', [CategoriesController::class, 'create'])->name('categoryCreate');
-        // Route::post('add', [CategoriesController::class, 'store'])->name('categoryStore');
+        Route::post('add', [OrderController::class, 'store'])->name('orderStore');
         // Route::get('edit/{id}', [CategoriesController::class, 'edit'])->name('categoryEdit');
         // Route::get('update/{id}', [CategoriesController::class, 'update'])->name('categoryUpdate');
         // Route::delete('delete/{id}', [CategoriesController::class, 'delete'])->name('categoryDelete');

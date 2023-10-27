@@ -40,8 +40,8 @@
                             </a>
                             {{-- <a href="" title="xuất file Excel"> --}}
                                 <button type="button" data-bs-toggle="modal"
-                                data-bs-target="#exampleModal_add" class="btn btn-outline-success m-1 mt-4 float-end" title="Tạo đơn hàng"><i
-                                        class="ti ti-download"></i></button>
+                                data-bs-target="#exampleModal_add" class="btn btn-primary m-1 mt-4 float-end" title="Tạo đơn hàng"><i
+                                class="ti ti-plus"></i></button>
                             {{-- </a> --}}
                         </div>
                     </div>
@@ -222,6 +222,8 @@
                         aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+                    <form action="{{ route('orderStore') }}" method="POST" enctype="multipart/form-data">
+                
                     {{-- <div class="row">
                         <div class="col-3">Mã đơn hàng: {{ $value->id }}</div>
                         <div class="col-3">Tên người nhận: {{ $value->customer->name }}</div>
