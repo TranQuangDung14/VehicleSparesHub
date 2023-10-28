@@ -21,12 +21,12 @@ class Orders extends Model
     }
 
     protected $fillable = [
-        'customer_id',
-        'total_money',
+        'customer_id',// mã khách hàng
+        'total_money', // Tổng tiền
         'delivery_date',
-        'shipping_fee',
-        'receiver_name',
-        'number_phone',
-        'receiver_address',
+        'shipping_fee',// phí vận chuyển
+        'receiver_name',// tên người nhận
+        'number_phone',// số điện thoại
+        'receiver_address', // địa chỉ
     ];
 }
