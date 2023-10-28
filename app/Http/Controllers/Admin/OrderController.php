@@ -25,25 +25,18 @@ class OrderController extends Controller
             $order = Orders::with('orderDetails.product.images','customer')->where('id','LIKE', '%' . $request->search . '%')->orderBy('id','desc')->paginate(5);
             // $product_quantity = Products::select('quantity')->find($id);
             // dd($product_quantity);
-            // $product = Products::
-            return view('Admin.pages.order.order',compact('order'));
+            $product = Products::where('quantity','>',0)->get();
+            // dd($product);
+            return view('Admin.pages.order.order',compact('order','product'));
         } catch (\Exception $e) {
             dd($e);
         }
     }
 
-    // public function show_quantity($id){
-    //     try {
-          
-    //         // dd($product_quantity);
-    //         // $category = Categories::get();
-    //         return view('Admin.pages.order.order',compact('product_quantity'));
-    //     } catch (\Exception $e) {
-    //         //throw $th;
-    //     }
-    // }
+
     public function store(Request $request)
     {
+        dd($request->all());
         DB::beginTransaction();
         try {
             $customer                       = new Customers();
@@ -54,20 +47,20 @@ class OrderController extends Controller
             $customer->save();
             $order                          = new Orders();
             $order->customer_id             = $customer->id;
-            $order->receiver_name           = $request->name; 
-            $order->number_phone            = $request->number_phone; 
-            $order->receiver_address        = $request->receiver_address; 
+            $order->receiver_name           = $request->name;
+            $order->number_phone            = $request->number_phone;
+            $order->receiver_address        = $request->adress;
             $order->save();
             foreach($request->product_id as $product)
             {
                 $order_detail               = new Order_detail();
                 $order_detail->product_id   = $product;
                 $order_detail->order_id     = $order->id;
-                $order_detail->save();   
+                $order_detail->save();
             }
             session()->flash('success', 'Thêm mới thành công.');
             // return view('Admin.pages.products.product_add_edit');
-            return redirect()->route('productIndex');
+            return redirect()->route('orderIndex');
             DB::commit();
         } catch (\Throwable $th) {
             DB::rollback();

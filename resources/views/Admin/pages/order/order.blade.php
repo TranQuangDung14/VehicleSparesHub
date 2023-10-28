@@ -39,9 +39,9 @@
                                         class="ti ti-download"></i></button>
                             </a>
                             {{-- <a href="" title="xuất file Excel"> --}}
-                                <button type="button" data-bs-toggle="modal"
-                                data-bs-target="#exampleModal_add" class="btn btn-primary m-1 mt-4 float-end" title="Tạo đơn hàng"><i
-                                class="ti ti-plus"></i></button>
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal_add"
+                                class="btn btn-primary m-1 mt-4 float-end" title="Tạo đơn hàng"><i
+                                    class="ti ti-plus"></i></button>
                             {{-- </a> --}}
                         </div>
                     </div>
@@ -148,7 +148,8 @@
                                                     style="color: red">{{ number_format($value->total_money, 0, '.', '.') }}đ</span>
                                             </div>
                                             <div class="col-3">
-                                                <a href="{{ route('ExportDetailOrder', $value->id) }}" title="Xuất excel">
+                                                <a href="{{ route('ExportDetailOrder', $value->id) }}"
+                                                    title="Xuất excel">
                                                     <button type="button" class="btn btn-success m-1 float-end">
                                                         <i class="ti ti-download"></i>
                                                     </button>
@@ -211,83 +212,82 @@
     </div>
 
     {{-- modal tạo đơn hàng --}}
-    <div class="modal fade" id="exampleModal_add" tabindex="-1"
-        aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="exampleModal_add" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Tạo mới đơn hàng
+                    <h5 class="modal-title" id="exampleModalLabel" style="color: var(--bs-warning-text)">Tạo mới đơn hàng
                     </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                        aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form action="{{ route('orderStore') }}" method="POST" enctype="multipart/form-data">
-                
-                    {{-- <div class="row">
-                        <div class="col-3">Mã đơn hàng: {{ $value->id }}</div>
-                        <div class="col-3">Tên người nhận: {{ $value->customer->name }}</div>
-                        <div class="col-3">Tổng tiền: <span
-                                style="color: red">{{ number_format($value->total_money, 0, '.', '.') }}đ</span>
+                        @csrf
+                        <h5 for="exampleInputEmail1" class="form-label" style="color: var(--bs-primary-text)">Nhập thông
+                            tin khách hàng<span style="color: red">*</span></h5>
+                        <div class="row">
+                            <div class="mb-3 col-6">
+                                <label for="exampleInputEmail1" class="form-label">Tên khách hàng<span
+                                        style="color: red">*</span></label>
+                                <input type="text" class="form-control" name="name" id="name"
+                                    value="">
+                            </div>
+                            <div class="mb-3 col-6">
+                                <label for="exampleInputEmail1" class="form-label">Địa chỉ<span
+                                        style="color: red">*</span></label>
+                                <input type="text" class="form-control" name="adress" id="adress"
+                                    value="">
+                            </div>
                         </div>
-                        <div class="col-3">
-                            <a href="{{ route('ExportDetailOrder', $value->id) }}" title="Xuất excel">
-                                <button type="button" class="btn btn-success m-1 float-end">
-                                    <i class="ti ti-download"></i>
-                                </button>
-                            </a>
+                        <div class="row">
+                            <div class="mb-3 col-6">
+                                <label for="exampleInputEmail1" class="form-label">Số điện thoại<span
+                                        style="color: red">*</span></label>
+                                <input type="text" class="form-control" name="number_phone" id="number_phone"
+                                    value="">
+                            </div>
+                            <div class="mb-3 col-6">
+                                <label for="exampleInputEmail1" class="form-label">Email<span
+                                        style="color: red">*</span></label>
+                                <input type="text" class="form-control" name="email" id="email"
+                                    value="">
+                            </div>
                         </div>
-                    </div>
-                    <div class="row mt-3">
-                        <div class="col-12">
-                            <label for="">Thông tin sản phẩm</label>
-                            <table class="table">
-                                <thead style="background-color: #CFCFCF">
-                                    <tr>
-                                        <th class="col-lg-1">stt</th>
-                                        <th class="col-lg-5">Sản phẩm</th>
-                                        <!-- <th scope="col">Tên sản phẩm</th> -->
-                                        <th class="col-lg-3">Số lượng</th>
-                                        <th class="col-lg-3">Giá</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($value->orderDetails as $key => $order_detail)
-                                        <tr>
-                                            <td> {{ $key + 1 }}</td>
-                                            <td>
-                                                @if ($order_detail->product)
-                                                    <img src="{{ asset('storage/image/product/' . $order_detail->product->images[0]->image) }}"
-                                                        alt="Ảnh sản phẩm"
-                                                        style="width: 20%; height: 20%;">
-                                                @else
-                                                    <img src="{{ asset('Admin/') }}/images/profile/no_image.jpg"
-                                                        alt=""
-                                                        style="width: 20%; height: 20%;">
-                                                @endif
-                                                <span>
-                                                    {{ $order_detail->product->name ?? 'Sản phẩm không còn tồn tại trên hệ thống' }}
-                                                </span>
-                                            </td>
-                                            <td>{{ $order_detail->quantity }}</td>
-                                            <td style="color: red;">
-                                                {{ number_format($order_detail->price, 0, '.', '.') }}đ
-                                            </td>
-                                        </tr>
+                        <h5 for="exampleInputEmail1" class="form-label" style="color: var(--bs-primary-text)">Đơn hàng
+                        </h5>
+                        <div class="row">
+                            <div class="mb-3 col-12">
+                                <label for="exampleInputEmail1" class="form-label">Sản phẩm<span
+                                        style="color: red">*</span></label>
+                                <select name="product_id" id="select2"
+                                    class="col-lg-12 " >
+                                    <option value="" disabled selected>--Chọn sản phẩm--</option>
+                                    @foreach ($product as $pro)
+                                        <option value="{{ $pro->id }}">
+                                            {{ $pro->name }}</option>
                                     @endforeach
-                                </tbody>
-                            </table>
+                                </select>
+                            </div>
+
                         </div>
-                    </div> --}}
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng
-                        </button>
-                    </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng
+                            </button>
+                            <button type="submit" class="btn btn-primary">Lưu</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+    {{-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" /> --}}
 
+    <script>
+      $(document).ready(function() {
+        $('#select2').select2();
+    });
+    </script>
 
 
 @endsection
