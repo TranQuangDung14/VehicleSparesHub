@@ -261,8 +261,8 @@
                                 <label for="exampleInputEmail1" class="form-label">Sản phẩm<span
                                         style="color: red">*</span></label>
                                 <select name="product_id" id="select2"
-                                    class="col-lg-12 " >
-                                    <option value="" disabled selected>--Chọn sản phẩm--</option>
+                                    class="col-lg-12 " multiple='multiple'>
+                                    <option value=""  >--Chọn sản phẩm-- </option>
                                     @foreach ($product as $pro)
                                         <option value="{{ $pro->id }}">
                                             {{ $pro->name }}</option>
@@ -283,7 +283,7 @@
     </div>
     {{-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" /> --}}
 
-    <script>
+    <script  type="text/javascript">
       $(document).ready(function() {
         $('#select2').select2();
     });

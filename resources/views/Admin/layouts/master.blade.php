@@ -33,13 +33,18 @@
         {{-- <link rel="stylesheet" href="{{ asset('Admin/') }}/vendors/select2/select2.css" />
         <script src="{{ asset('Admin/') }}/vendors/select2/select2.min.js"></script> --}}
 
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-rc.0/css/select2.min.css" rel="stylesheet">
+        {{-- <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-rc.0/css/select2.min.css" rel="stylesheet"> --}}
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet" />
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-rc.0/js/select2.min.js"></script> --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-rc.0/js/select2.min.js"></script>
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-rc.0/js/select2.min.js"></script> --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
+
+
     {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
 
     {{-- select2 --}}
@@ -83,7 +88,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0-alpha1/js/bootstrap.min.js"
             integrity="sha512-eHx4nbBTkIr2i0m9SANm/cczPESd0DUEcfl84JpIuutE6oDxPhXvskMR08Wmvmfx5wUpVjlWdi82G5YLvqqJdA=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <script src="{{ asset('Admin/') }}/libs/jquery/dist/jquery.min.js"></script>
+        {{-- <script src="{{ asset('Admin/') }}/libs/jquery/dist/jquery.min.js"></script> --}}
         <script src="{{ asset('Admin/') }}/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
         <script src="{{ asset('Admin/') }}/js/sidebarmenu.js"></script>
         <script src="{{ asset('Admin/') }}/js/app.min.js"></script>
