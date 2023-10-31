@@ -257,20 +257,24 @@
                         <h5 for="exampleInputEmail1" class="form-label" style="color: var(--bs-primary-text)">Đơn hàng
                         </h5>
                         <div class="row">
-                            <div class="mb-3 col-12">
+                            {{-- <div class="mb-3 col-12">
                                 <label for="exampleInputEmail1" class="form-label">Sản phẩm<span
                                         style="color: red">*</span></label>
                                 <select name="product_id" id="select2"
                                     class="col-lg-12 " multiple='multiple'>
-                                    <option value=""  >--Chọn sản phẩm-- </option>
+                                    <option value="" >--Chọn sản phẩm-- </option>
                                     @foreach ($product as $pro)
                                         <option value="{{ $pro->id }}">
                                             {{ $pro->name }}</option>
                                     @endforeach
                                 </select>
+                            </div> --}}
+                            <div id="products-container">
+                                <!-- Dùng JavaScript để thêm các trường sản phẩm vào đây -->
                             </div>
 
                         </div>
+                        <button type="button" class="btn btn-secondary" id="add-product-button">Thêm sản phẩm</button>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng
                             </button>
@@ -283,10 +287,30 @@
     </div>
     {{-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" /> --}}
 
-    <script  type="text/javascript">
-      $(document).ready(function() {
-        $('#select2').select2();
-    });
+    <script type="text/javascript">
+        //   $(document).ready(function() {
+        //     $('#select2').select2();
+        // });
+        $(document).ready(function() {
+            var productsContainer = $('#products-container');
+            var addProductButton = $('#add-product-button');
+
+            addProductButton.click(function() {
+                var productField =
+                    '<div class="product-field row mt-1">' +
+                    '<select name="product_id[]" class="product-select col-lg-6" >' +
+                    '<option value="">Chọn sản phẩm</option>' +
+                    '@foreach ($product as $pro)' +
+                    '<option value="{{ $pro->id }}">{{ $pro->name }}</option>' +
+                    '@endforeach' +
+                    '</select>' +
+                    '<div class="col-lg-2 ms-2" >' +
+                    '<input type="text" name="quantity[]" placeholder="Số lượng">' +
+                    '</div>' +
+                    '</div>';
+                productsContainer.append(productField);
+            });
+        });
     </script>
 
 
