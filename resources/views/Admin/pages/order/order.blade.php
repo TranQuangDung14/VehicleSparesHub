@@ -234,13 +234,19 @@
                                 <label for="exampleInputEmail1" class="form-label">Tên khách hàng<span
                                         style="color: red">*</span></label>
                                 <input type="text" class="form-control" name="name" id="name"
-                                    value="">
+                                    value="" required>
+                                @if ($errors->has('name'))
+                                    <span class="text-danger" role="alert">{{ $errors->first('name') }}</span>
+                                @endif
                             </div>
                             <div class="mb-3 col-6">
                                 <label for="exampleInputEmail1" class="form-label">Địa chỉ<span
                                         style="color: red">*</span></label>
                                 <input type="text" class="form-control" name="adress" id="adress"
-                                    value="">
+                                    value="" required>
+                                @if ($errors->has('adress'))
+                                    <span class="text-danger" role="alert">{{ $errors->first('adress') }}</span>
+                                @endif
                             </div>
                         </div>
                         <div class="row">
@@ -248,11 +254,14 @@
                                 <label for="exampleInputEmail1" class="form-label">Số điện thoại<span
                                         style="color: red">*</span></label>
                                 <input type="text" class="form-control" name="number_phone" id="number_phone"
-                                    value="">
+                                    value=""required>
+                                    @if ($errors->has('number_phone'))
+                                    <span class="text-danger" role="alert">{{ $errors->first('number_phone') }}</span>
+                                @endif
                             </div>
                             <div class="mb-3 col-6">
-                                <label for="exampleInputEmail1" class="form-label">Email<span
-                                        style="color: red">*</span></label>
+                                <label for="exampleInputEmail1" class="form-label">Email
+                                    {{-- <span style="color: red">*</span></label> --}}
                                 <input type="text" class="form-control" name="email" id="email"
                                     value="">
                             </div>
@@ -260,18 +269,28 @@
                         <h5 for="exampleInputEmail1" class="form-label" style="color: var(--bs-primary-text)">Đơn hàng
                         </h5>
                         <div class="row">
+                            <span class="col-lg-6 ">Sản phẩm</span>
+                            <!-- <th scope="col">Tên sản phẩm</th> -->
+                            <span class="col-lg-2 ms-3">Số lượng<span
+                                style="color: red">*</span></span>
+                            <span class="col-lg-2 ms-3">Giá</span>
+                            {{-- </tr>
+                            </thead> --}}
+                        </div>
+                        <div class="row">
                             <div id="products-container">
                                 <!-- Dùng JavaScript để thêm các trường sản phẩm vào đây -->
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-7"><span style="float: right">Tổng tiền </span>
+                        <div class="row mt-4">
+                            <div class="col-8"><span style="float: right">Tổng tiền: </span>
                             </div>
-                            <div id="total-amount" class="col-5"></div>
+                            <div id="total-amount" class="col-4"></div>
+                            <input type="hidden" id="total" name="total_money">
                         </div>
                         <button type="button" class="btn btn-secondary" id="add-product-button">Thêm sản phẩm</button>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Đóng
                             </button>
                             <button type="submit" class="btn btn-primary">Lưu</button>
                         </div>
@@ -288,28 +307,32 @@
             var addProductButton = $('#add-product-button');
 
             addProductButton.click(function() {
-                // Tạo một bản sao của danh sách sản phẩm đã chọn
+                // // Tạo một bản sao của danh sách sản phẩm đã chọn
                 var selectedProducts = productsContainer.find(
                     '.product-field select.product-select option:selected');
 
                 var productField =
-                   '<div class="product-field row mt-1">' +
+                    '<div class="product-field row mt-1">' +
                     '<select name="product_id[]" class="product-select col-lg-6" >' +
-                    '<option value="">Chọn sản phẩm</option>' +
+                    '<option value="" >--Chọn sản phẩm--</option>' +
                     '@foreach ($product as $pro)' +
                     '<option value="{{ $pro->id }}" data-price="{{ $pro->price }}">{{ $pro->name }}</option>' +
                     '@endforeach' +
                     '</select>' +
                     '<div class="col-lg-2 ms-2" >' +
-                    '<input type="text" name="quantity[]" placeholder="Số lượng">' +
+                    '<input type="number" class="form-control" name="quantity[]" placeholder="Số lượng" required>' +
+                    // '@if ($errors->has("quantity"))'+
+                    // '<span class="text-danger" role="alert">{{ $errors->first("quantity") }}</span>'+
+                    // '@endif'+
                     '</div>' +
                     '<div class="col-lg-2 ms-2" >' +
-                    '<input type="text" name="price[]" placeholder="Giá" readonly>' +
-                    '</div>' +
-                    // '<div class="col-lg-1" >' +
-                    // '<button type="button" class="remove-product">Xóa</button>' +
-                    // '</div>' +
+                    // '<input type="number"  step="0.01" name="price[]" placeholder="Giá" readonly>' +
+                    '<input type="number" class="form-control" name="price[]" placeholder="Giá" readonly>' +
 
+                    '</div>' +
+                    '<div class="col-lg-1" >' +
+                    '<button class="btn btn-danger remove-product">Xóa</button>' +
+                    '</div>' +
                     '</div>';
 
 
@@ -333,17 +356,21 @@
                         total += (quantity * price);
                     });
                     $('#total-amount').text(total.toFixed(2)); // Hiển thị tổng tiền
+                    $('#total').val(total);
+                    // console.log(total);
+                    // total =$(this).find('div[name="price"]');
+
                 }
 
                 // Theo dõi sự thay đổi trong trường số lượng và tính toán lại tổng tiền
                 productsContainer.on('input', '.product-field input[name="quantity[]"]', function() {
                     calculateTotal();
                 });
-                // Thêm xử lý sự kiện xóa khi nút "Xóa" được click
-                // productField = productField.find('.remove-product').click(function() {
-                //     productField.remove(); // Loại bỏ sản phẩm khi nút "Xóa" được click
-                //     calculateTotal(); // Tính lại tổng tiền
-                // });
+                productsContainer.on('click', '.remove-product', function() {
+                    $(this).closest('.product-field').remove(); // Loại bỏ phần tử sản phẩm
+                    calculateTotal(); // Cập nhật tổng tiền sau khi xóa
+                });
+
             });
         });
     </script>
