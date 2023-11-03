@@ -103,7 +103,8 @@
                                             <span class="fw-normal">{{ $value->id }}</span>
                                         </td>
                                         <td class="border-bottom-0">
-                                            <span class="fw-normal">{{ $value->customer->name }}</span>
+                                            <span
+                                                class="fw-normal">{{ $value->customer->name ?? $value->customer_->name }}</span>
                                         </td>
                                         <td class="border-bottom-0">
                                             <span
@@ -143,8 +144,10 @@
                                     <div class="modal-body">
                                         <div class="row">
                                             <div class="col-3">Mã đơn hàng: {{ $value->id }}</div>
-                                            <div class="col-3">Tên người nhận: {{ $value->customer->name }}</div>
-                                            <div class="col-3">Tổng tiền: <span
+                                            <div class="col-3">Tên người nhận:
+                                                {{ $value->customer->name ?? $value->customer_->name }}</div>
+                                            <div class="col-3">Tổng tiền:
+                                                <span
                                                     style="color: red">{{ number_format($value->total_money, 0, '.', '.') }}đ</span>
                                             </div>
                                             <div class="col-3">
@@ -231,13 +234,19 @@
                                 <label for="exampleInputEmail1" class="form-label">Tên khách hàng<span
                                         style="color: red">*</span></label>
                                 <input type="text" class="form-control" name="name" id="name"
-                                    value="">
+                                    value="" required>
+                                @if ($errors->has('name'))
+                                    <span class="text-danger" role="alert">{{ $errors->first('name') }}</span>
+                                @endif
                             </div>
                             <div class="mb-3 col-6">
                                 <label for="exampleInputEmail1" class="form-label">Địa chỉ<span
                                         style="color: red">*</span></label>
                                 <input type="text" class="form-control" name="adress" id="adress"
-                                    value="">
+                                    value="" required>
+                                @if ($errors->has('adress'))
+                                    <span class="text-danger" role="alert">{{ $errors->first('adress') }}</span>
+                                @endif
                             </div>
                         </div>
                         <div class="row">
@@ -245,11 +254,14 @@
                                 <label for="exampleInputEmail1" class="form-label">Số điện thoại<span
                                         style="color: red">*</span></label>
                                 <input type="text" class="form-control" name="number_phone" id="number_phone"
-                                    value="">
+                                    value=""required>
+                                    @if ($errors->has('number_phone'))
+                                    <span class="text-danger" role="alert">{{ $errors->first('number_phone') }}</span>
+                                @endif
                             </div>
                             <div class="mb-3 col-6">
-                                <label for="exampleInputEmail1" class="form-label">Email<span
-                                        style="color: red">*</span></label>
+                                <label for="exampleInputEmail1" class="form-label">Email
+                                    {{-- <span style="color: red">*</span></label> --}}
                                 <input type="text" class="form-control" name="email" id="email"
                                     value="">
                             </div>
@@ -257,26 +269,28 @@
                         <h5 for="exampleInputEmail1" class="form-label" style="color: var(--bs-primary-text)">Đơn hàng
                         </h5>
                         <div class="row">
-                            {{-- <div class="mb-3 col-12">
-                                <label for="exampleInputEmail1" class="form-label">Sản phẩm<span
-                                        style="color: red">*</span></label>
-                                <select name="product_id" id="select2"
-                                    class="col-lg-12 " multiple='multiple'>
-                                    <option value="" >--Chọn sản phẩm-- </option>
-                                    @foreach ($product as $pro)
-                                        <option value="{{ $pro->id }}">
-                                            {{ $pro->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div> --}}
+                            <span class="col-lg-6 ">Sản phẩm</span>
+                            <!-- <th scope="col">Tên sản phẩm</th> -->
+                            <span class="col-lg-2 ms-3">Số lượng<span
+                                style="color: red">*</span></span>
+                            <span class="col-lg-2 ms-3">Giá</span>
+                            {{-- </tr>
+                            </thead> --}}
+                        </div>
+                        <div class="row">
                             <div id="products-container">
                                 <!-- Dùng JavaScript để thêm các trường sản phẩm vào đây -->
                             </div>
-
+                        </div>
+                        <div class="row mt-4">
+                            <div class="col-8"><span style="float: right">Tổng tiền: </span>
+                            </div>
+                            <div id="total-amount" class="col-4"></div>
+                            <input type="hidden" id="total" name="total_money">
                         </div>
                         <button type="button" class="btn btn-secondary" id="add-product-button">Thêm sản phẩm</button>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Đóng
                             </button>
                             <button type="submit" class="btn btn-primary">Lưu</button>
                         </div>
@@ -288,27 +302,75 @@
     {{-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" /> --}}
 
     <script type="text/javascript">
-        //   $(document).ready(function() {
-        //     $('#select2').select2();
-        // });
         $(document).ready(function() {
             var productsContainer = $('#products-container');
             var addProductButton = $('#add-product-button');
 
             addProductButton.click(function() {
+                // // Tạo một bản sao của danh sách sản phẩm đã chọn
+                var selectedProducts = productsContainer.find(
+                    '.product-field select.product-select option:selected');
+
                 var productField =
                     '<div class="product-field row mt-1">' +
                     '<select name="product_id[]" class="product-select col-lg-6" >' +
-                    '<option value="">Chọn sản phẩm</option>' +
+                    '<option value="" >--Chọn sản phẩm--</option>' +
                     '@foreach ($product as $pro)' +
-                    '<option value="{{ $pro->id }}">{{ $pro->name }}</option>' +
+                    '<option value="{{ $pro->id }}" data-price="{{ $pro->price }}">{{ $pro->name }}</option>' +
                     '@endforeach' +
                     '</select>' +
                     '<div class="col-lg-2 ms-2" >' +
-                    '<input type="text" name="quantity[]" placeholder="Số lượng">' +
+                    '<input type="number" class="form-control" name="quantity[]" placeholder="Số lượng" required>' +
+                    // '@if ($errors->has("quantity"))'+
+                    // '<span class="text-danger" role="alert">{{ $errors->first("quantity") }}</span>'+
+                    // '@endif'+
+                    '</div>' +
+                    '<div class="col-lg-2 ms-2" >' +
+                    // '<input type="number"  step="0.01" name="price[]" placeholder="Giá" readonly>' +
+                    '<input type="number" class="form-control" name="price[]" placeholder="Giá" readonly>' +
+
+                    '</div>' +
+                    '<div class="col-lg-1" >' +
+                    '<button class="btn btn-danger remove-product">Xóa</button>' +
                     '</div>' +
                     '</div>';
+
+
+                // Loại bỏ sản phẩm đã chọn từ danh sách sản phẩm mới thêm vào
+                selectedProducts.each(function() {
+                    var selectedProductId = $(this).val();
+                    productField = productField.replace('<option value="' + selectedProductId + '"',
+                        '<option value="' + selectedProductId + '" disabled');
+                });
+
                 productsContainer.append(productField);
+
+                // Định nghĩa một hàm để tính tổng tiền
+                function calculateTotal() {
+                    var total = 0;
+                    productsContainer.find('.product-field').each(function() {
+                        var quantity = $(this).find('input[name="quantity[]"]').val();
+                        var price = $(this).find('.product-select option:selected').data('price');
+                        var totalPriceField = $(this).find('input[name="price[]"]');
+                        totalPriceField.val(quantity * price);
+                        total += (quantity * price);
+                    });
+                    $('#total-amount').text(total.toFixed(2)); // Hiển thị tổng tiền
+                    $('#total').val(total);
+                    // console.log(total);
+                    // total =$(this).find('div[name="price"]');
+
+                }
+
+                // Theo dõi sự thay đổi trong trường số lượng và tính toán lại tổng tiền
+                productsContainer.on('input', '.product-field input[name="quantity[]"]', function() {
+                    calculateTotal();
+                });
+                productsContainer.on('click', '.remove-product', function() {
+                    $(this).closest('.product-field').remove(); // Loại bỏ phần tử sản phẩm
+                    calculateTotal(); // Cập nhật tổng tiền sau khi xóa
+                });
+
             });
         });
     </script>

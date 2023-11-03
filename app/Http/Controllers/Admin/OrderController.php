@@ -11,6 +11,7 @@ use App\Models\Orders;
 use App\Models\Products;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 use Maatwebsite\Excel\Facades\Excel;
 class OrderController extends Controller
 {
@@ -22,7 +23,7 @@ class OrderController extends Controller
     public function index(Request $request)
     {
         try {
-            $order = Orders::with('orderDetails.product.images','customer')->where('id','LIKE', '%' . $request->search . '%')->orderBy('id','desc')->paginate(5);
+            $order = Orders::with('orderDetails.product.images','customer','customer_')->where('id','LIKE', '%' . $request->search . '%')->orderBy('id','desc')->paginate(5);
             // $product_quantity = Products::select('quantity')->find($id);
             // dd($product_quantity);
             $product = Products::where('quantity','>',0)->get();
@@ -36,7 +37,29 @@ class OrderController extends Controller
 
     public function store(Request $request)
     {
-        dd($request->all());
+        // dd($request->all());
+        $input = $request->all();
+
+        $rules = array(
+            'name' => 'required',
+            'adress' => 'required',
+            'number_phone' => 'required',
+            // 'quantity' => 'required',
+        );
+        $messages = array(
+            'name.required'             => '--Tên khách hàng không được để trống!--',
+            'adress.required'           => '--Địa chỉ không được để trống!--',
+            'number_phone.required'     => '--Số điện thoại không được để trống!--',
+            // 'quantity.required'            => '--số lượng không được để trống!--',
+        );
+        $validator = Validator::make($input, $rules, $messages);
+
+        if ($validator->fails()) {
+            session()->flash('error', 'Kiểm tra lại.');
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
         DB::beginTransaction();
         try {
             $customer                       = new Customers();
@@ -50,20 +73,37 @@ class OrderController extends Controller
             $order->receiver_name           = $request->name;
             $order->number_phone            = $request->number_phone;
             $order->receiver_address        = $request->adress;
+            $order->total_money             = $request->total_money;
+
             $order->save();
-            foreach($request->product_id as $product)
+            $products                       = $request->input('product_id');
+            $quantities                     = $request->input('quantity');
+            $price_by_quantity              = $request->input('price');
+            // dd($quantities);
+            // $total =0;
+            foreach($products as $key       => $productID)
             {
                 $order_detail               = new Order_detail();
-                $order_detail->product_id   = $product;
                 $order_detail->order_id     = $order->id;
+                $order_detail->product_id   = $productID;
+                $order_detail->quantity     = $quantities[$key];
+                $order_detail->price        = $price_by_quantity[$key];
+                // $order_detail->quantity     = $qty;
+                // $total += $quantities[$key] * $request->price;
+
                 $order_detail->save();
             }
+
+
             session()->flash('success', 'Thêm mới thành công.');
             // return view('Admin.pages.products.product_add_edit');
-            return redirect()->route('orderIndex');
             DB::commit();
-        } catch (\Throwable $th) {
+            return redirect()->route('orderIndex');
+        } catch (\Exception $e) {
+            dd($e);
             DB::rollback();
+            session()->flash('error', 'Thêm mới thất bại.');
+            return redirect()->back();
             //throw $th;
         }
 

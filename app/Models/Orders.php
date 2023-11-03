@@ -19,6 +19,10 @@ class Orders extends Model
     {
         return $this->belongsTo(User::class, 'customer_id');
     }
+    public function customer_()
+    {
+        return $this->belongsTo(Customers::class, 'customer_id');
+    }
 
     protected $fillable = [
         'customer_id',// mã khách hàng
