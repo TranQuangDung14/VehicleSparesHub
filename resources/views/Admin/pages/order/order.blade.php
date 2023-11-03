@@ -157,6 +157,13 @@
                                                         <i class="ti ti-download"></i>
                                                     </button>
                                                 </a>
+                                                {{-- pdf --}}
+                                                <a href="{{ route('ExportPDFOrder', $value->id) }}"
+                                                    title="Xuất excel">
+                                                    <button type="button" class="btn btn-danger m-1 float-end">
+                                                        <i class="ti ti-download"></i>
+                                                    </button>
+                                                </a>
                                             </div>
                                         </div>
                                         <div class="row mt-3">
