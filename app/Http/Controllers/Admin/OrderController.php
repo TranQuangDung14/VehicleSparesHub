@@ -9,10 +9,12 @@ use App\Models\Customers;
 use App\Models\Order_detail;
 use App\Models\Orders;
 use App\Models\Products;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Maatwebsite\Excel\Facades\Excel;
+// use PDF;
 class OrderController extends Controller
 {
     /**
@@ -127,6 +129,43 @@ class OrderController extends Controller
             return Excel::download(new Order_DetailExport($id), 'CHI TIẾT ĐƠN HÀNG.xlsx');
         } catch (\Exception $e) {
             //throw $th;
+            session()->flash('error', 'Xuất file thất bại!');
+            return redirect()->back();
+        }
+    }
+    public function export_PDF($id)
+    {
+        // dd($id);
+        try {
+            //code...
+            $order = Orders::with('orderDetails.product.images','customer','customer_')->find($id);
+
+            // $order_detail = Order_detail::leftJoin('vs_order', 'vs_order.id','vs_order_detail.order_id')
+            // ->leftJoin('vs_product', 'vs_product.id', 'vs_order_detail.product_id')
+            // // ->leftJoin('users', 'users.id', 'vs_order.customer_id')
+            // ->where('vs_order.id',$id)
+            // ->select(
+            //     'vs_order.*',
+            //     'vs_product.name as name',
+            //     'vs_product.image as image',
+            //     'vs_order_detail.quantity as quantity',
+            //     'vs_order_detail.price as price',
+            // )
+            // // ->where('sm_local_farm.deleted_at', null)
+            // ->orderby('vs_order_detail.id', 'DESC')
+            // // ->distinct()
+            // ->get();
+
+            // return Excel::download(new Order_DetailExport($id), 'CHI TIẾT ĐƠN HÀNG.xlsx');
+            // dd($order);
+            $pdf = Pdf::loadView('Admin.pages.order.exportPDF',['order' =>$order]); // Thay 'pdf.example' bằng tên view bạn muốn sử dụng
+            // $pdf->setPaper('a4', 'portrait'); // Đảm bảo rằng PDF có kích thước A4 và chế độ portrait
+            // $pdf->output();
+            return $pdf->download('CHITIETDONHANG.pdf');
+
+        } catch (\Exception $e) {
+            //throw $th;
+            dd($e);
             session()->flash('error', 'Xuất file thất bại!');
             return redirect()->back();
         }
