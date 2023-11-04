@@ -83,6 +83,7 @@ Route::prefix('admin')->group(function () {
     });
 
         // kho sản phẩm
+        Route::get('/export_warehouse', [WarehouseController::class, 'export'])->name('ExportDetailWarehouse');
         Route::prefix('warehouse')->middleware('auth','admin')->group(function () {
             Route::get('', [WarehouseController::class, 'index'])->name('warehouseIndex');
             // Route::get('add', [WarehouseController::class, 'create'])->name('productCreate');

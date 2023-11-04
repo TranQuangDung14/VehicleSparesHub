@@ -151,12 +151,12 @@
                                                     style="color: red">{{ number_format($value->total_money, 0, '.', '.') }}đ</span>
                                             </div>
                                             <div class="col-3">
-                                                <a href="{{ route('ExportDetailOrder', $value->id) }}"
+                                                {{-- <a href="{{ route('ExportDetailOrder', $value->id) }}"
                                                     title="Xuất excel">
                                                     <button type="button" class="btn btn-success m-1 float-end">
                                                         <i class="ti ti-download"></i>
                                                     </button>
-                                                </a>
+                                                </a> --}}
                                                 {{-- pdf --}}
                                                 <a href="{{ route('ExportPDFOrder', $value->id) }}"
                                                     title="Xuất excel">

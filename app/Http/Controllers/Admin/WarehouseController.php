@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exports\WarehouseExport;
 use App\Http\Controllers\Controller;
 use App\Models\Products;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class WarehouseController extends Controller
 {
@@ -35,6 +37,19 @@ class WarehouseController extends Controller
             //throw $th;
             session()->flash('error', 'Cập nhật thất bại!');
             dd($e);
+        }
+    }
+    public function export()
+    {
+        // dd($id);
+        try {
+            //code...
+            // session()->flash('success', 'Xuất file thành công!');
+            return Excel::download(new WarehouseExport, 'KHO HANG.xlsx');
+        } catch (\Exception $e) {
+            //throw $th;
+            session()->flash('error', 'Xuất file thất bại!');
+            return redirect()->back();
         }
     }
 
