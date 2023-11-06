@@ -85,6 +85,7 @@ class OrderController extends Controller
             // $total =0;
             foreach($products as $key       => $productID)
             {
+                
                 $order_detail               = new Order_detail();
                 $order_detail->order_id     = $order->id;
                 $order_detail->product_id   = $productID;
@@ -94,6 +95,9 @@ class OrderController extends Controller
                 // $total += $quantities[$key] * $request->price;
 
                 $order_detail->save();
+                $product = Products::find($productID);
+                $product->quantity = $product->quantity - $quantities[$key];;
+                $product->save();
             }
 
 
@@ -135,32 +139,13 @@ class OrderController extends Controller
     }
     public function export_PDF($id)
     {
-        // dd($id);
+     
         try {
-            //code...
+            
             $order = Orders::with('orderDetails.product.images','customer','customer_')->find($id);
-
-            // $order_detail = Order_detail::leftJoin('vs_order', 'vs_order.id','vs_order_detail.order_id')
-            // ->leftJoin('vs_product', 'vs_product.id', 'vs_order_detail.product_id')
-            // // ->leftJoin('users', 'users.id', 'vs_order.customer_id')
-            // ->where('vs_order.id',$id)
-            // ->select(
-            //     'vs_order.*',
-            //     'vs_product.name as name',
-            //     'vs_product.image as image',
-            //     'vs_order_detail.quantity as quantity',
-            //     'vs_order_detail.price as price',
-            // )
-            // // ->where('sm_local_farm.deleted_at', null)
-            // ->orderby('vs_order_detail.id', 'DESC')
-            // // ->distinct()
-            // ->get();
-
-            // return Excel::download(new Order_DetailExport($id), 'CHI TIẾT ĐƠN HÀNG.xlsx');
             // dd($order);
-            $pdf = Pdf::loadView('Admin.pages.order.exportPDF',['order' =>$order]); // Thay 'pdf.example' bằng tên view bạn muốn sử dụng
-            // $pdf->setPaper('a4', 'portrait'); // Đảm bảo rằng PDF có kích thước A4 và chế độ portrait
-            // $pdf->output();
+            $pdf = Pdf::loadView('Admin.pages.order.exportPDF',['order' =>$order]);
+
             return $pdf->download('CHITIETDONHANG.pdf');
 
         } catch (\Exception $e) {

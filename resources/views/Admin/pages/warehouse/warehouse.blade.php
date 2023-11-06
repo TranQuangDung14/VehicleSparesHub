@@ -9,9 +9,18 @@
         <div class="row ">
             <div class="card border">
                 <div class="card-body">
-                    {{-- <h5 class="card-title fw-semibold mb-4">Danh mục sản phẩm</h5> --}}
-                    <h5 class="mb-0 card-title fw-semibold ">Quản lý kho sản phẩm</h5>
-
+                    <div class="row">
+                        <div class="col-7">
+                            <h5 class="mb-0 card-title fw-semibold ">Quản lý kho sản phẩm</h5>
+                        </div>
+                        <div class="col-5">
+                            <a href="{{ route('ExportDetailWarehouse') }}" title="Xuất excel">
+                                <button type="button" class="btn btn-success m-1 float-end">
+                                    <i class="ti ti-download"></i>
+                                </button>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -85,10 +94,13 @@
                                             <h6 class="fw-semibold mb-0 fs-4">{{ $value->quantity ?? '0' }}</h6>
                                         </td>
                                         <td class="border-bottom-0 ">
-                                            <h6 class="fw-semibold mb-0 fs-3" style="color: #FF3333">{{ number_format($value->price, 0, '.', ',') ?? '0' }} VNĐ</h6>
+                                            <h6 class="fw-semibold mb-0 fs-3" style="color: #FF3333">
+                                                {{ number_format($value->price, 0, '.', ',') ?? '0' }} VNĐ</h6>
                                         </td>
                                         <td class="border-bottom-0 ">
-                                            <h6 class="fw-semibold mb-0 fs-3" style="color: #FF3333">{{ number_format($value->quantity*$value->price, 0, '.', ',') ?? '0' }} VNĐ</h6>
+                                            <h6 class="fw-semibold mb-0 fs-3" style="color: #FF3333">
+                                                {{ number_format($value->quantity * $value->price, 0, '.', ',') ?? '0' }} VNĐ
+                                            </h6>
                                         </td>
                                         <td class="border-bottom-0 ">
                                             <a href="" data-bs-toggle="modal"
@@ -103,12 +115,13 @@
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Cập nhật số lượng sản phẩm</h5>
+                                                    <h5 class="modal-title" id="exampleModalLabel">Cập nhật số lượng sản
+                                                        phẩm</h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                         aria-label="Close"></button>
                                                 </div>
-                                                <form action="{{ route('warehousequantityUpdate', $value->id) }}" method="POST"
-                                                    enctype="multipart/form-data">
+                                                <form action="{{ route('warehousequantityUpdate', $value->id) }}"
+                                                    method="POST" enctype="multipart/form-data">
                                                     @csrf
                                                     {{-- @method('PUT') --}}
                                                     <input type="hidden" name="_method" value="PUT">
