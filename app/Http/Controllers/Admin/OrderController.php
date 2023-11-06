@@ -106,9 +106,9 @@ class OrderController extends Controller
             DB::commit();
             return redirect()->route('orderIndex');
         } catch (\Exception $e) {
-            dd($e);
+            // dd($e);
             DB::rollback();
-            session()->flash('error', 'Thêm mới thất bại.');
+            session()->flash('error', 'Thêm mới thất bại! kiếm tra lại xem đã nhập đủ thông tin chưa!.');
             return redirect()->back();
             //throw $th;
         }

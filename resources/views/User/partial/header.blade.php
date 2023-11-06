@@ -7,7 +7,7 @@
                         <ul id="header-contact" class="nav nav-divided nav-uppercase header-contact">
 
                             <li class="">
-                                <a href="mailto:agc18.auto@gmail.com" class="tooltip" title="agc18.auto@gmail.com">
+                                <a href="mailto:agc18.auto@gmail.com" class="tooltip" title="quynhanh@gmail.com">
                                    <i class="fa-regular fa-envelope"  style="font-size:16px;"></i><span>
                                         quynhanh@gmail.com </span>
                                 </a>
@@ -126,9 +126,10 @@
                 <!-- Header logo -->
                 <a href="" title="Công ty phân phối phụ kiện &#8211; phụ tùng oto - agc18"
                     rel="home">
-                    <img width="894" height="552" src="https://agc18.com.vn/wp-content/uploads/2019/03/image1.png"
-                        class="header_logo header-logo" alt="Công ty phân phối phụ kiện &#8211; phụ tùng oto" /><img
-                        width="894" height="552" src="https://agc18.com.vn/wp-content/uploads/2019/03/image1.png"
+                    <img width="894" height="552" src="{{ asset('User/') }}/image/logo.jpg"
+                        class="header_logo header-logo" alt="Công ty phân phối phụ kiện &#8211; phụ tùng oto" />
+                        <img
+                        width="894" height="552" src="{{ asset('User/') }}/image/logo.jpg"
                         class="header-logo-dark" alt="Công ty phân phối phụ kiện &#8211; phụ tùng oto" /></a>
             </div>
 
