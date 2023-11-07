@@ -203,7 +203,7 @@
 
 
                                 <div class="t-fbtt"><img class="t-avt"
-                                        src="https://graph.facebook.com/1699882203560047/picture?width=75&amp;%3Bheight=75%27%2F"
+                                        src="{{ asset('User/') }}/image/logo.jpg"
                                         height="50" width="50" alt=""></p>
                                     <div><a class="t-name" title="Agc18-Phụ Tùng, Phụ Trợ Dành Cho Ôtô"
                                             href="https://www.facebook.com/agcauto/" target="_blank"

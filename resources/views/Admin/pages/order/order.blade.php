@@ -119,8 +119,7 @@
                                             <a href="" data-bs-toggle="modal"
                                                 data-bs-target="#exampleModal_{{ $value->id }}"
                                                 title="Xem chi tiết đơn hàng"><i class="ti ti-eye-check fs-8"></i></a>
-                                            {{-- <a href="{{ route('customerEdit', $value->id) }}" title="Sửa danh mục"><i
-                                                    class="ti ti-edit fs-8"></i></a> --}}
+
                                         </td>
                                     </tr>
                                 @endforeach
@@ -158,8 +157,7 @@
                                                     </button>
                                                 </a> --}}
                                                 {{-- pdf --}}
-                                                <a href="{{ route('ExportPDFOrder', $value->id) }}"
-                                                    title="Xuất excel">
+                                                <a href="{{ route('ExportPDFOrder', $value->id) }}" title="Xuất excel">
                                                     <button type="button" class="btn btn-danger m-1 float-end">
                                                         <i class="ti ti-download"></i>
                                                     </button>
@@ -240,8 +238,8 @@
                             <div class="mb-3 col-6">
                                 <label for="exampleInputEmail1" class="form-label">Tên khách hàng<span
                                         style="color: red">*</span></label>
-                                <input type="text" class="form-control" name="name" id="name"
-                                    value="" required>
+                                <input type="text" class="form-control" name="name" id="name" value=""
+                                    required>
                                 @if ($errors->has('name'))
                                     <span class="text-danger" role="alert">{{ $errors->first('name') }}</span>
                                 @endif
@@ -249,8 +247,8 @@
                             <div class="mb-3 col-6">
                                 <label for="exampleInputEmail1" class="form-label">Địa chỉ<span
                                         style="color: red">*</span></label>
-                                <input type="text" class="form-control" name="adress" id="adress"
-                                    value="" required>
+                                <input type="text" class="form-control" name="adress" id="adress" value=""
+                                    required>
                                 @if ($errors->has('adress'))
                                     <span class="text-danger" role="alert">{{ $errors->first('adress') }}</span>
                                 @endif
@@ -260,17 +258,17 @@
                             <div class="mb-3 col-6">
                                 <label for="exampleInputEmail1" class="form-label">Số điện thoại<span
                                         style="color: red">*</span></label>
-                                <input type="text" class="form-control" name="number_phone" id="number_phone"
+                                <input type="number" class="form-control" name="number_phone" id="number_phone"
                                     value=""required>
-                                    @if ($errors->has('number_phone'))
+                                @if ($errors->has('number_phone'))
                                     <span class="text-danger" role="alert">{{ $errors->first('number_phone') }}</span>
                                 @endif
                             </div>
                             <div class="mb-3 col-6">
                                 <label for="exampleInputEmail1" class="form-label">Email
                                     {{-- <span style="color: red">*</span></label> --}}
-                                <input type="text" class="form-control" name="email" id="email"
-                                    value="">
+                                    <input type="text" class="form-control mt-2" name="email" id="email"
+                                        value="">
                             </div>
                         </div>
                         <h5 for="exampleInputEmail1" class="form-label" style="color: var(--bs-primary-text)">Đơn hàng
@@ -278,8 +276,7 @@
                         <div class="row">
                             <span class="col-lg-6 ">Sản phẩm</span>
                             <!-- <th scope="col">Tên sản phẩm</th> -->
-                            <span class="col-lg-2 ms-3">Số lượng<span
-                                style="color: red">*</span></span>
+                            <span class="col-lg-2 ms-3">Số lượng<span style="color: red">*</span></span>
                             <span class="col-lg-2 ms-3">Giá</span>
                             {{-- </tr>
                             </thead> --}}
@@ -292,12 +289,13 @@
                         <div class="row mt-4">
                             <div class="col-8"><span style="float: right">Tổng tiền: </span>
                             </div>
-                            <div id="total-amount" class="col-4"></div>
+                            <div id="total-amount" class="col-2"></div>
+                            <div class="col-2">VNĐ</div>
                             <input type="hidden" id="total" name="total_money">
                         </div>
                         <button type="button" class="btn btn-secondary" id="add-product-button">Thêm sản phẩm</button>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Đóng
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng
                             </button>
                             <button type="submit" class="btn btn-primary">Lưu</button>
                         </div>
@@ -323,17 +321,13 @@
                     '<select name="product_id[]" class="product-select col-lg-6" >' +
                     '<option value="" >--Chọn sản phẩm--</option>' +
                     '@foreach ($product as $pro)' +
-                    '<option value="{{ $pro->id }}" data-price="{{ $pro->price }}">{{ $pro->name }}</option>' +
+                    '<option value="{{ $pro->id }}" data-price="{{ $pro->price }}" data-quantity="{{ $pro->quantity }}">{{ $pro->name }}</option>' +
                     '@endforeach' +
                     '</select>' +
                     '<div class="col-lg-2 ms-2" >' +
                     '<input type="number" class="form-control" name="quantity[]" placeholder="Số lượng" required>' +
-                    // '@if ($errors->has("quantity"))'+
-                    // '<span class="text-danger" role="alert">{{ $errors->first("quantity") }}</span>'+
-                    // '@endif'+
                     '</div>' +
                     '<div class="col-lg-2 ms-2" >' +
-                    // '<input type="number"  step="0.01" name="price[]" placeholder="Giá" readonly>' +
                     '<input type="number" class="form-control" name="price[]" placeholder="Giá" readonly>' +
 
                     '</div>' +
@@ -373,11 +367,28 @@
                 productsContainer.on('input', '.product-field input[name="quantity[]"]', function() {
                     calculateTotal();
                 });
+                // js xóa
                 productsContainer.on('click', '.remove-product', function() {
                     $(this).closest('.product-field').remove(); // Loại bỏ phần tử sản phẩm
                     calculateTotal(); // Cập nhật tổng tiền sau khi xóa
                 });
 
+                // js xử lý so sánh số lượng
+                productsContainer.on('input', '.product-field input[name="quantity[]"]', function() {
+                    var quantityInput = $(this);
+                    var selectedProductId = quantityInput.closest('.product-field').find(
+                        '.product-select').val();
+                    var availableQuantity = parseInt(quantityInput.closest('.product-field').find(
+                        '.product-select option:selected').data('quantity'));
+                    var enteredQuantity = parseInt(quantityInput.val());
+
+                    if (enteredQuantity > availableQuantity) {
+                        alert('Vượt qua số lượng trong kho!');
+                        quantityInput.val(
+                        availableQuantity); // Đặt lại giá trị thành số lượng trong kho
+                    }
+                    calculateTotal();
+                });
             });
         });
     </script>
