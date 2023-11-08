@@ -138,7 +138,7 @@
 
 
             <div id="col-836542238" class="col medium-3 small-12 large-3">
-                <div class="col-inner">
+                {{-- <div class="col-inner">
 
 
 
@@ -154,7 +154,7 @@
                         <li><strong>Thay đổi lần 2:</strong> 10/10/2023</li>
                     </ul>
 
-                </div>
+                </div> --}}
             </div>
 
 
@@ -201,13 +201,12 @@
                         <div class="box-text text-left">
                             <div class="box-text-inner">
 
-
                                 <div class="t-fbtt"><img class="t-avt"
                                         src="{{ asset('User/') }}/image/logo.jpg"
                                         height="50" width="50" alt=""></p>
-                                    <div><a class="t-name" title="Agc18-Phụ Tùng, Phụ Trợ Dành Cho Ôtô"
-                                            href="https://www.facebook.com/agcauto/" target="_blank"
-                                            rel="noopener noreferrer">Cửa hàng hải nam auto</a></div>
+                                    <div><a class="t-name"
+                                            href="https://www.facebook.com/nam.hai.auto" target="_blank"
+                                            rel="noopener noreferrer">Cửa hàng Nam Hải auto</a></div>
                                 </div>
 
                             </div>

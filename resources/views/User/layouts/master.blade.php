@@ -1217,7 +1217,7 @@
 </head>
 <body data-rsssl=1
     class="home page-template page-template-page-blank page-template-page-blank-php page page-id-2 theme-flatsome ot-vertical-menu woocommerce-no-js lightbox nav-dropdown-has-arrow nav-dropdown-has-shadow nav-dropdown-has-border">
-    <a class="skip-link screen-reader-text" href="#main">Skip to content</a>
+    {{-- <a class="skip-link screen-reader-text" href="#main">Skip to content</a> --}}
     @if (session('success'))
     <div class="alert alert-success" id="success-alert" style="background-color: #33FF00">
         {{ session('success') }}
