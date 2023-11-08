@@ -104,7 +104,7 @@ data-sidebar-position="fixed" data-header-position="fixed"> --}}
         </div>
       </div>
     </div>
-    <div class="row">
+    {{-- <div class="row">
             <div class="col-lg-12 d-flex align-items-strech">
         <div class="card w-100">
           <div class="card-body">
@@ -125,7 +125,7 @@ data-sidebar-position="fixed" data-header-position="fixed"> --}}
           </div>
         </div>
       </div>
-    </div>
+    </div> --}}
 
     {{-- <div class="row">
       <div class="col-lg-4 d-flex align-items-stretch">
@@ -378,9 +378,9 @@ data-sidebar-position="fixed" data-header-position="fixed"> --}}
         </div>
       </div>
     </div> --}}
-    <div class="py-6 px-6 text-center">
+    {{-- <div class="py-6 px-6 text-center">
       <p class="mb-0 fs-4">Design and Developed by <a href="#" target="_blank" class="pe-1 text-primary text-decoration-underline">abc@gmail.com</a> Distributed by <a href="#">ThemeWagon</a></p>
-    </div>
+    </div> --}}
   </div>
 {{-- </div> --}}
 {{-- </div> --}}
