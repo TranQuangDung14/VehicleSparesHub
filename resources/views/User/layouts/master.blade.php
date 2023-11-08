@@ -1483,23 +1483,23 @@
         </div>
     </div>
     <div class="button-dinhit">
-        <div class="messenger"><a href="https://m.me/phut.mot.5015/" target="_blank"><img
+        <div class="messenger"><a href="https://m.me/100075713334044/" target="_blank"><img
                     src="https://agc18.com.vn/wp-content/uploads/2019/12/messenger.png" alt="chat facebook"
                     class="messenger-1"></a></div>
-        <div class="zalo-1"><a href="https://zalo.me/0869638364" target="_blank"><img
+        <div class="zalo-1"><a href="https://zalo.me/0345611863" target="_blank"><img
                     src="https://agc18.com.vn/wp-content/uploads/2019/12/zalo.png" alt="chat zalo"
                     class=""></a></div>
     </div>
     </div>
     <div class="chat">
         <ul>
-            <li><a class="phone" href="tel:0869638364"><img
+            <li><a class="phone" href="tel:0345611863"><img
                         src="https://agc18.com.vn/wp-content/uploads/2019/12/green-phone-7.png">Hotline</a></li>
 
-            <li><a class="zalo" href="https://zalo.me/0869638364"><img
+            <li><a class="zalo" href="https://zalo.me/0345611863"><img
                         src="https://agc18.com.vn/wp-content/uploads/2019/12/zalo-2.png">Zalo</a></li>
 
-            <li><a class="messenger" href="https://m.me/phut.mot.5015/"><img
+            <li><a class="messenger" href="https://m.me/100075713334044/"><img
                         src="https://agc18.com.vn/wp-content/uploads/2019/12/messenger-1.png">Facebook</a></li>
         </ul>
     </div>
