@@ -384,8 +384,7 @@
 
                     if (enteredQuantity > availableQuantity) {
                         alert('Vượt qua số lượng trong kho!');
-                        quantityInput.val(
-                        availableQuantity); // Đặt lại giá trị thành số lượng trong kho
+                        quantityInput.val(availableQuantity); // Đặt lại giá trị thành số lượng trong kho
                     }
                     calculateTotal();
                 });
