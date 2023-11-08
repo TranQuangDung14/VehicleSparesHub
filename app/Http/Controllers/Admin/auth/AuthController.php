@@ -63,6 +63,10 @@ class AuthController extends Controller
             session()->flash('error', 'Tài khoản này không có quyền đăng nhập vào admin!');
             return redirect()->route('showlogin');
         }
+        elseif ($user->lock == 1) {
+            session()->flash('error', 'Tài khoản này đã bị khóa!');
+            return redirect()->route('showlogin');
+        }
 
         Auth::login($user);
 
@@ -97,12 +101,12 @@ class AuthController extends Controller
                 'password' => 'required',
             );
             $messages = array(
-                'name.required' => '--Tên người dùng không được để trống!--',
-                'email.required' => '--Email không được để trống!--',
-                'email.string' => '--Email phải là chuỗi!--',
-                'email.email' => '--Email không hợp lệ!--',
-                'email.max' => '--Email không được vượt quá 255 ký tự!--',
-                'email.unique' => '--Email đã tồn tại trong hệ thống!--',
+                'name.required'     => '--Tên người dùng không được để trống!--',
+                'email.required'    => '--Email không được để trống!--',
+                'email.string'      => '--Email phải là chuỗi!--',
+                'email.email'       => '--Email không hợp lệ!--',
+                'email.max'         => '--Email không được vượt quá 255 ký tự!--',
+                'email.unique'      => '--Email đã tồn tại trong hệ thống!--',
                 'password.required' => '--Mật khẩu không được để trống!--',
             );
             $validator = Validator::make($input, $rules, $messages);
@@ -126,20 +130,44 @@ class AuthController extends Controller
         } catch (\Exception $e) {
             dd($e);
         }
-
-
         return redirect()->route('showlogin');
     }
 
     public function index(Request $request)
     {
         try {
-            $user = User::where('name','LIKE', '%' . $request->search . '%')->orderBy('id','desc')->paginate(10);
+            $user = User::where('name','LIKE', '%' . $request->search . '%')->where('role',2)->orderBy('id','desc')->paginate(10);
 
             return view('Admin.pages.auth.account',compact('user'));
         } catch (\Exception $e) {
             //throw $th;
             dd($e);
+            return redirect()->back();
+        }
+    }
+
+    public function lock_account(Request $request)
+    {
+        // dd($request->all());
+        try {
+            $user = User::find($request->id);
+
+            if ($request->lock == 'on') {
+                $lock = 1;
+                session()->flash('success', 'Đã khóa tài khoản '.$user->name.' thành công.');
+
+            } else {
+                $lock = 0;
+                session()->flash('success', 'Đã mở khóa '.$user->name.' thành công.');
+            }
+            $user->lock      = $lock;
+            $user->save();
+
+            return redirect()->back();
+        } catch (\Exception $e) {
+            dd($e);
+            session()->flash('error', 'Có lỗi bất ngờ xảy ra!');
+            // Toastr::error('kích hoạt thất bại!', 'Failed');
             return redirect()->back();
         }
     }

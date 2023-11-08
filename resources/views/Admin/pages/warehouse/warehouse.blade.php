@@ -9,39 +9,22 @@
         <div class="row ">
             <div class="card border">
                 <div class="card-body">
-                    {{-- <h5 class="card-title fw-semibold mb-4">Danh mục sản phẩm</h5> --}}
-                    <h5 class="mb-0 card-title fw-semibold ">Quản lý kho sản phẩm</h5>
-
-                </div>
-            </div>
-        </div>
-        {{-- lọc --}}
-        {{-- <div class="row">
-            <div class="card border">
-                <div class="card-body">
                     <div class="row">
-
-                        <div class="col-8">
-                            <label>Nhập tên danh mục để tìm kiếm</label>
-                            <form action="{{ route('categoryIndex') }}" method="get" enctype="multipart/form-data">
-                                <div class="input-group">
-
-                                    <input class="form-control" type="text" name="search" value=""
-                                        placeholder="nhập tên danh mục">
-                                    <button class="btn btn-primary" type="submit"><i class="ti ti-search"></i></button>
-                                </div>
-                            </form>
+                        <div class="col-7">
+                            <h5 class="mb-0 card-title fw-semibold ">Quản lý kho sản phẩm</h5>
                         </div>
-                        <div class="col-4">
-
-                            <a href="{{ route('categoryCreate') }}"> <button type="button"
-                                    class="btn btn-primary m-1 float-end" title="Thêm mới danh mục"><i
-                                        class="ti ti-plus"></i></button></a>
+                        <div class="col-5">
+                            <a href="{{ route('ExportDetailWarehouse') }}" title="Xuất excel">
+                                <button type="button" class="btn btn-success m-1 float-end">
+                                    <i class="ti ti-download"></i>
+                                </button>
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
-        </div> --}}
+        </div>
+        {{-- lọc --}}
         @if (session('success'))
             <div class="alert alert-success" id="success-alert">
                 {{ session('success') }}
@@ -75,6 +58,12 @@
                                         <h6 class="fw-semibold mb-0">Số lượng</h6>
                                     </th>
                                     <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">Giá tiền</h6>
+                                    </th>
+                                    <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">Tổng tiền</h6>
+                                    </th>
+                                    <th class="border-bottom-0">
                                         <h6 class="fw-semibold mb-0">Hành động</h6>
                                     </th>
                                 </tr>
@@ -105,6 +94,15 @@
                                             <h6 class="fw-semibold mb-0 fs-4">{{ $value->quantity ?? '0' }}</h6>
                                         </td>
                                         <td class="border-bottom-0 ">
+                                            <h6 class="fw-semibold mb-0 fs-3" style="color: #FF3333">
+                                                {{ number_format($value->price, 0, '.', ',') ?? '0' }} VNĐ</h6>
+                                        </td>
+                                        <td class="border-bottom-0 ">
+                                            <h6 class="fw-semibold mb-0 fs-3" style="color: #FF3333">
+                                                {{ number_format($value->quantity * $value->price, 0, '.', ',') ?? '0' }} VNĐ
+                                            </h6>
+                                        </td>
+                                        <td class="border-bottom-0 ">
                                             <a href="" data-bs-toggle="modal"
                                                 data-bs-target="#exampleModal_{{ $value->id }}"
                                                 title="Cập nhật số lượng">
@@ -117,12 +115,13 @@
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Cập nhật số lượng sản phẩm</h5>
+                                                    <h5 class="modal-title" id="exampleModalLabel">Cập nhật số lượng sản
+                                                        phẩm</h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                         aria-label="Close"></button>
                                                 </div>
-                                                <form action="{{ route('warehousequantityUpdate', $value->id) }}" method="POST"
-                                                    enctype="multipart/form-data">
+                                                <form action="{{ route('warehousequantityUpdate', $value->id) }}"
+                                                    method="POST" enctype="multipart/form-data">
                                                     @csrf
                                                     {{-- @method('PUT') --}}
                                                     <input type="hidden" name="_method" value="PUT">

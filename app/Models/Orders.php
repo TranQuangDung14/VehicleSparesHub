@@ -19,14 +19,18 @@ class Orders extends Model
     {
         return $this->belongsTo(User::class, 'customer_id');
     }
+    public function customer_()
+    {
+        return $this->belongsTo(Customers::class, 'customer_id');
+    }
 
     protected $fillable = [
-        'customer_id',
-        'total_money',
+        'customer_id',// mã khách hàng
+        'total_money', // Tổng tiền
         'delivery_date',
-        'shipping_fee',
-        'receiver_name',
-        'number_phone',
-        'receiver_address',
+        'shipping_fee',// phí vận chuyển
+        'receiver_name',// tên người nhận
+        'number_phone',// số điện thoại
+        'receiver_address', // địa chỉ
     ];
 }

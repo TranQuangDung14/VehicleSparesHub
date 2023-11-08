@@ -11,7 +11,6 @@
                 <div class="card-body">
                     {{-- <h5 class="card-title fw-semibold mb-4">Danh mục sản phẩm</h5> --}}
                     <h5 class="mb-0 card-title fw-semibold ">Danh mục sản phẩm </h5>
-
                 </div>
             </div>
         </div>
@@ -33,7 +32,6 @@
                             </form>
                         </div>
                         <div class="col-4">
-
                             <a href="{{ route('categoryCreate') }}"> <button type="button"
                                     class="btn btn-primary m-1 float-end" title="Thêm mới danh mục"><i
                                         class="ti ti-plus"></i></button></a>
@@ -91,7 +89,6 @@
                                                     class="ti ti-edit fs-8"></i></a>
                                             <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal_{{ $value->id }}"
                                                 title="Xóa danh mục"><i class="ti ti-trash-x fs-8"></i></a>
-
                                                 <!-- Modal -->
                                             <div class="modal fade" id="exampleModal_{{ $value->id }}" tabindex="-1"
                                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -119,11 +116,8 @@
                                                 </div>
                                             </div>
                                         </td>
-
                                     </tr>
                                 @endforeach
-
-
                             </tbody>
                         </table>
                     </div>

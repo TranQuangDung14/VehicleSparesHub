@@ -29,6 +29,7 @@ Route::prefix('admin')->group(function () {
     // bảng điều khiển
     Route::prefix('account')->middleware('auth','admin')->group(function () {
         Route::get('', [AuthController::class, 'index'])->name('accountIndex');
+        Route::post('lock_account', [AuthController::class, 'lock_account'])->name('lock_account');
     });
     Route::prefix('dashboard')->middleware('auth','admin')->group(function () {
         Route::get('', [DashboardController::class, 'index'])->name('dashboardIndex');
@@ -69,17 +70,20 @@ Route::prefix('admin')->group(function () {
             // đơn hàng
     Route::get('/export_order', [OrderController::class, 'export'])->name('ExportOrder');
     Route::get('/export_detail/{id}', [OrderController::class, 'export_detail'])->name('ExportDetailOrder');
+    Route::get('/export_PDF/{id}', [OrderController::class, 'export_PDF'])->name('ExportPDFOrder');
+
 
     Route::prefix('order')->middleware('auth','admin')->group(function () {
         Route::get('', [OrderController::class, 'index'])->name('orderIndex');
         // Route::get('add', [CategoriesController::class, 'create'])->name('categoryCreate');
-        // Route::post('add', [CategoriesController::class, 'store'])->name('categoryStore');
+        Route::post('add', [OrderController::class, 'store'])->name('orderStore');
         // Route::get('edit/{id}', [CategoriesController::class, 'edit'])->name('categoryEdit');
         // Route::get('update/{id}', [CategoriesController::class, 'update'])->name('categoryUpdate');
         // Route::delete('delete/{id}', [CategoriesController::class, 'delete'])->name('categoryDelete');
     });
 
         // kho sản phẩm
+        Route::get('/export_warehouse', [WarehouseController::class, 'export'])->name('ExportDetailWarehouse');
         Route::prefix('warehouse')->middleware('auth','admin')->group(function () {
             Route::get('', [WarehouseController::class, 'index'])->name('warehouseIndex');
             // Route::get('add', [WarehouseController::class, 'create'])->name('productCreate');

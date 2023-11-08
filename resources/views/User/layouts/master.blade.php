@@ -536,13 +536,13 @@
             }
         </style>
     </noscript>
-    <link rel="icon" href="https://agc18.com.vn/wp-content/uploads/2019/03/cropped-image1-100x100.png"
+    <link rel="icon" href="{{ asset('User/') }}/image/logo.jpg"
         sizes="32x32" />
-    <link rel="icon" href="https://agc18.com.vn/wp-content/uploads/2019/03/cropped-image1-300x300.png"
+    <link rel="icon" href="{{ asset('User/') }}/image/logo.jpg"
         sizes="192x192" />
-    <link rel="apple-touch-icon" href="https://agc18.com.vn/wp-content/uploads/2019/03/cropped-image1-300x300.png" />
+    <link rel="apple-touch-icon" href="{{ asset('User/') }}/image/logo.jpg" />
     <meta name="msapplication-TileImage"
-        content="https://agc18.com.vn/wp-content/uploads/2019/03/cropped-image1-300x300.png" />
+        content="{{ asset('User/') }}/image/logo.jpg" />
     <style id="custom-css" type="text/css">
         :root {
             --primary-color: #1c6419;

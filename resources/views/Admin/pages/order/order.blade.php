@@ -38,6 +38,11 @@
                                 <button type="button" class="btn btn-outline-success m-1 mt-4 float-end"><i
                                         class="ti ti-download"></i></button>
                             </a>
+                            {{-- <a href="" title="xuất file Excel"> --}}
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal_add"
+                                class="btn btn-primary m-1 mt-4 float-end" title="Tạo đơn hàng"><i
+                                    class="ti ti-plus"></i></button>
+                            {{-- </a> --}}
                         </div>
                     </div>
                     {{-- <p class="mb-0">This is a sample page </p> --}}
@@ -98,7 +103,8 @@
                                             <span class="fw-normal">{{ $value->id }}</span>
                                         </td>
                                         <td class="border-bottom-0">
-                                            <span class="fw-normal">{{ $value->customer->name }}</span>
+                                            <span
+                                                class="fw-normal">{{ $value->customer->name ?? $value->customer_->name }}</span>
                                         </td>
                                         <td class="border-bottom-0">
                                             <span
@@ -113,8 +119,7 @@
                                             <a href="" data-bs-toggle="modal"
                                                 data-bs-target="#exampleModal_{{ $value->id }}"
                                                 title="Xem chi tiết đơn hàng"><i class="ti ti-eye-check fs-8"></i></a>
-                                            {{-- <a href="{{ route('customerEdit', $value->id) }}" title="Sửa danh mục"><i
-                                                    class="ti ti-edit fs-8"></i></a> --}}
+
                                         </td>
                                     </tr>
                                 @endforeach
@@ -138,13 +143,22 @@
                                     <div class="modal-body">
                                         <div class="row">
                                             <div class="col-3">Mã đơn hàng: {{ $value->id }}</div>
-                                            <div class="col-3">Tên người nhận: {{ $value->customer->name }}</div>
-                                            <div class="col-3">Tổng tiền: <span
+                                            <div class="col-3">Tên người nhận:
+                                                {{ $value->customer->name ?? $value->customer_->name }}</div>
+                                            <div class="col-3">Tổng tiền:
+                                                <span
                                                     style="color: red">{{ number_format($value->total_money, 0, '.', '.') }}đ</span>
                                             </div>
                                             <div class="col-3">
-                                                <a href="{{ route('ExportDetailOrder', $value->id) }}" title="Xuất excel">
+                                                {{-- <a href="{{ route('ExportDetailOrder', $value->id) }}"
+                                                    title="Xuất excel">
                                                     <button type="button" class="btn btn-success m-1 float-end">
+                                                        <i class="ti ti-download"></i>
+                                                    </button>
+                                                </a> --}}
+                                                {{-- pdf --}}
+                                                <a href="{{ route('ExportPDFOrder', $value->id) }}" title="Xuất excel">
+                                                    <button type="button" class="btn btn-danger m-1 float-end">
                                                         <i class="ti ti-download"></i>
                                                     </button>
                                                 </a>
@@ -172,7 +186,7 @@
                                                                         <img src="{{ asset('storage/image/product/' . $order_detail->product->images[0]->image) }}"
                                                                             alt="Ảnh sản phẩm"
                                                                             style="width: 20%; height: 20%;">
-                                                                    @else                                                                 
+                                                                    @else
                                                                         <img src="{{ asset('Admin/') }}/images/profile/no_image.jpg"
                                                                             alt=""
                                                                             style="width: 20%; height: 20%;">
@@ -205,8 +219,179 @@
         </div>
     </div>
 
+    {{-- modal tạo đơn hàng --}}
+    <div class="modal fade" id="exampleModal_add" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel" style="color: var(--bs-warning-text)">Tạo mới đơn hàng
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ route('orderStore') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <h5 for="exampleInputEmail1" class="form-label" style="color: var(--bs-primary-text)">Nhập thông
+                            tin khách hàng<span style="color: red">*</span></h5>
+                        <div class="row">
+                            <div class="mb-3 col-6">
+                                <label for="exampleInputEmail1" class="form-label">Tên khách hàng<span
+                                        style="color: red">*</span></label>
+                                <input type="text" class="form-control" name="name" id="name" value=""
+                                    required>
+                                @if ($errors->has('name'))
+                                    <span class="text-danger" role="alert">{{ $errors->first('name') }}</span>
+                                @endif
+                            </div>
+                            <div class="mb-3 col-6">
+                                <label for="exampleInputEmail1" class="form-label">Địa chỉ<span
+                                        style="color: red">*</span></label>
+                                <input type="text" class="form-control" name="adress" id="adress" value=""
+                                    required>
+                                @if ($errors->has('adress'))
+                                    <span class="text-danger" role="alert">{{ $errors->first('adress') }}</span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="mb-3 col-6">
+                                <label for="exampleInputEmail1" class="form-label">Số điện thoại<span
+                                        style="color: red">*</span></label>
+                                <input type="number" class="form-control" name="number_phone" id="number_phone"
+                                    value=""required>
+                                @if ($errors->has('number_phone'))
+                                    <span class="text-danger" role="alert">{{ $errors->first('number_phone') }}</span>
+                                @endif
+                            </div>
+                            <div class="mb-3 col-6">
+                                <label for="exampleInputEmail1" class="form-label">Email
+                                    {{-- <span style="color: red">*</span></label> --}}
+                                    <input type="text" class="form-control mt-2" name="email" id="email"
+                                        value="">
+                            </div>
+                        </div>
+                        <h5 for="exampleInputEmail1" class="form-label" style="color: var(--bs-primary-text)">Đơn hàng
+                        </h5>
+                        <div class="row">
+                            <span class="col-lg-6 ">Sản phẩm</span>
+                            <!-- <th scope="col">Tên sản phẩm</th> -->
+                            <span class="col-lg-2 ms-3">Số lượng<span style="color: red">*</span></span>
+                            <span class="col-lg-2 ms-3">Giá</span>
+                            {{-- </tr>
+                            </thead> --}}
+                        </div>
+                        <div class="row">
+                            <div id="products-container">
+                                <!-- Dùng JavaScript để thêm các trường sản phẩm vào đây -->
+                            </div>
+                        </div>
+                        <div class="row mt-4">
+                            <div class="col-8"><span style="float: right">Tổng tiền: </span>
+                            </div>
+                            <div id="total-amount" class="col-2"></div>
+                            <div class="col-2">VNĐ</div>
+                            <input type="hidden" id="total" name="total_money">
+                        </div>
+                        <button type="button" class="btn btn-secondary" id="add-product-button">Thêm sản phẩm</button>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng
+                            </button>
+                            <button type="submit" class="btn btn-primary">Lưu</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" /> --}}
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var productsContainer = $('#products-container');
+            var addProductButton = $('#add-product-button');
+
+            addProductButton.click(function() {
+                // // Tạo một bản sao của danh sách sản phẩm đã chọn
+                var selectedProducts = productsContainer.find(
+                    '.product-field select.product-select option:selected');
+
+                var productField =
+                    '<div class="product-field row mt-1">' +
+                    '<select name="product_id[]" class="product-select col-lg-6" >' +
+                    '<option value="" >--Chọn sản phẩm--</option>' +
+                    '@foreach ($product as $pro)' +
+                    '<option value="{{ $pro->id }}" data-price="{{ $pro->price }}" data-quantity="{{ $pro->quantity }}">{{ $pro->name }}</option>' +
+                    '@endforeach' +
+                    '</select>' +
+                    '<div class="col-lg-2 ms-2" >' +
+                    '<input type="number" class="form-control" name="quantity[]" placeholder="Số lượng" required>' +
+                    '</div>' +
+                    '<div class="col-lg-2 ms-2" >' +
+                    '<input type="number" class="form-control" name="price[]" placeholder="Giá" readonly>' +
+
+                    '</div>' +
+                    '<div class="col-lg-1" >' +
+                    '<button class="btn btn-danger remove-product">Xóa</button>' +
+                    '</div>' +
+                    '</div>';
 
 
+                // Loại bỏ sản phẩm đã chọn từ danh sách sản phẩm mới thêm vào
+                selectedProducts.each(function() {
+                    var selectedProductId = $(this).val();
+                    productField = productField.replace('<option value="' + selectedProductId + '"',
+                        '<option value="' + selectedProductId + '" disabled');
+                });
+
+                productsContainer.append(productField);
+
+                // Định nghĩa một hàm để tính tổng tiền
+                function calculateTotal() {
+                    var total = 0;
+                    productsContainer.find('.product-field').each(function() {
+                        var quantity = $(this).find('input[name="quantity[]"]').val();
+                        var price = $(this).find('.product-select option:selected').data('price');
+                        var totalPriceField = $(this).find('input[name="price[]"]');
+                        totalPriceField.val(quantity * price);
+                        total += (quantity * price);
+                    });
+                    $('#total-amount').text(total.toFixed(2)); // Hiển thị tổng tiền
+                    $('#total').val(total);
+                    // console.log(total);
+                    // total =$(this).find('div[name="price"]');
+
+                }
+
+                // Theo dõi sự thay đổi trong trường số lượng và tính toán lại tổng tiền
+                productsContainer.on('input', '.product-field input[name="quantity[]"]', function() {
+                    calculateTotal();
+                });
+                // js xóa
+                productsContainer.on('click', '.remove-product', function() {
+                    $(this).closest('.product-field').remove(); // Loại bỏ phần tử sản phẩm
+                    calculateTotal(); // Cập nhật tổng tiền sau khi xóa
+                });
+
+                // js xử lý so sánh số lượng
+                productsContainer.on('input', '.product-field input[name="quantity[]"]', function() {
+                    var quantityInput = $(this);
+                    var selectedProductId = quantityInput.closest('.product-field').find(
+                        '.product-select').val();
+                    var availableQuantity = parseInt(quantityInput.closest('.product-field').find(
+                        '.product-select option:selected').data('quantity'));
+                    var enteredQuantity = parseInt(quantityInput.val());
+
+                    if (enteredQuantity > availableQuantity) {
+                        alert('Vượt qua số lượng trong kho!');
+                        quantityInput.val(
+                        availableQuantity); // Đặt lại giá trị thành số lượng trong kho
+                    }
+                    calculateTotal();
+                });
+            });
+        });
+    </script>
 
 
 @endsection

@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             // $table->string('role')->nullable();
+            $table->integer("lock")->default(0);
             $table->integer("role")->unsigned()->comment('1. tài khoản admin - 0. tài khoản user');
             $table->rememberToken();
             $table->timestamps();
