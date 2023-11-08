@@ -69,7 +69,6 @@
                         @if (auth()->user()->role === 2)
                             <li class="account-item has-icon has-dropdown">
                                 <span>Xin chào: {{ $data['userName'] }}</span>
-
                                 <ul class="sub-menu nav-dropdown nav-dropdown-simple">
                                     <form action="{{ route('logout_User') }}" method="POST">
                                         @csrf
@@ -78,9 +77,7 @@
                                             <button type="submit">Đăng xuất</button>
                                         </li>
                                     </form>
-
                                 </ul>
-
                             </li>
                         @else
                             <li class="account-item has-icon">
@@ -101,16 +98,14 @@
                     @endif
 
                     <li class="cart-item has-icon ">
-
                         <a href="{{ route('Cart') }}" title="Giỏ hàng" class="header-cart-link is-small">
                             <span class="header-cart-title">
                                 Giỏ hàng
                             </span>
                             <i class="fa-solid fa-cart-shopping"></i>
                         </a>
-
-
                     </li>
+                    
                 </ul>
             </div>
 

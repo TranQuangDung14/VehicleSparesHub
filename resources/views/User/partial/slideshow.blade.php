@@ -48,7 +48,7 @@
 "friction": 0.6        }'>
 
 
-                        <div class="img has-hover x md-x lg-x y md-y lg-y" id="image_1664004210">
+                        {{-- <div class="img has-hover x md-x lg-x y md-y lg-y" id="image_1664004210">
                             <a class="" href="https://agc18.com.vn/">
                                 <div class="img-inner dark">
                                     <img width="820" height="312"
@@ -65,10 +65,10 @@
                                     width: 100%;
                                 }
                             </style>
-                        </div>
+                        </div> --}}
 
 
-                        <div class="img has-hover x md-x lg-x y md-y lg-y" id="image_943588721">
+                        {{-- <div class="img has-hover x md-x lg-x y md-y lg-y" id="image_943588721">
                             <a class=""
                                 href="https://agc18.com.vn/danh-muc/san-pham/phu-kien-xe-hoi/xit-khu-mui-ozium/">
                                 <div class="img-inner dark">
@@ -85,12 +85,12 @@
                                     width: 100%;
                                 }
                             </style>
-                        </div>
+                        </div> --}}
 
 
                         <div class="img has-hover x md-x lg-x y md-y lg-y" id="image_472051419">
                             <a class=""
-                                href="https://agc18.com.vn/danh-muc/san-pham/phu-kien-xe-hoi/nuoc-hoa-aroma-nhap-khau-phap/">
+                                href="#">
                                 <div class="img-inner dark">
                                     <img width="1656" height="630"
                                         src="https://agc18.com.vn/wp-content/uploads/2021/05/Nuoc-hoa-aroma.png"
@@ -109,7 +109,7 @@
 
 
                         <div class="img has-hover x md-x lg-x y md-y lg-y" id="image_1399573083">
-                            <a class="" href="https://agc18.com.vn/danh-muc/phu-tung-xe-hoi/">
+                            <a class="" href="#">
                                 <div class="img-inner dark">
                                     <img width="1656" height="630"
                                         src="https://agc18.com.vn/wp-content/uploads/2021/05/Phu-tung-gat-mua-ub.png"
@@ -129,7 +129,7 @@
 
                         <div class="img has-hover x md-x lg-x y md-y lg-y" id="image_628460281">
                             <a class=""
-                                href="https://agc18.com.vn/danh-muc/san-pham/phu-kien-xe-hoi/ao-ghe-9d/">
+                                href="#">
                                 <div class="img-inner dark">
                                     <img width="1656" height="630"
                                         src="https://agc18.com.vn/wp-content/uploads/2021/05/Ao-ghe-9D-dang-cap.png"
@@ -149,7 +149,7 @@
 
                         <div class="img has-hover x md-x lg-x y md-y lg-y" id="image_1571431208">
                             <a class=""
-                                href="https://agc18.com.vn/danh-muc/san-pham/hoa-chat-chuyen-dung/waxco/">
+                                href="#">
                                 <div class="img-inner dark">
                                     <img width="1656" height="630"
                                         src="https://agc18.com.vn/wp-content/uploads/2021/05/hoa-chat-chuyen-dung-Waxco.png"
@@ -187,7 +187,7 @@
 
 
                 <div class="img has-hover x md-x lg-x y md-y lg-y" id="image_1116068974">
-                    <a class="" href="https://agc18.com.vn/san-pham/dung-dich-ve-sinh-noi-that/">
+                    <a class="" href="#">
                         <div class="img-inner image-cover dark" style="padding-top:41%;">
                             <img width="321" height="132"
                                 src="https://agc18.com.vn/wp-content/uploads/2021/11/Them-tieu-de-phu-2.png"
@@ -206,7 +206,7 @@
 
 
                 <div class="img has-hover x md-x lg-x y md-y lg-y" id="image_1351107000">
-                    <a class="" href="https://agc18.com.vn/san-pham/bot-tuyet-chuyen-dung-512-5l/">
+                    <a class="" href="#">
                         <div class="img-inner dark">
                             <img width="321" height="232"
                                 src="https://agc18.com.vn/wp-content/uploads/2021/11/Thiet-ke-khong-ten-15.png"
