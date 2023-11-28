@@ -58,11 +58,17 @@
                                         <h6 class="fw-semibold mb-0">Số lượng</h6>
                                     </th>
                                     <th class="border-bottom-0">
-                                        <h6 class="fw-semibold mb-0">Giá tiền</h6>
+                                        <h6 class="fw-semibold mb-0">Giá nhập</h6>
                                     </th>
                                     <th class="border-bottom-0">
-                                        <h6 class="fw-semibold mb-0">Tổng tiền</h6>
+                                        <h6 class="fw-semibold mb-0">Giá bán</h6>
                                     </th>
+                                    <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">Tổng tiền giá nhập</h6>
+                                    </th>
+                                    {{-- <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">Lợi nhuận tối đa</h6>
+                                    </th> --}}
                                     <th class="border-bottom-0">
                                         <h6 class="fw-semibold mb-0">Hành động</h6>
                                     </th>
@@ -92,6 +98,10 @@
                                         </td>
                                         <td class="border-bottom-0 ">
                                             <h6 class="fw-semibold mb-0 fs-4">{{ $value->quantity ?? '0' }}</h6>
+                                        </td>
+                                        <td class="border-bottom-0 ">
+                                            <h6 class="fw-semibold mb-0 fs-3" style="color: #FF3333">
+                                                {{ number_format($value->price_import, 0, '.', ',') ?? '0' }} VNĐ</h6>
                                         </td>
                                         <td class="border-bottom-0 ">
                                             <h6 class="fw-semibold mb-0 fs-3" style="color: #FF3333">

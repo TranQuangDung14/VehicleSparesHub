@@ -14,7 +14,7 @@ class Customers extends Model
     {
         return $this->hasOne(User::class, 'user_id');
     }
-    
+
     protected $fillable = [
         'name',
         'user_id',

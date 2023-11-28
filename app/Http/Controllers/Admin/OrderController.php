@@ -25,12 +25,12 @@ class OrderController extends Controller
     public function index(Request $request)
     {
         try {
-            $order = Orders::with('orderDetails.product.images','customer','customer_')->where('id','LIKE', '%' . $request->search . '%')->orderBy('id','desc')->paginate(5);
+            $order = Orders::with('orderDetails.product.images', 'customer', 'customer_')->where('id', 'LIKE', '%' . $request->search . '%')->orderBy('id', 'desc')->paginate(5);
             // $product_quantity = Products::select('quantity')->find($id);
-            // dd($product_quantity);
-            $product = Products::where('quantity','>',0)->get();
+            // dd($order);
+            $product = Products::where('quantity', '>', 0)->get();
             // dd($product);
-            return view('Admin.pages.order.order',compact('order','product'));
+            return view('Admin.pages.order.order', compact('order', 'product'));
         } catch (\Exception $e) {
             dd($e);
         }
@@ -66,7 +66,7 @@ class OrderController extends Controller
         try {
             $customer                       = new Customers();
             $customer->name                 = $request->name;
-            $customer->email                = $request->email??'-';
+            $customer->email                = $request->email ?? '-';
             $customer->adress               = $request->adress;
             $customer->number_phone         = $request->number_phone;
             $customer->save();
@@ -83,9 +83,8 @@ class OrderController extends Controller
             $price_by_quantity              = $request->input('price');
             // dd($quantities);
             // $total =0;
-            foreach($products as $key       => $productID)
-            {
-                
+            foreach ($products as $key       => $productID) {
+
                 $order_detail               = new Order_detail();
                 $order_detail->order_id     = $order->id;
                 $order_detail->product_id   = $productID;
@@ -95,8 +94,8 @@ class OrderController extends Controller
                 // $total += $quantities[$key] * $request->price;
 
                 $order_detail->save();
-                $product = Products::find($productID);
-                $product->quantity = $product->quantity - $quantities[$key];;
+                $product                    = Products::find($productID);
+                $product->quantity          = $product->quantity - $quantities[$key];;
                 $product->save();
             }
 
@@ -112,8 +111,28 @@ class OrderController extends Controller
             return redirect()->back();
             //throw $th;
         }
-
     }
+
+    public function update_status(Request $request)
+    {
+        // dd($request->all());
+        try {
+            $order = Orders::findOrFail($request->id);
+
+            $order->status = $request->status;
+            $order->save();
+            if ($request->status == 2) {
+                session()->flash('success', 'Hủy đơn hàng thành công.');
+            }
+            return redirect()->back();
+        } catch (\Exception $e) {
+            dd($e);
+            session()->flash('error', 'Có lỗi bất ngờ xảy ra!');
+            // Toastr::error('kích hoạt thất bại!', 'Failed');
+            return redirect()->back();
+        }
+    }
+
     public function export()
     {
         try {
@@ -139,15 +158,14 @@ class OrderController extends Controller
     }
     public function export_PDF($id)
     {
-     
+
         try {
-            
-            $order = Orders::with('orderDetails.product.images','customer','customer_')->find($id);
+
+            $order = Orders::with('orderDetails.product.images', 'customer', 'customer_')->find($id);
             // dd($order);
-            $pdf = Pdf::loadView('Admin.pages.order.exportPDF',['order' =>$order]);
+            $pdf = Pdf::loadView('Admin.pages.order.exportPDF', ['order' => $order]);
 
             return $pdf->download('CHITIETDONHANG.pdf');
-
         } catch (\Exception $e) {
             //throw $th;
             dd($e);
@@ -155,5 +173,4 @@ class OrderController extends Controller
             return redirect()->back();
         }
     }
-
 }

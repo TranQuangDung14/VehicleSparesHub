@@ -43,7 +43,7 @@
                 <div class="col-4">Mã đơn hàng: {{ $order->id }}</div>
                 <div class="col-4">Tên người nhận:
                     {{ $order->customer->name ?? $order->customer_->name }}</div>
-                
+
                 <div class="div">Địa chỉ nhận hàng: {{ $order->customer_->adress }}</div>
             </div>
             <div class="row mt-5" style="margin-top:10px">

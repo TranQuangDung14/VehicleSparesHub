@@ -27,7 +27,7 @@ class Products extends Model
         'category_id',
         'name',
         'price',
-        // 'price',
+        'price_import',
         'short_description',
         'description',
         'tech_specs',

@@ -86,7 +86,16 @@
                         {{-- Giá --}}
 
                         <div class="mb-3 col-6">
-                            <label for="exampleInputEmail1" class="form-label">Giá tiền<span
+                            <label for="exampleInputEmail1" class="form-label">Giá nhập<span
+                                    style="color: red">*</span></label>
+                            <input type="number" class="form-control" name="price_import" id="price_import"
+                                value="{{ isset($editData) ? $editData->price_import : old('price_import') }}">
+                            @if ($errors->has('price_import'))
+                                <span class="text-danger" role="alert">{{ $errors->first('price_import') }}</span>
+                            @endif
+                        </div>
+                        <div class="mb-3 col-6">
+                            <label for="exampleInputEmail1" class="form-label">Giá bán<span
                                     style="color: red">*</span></label>
                             <input type="number" class="form-control" name="price" id="price"
                                 value="{{ isset($editData) ? $editData->price : old('price') }}">
