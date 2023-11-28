@@ -48,12 +48,16 @@ class ProductsController extends Controller
         $rules = array(
             'name' => 'required',
             'category_id' => 'required',
-            'price' => 'required',
+            'price' => 'required|gt:price_import',
+            'price_import' => 'required|lt:price',
         );
         $messages = array(
             'name.required'             => '--Tên sản phẩm không được để trống!--',
             'category_id.required'      => '--Chưa chọn danh mục!--',
             'price.required'            => '--Giá tiền không được để trống!--',
+            'price_import.required'     => '--Giá nhập không được để trống!--',
+            'price.gt'                  => '--Giá bán phải lớn hơn giá nhập!--',
+            'price_import.lt'           => '--Giá nhập phải nhỏ hơn giá bán!--',
         );
         $validator = Validator::make($input, $rules, $messages);
 
@@ -64,13 +68,14 @@ class ProductsController extends Controller
         }
         DB::beginTransaction();
         try {
-            $product = new Products();
-            $product->category_id = $request->category_id;
-            $product->name = $request->name;
-            $product->price = $request->price;
+            $product                    = new Products();
+            $product->category_id       = $request->category_id;
+            $product->name              = $request->name;
+            $product->price             = $request->price;
+            $product->price_import      = $request->price_import;
             $product->short_description = $request->short_description ?? null;
-            $product->description = $request->description ?? null;
-            $product->tech_specs = $request->tech_specs ?? null;
+            $product->description       = $request->description ?? null;
+            $product->tech_specs        = $request->tech_specs ?? null;
             // $product->quantity = $request->quantity ?? null;
             // $product->selling = $request->selling ?? null;
             $product->save();
@@ -125,12 +130,16 @@ class ProductsController extends Controller
         $rules = array(
             'name' => 'required',
             'category_id' => 'required',
-            'price' => 'required',
+            'price' => 'required|gt:price_import',
+            'price_import' => 'required|lt:price',
         );
         $messages = array(
             'name.required'             => '--Tên sản phẩm không được để trống!--',
             'category_id.required'      => '--Chưa chọn danh mục!--',
             'price.required'            => '--Giá tiền không được để trống!--',
+            'price_import.required'     => '--Giá nhập không được để trống!--',
+            'price.gt'                  => '--Giá bán phải lớn hơn giá nhập!--',
+            'price_import.lt'           => '--Giá nhập phải nhỏ hơn giá bán!--',
         );
         $validator = Validator::make($input, $rules, $messages);
 
@@ -147,6 +156,7 @@ class ProductsController extends Controller
             $product->category_id       = $request->category_id;
             $product->name              = $request->name;
             $product->price             = $request->price;
+            $product->price_import      = $request->price_import;
             $product->short_description = $request->short_description ?? null;
             $product->description       = $request->description ?? null;
             $product->tech_specs        = $request->tech_specs ?? null;
@@ -220,41 +230,6 @@ class ProductsController extends Controller
         }
     }
 
-    // public function UpdateStatus(Request $request,$id){
-    //     try {
-    //         // dd($request->selling);
-    //         $product = Products::findOrFail($id);
-    //         $sellingStatus = $request->selling;
-
-    //         if ($sellingStatus == 'on') {
-    //             $product->update([
-    //                 'selling' => 1
-    //             ]);
-    //             session()->flash('success', 'Kích hoạt bán chạy thành công!');
-    //             return redirect()->back();
-    //         }
-    //         //  elseif ($sellingStatus == 'off') {
-    //         //     $product->update([
-    //         //         'selling' => 0
-    //         //     ]);
-    //         //     session()->flash('success', 'Ngừng kích hoạt thành công!');
-    //         //     return redirect()->back();
-    //         // }
-    //         else {
-    //             $product->update([
-    //                         'selling' => 0
-    //                     ]);
-    //             // session()->flash('error', 'Trạng thái không hợp lệ!');
-    //             session()->flash('success', 'Ngừng kích hoạt thành công!');
-    //             return redirect()->back();
-    //         }
-    //     } catch (\Exception $e) {
-    //         //throw $th;
-    //         dd($e);
-    //         session()->flash('error', 'Có lỗi xảy ra khi cập nhật trạng thái!');
-    //         return redirect()->back();
-    //     }
-    // }
     public function UpdateStatus(Request $request)
     {
         // dd($request->id);

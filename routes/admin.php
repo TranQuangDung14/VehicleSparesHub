@@ -80,6 +80,7 @@ Route::prefix('admin')->group(function () {
         // Route::get('edit/{id}', [CategoriesController::class, 'edit'])->name('categoryEdit');
         // Route::get('update/{id}', [CategoriesController::class, 'update'])->name('categoryUpdate');
         // Route::delete('delete/{id}', [CategoriesController::class, 'delete'])->name('categoryDelete');
+        Route::post('update_status_order', [OrderController::class, 'update_status'])->name('orderStatus');
     });
 
         // kho sản phẩm
@@ -95,6 +96,3 @@ Route::prefix('admin')->group(function () {
             // Route::get('update_status', [WarehouseController::class, 'UpdateStatus'])->name('productUpdateStatus');
         });
 });
-
-
-?>

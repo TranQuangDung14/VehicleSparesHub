@@ -90,7 +90,13 @@
                                             {{ $key + 1 }}
                                         </td>
                                         <td class="border-bottom-0">
-                                            <span class="fw-normal">@if ($value->lock == 0){{ $value->name }}@else <span style="color: red">{{ $value->name }} (đang khóa)</span>@endif</span>
+                                            <span class="fw-normal">
+                                                @if ($value->lock == 0)
+                                                    {{ $value->name }}
+                                                @else
+                                                    <span style="color: red">{{ $value->name }} (đang khóa)</span>
+                                                @endif
+                                            </span>
                                         </td>
                                         <td class="border-bottom-0">
                                             <span class="fw-normal">{{ $value->email }}</span>
@@ -104,13 +110,14 @@
                                         </td>
                                         <td class="border-bottom-0">
                                             @if ($value->lock == 0)
-                                                <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal_{{ $value->id }}"
+                                                <a href="" data-bs-toggle="modal"
+                                                    data-bs-target="#exampleModal_{{ $value->id }}"
                                                     title="Khóa tài khoản">
                                                     <i class="ti ti-key fs-8"></i>
                                                 </a>
                                             @else
-                                                <a href="" data-bs-toggle="modal" style="color: red" data-bs-target="#exampleModal_{{ $value->id }}"
-                                                    title="mở tài khoản">
+                                                <a href="" data-bs-toggle="modal" style="color: red"
+                                                    data-bs-target="#exampleModal_{{ $value->id }}" title="mở tài khoản">
                                                     <i class="ti ti-key fs-8"></i>
                                                 </a>
                                             @endif
@@ -120,8 +127,13 @@
                                                 <div class="modal-dialog modal-dialog-centered">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Khóa tài khoản
-                                                            </h5>
+                                                            @if ($value->lock == 0)
+                                                                <h5 class="modal-title" id="exampleModalLabel">Khóa tài khoản </h5>
+                                                            @else
+                                                                <h5 class="modal-title" id="exampleModalLabel">Mở khóa tài
+                                                                    khoản </h5>
+                                                            @endif
+
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                                 aria-label="Close"></button>
                                                         </div>
@@ -135,32 +147,32 @@
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary"
                                                                 data-bs-dismiss="modal">Hủy</button>
-                                                                @if ($value->lock == 0)
-                                                            <form action="{{ route('lock_account') }}" method="POST"
-                                                                enctype="multipart/form-data">
-                                                                @csrf
-                                                                <input type="hidden" class="id" name="id"
-                                                                    id="" value="{{ $value->id }}">
-                                                                {{-- <input type="hidden"  name="lock" id="" value="{{ $value->lock=='on' }}"> --}}
+                                                            @if ($value->lock == 0)
+                                                                <form action="{{ route('lock_account') }}" method="POST"
+                                                                    enctype="multipart/form-data">
+                                                                    @csrf
+                                                                    <input type="hidden" class="id" name="id"
+                                                                        id="" value="{{ $value->id }}">
+                                                                    {{-- <input type="hidden"  name="lock" id="" value="{{ $value->lock=='on' }}"> --}}
 
                                                                     <input type="hidden" name="lock" id=""
                                                                         value="on" {{ $value->lock == 'on' }}>
-                                                                <button type="submit"
-                                                                    class="btn btn-primary">Khóa</button>
-                                                            </form>
+                                                                    <button type="submit"
+                                                                        class="btn btn-primary">Khóa</button>
+                                                                </form>
                                                             @else
-                                                            <form action="{{ route('lock_account') }}" method="POST"
-                                                                enctype="multipart/form-data">
-                                                                @csrf
-                                                                <input type="hidden" class="id" name="id"
-                                                                    id="" value="{{ $value->id }}">
+                                                                <form action="{{ route('lock_account') }}" method="POST"
+                                                                    enctype="multipart/form-data">
+                                                                    @csrf
+                                                                    <input type="hidden" class="id" name="id"
+                                                                        id="" value="{{ $value->id }}">
 
                                                                     <input type="hidden" name="lock" id=""
                                                                         value="off" {{ $value->lock == 'off' }}>
 
-                                                                <button type="submit"
-                                                                    class="btn btn-primary">Mở khóa</button>
-                                                            </form>
+                                                                    <button type="submit" class="btn btn-primary">Mở
+                                                                        khóa</button>
+                                                                </form>
                                                             @endif
                                                         </div>
                                                     </div>
