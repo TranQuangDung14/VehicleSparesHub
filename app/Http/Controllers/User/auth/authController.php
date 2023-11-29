@@ -80,7 +80,7 @@ class authController extends Controller
                 'name.required'             => '--Tên người dùng không được để trống!--',
                 'number_phone.required'     => '--Số điện thoại không được để trống!--',
                 'adress.required'           => '--Địa chỉ không được để trống!--',
-                'email.required'            => '--Email không được để trống!--',
+                'email.required'            => '--Email không được để trống!--' ,
                 'email.string'              => '--Email phải là chuỗi!--',
                 'email.email'               => '--Email không hợp lệ!--',
                 'email.max'                 => '--Email không được vượt quá 255 ký tự!--',
