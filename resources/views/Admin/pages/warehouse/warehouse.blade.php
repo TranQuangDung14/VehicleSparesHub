@@ -109,7 +109,7 @@
                                         </td>
                                         <td class="border-bottom-0 ">
                                             <h6 class="fw-semibold mb-0 fs-3" style="color: #FF3333">
-                                                {{ number_format($value->quantity * $value->price, 0, '.', ',') ?? '0' }} VNĐ
+                                                {{ number_format($value->quantity * $value->price_import, 0, '.', ',') ?? '0' }} VNĐ
                                             </h6>
                                         </td>
                                         <td class="border-bottom-0 ">
@@ -147,7 +147,7 @@
                                                             <label for="recipient-name" class="col-form-label"> <i
                                                                     class="ti ti-plus" style="color: #6699FF"></i> Nhập
                                                                 kho</label>
-                                                            <input type="text" class="form-control" id="quantity"
+                                                            <input type="number" class="form-control" id="quantity"
                                                                 class="quantity" name="quantity" value="">
                                                         </div>
                                                     </div>

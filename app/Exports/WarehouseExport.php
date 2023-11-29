@@ -34,8 +34,9 @@ class WarehouseExport implements FromCollection, WithHeadings, WithColumnWidths,
                 'Danh mục sản phẩm',
                 'Tên sản phẩm',
                 'Số lượng tồn',
-                'Giá tiền',
-                'Tổng tiền',
+                'Giá nhập',
+                'Giá bán',
+                'Tổng tiền nhập',
             ]
         ];
     }
@@ -77,8 +78,9 @@ class WarehouseExport implements FromCollection, WithHeadings, WithColumnWidths,
             'C' => 40, //Danh mục sản phẩm
             'D' => 50, //Tên sản phẩm
             'E' => 20, //Số lượng
-            'F' => 50, //Giá tiền
-            'G' => 50, //Tổng tiền
+            'F' => 50, //Giá nhập
+            'G' => 50, //Giá tiền bán
+            'H' => 50, //Tổng tiền
             // 'H' => 60, //
         ];
     }
@@ -106,8 +108,9 @@ class WarehouseExport implements FromCollection, WithHeadings, WithColumnWidths,
                                 'vs_category.name as name_cate',
                                 'vs_product.name as name',
                                 'vs_product.quantity as quantity',
+                                'vs_product.price_import as price_import',
                                 'vs_product.price as price',
-                                DB::raw('vs_product.quantity * vs_product.price as sum_price'),
+                                DB::raw('vs_product.quantity * vs_product.price_import as sum_price'),
                             )
                             // ->where('sm_local_farm.deleted_at', null)
                             ->orderby('vs_product.id', 'DESC')

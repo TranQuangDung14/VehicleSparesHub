@@ -40,11 +40,12 @@
     <div class="container">
         <div class="container">
             <div class="row">
-                <div class="col-4">Mã đơn hàng: {{ $order->id }}</div>
-                <div class="col-4">Tên người nhận:
+                <div class="col-4"style="margin-top:10px ">Mã đơn hàng: {{ $order->id }}</div>
+                <div class="col-4" style="margin-top:10px ">Tên người nhận:
                     {{ $order->customer->name ?? $order->customer_->name }}</div>
-
-                <div class="div">Địa chỉ nhận hàng: {{ $order->customer_->adress ?? $order->receiver_address}}</div>
+                    <div class="col-4" style="margin-top:10px ">Số điện thoại người nhận: {{ $order->number_phone }}</div>
+                <div class="div" style="margin-top:10px ">Ngày đặt hàng: {{ date('d/m/Y', strtotime($order->created_at)) }}</div>
+                <div class="div" style="margin-top:10px ">Địa chỉ nhận hàng: {{ $order->customer_->adress ?? $order->receiver_address}}</div>
             </div>
             <div class="row mt-5" style="margin-top:10px">
                 <div class="col-12">
