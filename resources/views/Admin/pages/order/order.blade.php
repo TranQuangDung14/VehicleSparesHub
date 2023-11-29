@@ -178,17 +178,26 @@
                                                     {{ number_format($value->total_money, 0, '.', '.') }}đ
                                                 </span>
                                             </div>
-                                            @if ($value->status == 2)
-                                                <div class="col-3">Tình trạng đơn hàng:
-                                                    <span style="background-color:#FF6666 ; color: black; padding: 5px 5px 5px 5px">
-                                                        Đã hủy
-                                                    </span>
-                                                </div>
-                                            @endif
+                                            <div class="col-3">Số điện thoại:
+                                                {{ $value->number_phone }}
+                                            </div>
+
 
                                         </div>
+                                        @if ($value->status == 2)
+                                            <div class="row mt-3">
+                                                <div class="col-12">
+                                                    <label>Tình trạng đơn hàng:</label>
+                                                    <span
+                                                        style="background-color:#FF6666 ; color: black; padding: 5px 5px 5px 5px">
+                                                        Đã hủy
+                                                    </span>
+
+                                                </div>
+                                            </div>
+                                        @endif
                                         <div class="row">
-                                            <div class="col-12 float-en">
+                                            <div class="col-12">
                                                 {{-- pdf --}}
                                                 <a href="{{ route('ExportPDFOrder', $value->id) }}" title="Xuất excel">
                                                     <button type="button" class="btn btn-danger m-1 float-end">

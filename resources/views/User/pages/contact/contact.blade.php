@@ -93,12 +93,15 @@
 
 
 
-                            </p><iframe
+                            </p>
+                            {{-- src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3920.23846997982!2d106.68317641472154!3d10.716081163235131!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752fcfac7a5e9f%3A0xe15e969ddefac4aa!2zMTEgxJDGsOG7nW5nIHPhu5EgNCwgQsOsbmggSMawbmcsIELDrG5oIENow6FuaCwgVGjDoG5oIHBo4buRIEjhu5MgQ2jDrSBNaW5oLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1610350451243!5m2!1svi!2s" --}}
+                            {{-- <iframe
                             src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d29790.414189803512!2d105.7902299!3d21.0406161!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab4b9537f67b%3A0xce434f3cd9aa7cda!2zw4FvIGtob8OhYyDEkeG7k25nIHBo4bulYywgaW4gw6FvIGdpw7MgT0NFQU4!5e0!3m2!1svi!2s!4v1697624227136!5m2!1svi!2s"
-                                {{-- src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3920.23846997982!2d106.68317641472154!3d10.716081163235131!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752fcfac7a5e9f%3A0xe15e969ddefac4aa!2zMTEgxJDGsOG7nW5nIHPhu5EgNCwgQsOsbmggSMawbmcsIELDrG5oIENow6FuaCwgVGjDoG5oIHBo4buRIEjhu5MgQ2jDrSBNaW5oLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1610350451243!5m2!1svi!2s" --}}
                                 width="600" height="450" frameborder="0" style="border:0;"
-                                allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-
+                                allowfullscreen="" aria-hidden="false" tabindex="0"></iframe> --}}
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d931.3142510342616!2d105.8092094!3d20.9823326!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ad12e9d2fc71%3A0x4ed5a100f4f7382b!2zR2FyYWdlIE5hbSBI4bqjaSBQaGF5LCBzxqFuLCBwaOG7pWMgaOG7k2kgbcOibSB4ZSDDtHTDtA!5e0!3m2!1svi!2s!4v1701280623024!5m2!1svi!2s" 
+                                width="600" height="450" style="border:0;" 
+                                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
                     </div>
 
