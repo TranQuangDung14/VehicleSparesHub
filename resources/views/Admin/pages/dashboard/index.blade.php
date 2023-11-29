@@ -76,7 +76,7 @@ data-sidebar-position="fixed" data-header-position="fixed"> --}}
 
         </div>
       </div>
-      <div class="col-lg-4">
+      {{-- <div class="col-lg-4">
         <div class="row">
           <div class="col-lg-12">
             <!-- Monthly Earnings -->
@@ -97,12 +97,11 @@ data-sidebar-position="fixed" data-header-position="fixed"> --}}
                   </div>
                 </div>
               </div>
-              {{-- <div id="earning"></div> --}}
             </div>
           </div>
 
         </div>
-      </div>
+      </div> --}}
     </div>
     <div class="row">
 
