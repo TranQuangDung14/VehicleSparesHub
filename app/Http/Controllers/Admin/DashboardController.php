@@ -16,7 +16,9 @@ class DashboardController extends Controller
     {
         $today = now()->toDateString();
         $products = Products::count();
-        $user = User::count();
+        $user = User::whereNotIn('role', [1])->count();
+        // dd($user);
+        // ->count();
         $orders = Orders::count();
         $orders_by_today = Orders::whereDate('created_at', $today)->count();
         // $products_by_today = Products::whereDate('created_at',$today)->count();
