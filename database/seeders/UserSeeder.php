@@ -29,5 +29,12 @@ class UserSeeder extends Seeder
             'password' => Hash::make('12345678'),
             'role'  =>2,
         ]);
+        DB::table('vs_customer')->insert([
+            'name' => 'Quang Dũng',
+            'user_id' => 2,
+            'email' => 'dung@gmail.com',
+            'adress' => 'Địa chỉ',
+            'number_phone' => '1234567890',
+        ]);
     }
 }
