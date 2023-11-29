@@ -9,9 +9,11 @@ use App\Models\Customers;
 use App\Models\Order_detail;
 use App\Models\Orders;
 use App\Models\Products;
+use App\Models\User;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Maatwebsite\Excel\Facades\Excel;
 // use PDF;
@@ -45,13 +47,14 @@ class OrderController extends Controller
         $rules = array(
             'name' => 'required',
             'adress' => 'required',
-            'number_phone' => 'required',
+            'number_phone' => 'required|digits:10',
             // 'quantity' => 'required',
         );
         $messages = array(
             'name.required'             => '--Tên khách hàng không được để trống!--',
             'adress.required'           => '--Địa chỉ không được để trống!--',
             'number_phone.required'     => '--Số điện thoại không được để trống!--',
+            'number_phone.digits' => '--Số điện thoại phải có đúng 10 chữ số!--',
             // 'quantity.required'            => '--số lượng không được để trống!--',
         );
         $validator = Validator::make($input, $rules, $messages);
@@ -64,20 +67,29 @@ class OrderController extends Controller
         }
         DB::beginTransaction();
         try {
-            $customer                       = new Customers();
+            $user                           = new User();
+            $user->name                     = $request->name;
+            $user->email                    = $request->email ?? '-';
+            $user->password                 = '12345';
+            $user->role                     = '3';
+            $user->save();
+
+            $customer                         = new Customers();
             $customer->name                 = $request->name;
+            $customer->user_id              = $user->id;
             $customer->email                = $request->email ?? '-';
             $customer->adress               = $request->adress;
             $customer->number_phone         = $request->number_phone;
             $customer->save();
             $order                          = new Orders();
-            $order->customer_id             = $customer->id;
+            $order->customer_id             = $user->id;
             $order->receiver_name           = $request->name;
             $order->number_phone            = $request->number_phone;
             $order->receiver_address        = $request->adress;
             $order->total_money             = $request->total_money;
 
             $order->save();
+          
             $products                       = $request->input('product_id');
             $quantities                     = $request->input('quantity');
             $price_by_quantity              = $request->input('price');
@@ -105,7 +117,7 @@ class OrderController extends Controller
             DB::commit();
             return redirect()->route('orderIndex');
         } catch (\Exception $e) {
-            // dd($e);
+            dd($e);
             DB::rollback();
             session()->flash('error', 'Thêm mới thất bại! kiếm tra lại xem đã nhập đủ thông tin chưa!.');
             return redirect()->back();

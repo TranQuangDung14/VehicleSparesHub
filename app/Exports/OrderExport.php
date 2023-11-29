@@ -56,7 +56,9 @@ class OrderExport implements FromCollection, WithHeadings, WithColumnWidths, Wit
         return [
             // Style the first row as bold text.
             'A'  => ['alignment' => ['horizontal' => 'center']],
+            'B'  => ['alignment' => ['horizontal' => 'center']],
             'E'  => ['alignment' => ['horizontal' => 'left']],
+            'F'  => ['alignment' => ['horizontal' => 'left']],
 
             1    => [
                 'font' => ['bold' => true, 'size' => 16],

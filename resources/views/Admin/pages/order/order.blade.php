@@ -113,8 +113,7 @@
 
                                         </td>
                                         <td class="border-bottom-0">
-                                            <span
-                                                class="fw-normal">{{ $value->customer->name ?? $value->customer_->name }}</span>
+                                            <span class="fw-normal">{{ $value->customer_->name }}</span>
                                             {{-- class="fw-normal">{{ $value->receiver_name ?? $value->customer_->name }}</span> --}}
                                         </td>
                                         <td class="border-bottom-0">
@@ -207,27 +206,7 @@
                                                 </a>
                                             </div>
                                         </div>
-                                        <div class="modal fade" id="exampleModalToggle2" aria-hidden="true"
-                                            aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
-                                            <div class="modal-dialog modal-dialog-centered">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Modal 2
-                                                        </h1>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                            aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        Hide this modal and show the first with the button below.
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button class="btn btn-primary"
-                                                            data-bs-target="#exampleModalToggle"
-                                                            data-bs-toggle="modal">Back to first</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+
                                         <div class="row mt-3">
                                             <div class="col-12">
                                                 <label for="">Thông tin sản phẩm</label>
@@ -355,8 +334,11 @@
                             <div class="mb-3 col-6">
                                 <label for="exampleInputEmail1" class="form-label">Số điện thoại<span
                                         style="color: red">*</span></label>
+                                {{-- <input type="number" class="form-control" name="number_phone" id="number_phone"
+                                    value="" max="10" required> --}}
                                 <input type="number" class="form-control" name="number_phone" id="number_phone"
-                                    value=""required>
+                                    value="" required pattern="[0-9]{10}"
+                                    title="Số điện thoại phải có đúng 10 chữ số">
                                 @if ($errors->has('number_phone'))
                                     <span class="text-danger" role="alert">{{ $errors->first('number_phone') }}</span>
                                 @endif
@@ -488,6 +470,14 @@
                     calculateTotal();
                 });
             });
+        });
+
+
+        //bắt điều kiện nhập 10 số
+        document.getElementById('number_phone').addEventListener('input', function(e) {
+            if (this.value.length > 10) {
+                this.value = this.value.slice(0, 10);
+            }
         });
     </script>
 

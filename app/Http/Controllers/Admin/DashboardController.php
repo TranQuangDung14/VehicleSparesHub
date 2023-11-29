@@ -22,7 +22,7 @@ class DashboardController extends Controller
         // $products_by_today = Products::whereDate('created_at',$today)->count();
         // dd($orders_by_day);
         $price_by_today = Orders::whereDate('created_at', $today)
-        ->where('status','!=', 2)
+            ->whereNotIn('status', [2])
             ->sum('total_money');
         // ->select(DB::raw('sum(total_money)'))
         // ->groupBy(DB::raw('DATE_FORMAT(da5_export_orders.created_at, "%d-%m-%Y")'))

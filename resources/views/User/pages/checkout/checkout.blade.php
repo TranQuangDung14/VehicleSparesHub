@@ -24,14 +24,14 @@
                                                         <label for="billing_first_name" class="">Tên&nbsp;
                                                             <abbr class="required" title="bắt buộc">*</abbr></label>
                                                         <span class="woocommerce-input-wrapper">
-                                                            <input  type="text"class="input-text " name="receiver_name"  id="receiver_name"  value="{{ $data['customer']->name ?? 'null'}}"  /></span>
+                                                            <input  type="text"class="input-text " name="receiver_name"  id="receiver_name"  value="{{ $data['customer']->name ?? 'null'}}" required /></span>
                                                     </p>
                                                     <p class="form-row address-field form-row-wide validate-required"   id="billing_address_1_field" data-priority="50">
                                                         <label for="billing_address_1" class="">
                                                             Địa chỉ&nbsp;
                                                             <abbr lass="required" title="bắt buộc">*</abbr></label>
                                                             <span class="woocommerce-input-wrapper">
-                                                                <input type="text" class="input-text " name="receiver_address" id="receiver_address" placeholder="Địa chỉ" value="{{ $data['customer']->adress?? 'null'}}"  /></span>
+                                                                <input type="text" class="input-text " name="receiver_address" id="receiver_address" placeholder="Địa chỉ" value="{{ $data['customer']->adress?? 'null'}}" required /></span>
                                                     </p>
                                                     <p class="form-row form-row-wide validate-required validate-phone" id="billing_phone_field" data-priority="100">
                                                         <label for="billing_phone" class="">
@@ -39,7 +39,7 @@
                                                             <abbr class="required" title="bắt buộc">*</abbr>
                                                         </label>
                                                         <span class="woocommerce-input-wrapper">
-                                                            <input type="number" class="input-text " name="number_phone" id="number_phone" placeholder="" value="{{ $data['customer']->number_phone?? 'null'}}" utocomplete="tel" /></span></p>
+                                                            <input type="number" class="input-text " name="number_phone" id="number_phone" placeholder="" value="{{ $data['customer']->number_phone?? 'null'}}" utocomplete="tel" / required></span></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -127,4 +127,12 @@
             </div>
         </div>
     </div>
+    <script>
+        //bắt điều kiện nhập 10 số
+        document.getElementById('number_phone').addEventListener('input', function(e) {
+            if (this.value.length > 10) {
+                this.value = this.value.slice(0, 10);
+            }
+        });
+    </script>
 @endsection
