@@ -55,7 +55,7 @@ class Order_UserController extends Controller
             );
             $messages = array(
                 'number_phone.required'     => '--Số điện thoại không được để trống!--',
-                'number_phone.digits'       => '--Số điện thoại phải có đúng 10 chữ số!--',
+                'number_phone.digits'       => '--Nhập đúng định dạng số điện thoại!--',
                 // 'quantity.required'            => '--số lượng không được để trống!--',
             );
             $validator = Validator::make($input, $rules, $messages);
