@@ -158,7 +158,7 @@ class OrderController extends Controller
     }
     public function export_PDF($id)
     {
-
+        // dd($id);
         try {
 
             $order = Orders::with('orderDetails.product.images', 'customer', 'customer_')->find($id);

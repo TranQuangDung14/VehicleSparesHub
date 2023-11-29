@@ -44,7 +44,7 @@
                 <div class="col-4">Tên người nhận:
                     {{ $order->customer->name ?? $order->customer_->name }}</div>
 
-                <div class="div">Địa chỉ nhận hàng: {{ $order->customer_->adress }}</div>
+                <div class="div">Địa chỉ nhận hàng: {{ $order->customer_->adress ?? $order->receiver_address}}</div>
             </div>
             <div class="row mt-5" style="margin-top:10px">
                 <div class="col-12">
@@ -64,17 +64,9 @@
                                 <tr>
                                     <td> {{ $key + 1 }}</td>
                                     <td>
-                                        {{-- @if ($order_detail->product) --}}
                                         <img src="storage/image/product/{{ $order_detail->product->images[0]->image }}"
                                             alt="Ảnh sản phẩm" style="width: 100px; height: auto;">
-                                        {{-- @else
-                                                <img src="Admin/images/profile/no_image.jpg"
-                                                    alt=""
-                                                    style="width: 100px; height: auto;">
-                                            @endif
-                                            <span>
-                                                {{ $order_detail->product->name ?? 'Sản phẩm không còn tồn tại trên hệ thống' }}
-                                            </span> --}}
+                                       
                                     </td>
                                     <td> {{ $order_detail->product->name ?? 'Sản phẩm không còn tồn tại trên hệ thống' }}
                                     </td>
