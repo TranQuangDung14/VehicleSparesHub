@@ -72,7 +72,7 @@ class authController extends Controller
                 'name'              => 'required|string',
                 'email'             => 'required|string|email|max:255|unique:users',
                 'password'          => 'required',
-                'number_phone'      => 'required',
+                'number_phone'      => 'required|digits:10',
                 'adress'            => 'required',
 
             );
@@ -86,6 +86,7 @@ class authController extends Controller
                 'email.max'                 => '--Email không được vượt quá 255 ký tự!--',
                 'email.unique'              => '--Email đã tồn tại trong hệ thống!--',
                 'password.required'         => '--Mật khẩu không được để trống!--',
+                'number_phone.digits'       => '--Số điện thoại phải có đúng 10 chữ số!--',
             );
             $validator = Validator::make($input, $rules, $messages);
             if ($validator->fails()) {

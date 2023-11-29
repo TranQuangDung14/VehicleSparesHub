@@ -8,6 +8,7 @@ use App\Models\Orders;
 use App\Models\Products;
 // use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class Order_UserController extends Controller
 {
@@ -46,6 +47,25 @@ class Order_UserController extends Controller
             // dd($cart->cartDetails);
             // Tạo đơn hàng và các chi tiết đơn hàng
             // dd($request->receiver_name);
+            $input = $request->all();
+
+            $rules = array(
+                'number_phone' => 'required|digits:10',
+                // 'quantity' => 'required',
+            );
+            $messages = array(
+                'number_phone.required'     => '--Số điện thoại không được để trống!--',
+                'number_phone.digits'       => '--Số điện thoại phải có đúng 10 chữ số!--',
+                // 'quantity.required'            => '--số lượng không được để trống!--',
+            );
+            $validator = Validator::make($input, $rules, $messages);
+            if ($validator->fails()) {
+                session()->flash('error', 'Kiểm tra lại.');
+                return redirect()->back()
+                    ->withErrors($validator)
+                    ->withInput();
+            }
+            try {
             $order = Orders::create([
                 'customer_id'       => $cart  ->customer_id, // id khách hàng
                 // 'code_order'        => $code_order, // mã đơn hàng
@@ -86,6 +106,14 @@ class Order_UserController extends Controller
             //     'message'   => 'Đặt hàng thành công.',
             //     'order_id'  => $order->id,
             // ]);
+        } catch (\Exception $e) {
+            dd($e);
+            return response()->json([
+                'message'   => 'Đã xảy ra lỗi khi thực hiện đặt hàng.',
+                'error'     => $e->getMessage(),
+            ], 500);
+            //throw $th;
+        }
         } catch (\Exception $e) {
             dd($e);
             return response()->json([
