@@ -32,5 +32,6 @@ class Orders extends Model
         'receiver_name',// tên người nhận
         'number_phone',// số điện thoại
         'receiver_address', // địa chỉ
+        'status'
     ];
 }

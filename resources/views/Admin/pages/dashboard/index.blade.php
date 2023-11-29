@@ -46,7 +46,7 @@ data-sidebar-position="fixed" data-header-position="fixed"> --}}
               </div>
             </div>
           </div>
-      
+
         </div>
       </div>
       <div class="col-lg-4">
@@ -73,7 +73,7 @@ data-sidebar-position="fixed" data-header-position="fixed"> --}}
               {{-- <div id="earning"></div> --}}
             </div>
           </div>
-      
+
         </div>
       </div>
       <div class="col-lg-4">
@@ -100,9 +100,91 @@ data-sidebar-position="fixed" data-header-position="fixed"> --}}
               {{-- <div id="earning"></div> --}}
             </div>
           </div>
-      
+
         </div>
       </div>
+    </div>
+    <div class="row">
+
+      <div class="col-lg-4">
+        <div class="row">
+          <div class="col-lg-12">
+            <!-- Monthly Earnings -->
+            <div class="card">
+              <div class="card-body">
+                <div class="row align-items-start">
+                  <div class="col-8">
+                    {{-- <h5 class="card-title mb-9 fw-semibold">Sản phẩm</h5>
+                    <h4 class="fw-semibold mb-3">{{$products}}</h4> --}}
+                    <h5 class="card-title mb-9 fw-semibold">Tổng đơn hàng trong ngày</h5>
+                    <h4 class="fw-semibold mb-3">{{$orders_by_today}}</h4>
+                  </div>
+                  <div class="col-4">
+                    <div class="d-flex justify-content-end">
+                      <div
+                        class="text-white bg-danger rounded-circle p-6 d-flex align-items-center justify-content-center">
+                        <i class="ti ti-garden-cart fs-6"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="row">
+          <div class="col-lg-12">
+            <!-- Monthly Earnings -->
+            <div class="card">
+              <div class="card-body">
+                <div class="row align-items-start">
+                  <div class="col-8">
+                    <h5 class="card-title mb-9 fw-semibold"> Tổng tiền đơn hàng trong ngày </h5>
+                    <h4 class="fw-semibold mb-3" style="color: red">{{ number_format($price_by_today, 0, '.', ',') ?? '0' }} VNĐ</h4>
+                  </div>
+                  <div class="col-4">
+                    <div class="d-flex justify-content-end">
+                      <div
+                        class="text-white bg-secondary rounded-circle p-6 d-flex align-items-center justify-content-center">
+                        <i class="ti ti-brand-producthunt fs-6"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{-- <div class="col-lg-4">
+        <div class="row">
+          <div class="col-lg-12">
+            <!-- Monthly Earnings -->
+            <div class="card">
+              <div class="card-body">
+                <div class="row align-items-start">
+                  <div class="col-8">
+                    <h5 class="card-title mb-9 fw-semibold">Đơn hàng </h5>
+                    <h4 class="fw-semibold mb-3">{{$orders}}</h4>
+                  </div>
+                  <div class="col-4">
+                    <div class="d-flex justify-content-end">
+                      <div
+                        class="text-white bg-warning rounded-circle p-6 d-flex align-items-center justify-content-center">
+                        <i class="ti ti-garden-cart fs-6"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div> --}}
     </div>
     {{-- <div class="row">
             <div class="col-lg-12 d-flex align-items-strech">

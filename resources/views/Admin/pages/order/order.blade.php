@@ -80,7 +80,10 @@
                                     </th>
 
                                     <th class="border-bottom-0">
-                                        <h6 class="fw-semibold mb-0">Tên khách hàng</h6>
+                                        <h6 class="fw-semibold mb-0">Tên Khách hàng</h6>
+                                    </th>
+                                    <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">Tên người nhận</h6>
                                     </th>
                                     <th class="border-bottom-0">
                                         <h6 class="fw-semibold mb-0">Ngày đặt hàng</h6>
@@ -100,11 +103,23 @@
                                             {{ $key + 1 }}
                                         </td>
                                         <td class="border-bottom-0">
-                                            <span class="fw-normal">{{ $value->id }}</span>
+                                            @if ($value->status != 2)
+                                                <span class="fw-normal">{{ $value->id }} </span>
+                                            @else
+                                                <span class="fw-normal">{{ $value->id }}- <span
+                                                        style="background-color:#FF6666 ; color: black">(Đơn đã hủy)
+                                                    </span></span>
+                                            @endif
+
                                         </td>
                                         <td class="border-bottom-0">
                                             <span
                                                 class="fw-normal">{{ $value->customer->name ?? $value->customer_->name }}</span>
+                                            {{-- class="fw-normal">{{ $value->receiver_name ?? $value->customer_->name }}</span> --}}
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <span {{-- class="fw-normal">{{ $value->customer->name ?? $value->customer_->name }}</span> --}}
+                                                class="fw-normal">{{ $value->receiver_name ?? $value->customer_->name }}</span>
                                         </td>
                                         <td class="border-bottom-0">
                                             <span
@@ -120,6 +135,17 @@
                                                 data-bs-target="#exampleModal_{{ $value->id }}"
                                                 title="Xem chi tiết đơn hàng"><i class="ti ti-eye-check fs-8"></i></a>
 
+                                            {{-- hủy đơn --}}
+                                            {{-- <button type="button" class="btn btn-outline-warning m-1 float-end"> --}}
+                                            @if ($value->status != 2)
+                                                <a href="" data-bs-toggle="modal"
+                                                    data-bs-target="#exampleModal_cancel_{{ $value->id }}"
+                                                    title="Hủy đơn">
+                                                    <i style="color: red" class="ti ti-refresh-off fs-8"></i>
+                                                </a>
+                                            @endif
+                                            {{-- </button> --}}
+
                                         </td>
                                     </tr>
                                 @endforeach
@@ -129,7 +155,7 @@
                     {{ $order->links() }}
 
                     @foreach ($order as $value)
-                        <!-- Modal -->
+                        <!-- Modal chi tiết đơn hàng-->
                         <div class="modal fade" id="exampleModal_{{ $value->id }}" tabindex="-1"
                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered modal-xl">
@@ -144,24 +170,53 @@
                                         <div class="row">
                                             <div class="col-3">Mã đơn hàng: {{ $value->id }}</div>
                                             <div class="col-3">Tên người nhận:
-                                                {{ $value->customer->name ?? $value->customer_->name }}</div>
-                                            <div class="col-3">Tổng tiền:
-                                                <span
-                                                    style="color: red">{{ number_format($value->total_money, 0, '.', '.') }}đ</span>
+                                                {{-- {{ $value->customer->name ?? $value->customer_->name }} --}}
+                                                {{ $value->receiver_name ?? $value->customer_->name }}
                                             </div>
-                                            <div class="col-3">
-                                                {{-- <a href="{{ route('ExportDetailOrder', $value->id) }}"
-                                                    title="Xuất excel">
-                                                    <button type="button" class="btn btn-success m-1 float-end">
-                                                        <i class="ti ti-download"></i>
-                                                    </button>
-                                                </a> --}}
+                                            <div class="col-3">Tổng tiền:
+                                                <span style="color: red">
+                                                    {{ number_format($value->total_money, 0, '.', '.') }}đ
+                                                </span>
+                                            </div>
+                                            @if ($value->status == 2)
+                                                <div class="col-3">Tình trạng đơn hàng:
+                                                    <span style="background-color:#FF6666 ; color: black; padding: 5px 5px 5px 5px">
+                                                        Đã hủy
+                                                    </span>
+                                                </div>
+                                            @endif
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12 float-en">
                                                 {{-- pdf --}}
                                                 <a href="{{ route('ExportPDFOrder', $value->id) }}" title="Xuất excel">
                                                     <button type="button" class="btn btn-danger m-1 float-end">
+
                                                         <i class="ti ti-download"></i>
                                                     </button>
                                                 </a>
+                                            </div>
+                                        </div>
+                                        <div class="modal fade" id="exampleModalToggle2" aria-hidden="true"
+                                            aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Modal 2
+                                                        </h1>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Hide this modal and show the first with the button below.
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button class="btn btn-primary"
+                                                            data-bs-target="#exampleModalToggle"
+                                                            data-bs-toggle="modal">Back to first</button>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="row mt-3">
@@ -209,6 +264,39 @@
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng
                                             </button>
                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{-- modal hủy đơn hàng --}}
+                        <div class="modal fade" id="exampleModal_cancel_{{ $value->id }}" tabindex="-1"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+
+                                        <h5 class="modal-title" id="exampleModalLabel">Hủy đơn </h5>
+
+
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Bạn có chắc chắn hủy đơn hàng này chứ?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Hủy</button>
+                                        <form action="{{ route('orderStatus') }}" method="POST"
+                                            enctype="multipart/form-data">
+                                            @csrf
+                                            <input type="hidden" class="id" name="id" id=""
+                                                value="{{ $value->id }}">
+
+                                            <input type="hidden" name="status" id="" value="2"
+                                                {{ $value->status == 2 }}>
+                                            <button type="submit" class="btn btn-primary">Hủy đơn</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -304,6 +392,7 @@
             </div>
         </div>
     </div>
+
     {{-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" /> --}}
 
     <script type="text/javascript">
@@ -384,7 +473,8 @@
 
                     if (enteredQuantity > availableQuantity) {
                         alert('Vượt qua số lượng trong kho!');
-                        quantityInput.val(availableQuantity); // Đặt lại giá trị thành số lượng trong kho
+                        quantityInput.val(
+                            availableQuantity); // Đặt lại giá trị thành số lượng trong kho
                     }
                     calculateTotal();
                 });

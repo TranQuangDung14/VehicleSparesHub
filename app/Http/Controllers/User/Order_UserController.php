@@ -45,6 +45,7 @@ class Order_UserController extends Controller
             // dd($cart->all());
             // dd($cart->cartDetails);
             // Tạo đơn hàng và các chi tiết đơn hàng
+            // dd($request->receiver_name);
             $order = Orders::create([
                 'customer_id'       => $cart  ->customer_id, // id khách hàng
                 // 'code_order'        => $code_order, // mã đơn hàng
