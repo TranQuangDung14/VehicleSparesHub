@@ -368,5 +368,12 @@
         }
     }
 </script>
-
+<script>
+    //bắt điều kiện nhập 10 số
+    document.getElementById('number_phone').addEventListener('input', function(e) {
+        if (this.value.length > 10) {
+            this.value = this.value.slice(0, 10);
+        }
+    });
+</script>
 </html>

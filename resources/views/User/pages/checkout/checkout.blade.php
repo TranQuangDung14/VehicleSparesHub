@@ -24,22 +24,40 @@
                                                         <label for="billing_first_name" class="">Tên&nbsp;
                                                             <abbr class="required" title="bắt buộc">*</abbr></label>
                                                         <span class="woocommerce-input-wrapper">
-                                                            <input  type="text"class="input-text " name="receiver_name"  id="receiver_name"  value="{{ $data['customer']->name ?? 'null'}}" required /></span>
+                                                            <input type="text"class="input-text " name="receiver_name"
+                                                                id="receiver_name"
+                                                                value="{{ $data['customer']->name ?? 'null' }}"
+                                                                required /></span>
                                                     </p>
-                                                    <p class="form-row address-field form-row-wide validate-required"   id="billing_address_1_field" data-priority="50">
+                                                    <p class="form-row address-field form-row-wide validate-required"
+                                                        id="billing_address_1_field" data-priority="50">
                                                         <label for="billing_address_1" class="">
                                                             Địa chỉ&nbsp;
                                                             <abbr lass="required" title="bắt buộc">*</abbr></label>
-                                                            <span class="woocommerce-input-wrapper">
-                                                                <input type="text" class="input-text " name="receiver_address" id="receiver_address" placeholder="Địa chỉ" value="{{ $data['customer']->adress?? 'null'}}" required /></span>
+                                                        <span class="woocommerce-input-wrapper">
+                                                            <input type="text" class="input-text "
+                                                                name="receiver_address" id="receiver_address"
+                                                                placeholder="Địa chỉ"
+                                                                value="{{ $data['customer']->adress ?? 'null' }}"
+                                                                required /></span>
                                                     </p>
-                                                    <p class="form-row form-row-wide validate-required validate-phone" id="billing_phone_field" data-priority="100">
+                                                    <p class="form-row form-row-wide validate-required validate-phone"
+                                                        id="billing_phone_field" data-priority="100">
                                                         <label for="billing_phone" class="">
                                                             Số điện thoại&nbsp;
                                                             <abbr class="required" title="bắt buộc">*</abbr>
                                                         </label>
                                                         <span class="woocommerce-input-wrapper">
-                                                            <input type="number" class="input-text " name="number_phone" id="number_phone" placeholder="" value="{{ $data['customer']->number_phone?? 'null'}}" utocomplete="tel" / required></span></p>
+                                                            <input type="number" class="input-text " name="number_phone"
+                                                                id="number_phone" placeholder=""
+                                                                value="{{ $data['customer']->number_phone ?? 'null' }}"
+                                                                utocomplete="tel" / required>
+                                                            @if ($errors->has('number_phone'))
+                                                                <span class="text-danger"
+                                                                    role="alert" style="color: red">{{ $errors->first('number_phone') }}</span>
+                                                            @endif
+                                                        </span>
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -76,43 +94,45 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        @foreach ( $data['cart']->cartDetails as $cart_detai)
-                                                        <tr class="cart_item">
-                                                            <td class="product-name">
-                                                                {{$cart_detai->product->name }}   <strong
-                                                                    class="product-quantity">&times;&nbsp;{{$cart_detai->quantity}}</strong>
-                                                            </td>
-                                                            <td class="product-total">
-                                                                <span class="woocommerce-Price-amount amount"><bdi> {{number_format( $cart_detai->price_by_quantity , 0, '.', '.')}}<span
-                                                                            class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span>
-                                                            </td>
-                                                        </tr>
+                                                        @foreach ($data['cart']->cartDetails as $cart_detai)
+                                                            <tr class="cart_item">
+                                                                <td class="product-name">
+                                                                    {{ $cart_detai->product->name }} <strong
+                                                                        class="product-quantity">&times;&nbsp;{{ $cart_detai->quantity }}</strong>
+                                                                </td>
+                                                                <td class="product-total">
+                                                                    <span class="woocommerce-Price-amount amount"><bdi>
+                                                                            {{ number_format($cart_detai->price_by_quantity, 0, '.', '.') }}<span
+                                                                                class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span>
+                                                                </td>
+                                                            </tr>
                                                         @endforeach
                                                     </tbody>
                                                     <tfoot>
                                                         <tr class="cart-subtotal">
                                                             <th>Tạm tính</th>
-                                                            <td><span class="woocommerce-Price-amount amount"><bdi>{{number_format( $data['cart']->total_money , 0, '.', '.')}}<span
+                                                            <td><span class="woocommerce-Price-amount amount"><bdi>{{ number_format($data['cart']->total_money, 0, '.', '.') }}<span
                                                                             class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span>
                                                             </td>
                                                         </tr>
                                                         <tr class="order-total">
                                                             <th>Tổng</th>
-                                                            <td><strong><span
-                                                                        class="woocommerce-Price-amount amount"><bdi> {{number_format( $data['cart']->real_money , 0, '.', '.')}}<span
+                                                            <td><strong><span class="woocommerce-Price-amount amount"><bdi>
+                                                                            {{ number_format($data['cart']->real_money, 0, '.', '.') }}<span
                                                                                 class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span></strong>
                                                             </td>
                                                         </tr>
                                                     </tfoot>
                                                 </table>
                                                 <div id="payment" class="woocommerce-checkout-payment">
-                                                    <div class="form-row place-order" style="display: flex;
+                                                    <div class="form-row place-order"
+                                                        style="display: flex;
                                                     flex-direction: column;
                                                     align-items: center;
                                                     justify-content: center; ">
                                                         <div class="woocommerce-terms-and-conditions-wrapper">
                                                         </div>
-                                                        <button type="submit" class="button alt" >Đặt hàng</button>
+                                                        <button type="submit" class="button alt">Đặt hàng</button>
                                                     </div>
                                                 </div>
                                             </div>

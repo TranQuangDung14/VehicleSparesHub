@@ -54,7 +54,7 @@ class OrderController extends Controller
             'name.required'             => '--Tên khách hàng không được để trống!--',
             'adress.required'           => '--Địa chỉ không được để trống!--',
             'number_phone.required'     => '--Số điện thoại không được để trống!--',
-            'number_phone.digits' => '--Số điện thoại phải có đúng 10 chữ số!--',
+            'number_phone.digits'       => '--Số điện thoại phải có đúng 10 chữ số!--',
             // 'quantity.required'            => '--số lượng không được để trống!--',
         );
         $validator = Validator::make($input, $rules, $messages);
