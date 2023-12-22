@@ -66,7 +66,7 @@
                                                             </td>
 
                                                             <td class="product-price" data-title="Giá">
-                                                                <span class="woocommerce-Price-amount amount"><bdi>
+                                                                <span class="woocommerce-Price-amount"><bdi>
                                                                         {{ number_format($cart_detai->product->price, 0, '.', '.') }}
                                                                         <span
                                                                             class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span>
@@ -100,7 +100,7 @@
 
                                                             </td>
                                                             <td class="product-subtotal" data-title="Tạm tính">
-                                                                <span class="woocommerce-Price-amount amount"><bdi>
+                                                                <span class="woocommerce-Price-amount"><bdi>
                                                                         {{ number_format($cart_detai->price_by_quantity, 0, '.', '.') }}
                                                                         <span
                                                                             class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span>
@@ -145,7 +145,7 @@
                                                     <tr class="cart-subtotal">
                                                         <th>Tạm tính</th>
                                                         <td data-title="Tạm tính"><span
-                                                                class="woocommerce-Price-amount amount"><bdi>
+                                                                class="woocommerce-Price-amount"><bdi>
                                                                     {{ number_format($data['cart']->total_money, 0, '.', '.') }}
                                                                     <span
                                                                         class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span>
@@ -154,7 +154,7 @@
                                                     <tr class="order-total">
                                                         <th>Tổng</th>
                                                         <td data-title="Tổng"><strong><span
-                                                                    class="woocommerce-Price-amount amount"><bdi>
+                                                                    class="woocommerce-Price-amount"><bdi>
                                                                         {{ number_format($data['cart']->real_money, 0, '.', '.') }}
                                                                         <span
                                                                             class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span></strong>

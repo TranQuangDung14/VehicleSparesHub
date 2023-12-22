@@ -125,8 +125,7 @@
                                                 class="fw-normal">{{ date('d/m/Y', strtotime($value->created_at)) }}</span>
                                         </td>
                                         <td class="border-bottom-0">
-                                            <span class="fw-normal"
-                                                style="color: red">{{ number_format($value->total_money, 0, '.', '.') }}
+                                            <span class="fw-normal">{{ number_format($value->total_money, 0, '.', '.') }}
                                                 đ</span>
                                         </td>
                                         <td class="border-bottom-0">
@@ -140,7 +139,7 @@
                                                 <a href="" data-bs-toggle="modal"
                                                     data-bs-target="#exampleModal_cancel_{{ $value->id }}"
                                                     title="Hủy đơn">
-                                                    <i style="color: red" class="ti ti-refresh-off fs-8"></i>
+                                                    <i class="ti ti-refresh-off fs-8"></i>
                                                 </a>
                                             @endif
                                             {{-- </button> --}}
@@ -173,7 +172,7 @@
                                                 {{ $value->receiver_name ?? $value->customer_->name }}
                                             </div>
                                             <div class="col-3">Tổng tiền:
-                                                <span style="color: red">
+                                                <span>
                                                     {{ number_format($value->total_money, 0, '.', '.') }}đ
                                                 </span>
                                             </div>
@@ -182,6 +181,11 @@
                                             </div>
 
 
+                                        </div>
+                                        <div class="row mt-3">
+                                            <div class="col-5">Địa chỉ nhận:
+                                                {{ $value->receiver_address }}
+                                            </div>
                                         </div>
                                         @if ($value->status == 2)
                                             <div class="row mt-3">
@@ -195,9 +199,9 @@
                                                 </div>
                                             </div>
                                         @endif
-                                        <div class="row">
+                                        {{-- pdf --}}
+                                        {{-- <div class="row">
                                             <div class="col-12">
-                                                {{-- pdf --}}
                                                 <a href="{{ route('ExportPDFOrder', $value->id) }}" title="Xuất excel">
                                                     <button type="button" class="btn btn-danger m-1 float-end">
 
@@ -205,7 +209,7 @@
                                                     </button>
                                                 </a>
                                             </div>
-                                        </div>
+                                        </div> --}}
 
                                         <div class="row mt-3">
                                             <div class="col-12">
@@ -214,10 +218,11 @@
                                                     <thead style="background-color: #CFCFCF">
                                                         <tr>
                                                             <th class="col-lg-1">stt</th>
-                                                            <th class="col-lg-5">Sản phẩm</th>
+                                                            <th class="col-lg-4">Sản phẩm</th>
                                                             <!-- <th scope="col">Tên sản phẩm</th> -->
-                                                            <th class="col-lg-3">Số lượng</th>
-                                                            <th class="col-lg-3">Giá</th>
+                                                            <th class="col-lg-1">Số lượng</th>
+                                                            <th class="col-lg-3">Đơn giá</th>
+                                                            <th class="col-lg-3">Thành tiền</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -239,7 +244,10 @@
                                                                     </span>
                                                                 </td>
                                                                 <td>{{ $order_detail->quantity }}</td>
-                                                                <td style="color: red;">
+                                                                <td>
+                                                                    {{ number_format($order_detail->product->price, 0, '.', '.')?? 'Sản phẩm không còn tồn tại trên hệ thống' }} đ
+                                                                </td>
+                                                                <td>
                                                                     {{ number_format($order_detail->price, 0, '.', '.') }}đ
                                                                 </td>
                                                             </tr>
@@ -249,6 +257,12 @@
                                             </div>
                                         </div>
                                         <div class="modal-footer">
+                                            <a href="{{ route('ExportPDFOrder', $value->id) }}" title="Xuất excel">
+                                                <button type="button" class="btn btn-danger m-1 float-end">
+
+                                                    <i class="ti ti-download"></i>
+                                                </button>
+                                            </a>
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng
                                             </button>
                                         </div>

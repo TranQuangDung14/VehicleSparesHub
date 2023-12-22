@@ -142,7 +142,7 @@ data-sidebar-position="fixed" data-header-position="fixed"> --}}
                 <div class="row align-items-start">
                   <div class="col-8">
                     <h5 class="card-title mb-9 fw-semibold"> Tổng tiền đơn hàng trong ngày </h5>
-                    <h4 class="fw-semibold mb-3" style="color: red">{{ number_format($price_by_today, 0, '.', ',') ?? '0' }} VNĐ</h4>
+                    <h4 class="fw-semibold mb-3">{{ number_format($price_by_today, 0, '.', ',') ?? '0' }} VNĐ</h4>
                   </div>
                   <div class="col-4">
                     <div class="d-flex justify-content-end">

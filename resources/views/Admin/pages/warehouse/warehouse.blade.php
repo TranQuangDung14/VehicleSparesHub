@@ -100,15 +100,15 @@
                                             <h6 class="fw-semibold mb-0 fs-4">{{ $value->quantity ?? '0' }}</h6>
                                         </td>
                                         <td class="border-bottom-0 ">
-                                            <h6 class="fw-semibold mb-0 fs-3" style="color: #FF3333">
+                                            <h6 class="fw-semibold mb-0 fs-3">
                                                 {{ number_format($value->price_import, 0, '.', ',') ?? '0' }} VNĐ</h6>
                                         </td>
                                         <td class="border-bottom-0 ">
-                                            <h6 class="fw-semibold mb-0 fs-3" style="color: #FF3333">
+                                            <h6 class="fw-semibold mb-0 fs-3">
                                                 {{ number_format($value->price, 0, '.', ',') ?? '0' }} VNĐ</h6>
                                         </td>
                                         <td class="border-bottom-0 ">
-                                            <h6 class="fw-semibold mb-0 fs-3" style="color: #FF3333">
+                                            <h6 class="fw-semibold mb-0 fs-3">
                                                 {{ number_format($value->quantity * $value->price_import, 0, '.', ',') ?? '0' }} VNĐ
                                             </h6>
                                         </td>

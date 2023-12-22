@@ -107,7 +107,7 @@
                                             </div>
                                             <div class="price-wrapper">
                                                 <span class="price"><span
-                                                        class="woocommerce-Price-amount amount"><bdi>{{ number_format($product->price, 0, '.', ',') }}<span
+                                                        class="woocommerce-Price-amount"><bdi>{{ number_format($product->price, 0, '.', ',') }}<span
                                                                 class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span></span>
                                             </div>
                                             {{-- @if ($product->quantity == null || $product->quantity < 0)
