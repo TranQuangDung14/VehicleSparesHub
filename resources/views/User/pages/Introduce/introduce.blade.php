@@ -7,10 +7,6 @@
     <div class="row row-main">
         <div class="large-12 col">
             <div class="col-inner">
-
-
-
-
                 <p style="padding-left: 40px"><span
                         style="font-size: 115%;font-family: 'times new roman', times, serif">TECHGROUP –
                         VIETNAM</span></p>
@@ -46,7 +42,7 @@
                 <p style="padding-left: 40px"><span
                         style="font-size: 115%;font-family: 'times new roman', times, serif"><br />Cảm ơn
                         quý khách hàng đã quan tâm đến sản phẩm của chúng tôi !</span></p>
-                <h4><span
+                <!-- <h4><span
                         style="font-family: 'times new roman', times, serif;font-size: 115%">==========================================</span><br /><span
                         style="font-family: 'times new roman', times, serif;font-size: 115%"><a
                             href="https://agc18.com.vn">Công Ty TNHH TM và DV AGC18</a></span><br /><span
@@ -57,7 +53,7 @@
                         style="font-family: 'times new roman', times, serif;font-size: 115%">Email:
                         agc18.auto@gmail.com</span><br /><span
                         style="font-family: 'times new roman', times, serif;font-size: 115%">Địa chỉ : Số
-                        11, đường số 4, KDC T30, X.Bình Hưng, H. Bình Chánh ,TP.HCM.</span></h4>
+                        11, đường số 4, KDC T30, X.Bình Hưng, H. Bình Chánh ,TP.HCM.</span></h4> -->
 
 
             </div>
