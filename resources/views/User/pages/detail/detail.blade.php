@@ -67,7 +67,7 @@
                                                 </div>
                                                 <div class="price-wrapper">
                                                     <span class="price"><span
-                                                            class="woocommerce-Price-amount amount"><bdi>{{ number_format($selling->price, 0, '.', ',') }}<span
+                                                            class="woocommerce-Price-amount"><bdi>{{ number_format($selling->price, 0, '.', ',') }}<span
                                                                     class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span></span>
                                                 </div>
 
@@ -182,7 +182,7 @@
                                 <div class="is-divider small"></div>
                                 Mã Sản Phẩm: {{ $data['detail']->id }}<div class="price-wrapper">
                                     <p class="price product-page-price ">
-                                        <span class="woocommerce-Price-amount amount">
+                                        <span class="woocommerce-Price-amount">
                                             <bdi>
                                                 {{ number_format($data['detail']->price, 0, '.', ',') }}
                                                 <span class="woocommerce-Price-currencySymbol">&#8363;</span>
@@ -345,7 +345,7 @@
                                                     </div>
                                                     <div class="price-wrapper">
                                                         <span class="price"><span
-                                                                class="woocommerce-Price-amount amount"><bdi>{{ number_format($product_related->price, 0, '.', ',') }}<span
+                                                                class="woocommerce-Price-amount"><bdi>{{ number_format($product_related->price, 0, '.', ',') }}<span
                                                                         class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span></span>
                                                     </div>
                                                     <div class="add-to-cart-button"><a href="?add-to-cart=3123"

@@ -103,7 +103,7 @@
                                                     </div>
                                                     <div class="price-wrapper">
                                                         <span class="price"><span
-                                                                class="woocommerce-Price-amount amount"><bdi>
+                                                                class="woocommerce-Price-amount"><bdi>
                                                                     {{ number_format($product->price, 0, '.', ',') }}
                                                                     <span
                                                                         class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span></span>
@@ -213,7 +213,7 @@
                                                 </div>
                                                 <div class="price-wrapper">
                                                     <span class="price"><span
-                                                            class="woocommerce-Price-amount amount"><bdi>
+                                                            class="woocommerce-Price-amount"><bdi>
                                                                 {{ number_format($selling->price, 0, '.', ',') }}
                                                                 <span
                                                                     class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span></span>

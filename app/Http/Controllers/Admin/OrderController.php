@@ -172,7 +172,6 @@ class OrderController extends Controller
     {
         // dd($id);
         try {
-
             $order = Orders::with('orderDetails.product.images', 'customer', 'customer_')->find($id);
             // dd($order);
             $pdf = Pdf::loadView('Admin.pages.order.exportPDF', ['order' => $order]);

@@ -39,6 +39,11 @@
     <div class="container">
         <div class="container">
             <div class="row">
+                <h2 style="text-align: center">Nam Hải Auto</h2>
+                <h2 style="text-align: center">289 Nguyễn Xiển-TX-HN</h2>
+                <h2 style="text-align: center">Hóa đơn</h2>
+            </div>
+            <div class="row">
                 <div class="col-4"style="margin-top:10px ">Mã đơn hàng: {{ $order->id }}</div>
                 <div class="col-4" style="margin-top:10px ">Tên người nhận:
                     {{ $order->receiver_name ?? $order->customer_->name }}</div>
@@ -56,7 +61,8 @@
                                 <th class="col-3">Ảnh</th>
                                 <th scope="col-2">Tên sản phẩm</th>
                                 <th class="col-3">Số lượng</th>
-                                <th class="col-3">Giá</th>
+                                <th class="col-3">Đơn giá</th>
+                                <th class="col-3">Thành tiền</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -66,12 +72,14 @@
                                     <td>
                                         <img src="storage/image/product/{{ $order_detail->product->images[0]->image }}"
                                             alt="Ảnh sản phẩm" style="width: 100px; height: auto;">
-                                       
                                     </td>
                                     <td> {{ $order_detail->product->name ?? 'Sản phẩm không còn tồn tại trên hệ thống' }}
                                     </td>
                                     <td>{{ $order_detail->quantity }}</td>
-                                    <td style="color: red;">
+                                    <td>
+                                        {{ number_format($order_detail->product->price, 0, '.', '.')?? 'Sản phẩm không còn tồn tại trên hệ thống' }} VNĐ
+                                    </td>
+                                    <td>
                                         {{ number_format($order_detail->price, 0, '.', '.') }} VNĐ
                                     </td>
                                 </tr>
@@ -81,7 +89,7 @@
                 </div>
             </div>
             <div style="float: right; margin-top:10px">Tổng tiền:
-                <span style="color: red">{{ number_format($order->total_money, 0, '.', '.') }} VNĐ</span>
+                <span>{{ number_format($order->total_money, 0, '.', '.') }} VNĐ</span>
             </div>
         </div>
 
