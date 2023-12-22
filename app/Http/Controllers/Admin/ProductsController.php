@@ -229,7 +229,7 @@ class ProductsController extends Controller
             return redirect()->back();
         }
     }
-
+ 
     public function UpdateStatus(Request $request)
     {
         // dd($request->id);
