@@ -44,7 +44,7 @@
                 <h2 style="text-align: center">Hóa đơn</h2>
             </div>
             <div class="row">
-                <div class="col-4"style="margin-top:10px ">Mã đơn hàng: {{ $order->id }}</div>
+                <div class="col-4"style="margin-top:10px ">Mã đơn hàng: DH0{{ $order->id }}</div>
                 <div class="col-4" style="margin-top:10px ">Tên người nhận:
                     {{ $order->receiver_name ?? $order->customer_->name }}</div>
                     <div class="col-4" style="margin-top:10px ">Số điện thoại người nhận: {{ $order->number_phone }}</div>
@@ -57,7 +57,7 @@
                     <table class="table">
                         <thead style="background-color: #CFCFCF">
                             <tr>
-                                <th class="col-1">stt</th>
+                                <th class="col-1">STT</th>
                                 <th class="col-3">Ảnh</th>
                                 <th scope="col-2">Tên sản phẩm</th>
                                 <th class="col-3">Số lượng</th>
