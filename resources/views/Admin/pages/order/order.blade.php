@@ -104,9 +104,9 @@
                                         </td>
                                         <td class="border-bottom-0">
                                             @if ($value->status != 2)
-                                                <span class="fw-normal">{{ $value->id }} </span>
+                                                <span class="fw-normal">DH0{{ $value->id }} </span>
                                             @else
-                                                <span class="fw-normal">{{ $value->id }}- <span
+                                                <span class="fw-normal">DH0{{ $value->id }}- <span
                                                         style="background-color:#FF6666 ; color: black">(Đơn đã hủy)
                                                     </span></span>
                                             @endif
@@ -166,7 +166,7 @@
                                     </div>
                                     <div class="modal-body">
                                         <div class="row">
-                                            <div class="col-3">Mã đơn hàng: {{ $value->id }}</div>
+                                            <div class="col-3">Mã đơn hàng: DH0{{ $value->id }}</div>
                                             <div class="col-3">Tên người nhận:
                                                 {{-- {{ $value->customer->name ?? $value->customer_->name }} --}}
                                                 {{ $value->receiver_name ?? $value->customer_->name }}
@@ -245,10 +245,18 @@
                                                                 </td>
                                                                 <td>{{ $order_detail->quantity }}</td>
                                                                 <td>
-                                                                    {{ number_format($order_detail->product->price, 0, '.', '.')?? 'Sản phẩm không còn tồn tại trên hệ thống' }} đ
+                                                                    @if($order_detail->product)
+                                                                        {{ number_format($order_detail->product->price, 0, '.', '.')}} đ
+                                                                    @else
+                                                                        0
+                                                                    @endif
                                                                 </td>
                                                                 <td>
+                                                                @if($order_detail->product)
                                                                     {{ number_format($order_detail->price, 0, '.', '.') }}đ
+                                                                 @else
+                                                                        0
+                                                                 @endif
                                                                 </td>
                                                             </tr>
                                                         @endforeach
@@ -258,7 +266,7 @@
                                         </div>
                                         <div class="modal-footer">
                                             <a href="{{ route('ExportPDFOrder', $value->id) }}" title="Xuất excel">
-                                                <button type="button" class="btn btn-danger m-1 float-end">
+                                                <button type="button" class="btn btn-success m-1 float-end">
 
                                                     <i class="ti ti-download"></i>
                                                 </button>
