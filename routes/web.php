@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\Testcontroller;
 use App\Http\Controllers\User\auth\authController;
 use App\Http\Controllers\User\CartController;
 use App\Http\Controllers\User\IndexController;
@@ -55,5 +56,14 @@ Route::post('/cart-edit-quantity', [CartController::class, 'updateQuantity'])->n
 
 // thanh toán
 Route::get('thanh_toan', [Order_UserController::class, 'index'])->name('Order');
-Route::post('/checkout', [Order_UserController::class, 'store'])->name('checkout');
+Route::post('/checkout', [Order_UserController::class, 'store'  ])->name('checkout');
 
+
+Route::get('/test', [Testcontroller::class, 'index'])->name('TestIndex');
+Route::get('/create', [Testcontroller::class, 'create'])->name('Testcreate');
+Route::post('/test', [Testcontroller::class, 'store'])->name('Teststore');
+
+Route::get('/test/{id}', [Testcontroller::class, 'edit'])->name('Testedit');
+Route::put('/test/{id}', [Testcontroller::class, 'update'])->name('Testupdate');
+Route::delete('/delete/{id}', [Testcontroller::class, 'delete'])->name('Deletetest');
+// Route::put('update/{id}', [ProductsController::class, 'update'])->name('productUpdate');
