@@ -111,7 +111,7 @@
 
                                             @if ($value->images->count() > 0)
                                                 <img src="{{ asset('storage/image/product/' . $value->images[0]->image) }}"
-                                                    alt="Ảnh sản phẩm" style="width: 80%; height: auto;">
+                                                    alt="Ảnh sản phẩm" style="width:auto ; height: 100px;">
                                             @else
                                                 <img src="{{ asset('Admin/') }}/images/profile/no_image.jpg" alt=""
                                                     width="120" height="100">
